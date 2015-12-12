@@ -1,0 +1,24 @@
+# Site settings
+title: Algorhythms
+email: sccherry@gmail.com
+description: My experiments with the Web Audio API.
+baseurl: ""
+url: "http://sccherry.github.io/algorhythms"
+twitter_username: stevenccherry
+github_username:  sccherry
+
+# Build settings
+markdown: kramdown
+
+
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "default"
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "default"
