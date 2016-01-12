@@ -1,5 +1,10 @@
 <!DOCTYPE html>
-<html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie10 lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie10 lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie10 lt-ie9" lang="en"> <![endif]-->
+<!--[if IE 9]>         <html class="no-js lt-ie10" lang="en"> <![endif]-->
+<!--[if gt IE 9]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,8 +16,19 @@
   <link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.baseurl }}">
   <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
   <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}" />
+
+  {% if jekyll.environment == "production" %}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+  {% else %}
+  <script src="https://localhost/cdn/modernizr/modernizr.min.js"></script>
+  {% endif %}
 </head>
-<body>
+
+<body prefix="schema: http://schema.org/">
+  <!--[if lt IE 9]>
+    <p>You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
+
   <header role="banner">
     <h1><a href="{{ site.baseurl }}/">{{ site.title }}</a></h1>
 
@@ -20,21 +36,24 @@
       <ul>
         {% for page in site.pages %}
           {% if page.title %}
-            <li>
-              <a href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
-            </li>
+            <li><a href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a></li>
           {% endif %}
         {% endfor %}
       </ul>
     </nav>
   </header>
 
+
   <main role="main">
     {{ content }}
   </main>
 
   <footer role="contentinfo">
-    <ul class="social-media-list">
+    <p>Code is licensed GPL3; documentation is licensed CC-BY-SA.</p>
+
+    <ul>
+      <li><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
+
       {% if site.github_username %}
         <li>
           <a href="https://github.com/{{ site.github_username }}">{{ site.github_username }}</a>
@@ -51,6 +70,22 @@
     <p>{{ site.description }}</p>
   </footer>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.22/require.min.js" data-main="{{ "/js/main" | prepend: site.baseurl }}"></script>
+  {% if jekyll.environment == "production" %}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.22/require.min.js" data-main="{{ "/js/config" | prepend: site.baseurl }}"></script>
+  {% else %}
+  <script src="http://localhost/cdn/require/require.min.js" data-main="{{ "/js/config-localhost" | prepend: site.baseurl }}"></script>
+  {% endif %}
+
+  {% if jekyll.environment == "production" %}
+  <script>
+    (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+    function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+    e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+    e.src='//www.google-analytics.com/analytics.js';
+    r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+    ga('create','{{ site.google_analytics }}');ga('send','pageview');
+  </script>
+  {% endif %}
 </body>
+
 </html>

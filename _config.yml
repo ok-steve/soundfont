@@ -1,24 +1,30 @@
 # Site settings
-title: Algorhythms
-email: sccherry@gmail.com
+title: AlgoRhythms
+email: stevenccherry@gmail.com
 description: My experiments with the Web Audio API.
 baseurl: ""
 url: "http://sccherry.github.io/algorhythms"
 twitter_username: stevenccherry
 github_username:  sccherry
+google_analytics: UA-XXXXX-X
 
-# Build settings
-markdown: kramdown
-
+safe: true
+host: 0.0.0.0
+permalink: /posts/:year/:month/:day/:title/
 
 defaults:
   - scope:
       path: ""
-      type: "posts"
+      type: posts
     values:
-      layout: "default"
+      layout: default
   - scope:
       path: ""
-      type: "pages"
+      type: pages
     values:
-      layout: "default"
+      layout: default
+
+# Build settings
+markdown: kramdown
+
+exclude: ["README.md", "*.sublime-*"]
