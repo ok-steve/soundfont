@@ -25,5 +25,5 @@ requirejs.config({
       }
     }
   },
-  deps: ['main.spec']
+  deps: ['spec']
 });

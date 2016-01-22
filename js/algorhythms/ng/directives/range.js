@@ -19,7 +19,7 @@ define([
         min: '@',
         max: '@'
       },
-      templateUrl: 'templates/gui/range.html'
+      templateUrl: 'templates/directives/range.html'
     };
   }
 

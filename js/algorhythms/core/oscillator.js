@@ -15,7 +15,7 @@ define([
     this.osc.start();
   }
 
-  Oscillator.prototype.noteOn = function (gain, freq) {
+  Oscillator.prototype.noteOn = function (freq, gain) {
     if (freq) {
       this.osc.frequency.value = freq;
     }

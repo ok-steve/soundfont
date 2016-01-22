@@ -1,5 +1,5 @@
 define([
-  'app/util'
+  'algorhythms/ng/util'
 ], function (Util) {
   'use strict';
 
@@ -16,7 +16,7 @@ define([
       bindToController: {
         synth: '='
       },
-      templateUrl: 'templates/directives/keyboard.html'
+      templateUrl: '../templates/directives/keyboard.html'
     };
   }
 

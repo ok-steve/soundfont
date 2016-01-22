@@ -4,6 +4,8 @@ email: stevenccherry@gmail.com
 description: My experiments with the Web Audio API.
 baseurl: ""
 url: "http://sccherry.github.io/algorhythms"
+repo: algorhythms
+
 twitter_username: stevenccherry
 github_username:  sccherry
 google_analytics: UA-XXXXX-X

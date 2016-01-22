@@ -1,0 +1,14 @@
+{
+  "name": "algorhythms",
+  "private": true,
+  "devDependencies": {
+    "angular": "~1.4.8",
+    "modernizr": "~2.8.0",
+    "chai": "~3.4.2",
+    "mocha": "~2.3.4",
+    "normalize-css": "~3.0.3",
+    "requirejs": "~2.1.22",
+    "sinon": "~1.17.2",
+    "angular-route": "~1.4.9"
+  }
+}

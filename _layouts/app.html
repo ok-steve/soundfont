@@ -64,9 +64,9 @@
   </footer>
 
   {% if jekyll.environment == "production" %}
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.22/require.min.js" data-main="{{ "/js/config" | prepend: site.baseurl }}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.22/require.min.js" data-main="{{ "/js/config.app" | prepend: site.baseurl }}"></script>
   {% else %}
-  <script src="{{ "/bower_components/requirejs/require.js" | prepend: site.baseurl }}" data-main="{{ "/js/config-localhost" | prepend: site.baseurl }}"></script>
+  <script src="{{ "/bower_components/requirejs/require.js" | prepend: site.baseurl }}" data-main="{{ "/js/config-localhost.app" | prepend: site.baseurl }}"></script>
   {% endif %}
 
   {% if jekyll.environment == "production" %}

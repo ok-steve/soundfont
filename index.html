@@ -4,7 +4,7 @@ title: Home
 
 <ul>
   {% for post in site.posts %}
-    <li>
+    <li resource="{{ post.url | prepend: site.baseurl }}" typeof="schema:BlogPosting">
       <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
     </li>
   {% endfor %}

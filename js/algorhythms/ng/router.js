@@ -5,7 +5,7 @@ define([
 
   function Router($routeProvider) {
     $routeProvider.when('/', {
-      templateUrl: 'templates/index.html',
+      templateUrl: '../templates/index.html',
       controller: 'IndexController',
       controllerAs: 'Ctrl'
     }).otherwise({
