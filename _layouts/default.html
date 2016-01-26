@@ -20,7 +20,7 @@
   {% endif %}
 </head>
 
-<body prefix="schema: http://schema.org/">
+<body class="StickyFooter" prefix="schema: http://schema.org/">
   <header role="banner">
     <h1><a href="{{ site.baseurl }}/">{{ site.title }}</a></h1>
 
@@ -35,7 +35,7 @@
     </nav>
   </header>
 
-  <main role="main">
+  <main class="StickyFooter-content" role="main">
     {{ content }}
   </main>
 
@@ -44,21 +44,23 @@
 
     <p>Code is licensed GPL3; documentation is licensed <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">CC-BY-SA</a>.</p>
 
-    <ul>
-      <li><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
+    <nav role="navigation">
+      <ul>
+        <li><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
 
-      {% if site.github_username %}
-        <li>
-          <a href="https://github.com/{{ site.github_username }}">{{ site.github_username }}</a>
-        </li>
-      {% endif %}
+        {% if site.github_username %}
+          <li>
+            <a href="https://github.com/{{ site.github_username }}">{{ site.github_username }}</a>
+          </li>
+        {% endif %}
 
-      {% if site.twitter_username %}
-        <li>
-          <a href="https://twitter.com/{{ site.twitter_username }}">{{ site.twitter_username }}</a>
-        </li>
-      {% endif %}
-    </ul>
+        {% if site.twitter_username %}
+          <li>
+            <a href="https://twitter.com/{{ site.twitter_username }}">{{ site.twitter_username }}</a>
+          </li>
+        {% endif %}
+      </ul>
+    </nav>
 
     <p>{{ site.description }}</p>
   </footer>

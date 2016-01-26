@@ -1,0 +1,74 @@
+/* =========================================================================
+   Longform
+   ========================================================================= */
+
+
+%Longform {
+  $longform: (
+    measure: 36rem,
+    indent: 40px
+  );
+
+  overflow: visible; // for overhanging lists
+
+  max-width: map-get($longform, measure);
+
+  > * {
+    overflow: auto;
+  }
+
+  p {
+    @extend %u-textJustify;
+
+    // FIXME find better solution for specificity
+    &:not(.Longform-lead),
+    &:not(.Longform-runIn),
+    &:not(.Longform-dropCaps) {
+      + p {
+        margin-top: 0;
+
+        text-indent: map-get($longform, indent);
+      }
+    }
+  }
+
+  ul,
+  ol {
+    overflow: visible;
+
+    ul,
+    ol {
+      padding-left: map-get($longform, indent);
+    }
+  }
+
+
+  /**
+   * Descendants
+   */
+
+  &-lead {
+    @extend %u-textLarge;
+  }
+
+  &-runIn {
+    &::first-line {
+      @extend %u-textSmallCaps;
+    }
+  }
+
+  &-dropCaps {
+    &::first-letter {
+      font-size: lines(2);
+      line-height: 1;
+
+      float: left;
+
+      padding-right: lines(.25);
+    }
+  }
+
+  &-footnotes {
+    @extend %u-textSmall;
+  }
+}

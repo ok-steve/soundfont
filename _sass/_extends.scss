@@ -1,3 +1,25 @@
 /* =========================================================================
    Extends
    ========================================================================= */
+
+
+.StickyFooter {
+  @extend %StickyFooter;
+}
+
+.StickyFooter-content {
+  @extend %StickyFooter-content;
+}
+
+.Longform {
+  @extend %Longform;
+
+  > p:first-child {
+    @extend %Longform-lead;
+    @extend %Longform-dropCaps;
+  }
+
+  h3 + p {
+    @extend %Longform-runIn
+  }
+}
