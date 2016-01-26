@@ -7,7 +7,7 @@ define([
     $routeProvider.when('/', {
       templateUrl: '../templates/index.html',
       controller: 'IndexController',
-      controllerAs: 'Ctrl'
+      controllerAs: 'IndexCtrl'
     }).otherwise({
       redirectTo: '/'
     });

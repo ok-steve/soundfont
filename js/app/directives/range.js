@@ -10,7 +10,7 @@ define([
     return {
       restrict: 'AE',
       controller: Controller,
-      controllerAs: 'Ctrl',
+      controllerAs: 'RangeCtrl',
       scope: {},
       bindToController: {
         id: '@',
@@ -19,7 +19,7 @@ define([
         min: '@',
         max: '@'
       },
-      templateUrl: 'templates/directives/range.html'
+      templateUrl: '../templates/directives/range.html'
     };
   }
 

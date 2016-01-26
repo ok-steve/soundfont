@@ -11,7 +11,7 @@ define([
     return {
       restrict: 'AE',
       controller: Controller,
-      controllerAs: 'Ctrl',
+      controllerAs: 'KeyboardCtrl',
       scope: {},
       bindToController: {
         synth: '='
