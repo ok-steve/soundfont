@@ -1,0 +1,240 @@
+/* =========================================================================
+   Forms
+   ========================================================================= */
+
+
+// 1. Correct color not being inherited.
+//    Known issue: affects color of disabled elements.
+// 2. Correct font properties not being inherited.
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font: inherit; // 2
+
+  color: inherit; // 1
+}
+
+button,
+input,
+select,
+textarea {
+  background-color: transparent;
+}
+
+
+// Address inconsistent `text-transform` inheritance for `button` and `select`.
+// All other form control elements do not inherit `text-transform` values.
+// Correct `button` style inheritance in Firefox, IE 8/9/10/11, and Opera.
+// Correct `select` style inheritance in Firefox.
+
+button,
+select {
+  text-transform: none;
+}
+
+
+// Remove inner padding and border in Firefox 4+.
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  // padding: 0;
+
+  // border: 0;
+}
+
+
+button,
+[type="button"],
+[type="date"],
+[type="datetime"],
+[type="datetime-local"],
+[type="email"],
+[type="month"],
+[type="number"],
+[type="password"],
+[type="reset"],
+[type="search"],
+[type="submit"],
+[type="tel"],
+[type="text"],
+[type="time"],
+[type="url"],
+[type="week"],
+select,
+textarea {
+  min-height: lines(1);
+}
+
+
+
+
+
+/*------------------------------------*\
+    #GLOBAL
+\*------------------------------------*/
+
+
+form {
+  @media print {
+    display: none;
+  }
+}
+
+fieldset { }
+
+legend { }
+
+label { }
+
+
+
+
+
+/*------------------------------------*\
+    #TEXT
+\*------------------------------------*/
+
+
+// Address Firefox 4+ setting `line-height` on `input` using `!important` in
+// the UA stylesheet.
+
+input {
+  // line-height: normal;
+
+  -webkit-border-radius: 0; // iOS 8+
+}
+
+
+input[type="search"] {
+  -webkit-appearance: textfield; // Chrome 45+, Safari 9+
+
+  &::-webkit-search-cancel-button,
+  &::-webkit-search-decoration {
+    -webkit-appearance: none; // Chrome 45+, Safari 9+
+  }
+}
+
+
+/**
+ * Textarea
+ */
+
+textarea {
+  width: 100%;
+
+  resize: vertical; // Only allow vertical resizing
+}
+
+
+
+
+
+/*------------------------------------*\
+    #SELECT
+\*------------------------------------*/
+
+
+select {
+  -webkit-appearance: none; // Chrome 45+
+     -moz-appearance: none; // Firefox 40+
+
+  &::-ms-expand {
+    display: none; // Edge 12+, Internet Explorer 11-
+  }
+
+  &::-ms-value {
+    color: currentColor; // Edge 12+, Internet Explorer 11-
+  }
+}
+
+option + option,
+optgroup + optgroup {
+  margin-top: 0;
+}
+
+
+// Don't inherit the `font-weight` (applied by a rule above).
+// NOTE: the default cannot safely be changed in Chrome and Safari on OS X.
+
+optgroup {
+  font-weight: 700;
+}
+
+
+
+
+
+/*------------------------------------*\
+    #CHECKBOX_AND_RADIO
+\*------------------------------------*/
+
+
+// It's recommended that you don't attempt to style these elements.
+// Firefox's implementation doesn't respect box-sizing, padding, or width.
+
+input[type="checkbox"] { }
+
+input[type="radio"] { }
+
+
+
+
+
+/*------------------------------------*\
+    #HTML5
+\*------------------------------------*/
+
+
+// Fix the cursor style for Chrome's increment/decrement buttons. For certain
+// `font-size` values of the `input`, it causes the cursor style of the
+// decrement button to change from `default` to `text`.
+
+input[type="number"] {
+  width: auto; // Firefox 36+
+
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button {
+    height: auto;
+  }
+}
+
+
+
+
+
+/*------------------------------------*\
+    #BUTTONS
+\*------------------------------------*/
+
+
+button {
+  overflow: visible; // Internet Explorer 11-
+  -webkit-appearance: button; // iOS 8+
+}
+
+
+// 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
+//    and `video` controls.
+// 2. Correct inability to style clickable `input` types in iOS.
+// 3. Improve usability and consistency of cursor style between image-type
+//    `input` and others.
+
+button,
+html input[type="button"], // 1
+input[type="reset"],
+input[type="submit"] {
+  cursor: pointer; // 3
+
+  -webkit-appearance: button; // 2, iOS 8+
+}
+
+button[disabled],
+html input[disabled] {
+  cursor: default; // Reset default cursor
+}
+
+output { }
+datalist { }

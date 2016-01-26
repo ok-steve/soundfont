@@ -1,0 +1,41 @@
+/* =========================================================================
+   Variables
+   ========================================================================= */
+
+
+/*------------------------------------*\
+    #TYPOGRAPHY
+\*------------------------------------*/
+
+
+$default-font-size:   1rem !default;
+$default-line-height: 1.5rem !default;
+$default-ratio:       1.618 !default; // Golden ratio
+
+
+$font-family-code:        monospace, monospace !default;
+$default-font-family:     -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif !default; // https://medium.com/@mwichary/system-shock-6b1dc6d6596f
+
+
+
+
+
+/*------------------------------------*\
+    #COLORS
+\*------------------------------------*/
+
+
+$default-color:       #222 !default;
+
+
+
+
+
+/*------------------------------------*\
+    #BREAKPOINTS
+\*------------------------------------*/
+
+
+$breakpoints: (
+  layout: 35rem
+) !default;

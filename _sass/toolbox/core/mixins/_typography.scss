@@ -1,0 +1,48 @@
+/* =========================================================================
+   Typography
+   ========================================================================= */
+
+
+/*------------------------------------*\
+    #FUNCTIONS
+\*------------------------------------*/
+
+
+@function lines($num, $line-height: $default-line-height) {
+  @return  $line-height * $num;
+}
+
+
+@function modular-scale($num: 0, $ratio: $default-ratio) {
+  $value: $default-font-size;
+
+  @if $num != 0 {
+    @for $i from 1 through abs($num) {
+      $value: if($num > 0, $value * $ratio, $value / $ratio);
+    }
+  }
+
+  @return $value;
+}
+
+@function ms($args...) {
+  @return modular-scale($args...);
+}
+
+
+
+
+/*------------------------------------*\
+    #MIXINS
+\*------------------------------------*/
+
+
+@mixin font-size($font-size) {
+  $line-height: lines(ceil($font-size / $default-line-height));
+
+  font-size: $font-size;
+
+  @if ($line-height > $default-line-height) {
+    line-height: $line-height;
+  }
+}
