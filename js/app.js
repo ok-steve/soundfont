@@ -1,8 +1,8 @@
 define([
   'angular',
-  'algorhythms/ng/router',
-  'algorhythms/ng/controllers/index',
-  'algorhythms/ng/directives/keyboard'
+  'app/router',
+  'app/controllers/index',
+  'app/directives/keyboard'
 ], function (angular, Router, IndexController, KeyboardDirective) {
   'use strict';
 

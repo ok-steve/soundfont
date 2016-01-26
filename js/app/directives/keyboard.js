@@ -1,5 +1,5 @@
 define([
-  'algorhythms/ng/util'
+  'app/util'
 ], function (Util) {
   'use strict';
 
