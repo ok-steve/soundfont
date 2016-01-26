@@ -24,9 +24,11 @@
   {{ content }}
 
   {% if jekyll.environment == "production" %}
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.22/require.min.js" data-main="{{ "/js/config.spec" | prepend: site.baseurl }}"></script>
+  <script src="{{ "/js/config.s" | prepend: site.baseurl }}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.22/require.min.js" data-main="{{ "/js/test" | prepend: site.baseurl }}"></script>
   {% else %}
-  <script src="{{ "/bower_components/requirejs/require.js" | prepend: site.baseurl }}" data-main="{{ "/js/config-localhost.spec" | prepend: site.baseurl }}"></script>
+  <script src="{{ "/js/config-localhost.js" | prepend: site.baseurl }}"></script>
+  <script src="{{ "/bower_components/requirejs/require.js" | prepend: site.baseurl }}" data-main="{{ "/js/test" | prepend: site.baseurl }}"></script>
   {% endif %}
 </body>
 
