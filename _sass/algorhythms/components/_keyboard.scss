@@ -12,9 +12,6 @@
    */
 
   &-key {
-    width: 8px;
-    height: 48px;
-
 
     /**
      * Modifiers
@@ -22,7 +19,6 @@
 
     &--white {
       fill: hsla(0, 0%, 100%, 1);
-      y: 50;
     }
 
     &--black {
