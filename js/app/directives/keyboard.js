@@ -1,16 +1,12 @@
 define([
-  'app/util'
-], function (Util) {
+  'app/controllers/keyboard'
+], function (KeyboardController) {
   'use strict';
 
   function KeyboardDirective() {
-    function Controller() {
-      this.keys = Util.range(21, 108);
-    }
-
     return {
       restrict: 'AE',
-      controller: Controller,
+      controller: KeyboardController,
       controllerAs: 'KeyboardCtrl',
       scope: {},
       bindToController: {
