@@ -4,8 +4,10 @@
 
 
 .Keyboard {
-  background-color: hsla(0, 0%, 90%, 1);
+  width: 100%;
   padding: lines(1);
+
+  background-color: hsla(0, 0%, 90%, 1);
 
   /**
    * Descendents
