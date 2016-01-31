@@ -4,7 +4,12 @@ define([
 
   var MIDI = {
     mtof: function (midi) {
-      return Math.pow(2, Math.floor(midi) / 12.0);
+      var ref = {
+        freq: 440.0,
+        midi: 69
+      }
+
+      return ref.freq * Math.pow(2, (Math.floor(midi) - ref.midi) / 12.0);
     }
   };
 
