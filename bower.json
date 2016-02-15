@@ -7,6 +7,7 @@
     "normalize-css": "~3.0.3",
     "angular": "~1.4.8",
     "angular-route": "~1.4.9",
+    "underscore": "~1.8.3",
     "mocha": "~2.3.4",
     "chai": "~3.4.2",
     "sinon": "~1.17.2"

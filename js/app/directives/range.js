@@ -1,15 +1,12 @@
 define([
-], function () {
+  'app/controllers/range'
+], function (RangeController) {
   'use strict';
 
   function RangeDirective() {
-    function Controller() {
-
-    }
-
     return {
       restrict: 'AE',
-      controller: Controller,
+      controller: RangeController,
       controllerAs: 'RangeCtrl',
       scope: {},
       bindToController: {

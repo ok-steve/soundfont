@@ -1,13 +1,27 @@
----
-title: Test
-layout: test
-permalink: /test/
----
+<!DOCTYPE html>
+<html lang="en">
 
-<div id="mocha">
-  <p><a href=".">Index</a></p>
-</div>
+<head>
+  <meta charset="utf-8">
+  <title>Test | AlgoRhythms</title>
 
-<div id="messages"></div>
+  <link rel="stylesheet" href="bower_components/normalize-css/normalize.css">
+  <link rel="stylesheet" href="bower_components/mocha/mocha.css">
 
-<div id="fixtures"></div>
+  <script src="bower_components/modernizr/modernizr.js"></script>
+</head>
+
+<body>
+  <div id="mocha">
+    <p><a href=".">Index</a></p>
+  </div>
+
+  <div id="messages"></div>
+
+  <div id="fixtures"></div>
+
+  <script src="js/config-localhost.js"></script>
+  <script src="bower_components/requirejs/require.js" data-main="js/test"></script>
+</body>
+
+</html>
