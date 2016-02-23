@@ -3,28 +3,25 @@ define([
 ], function (AudioContext) {
   'use strict';
 
-  function Oscillator(freq, gain, type) {
-    this.osc = AudioContext.createOscillator();
-    this.gain = AudioContext.createGain();
-
-    this.osc.frequency.value = freq || 440;
-    this.gain.gain.value = gain || 1;
-    this.osc.type = type || 'sine';
-
-    this.osc.connect(this.gain);
-    this.osc.start();
+  function Oscillator() {
   }
 
   Oscillator.prototype.noteOn = function (freq, gain) {
-    if (freq) {
-      this.osc.frequency.value = freq;
-    }
+    this.osc = AudioContext.createOscillator();
+    this.osc.type = 'sine';
+    this.osc.frequency.value = freq;
 
-    this.gain.gain.value = gain || 1;
+    this.gain = AudioContext.createGain();
+    this.gain.gain.value = gain;
+
+    this.osc.start();
+    this.osc.connect(this.gain);
+    this.gain.connect(AudioContext.destination);
   };
 
   Oscillator.prototype.noteOff = function () {
     this.gain.gain.value = 0;
+    this.osc.stop();
   };
 
   return Oscillator;

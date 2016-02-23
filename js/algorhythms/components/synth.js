@@ -28,18 +28,16 @@ define([
    // modulator.osc.connect(carrier.gain);
    // carrier.gain.connect(carrier.osc.frequency);
    // carrier.osc.connect(Context.destination);
+
+   this.osc = new Oscillator();
   }
 
-  Synth.prototype.noteOn = function  (key) {
-    var freq = MIDI.mtof(key);
-
-    this.osc = new Oscillator(freq, 1);
-    this.osc.gain.connect(Context.destination);
+  Synth.prototype.noteOn = function (freq, vol) {
+    this.osc.noteOn(freq, vol);
   }
 
-  Synth.prototype.noteOff = function  (key) {
-    this.osc.osc.stop();
-    this.osc.gain.disconnect();
+  Synth.prototype.noteOff = function (key) {
+    this.osc.noteOff();
   }
 
   return Synth;
