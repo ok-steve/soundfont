@@ -1,12 +1,12 @@
 var require = {
   // baseUrl: '/js',
   paths: {
-    angular: '../bower_components/angular/angular.min',
-    ngRoute: '../bower_components/angular-route/angular-route.min',
+    angular: 'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.min',
+    ngRoute: 'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular-route.min',
 
-    mocha: '../bower_components/mocha/mocha',
-    chai: '../bower_components/chai/chai',
-    sinon: '../bower_components/sinon/lib/sinon'
+    mocha: 'https://cdnjs.cloudflare.com/ajax/libs/mocha/2.4.5/mocha.min',
+    chai: 'https://cdnjs.cloudflare.com/ajax/libs/chai/3.5.0/chai.min',
+    sinon: 'https://cdnjs.cloudflare.com/ajax/libs/sinon/1.15.4/sinon.min'
   },
   shim: {
     angular: {
