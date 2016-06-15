@@ -1,0 +1,12 @@
+{
+  "short_name": "AlgoRhythms",
+  "name": "A configurable modular synthesizer.",
+  "display": "fullscreen",
+  "orientation": "portrait",
+  "icons": [{
+    "src": "images/startup-image.png",
+    "sizes": "144x144",
+    "type": "image/png"
+  }],
+  "start_url": "index.html"
+}

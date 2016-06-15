@@ -14,5 +14,11 @@ define([
 
   app.directive('guiKbd', KeyboardDirective);
 
+  if (navigator.hasOwnProperty('serviceWorker')) {
+    navigator.serviceWorker.register('/service-worker.js', {
+      scope: '/'
+    });
+  }
+
   angular.bootstrap(document, ['app']);
 });
