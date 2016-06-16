@@ -1,8 +1,6 @@
 define([
-  'algorhythms/core/audio-context',
-  'algorhythms/core/gain',
-  'algorhythms/components/simple-oscillator'
-], function (AudioContext, Gain, SimpleOscillator) {
+  'algorhythms/synth-def'
+], function (SynthDef) {
   'use strict';
 
   function Factory() {
@@ -19,7 +17,7 @@ define([
     ///////////////
 
     function init() {
-      return new Synth(params);
+      return new SynthDef(params);
     }
 
     function setParams(newParams) {
@@ -36,32 +34,6 @@ define([
       voice.stop();
     }
   }
-
-  /**
-   * Generic, configurable synth
-   */
-
-  function Synth(params) {
-    var params = params || {};
-
-    this.osc = new SimpleOscillator(params);
-  }
-
-  Synth.prototype.start = function(freq, gain) {
-    this.gain = new Gain({
-      gain: gain
-    });
-
-    this.osc.connect(this.gain);
-    this.gain.connect(AudioContext.destination);
-
-    this.osc.start(freq);
-  };
-
-  Synth.prototype.stop = function() {
-    this.osc.stop();
-    this.gain.disconnect();
-  };
 
   return Factory;
 });
