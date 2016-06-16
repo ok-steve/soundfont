@@ -29,7 +29,7 @@ define([
     }
 
     function setParams(id, params) {
-        nodes[id].params = params;
+      nodes[id].params = params;
     }
 
     function start(voice, freq, gain) {
