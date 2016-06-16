@@ -6,24 +6,30 @@ define([
   function Factory() {
     var factory = {
         init: init,
+        addNode: addNode,
         setParams: setParams,
         start: start,
         stop: stop
       },
-      params = {};
+      nodes = {};
 
     return factory;
 
     ///////////////
 
     function init() {
-      return new SynthDef(params);
+      return new SynthDef(nodes);
     }
 
-    function setParams(newParams) {
-      if (newParams) {
-        params = newParams;
-      }
+    function addNode(id, node, params) {
+      nodes[id] = {
+        proto: node,
+        params: params
+      };
+    }
+
+    function setParams(id, params) {
+        nodes[id].params = params;
     }
 
     function start(voice, freq, gain) {

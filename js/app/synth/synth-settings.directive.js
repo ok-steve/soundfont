@@ -17,29 +17,21 @@ define([
     /////////////////
   }
 
-  Controller.$inject = ['$scope', 'synthDef'];
+  Controller.$inject = [
+    '$scope',
+    'synthDef'
+  ];
 
   function Controller($scope, synthDef) {
     var vm = this;
 
-    vm.types = ['sine', 'square', 'triangle', 'sawtooth'];
-    vm.filters = ['lowpass', 'highpass'];
-
-    vm.config = {
-      osc: {
-        type: 'sine'
-      },
-      filter: {
-        type: 'lowpass',
-        frequency: 3000
-      }
+    vm.addNode = function (id, node, params) {
+      synthDef.addNode(id, node, params);
     };
 
-    ////////////////
-
-    $scope.$watch(angular.bind(vm, function () {
-      return this.config;
-    }), synthDef.setParams, true);
+    vm.setParams = function (id, params) {
+      synthDef.setParams(id, params);
+    };
   }
 
   return Directive;

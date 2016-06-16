@@ -5,10 +5,8 @@ define([
 ], function (AudioContext, Gain, SimpleOscillator) {
   'use strict';
 
-  function SynthDef(params) {
-    var params = params || {};
-
-    this.osc = new SimpleOscillator(params);
+  function SynthDef(nodes) {
+    this.osc = new nodes['osc1'].proto(nodes['osc1'].params);
   }
 
   SynthDef.prototype.start = function (freq, gain) {
