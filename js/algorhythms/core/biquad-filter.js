@@ -11,22 +11,27 @@
       require('algorhythms/core/audio-context')
     );
   } else {
-    root.AR.Oscillator = factory(
+    root.AR.BiquadFilter = factory(
       root.AR.AudioContext
     );
   }
 }(this, function (AudioContext) {
 
-  function Oscillator(params) {
+  function BiquadFilter(params) {
     var params = params || {},
-      node = AudioContext.createOscillator();
+      node = AudioContext.createBiquadFilter();
 
-    node.frequency.value = params.frequency || 440;
+    if (!params.type) {
+      console.error('Params must include `type`!');
+    }
+
+    node.frequency.value = params.frequency || 350;
     node.detune.value = params.detune || 0;
-    node.type = params.type || 'sine';
+    node.Q.value = params.Q || 1;
+    node.type = params.type;
 
     return node;
   }
 
-  return Oscillator;
+  return BiquadFilter;
 }));

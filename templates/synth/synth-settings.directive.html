@@ -1,0 +1,8 @@
+<select ng-model="vm.config.osc.type" ng-options="type as type for type in vm.types"></select>
+
+<select ng-model="vm.config.filter.type" ng-options="type as type for type in vm.filters"></select>
+
+<input type="range" min="1000" max="10000" ng-model="vm.config.filter.frequency">
+
+<input type="range" min="0" max="1" ng-model="vm.config.gain.gain">
+

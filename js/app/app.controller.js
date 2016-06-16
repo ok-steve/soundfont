@@ -1,16 +1,15 @@
-define([
-  'algorhythms/component/synth'
-], function (Synth) {
+define([], function () {
   'use strict';
 
   Controller.$inject = [
+    'polySynth',
     'keyboardInput'
   ];
 
-  function Controller(keyboardInput) {
+  function Controller(polySynth, keyboardInput) {
     var vm = this;
 
-    vm.synth = new Synth();
+    vm.synth = polySynth;
 
     /////////////////////
 
