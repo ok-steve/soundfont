@@ -2,18 +2,17 @@ define([
   'angular',
   'app/app.routes',
   'app/app.controller',
-  'app/directives/keyboard',
-  'ngRoute'
-], function (angular, Routes, AppController, KeyboardDirective) {
+  'ngRoute',
+  'app/piano/piano.module',
+], function (angular, Routes, AppController) {
   'use strict';
 
   var app = angular.module('app', [
-    'ngRoute'
+    'ngRoute',
+    'app.piano',
   ]);
 
   app.config(Routes);
 
   app.controller('AppController', AppController);
-
-  app.directive('guiKbd', KeyboardDirective);
 });

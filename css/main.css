@@ -1,17 +1,2 @@
-svg {
-  width: 100%;
-}
-
-.Keyboard {
-  background-color: hsla(0, 0%, 90%, 1);
-}
-
-.Keyboard-key { }
-
-.Keyboard-key--white {
-  fill: hsla(0, 0%, 100%, 1);
-}
-
-.Keyboard-key--black {
-  fill: hsla(0, 0%, 0%, 1);
-}
+@import url("toolbox/core/svg.css");
+@import url("app/piano/piano-roll.css");
