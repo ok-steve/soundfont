@@ -4,6 +4,7 @@ define([
   'app/app.controller',
   'ngRoute',
   'app/keyboard/keyboard.module',
+  'app/midi/midi.module',
   'app/piano/piano.module',
 ], function (angular, Routes, AppController) {
   'use strict';
@@ -11,6 +12,7 @@ define([
   var app = angular.module('app', [
     'ngRoute',
     'app.keyboard',
+    'app.midi',
     'app.piano',
   ]);
 
