@@ -5,11 +5,20 @@ define([
 ], function (Synth, MIDIAccess, MIDI) {
   'use strict';
 
-  function Controller() {
+  Controller.$inject = [
+    'keyboardInput'
+  ];
+
+  function Controller(keyboardInput) {
     var access = new MIDIAccess(),
       vm = this;
 
     vm.synth = new Synth();
+
+    /////////////////////
+
+    keyboardInput.onkeydown(vm.synth.noteOn);
+    keyboardInput.onkeyup(vm.synth.noteOff);
 
     access.connect().then(function (midi) {
       var device = access.getDevices(midi)[0];
