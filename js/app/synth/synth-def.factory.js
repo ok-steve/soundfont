@@ -21,10 +21,11 @@ define([
       return new SynthDef(nodes);
     }
 
-    function addNode(id, node, params) {
+    function addNode(id, node, params, connect) {
       nodes[id] = {
         proto: node,
-        params: params
+        params: params,
+        connect: connect
       };
     }
 

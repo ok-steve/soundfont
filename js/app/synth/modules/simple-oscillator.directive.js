@@ -17,7 +17,7 @@ define([
     /////////////////
 
     function link(scope, elem, attr, ctrl) {
-      ctrl.addNode(attr.id, SimpleOscillator, scope.params);
+      ctrl.addNode(attr.id, SimpleOscillator, scope.params, attr.connect);
 
       scope.types = [
         'sine',

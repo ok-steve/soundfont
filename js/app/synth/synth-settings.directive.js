@@ -25,8 +25,8 @@ define([
   function Controller($scope, synthDef) {
     var vm = this;
 
-    vm.addNode = function (id, node, params) {
-      synthDef.addNode(id, node, params);
+    vm.addNode = function (id, node, params, connect) {
+      synthDef.addNode(id, node, params, connect);
     };
 
     vm.setParams = function (id, params) {
