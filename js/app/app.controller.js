@@ -5,11 +5,11 @@ define([
 ], function (Synth, MIDIAccess, MIDI) {
   'use strict';
 
-  function IndexController() {
+  function Controller() {
     var access = new MIDIAccess(),
-      self = this;
+      vm = this;
 
-    self.synth = new Synth();
+    vm.synth = new Synth();
 
     access.connect().then(function (midi) {
       var device = access.getDevices(midi)[0];
@@ -22,15 +22,13 @@ define([
           velocity = data[2];
 
         if (type === 144) { // noteOn
-          self.synth.noteOn(MIDI.mtof(note), velocity / 127.0);
+          vm.synth.noteOn(MIDI.mtof(note), velocity / 127.0);
         } else if (type === 128) { // noteOff
-          self.synth.noteOff();
+          vm.synth.noteOff();
         }
       }
     });
   };
 
-//  IndexController.$inject = [];
-
-  return IndexController;
+  return Controller;
 });
