@@ -1,26 +1,34 @@
-define([
-], function () {
-  'use strict';
+'use strict';
 
-  var MIDI = {
+(function (root, factory) {
+
+  if (typeof define === 'function' && define.amd) {
+    define([], factory);
+  } else if (typeof module === 'object' && module.exports) {
+    module.exports = factory();
+  } else {
+    root.AR = root.AR || {};
+
+    root.AR.MidiUtil = factory();
+  }
+}(this, function () {
+
+  var MidiUtil = {
+    // Midi to frequency
     mtof: function (midi) {
-      var ref = {
-        freq: 440.0,
-        midi: 69
-      }
-
-      return ref.freq * Math.pow(2, (Math.floor(midi) - ref.midi) / 12.0);
+      return 440.0 * Math.pow(2, (Math.floor(midi) - 69) / 12.0);
     },
 
+    // Frequency to midi
     ftom: function (freq) {
-      var ref = {
-        freq: 440.0,
-        midi: 69
-      };
+      return 12 * (Math.log(freq / 440.0) / Math.log(2)) + 69;
+    },
 
-      return 12 * (Math.log(freq / ref.freq) / Math.log(2)) + ref.midi;
+    // Velocity to gain
+    vtog: function (vel) {
+      return (vel / 127).toFixed(2);
     }
   };
 
-  return MIDI;
-});
+  return MidiUtil;
+}));

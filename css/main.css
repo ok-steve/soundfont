@@ -1,17 +1,14 @@
-svg {
-  width: 100%;
-}
+@charset "utf-8";
 
-.Keyboard {
-  background-color: hsla(0, 0%, 90%, 1);
-}
+@import url("_variables.css");
 
-.Keyboard-key { }
+@import url("toolbox/core/_axioms.css");
+@import url("toolbox/core/_text.css");
+@import url("toolbox/core/_embed.css");
+@import url("toolbox/core/_forms.css");
 
-.Keyboard-key--white {
-  fill: hsla(0, 0%, 100%, 1);
-}
+@import url("toolbox/components/_container.css");
 
-.Keyboard-key--black {
-  fill: hsla(0, 0%, 0%, 1);
-}
+@import url("theme/_svg.css");
+
+@import url("app/piano/_piano-roll.css");

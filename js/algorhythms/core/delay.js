@@ -11,22 +11,18 @@
       require('algorhythms/core/audio-context')
     );
   } else {
-    root.AR.Oscillator = factory(
+    root.AR.Delay = factory(
       root.AR.AudioContext
     );
   }
 }(this, function (AudioContext) {
 
-  function Oscillator(params) {
+  function Delay(params) {
     var params = params || {},
-      node = AudioContext.createOscillator();
-
-    node.frequency.value = params.frequency || 440;
-    node.detune.value = params.detune || 0;
-    node.type = params.type || 'sine';
+      node = AudioContext.createDelay(params.delay || 0);
 
     return node;
   }
 
-  return Oscillator;
+  return Delay;
 }));

@@ -1,0 +1,8 @@
+<select ng-model="params.osc.type" ng-options="type as type for type in types"></select>
+
+<select ng-model="params.filter.type" ng-options="type as type for type in filters"></select>
+
+<input type="range" min="1000" max="10000" ng-model="params.filter.frequency">
+
+<input type="range" min="0" max="1" step="0.01" ng-model="params.gain.gain">
+
