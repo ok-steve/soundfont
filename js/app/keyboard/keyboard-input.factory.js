@@ -1,54 +1,53 @@
 define([
+  'keyboard',
   'algorhythms/utilities/midi',
   'underscore'
-], function (MidiUtil, _) {
+], function (keyboardJS, MidiUtil, _) {
   'use strict';
 
   function Factory() {
-    var factory = {
-        onkeydown: onkeydown,
-        onkeyup: onkeyup
-      },
-      keyMap = {
-        65: 60, // a:C
-        87: 61, // w:C#/Db
-        83: 62, // s:D
-        69: 63, // e:D#/Eb
-        68: 64, // d:E
-        70: 65, // f:F
-        84: 66, // t:F#/Gb
-        71: 67, // g:G
-        89: 68, // y:G#/Ab
-        72: 69, // h:A
-        85: 70, // u:A#/Bb
-        74: 71, // j:B
-        75: 72  // k:C
+    const factory = {
+        bind: unbind,
+        unbind: unbind
       };
 
     return factory;
 
     ///////////////
 
+    function bind(keydown, keyup) {
+      const keyMap = {
+        'a': 60, // a:C
+        'w': 61, // w:C#/Db
+        's': 62, // s:D
+        'e': 63, // e:D#/Eb
+        'd': 64, // d:E
+        'f': 65, // f:F
+        't': 66, // t:F#/Gb
+        'g': 67, // g:G
+        'y': 68, // y:G#/Ab
+        'h': 69, // h:A
+        'u': 70, // u:A#/Bb
+        'j': 71, // j:B
+        'k': 72  // k:C
+      };
 
-    function keyInMap(key) {
-      return _.keys(keyMap).indexOf(key.toString()) !== -1;
-    }
+      _.each(_.keys(keyMap), function (key) {
+        const freq = MidiUtil.mtof(keyMap[key]);
 
-    function onkeydown(callback) {
-      document.addEventListener('keydown', function (e) {
-        if (keyInMap(e.keyCode) && !e.repeat) {
-          callback(MidiUtil.mtof(keyMap[e.keyCode]));
-        }
+        keyboardJS.bind(key, function (e) {
+          e.preventRepeat();
+          keydown(freq);
+        }, function (e) {
+          keyup(freq);
+        });
       });
     }
 
-    function onkeyup(callback) {
-      document.addEventListener('keyup', function (e) {
-        if (keyInMap(e.keyCode)) {
-          callback(MidiUtil.mtof(keyMap[e.keyCode]));
-        }
-      });
+    function unbind() {
+      keyboardJS.reset();
     }
+
   }
 
   return Factory;

@@ -13,8 +13,7 @@ define([], function () {
 
     /////////////////////
 
-    keyboardInput.onkeydown(vm.synth.noteOn);
-    keyboardInput.onkeyup(vm.synth.noteOff);
+    keyboardInput.bind(vm.synth.noteOn, vm.synth.noteOff);
   };
 
   return Controller;

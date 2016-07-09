@@ -9,6 +9,7 @@ System.config({
 
     ngMaterial: 'https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.0.9/angular-material.min',
 
+    keyboard: 'https://cdnjs.cloudflare.com/ajax/libs/keyboardjs/2.2.1/keyboard.min',
     underscore: 'https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min',
   },
   meta: {
@@ -40,6 +41,9 @@ System.config({
       ]
     },
 
+    keyboard: {
+      exports: 'keyboardJS'
+    },
     underscore: {
       exports: '_'
     }
