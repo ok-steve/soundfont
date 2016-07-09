@@ -8,6 +8,8 @@ System.config({
     ngRoute: 'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular-route.min',
 
     ngMaterial: 'https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.0.9/angular-material.min',
+
+    underscore: 'https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min',
   },
   meta: {
     angular: {
@@ -36,6 +38,10 @@ System.config({
         'ngAnimate',
         'ngAria'
       ]
+    },
+
+    underscore: {
+      exports: '_'
     }
   }
 });

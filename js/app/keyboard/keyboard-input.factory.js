@@ -1,6 +1,7 @@
 define([
-  'algorhythms/utilities/midi'
-], function (MidiUtil) {
+  'algorhythms/utilities/midi',
+  'underscore'
+], function (MidiUtil, _) {
   'use strict';
 
   function Factory() {
@@ -30,7 +31,7 @@ define([
 
 
     function keyInMap(key) {
-      return Object.keys(keyMap).indexOf(key.toString()) !== -1;
+      return _.keys(keyMap).indexOf(key.toString()) !== -1;
     }
 
     function onkeydown(callback) {
