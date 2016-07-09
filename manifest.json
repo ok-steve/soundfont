@@ -1,12 +1,16 @@
 {
-  "short_name": "AlgoRhythms",
-  "name": "A configurable modular synthesizer.",
+  "manifest_version": 1,
+  "name": "Synthia",
+  "version" :"0.1.0",
+  "default_locale": "en",
+  "description": "A configurable modular synthesizer.",
   "display": "fullscreen",
   "orientation": "portrait",
   "icons": [{
-    "src": "images/startup-image.png",
-    "sizes": "144x144",
+    "src": "img/favicon-192.png",
+    "sizes": "192x192",
     "type": "image/png"
   }],
-  "start_url": "index.html"
+  "homepage_url": "index.html",
+  "offline_enabled": true
 }
