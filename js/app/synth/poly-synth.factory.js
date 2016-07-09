@@ -1,10 +1,11 @@
 define([
-  'tone'
-], function (Tone) {
+  'tone',
+  'lib/synth-def'
+], function (Tone, SynthDef) {
   'use strict';
 
   function Factory() {
-    const factory = new Tone.PolySynth(10, Tone.MonoSynth).toMaster();
+    let factory = new Tone.PolySynth(10, SynthDef).toMaster();
 
     return factory;
   }
