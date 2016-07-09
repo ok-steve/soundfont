@@ -1,22 +1,25 @@
 define([
   'keyboard',
-  'lib/utilities/midi',
   'underscore'
-], function (keyboardJS, MidiUtil, _) {
+], function (keyboardJS, _) {
   'use strict';
 
-  function Factory() {
-    const factory = {
-        bind: unbind,
-        unbind: unbind
-      };
+  Factory.$inject = [
+    'midiUtilities'
+  ];
+
+  function Factory(MidiUtil) {
+    let factory = {
+      bind: bind,
+      unbind: unbind
+    };
 
     return factory;
 
     ///////////////
 
     function bind(keydown, keyup) {
-      const keyMap = {
+      var keyMap = {
         'a': 60, // a:C
         'w': 61, // w:C#/Db
         's': 62, // s:D
@@ -33,7 +36,7 @@ define([
       };
 
       _.each(_.keys(keyMap), function (key) {
-        const freq = MidiUtil.mtof(keyMap[key]);
+        var freq = MidiUtil.mtof(keyMap[key]);
 
         keyboardJS.bind(key, function (e) {
           e.preventRepeat();
@@ -47,7 +50,6 @@ define([
     function unbind() {
       keyboardJS.reset();
     }
-
   }
 
   return Factory;

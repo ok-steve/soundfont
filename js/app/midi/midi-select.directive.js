@@ -1,7 +1,6 @@
 define([
-  'angular',
-  'lib/utilities/midi'
-], function (angular, MidiUtil) {
+  'angular'
+], function (angular) {
   'use strict';
 
   function Directive() {
@@ -20,9 +19,13 @@ define([
     return directive;
   }
 
-  Controller.$inject = ['$scope', 'midiAccess'];
+  Controller.$inject = [
+    '$scope',
+    'midiAccess',
+    'midiUtilities'
+  ];
 
-  function Controller($scope, midiAccess) {
+  function Controller($scope, midiAccess, MidiUtil) {
     var vm = this;
 
     //////////////

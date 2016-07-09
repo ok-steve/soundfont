@@ -1,7 +1,6 @@
 define([
   'underscore',
-  'lib/utilities/midi'
-], function (_, MidiUtil) {
+], function (_) {
   'use strict';
 
   function Directive() {
@@ -20,7 +19,11 @@ define([
     return directive;
   }
 
-  function Controller() {
+  Controller.$inject = [
+    'midiUtilities'
+  ];
+
+  function Controller(MidiUtil) {
     var vm = this;
 
     // 21-108 is range of standard keyboard in MIDI numbers
