@@ -2,7 +2,10 @@ define([
   'angular',
   'app/app.routes',
   'app/app.controller',
+
   'ngRoute',
+  'ngMaterial',
+
   'app/keyboard/keyboard.module',
   'app/midi/midi.module',
   'app/piano/piano.module',
@@ -12,6 +15,8 @@ define([
 
   var app = angular.module('app', [
     'ngRoute',
+    'ngMaterial',
+
     'app.keyboard',
     'app.midi',
     'app.piano',

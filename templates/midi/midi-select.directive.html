@@ -1,3 +1,9 @@
-<select ng-model="vm.activeDevice" class="form-control" ng-options="device.manufacturer + ' ' + device.name for device in vm.devices">
-  <option value="" disabled>Choose a MIDI device&hellip;</option>
-</select>
+<md-input-container>
+  <label>MIDI Device</label>
+  <md-select ng-model="vm.activeDevice">
+    <md-select-header>
+      <span>Choose a MIDI device&hellip;</span>
+    </md-select-header>
+    <md-option ng-value="device" ng-repeat="device in vm.devices">{{ device.manufacturer }} {{ device.name }}</md-option>
+  </md-select>
+</md-input-container>

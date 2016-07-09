@@ -35,7 +35,24 @@
 </head>
 
 <body tabindex="-1">
-  <div class="Container" ng-view=""></div>
+  <div layout="column" layout-fill>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <span>Synthia</span>
+        <span flex></span>
+        <a class="md-button md-icon-button" href="#/">
+          <md-icon md-font-set="material-icons">equalizer</md-icon>
+        </a>
+        <a class="md-button md-icon-button" href="https://github.com/sccherry/synthia">
+          <md-icon md-font-set="material-icons">info_outline</md-icon>
+        </a>
+      </div>
+    </md-toolbar>
+
+    <md-content>
+      <div ng-view></div>
+    </md-content>
+  </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.19.31/system.js"></script>
   <script src="js/config.js"></script>
