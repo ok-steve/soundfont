@@ -1,5 +1,7 @@
-var require = {
-  paths: {
+System.config({
+  baseURL: 'js',
+  defaultJSExtensions: true,
+  map: {
     angular: 'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.min',
     ngRoute: 'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular-route.min',
 
@@ -7,7 +9,7 @@ var require = {
     chai: 'https://cdnjs.cloudflare.com/ajax/libs/chai/3.5.0/chai.min',
     sinon: 'https://cdnjs.cloudflare.com/ajax/libs/sinon/1.15.4/sinon.min'
   },
-  shim: {
+  meta: {
     angular: {
       exports: 'angular'
     },
@@ -25,4 +27,7 @@ var require = {
       }
     }
   }
-};
+});
+
+window.define = System.amdDefine;
+window.require = window.requirejs = System.amdRequire;
