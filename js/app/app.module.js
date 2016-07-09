@@ -1,7 +1,8 @@
 define([
   'angular',
   'app/app.routes',
-  'app/app.controller',
+  'app/index.controller',
+  'app/settings.controller',
 
   'ngRoute',
   'ngMaterial',
@@ -10,7 +11,7 @@ define([
   'app/midi/midi.module',
   'app/piano/piano.module',
   'app/synth/synth.module'
-], function (angular, Routes, AppController) {
+], function (angular, AppRoutes, IndexController, SettingsController) {
   'use strict';
 
   var app = angular.module('app', [
@@ -23,7 +24,8 @@ define([
     'app.synth'
   ]);
 
-  app.config(Routes);
+  app.config(AppRoutes);
 
-  app.controller('AppController', AppController);
+  app.controller('IndexController', IndexController);
+  app.controller('SettingsController', SettingsController);
 });

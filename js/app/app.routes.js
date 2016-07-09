@@ -6,9 +6,13 @@ define([], function () {
   ];
 
   function Routes($routeProvider) {
-    $routeProvider.when('/', {
-      templateUrl: '../templates/app.controller.html',
-      controller: 'AppController',
+    $routeProvider.when('/settings', {
+      templateUrl: '../templates/settings.controller.html',
+      controller: 'SettingsController',
+      controllerAs: 'vm'
+    }).when('/', {
+      templateUrl: '../templates/index.controller.html',
+      controller: 'IndexController',
       controllerAs: 'vm'
     }).otherwise({
       redirectTo: '/'
