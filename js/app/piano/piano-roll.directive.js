@@ -1,6 +1,6 @@
 define([
   'underscore',
-  'algorhythms/utilities/midi'
+  'lib/utilities/midi'
 ], function (_, MidiUtil) {
   'use strict';
 

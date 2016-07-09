@@ -1,6 +1,6 @@
 define([
   'keyboard',
-  'algorhythms/utilities/midi',
+  'lib/utilities/midi',
   'underscore'
 ], function (keyboardJS, MidiUtil, _) {
   'use strict';

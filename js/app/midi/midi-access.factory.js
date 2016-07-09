@@ -1,5 +1,5 @@
 define([
-  'algorhythms/core/midi-access'
+  'lib/core/midi-access'
 ], function (MidiAccess) {
   'use strict';
 

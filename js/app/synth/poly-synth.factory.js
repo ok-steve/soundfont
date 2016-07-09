@@ -1,33 +1,12 @@
-define([], function () {
+define([
+  'tone'
+], function (Tone) {
   'use strict';
 
-  Factory.$inject = ['synthDef'];
-
-  function Factory(synthDef) {
-    var factory = {
-        noteOn: noteOn,
-        noteOff: noteOff
-      },
-      voices = {};
+  function Factory() {
+    const factory = new Tone.PolySynth(10, Tone.MonoSynth).toMaster();
 
     return factory;
-
-    ///////////////
-
-    function noteOn(freq, gain) {
-      var voice = synthDef.init(),
-        key = Math.floor(freq);
-
-      voices[key] = voice;
-      synthDef.start(voice, freq, gain);
-    }
-
-    function noteOff(freq) {
-      var key = Math.floor(freq);
-
-      synthDef.stop(voices[key]);
-      delete voices[key];
-    }
   }
 
   return Factory;

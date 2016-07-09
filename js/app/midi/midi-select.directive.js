@@ -1,6 +1,6 @@
 define([
   'angular',
-  'algorhythms/utilities/midi'
+  'lib/utilities/midi'
 ], function (angular, MidiUtil) {
   'use strict';
 

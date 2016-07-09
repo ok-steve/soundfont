@@ -10,11 +10,17 @@ define([], function () {
   function Controller($scope, polySynth, keyboardInput) {
     var vm = this;
 
-    vm.synth = polySynth;
+    vm.start = function (freq) {
+      polySynth.triggerAttack(freq);
+    };
 
-    /////////////////////
+    vm.stop = function (freq) {
+      polySynth.triggerRelease(freq);
+    };
 
-    keyboardInput.bind(vm.synth.noteOn, vm.synth.noteOff);
+    /////////////////////////////////
+
+    keyboardInput.bind(vm.start, vm.stop);
 
     $scope.$on('$destroy', function () {
       keyboardInput.unbind();

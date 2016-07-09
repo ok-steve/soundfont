@@ -1,18 +1,10 @@
 define([
   'angular',
-  'app/synth/poly-synth.factory',
-  'app/synth/synth-def.factory',
-  'app/synth/synth-settings.directive',
-  'app/synth/modules/modules.module'
-], function (angular, PolySynthFactory, SynthDefFactory, SynthSettingsDirective) {
+  'app/synth/poly-synth.factory'
+], function (angular, PolySynthFactory) {
   'use strict';
 
-  var module = angular.module('app.synth', [
-    'synth.modules'
-  ]);
-
-  module.directive('synthSettings', SynthSettingsDirective);
+  let module = angular.module('app.synth', []);
 
   module.factory('polySynth', PolySynthFactory);
-  module.factory('synthDef', SynthDefFactory);
 });
