@@ -43,32 +43,35 @@ define([
     // TODO make separate factory for midi message
     function onmidimessage(e) {
       var data = e.data,
-        type = data[0],
-        note = data[1],
-        velocity = data[2];
+        status = data[0],
+        data1 = data[1],
+        data2 = data[2];
 
-      switch (type) {
+      switch (status) {
         case 144: // noteOn
-          vm.noteon(MidiUtil.mtof(note), MidiUtil.vtog(velocity));
+          vm.noteon(MidiUtil.mtof(data1), MidiUtil.vtog(data2));
         break;
 
         case 128: // noteOff
-          vm.noteoff(MidiUtil.mtof(note));
+          vm.noteoff(MidiUtil.mtof(data1));
         break;
 
-        case 224: // detune
-          console.log('detune');
+        case 176: // control
+          console.log('control');
         break;
       }
     }
 
-    midiAccess.connect().then(function (access) {
-      vm.devices = midiAccess.getInputs(access);
-    }).catch(function (e) {
-      console.error(e);
+    midiAccess.request('inputs').then(function (devices) {
+      vm.hasMIDI = true;
+
+      vm.devices = devices;
+    }).catch(function (error) {
+      vm.error = true;
+
+      console.log(error.message);
     });
 
-    // TODO move to factory
     $scope.$watch(angular.bind(vm, function () {
       return this.activeDevice;
     }), plug);

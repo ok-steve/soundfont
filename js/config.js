@@ -12,6 +12,7 @@ System.config({
     keyboard: 'https://cdnjs.cloudflare.com/ajax/libs/keyboardjs/2.2.1/keyboard.min',
     tone: 'http://cdn.tonejs.org/latest/Tone.min',
     underscore: 'https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min',
+    webmidi: 'http://cwilso.github.com/WebMIDIAPIShim/WebMIDIAPI'
   },
   meta: {
     angular: {

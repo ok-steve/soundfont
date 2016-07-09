@@ -1,9 +1,12 @@
-<md-input-container>
+<md-input-container ng-show="vm.hasMIDI">
   <label>MIDI Device</label>
   <md-select ng-model="vm.activeDevice">
     <md-select-header>
       <span>Choose a MIDI device&hellip;</span>
     </md-select-header>
     <md-option ng-value="device" ng-repeat="device in vm.devices">{{ device.manufacturer }} {{ device.name }}</md-option>
-  </md-select>
 </md-input-container>
+
+<div ng-if="vm.error">
+  <p>To enable MIDI input, <a href="http://jazz-soft.net/download/">download the Jazz-Plugin from Jazz-Soft.net</a>.</p>
+</div>

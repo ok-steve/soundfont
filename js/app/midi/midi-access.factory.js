@@ -1,29 +1,39 @@
 define([
-  'lib/core/midi-access'
-], function (MidiAccess) {
+  'webmidi'
+], function () {
   'use strict';
 
-  Factory.$inject = ['$q'];
+  Factory.$inject = [
+    '$q'
+  ];
 
   function Factory($q) {
     var factory = {
-      connect: connect,
-      getInputs: MidiAccess().getInputs
+      request: request
     };
 
     return factory;
 
     ///////////////
 
-    function connect() {
-      // NOTE regular promise doesn't work module calls the function
+    function request(key) {
       return $q(function (resolve, reject) {
-        // FIXME don't cause error when MIDI access doesn't exist
-        MidiAccess().connect().then(function (access) {
-          resolve(access);
-        }).catch(function (error) {
-          reject(error);
-        });
+        if (navigator['requestMIDIAccess'] !== undefined) {
+          navigator.requestMIDIAccess().then(function (access) {
+            var iter = access[key].values(),
+              devices = [];
+
+            for (let item = iter.next(); item && !item.done; item = iter.next()) {
+              devices.push(item.value);
+            }
+
+            resolve(devices);
+          }).catch(function (error) {
+            reject(error);
+          });
+        } else {
+          console.log('MIDI is not supported on this device.');
+        }
       });
     }
   }
