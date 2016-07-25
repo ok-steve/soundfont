@@ -1,6 +1,6 @@
 'use strict';
 
-import _ from 'underscore';
+import { range } from '../../lib/utilities';
 
 export default function PianoRollDirective() {
   const directive = {
@@ -26,7 +26,7 @@ function Controller( MidiUtil ) {
   const vm = this;
 
   // 21-108 is range of standard keyboard in MIDI numbers
-  vm.keys = _.range( 21, 109 );
+  vm.keys = range( 21, 109 );
 
   vm.noteOn = function( midi ) {
     vm.mousedown( MidiUtil.mtof( midi ));

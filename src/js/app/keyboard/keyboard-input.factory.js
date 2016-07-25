@@ -1,7 +1,7 @@
 'use strict';
 
 import keyboardJS from 'keyboardjs';
-import _ from 'underscore';
+import { each, keys } from '../../lib/utilities';
 
 export default function KeyboardInputFactory( MidiUtil ) {
   const factory = {
@@ -30,7 +30,7 @@ export default function KeyboardInputFactory( MidiUtil ) {
       'k': 72  // k:C
     };
 
-    _.each( _.keys( keyMap ), key => {
+    each( keys( keyMap ), key => {
       let freq = MidiUtil.mtof( keyMap[key] );
 
       keyboardJS.bind( key, e => {
