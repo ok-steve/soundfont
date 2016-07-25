@@ -4,8 +4,8 @@ define([
   'app/index.controller',
   'app/settings.controller',
 
-  'ngRoute',
-  'ngMaterial',
+  'angular-route',
+  'angular-material',
 
   'app/keyboard/keyboard.module',
   'app/midi/midi.module',

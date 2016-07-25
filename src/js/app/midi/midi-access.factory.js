@@ -1,5 +1,5 @@
 define([
-  'webmidi'
+  'web-midi-api'
 ], function () {
   'use strict';
 

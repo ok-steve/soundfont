@@ -1,5 +1,5 @@
 define([
-  'keyboard',
+  'keyboardjs',
   'underscore'
 ], function (keyboardJS, _) {
   'use strict';

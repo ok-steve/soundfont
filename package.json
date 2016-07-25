@@ -1,0 +1,59 @@
+{
+  "name": "synthia",
+  "private": true,
+  "version": "0.1.0",
+  "description": "A configurable modular synthisizer.",
+  "main": "index.html",
+  "scripts": {
+    "test": "gulp test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sccherry/synthia.git"
+  },
+  "keywords": [
+    "webaudio"
+  ],
+  "author": "Steve Cherry",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/sccherry/synthia/issues"
+  },
+  "homepage": "https://github.com/sccherry/synthia#readme",
+  "devDependencies": {
+    "autoprefixer": "^6.3.7",
+    "browser-sync": "^2.13.0",
+    "del": "^2.2.1",
+    "gulp": "^3.9.1",
+    "gulp-csscomb": "^3.0.7",
+    "gulp-html-replace": "^1.5.5",
+    "gulp-jspm": "^0.5.12",
+    "gulp-modernizr": "^1.0.0-alpha",
+    "gulp-postcss": "^6.1.1",
+    "postcss-calc": "^5.2.1",
+    "postcss-custom-properties": "^5.0.1",
+    "postcss-import": "^8.1.2"
+  },
+  "jspm": {
+    "configFile": "src/js/config.jspm.js",
+    "dependencies": {
+      "angular": "github:angular/bower-angular@^1.5.7",
+      "angular-animate": "github:angular/bower-angular-animate@^1.5.7",
+      "angular-aria": "github:angular/bower-angular-aria@^1.5.7",
+      "angular-material": "github:angular/bower-material@^1.0.9",
+      "angular-route": "github:angular/bower-angular-route@^1.5.7",
+      "keyboardjs": "npm:keyboardjs@^2.2.1",
+      "tone": "npm:tone@^0.7.1",
+      "underscore": "npm:underscore@^1.8.3",
+      "web-midi-api": "npm:web-midi-api@^1.4.4"
+    },
+    "devDependencies": {
+      "babel": "npm:babel-core@^5.8.24",
+      "babel-runtime": "npm:babel-runtime@^5.8.24",
+      "core-js": "npm:core-js@^1.1.4"
+    },
+    "buildConfig": {
+      "transpileES6": true
+    }
+  }
+}
