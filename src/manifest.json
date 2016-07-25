@@ -12,5 +12,6 @@
     "type": "image/png"
   }],
   "homepage_url": "index.html",
-  "offline_enabled": true
+  "offline_enabled": true,
+  "theme_color": "#328647"
 }
