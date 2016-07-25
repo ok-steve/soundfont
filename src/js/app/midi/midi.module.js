@@ -1,15 +1,14 @@
-define([
-  'angular',
-  'app/midi/midi-access.factory',
-  'app/midi/midi-utilities.factory',
-  'app/midi/midi-select.directive'
-], function (angular, MidiAccessFactory, MidiUtilitiesFactory, MidiSelectDirective) {
-  'use strict';
+'use strict';
 
-  var module = angular.module('app.midi', []);
+import angular from 'angular';
 
-  module.directive('midiSelect', MidiSelectDirective);
+import MidiAccessFactory from './midi-access.factory';
+import MidiUtilitiesFactory from './midi-utilities.factory';
+import MidiSelectDirective from './midi-select.directive';
 
-  module.factory('midiAccess', MidiAccessFactory);
-  module.factory('midiUtilities', MidiUtilitiesFactory);
-});
+const module = angular.module( 'app.midi', []);
+
+module.directive( 'midiSelect', MidiSelectDirective );
+
+module.factory( 'midiAccess', MidiAccessFactory );
+module.factory( 'midiUtilities', MidiUtilitiesFactory );

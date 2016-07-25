@@ -1,31 +1,28 @@
-define([], function () {
-  'use strict';
+'use strict';
 
-  Controller.$inject = [
-    '$scope',
-    'polySynth',
-    'keyboardInput'
-  ];
+export default function IndexController( $scope, polySynth, keyboardInput ) {
+  const vm = this;
 
-  function Controller($scope, polySynth, keyboardInput) {
-    var vm = this;
-
-    vm.start = function (freq) {
-      polySynth.triggerAttack(freq);
-    };
-
-    vm.stop = function (freq) {
-      polySynth.triggerRelease(freq);
-    };
-
-    /////////////////////////////////
-
-    keyboardInput.bind(vm.start, vm.stop);
-
-    $scope.$on('$destroy', function () {
-      keyboardInput.unbind();
-    });
+  vm.start = function( freq ) {
+    polySynth.triggerAttack( freq );
   };
 
-  return Controller;
-});
+  vm.stop = function( freq ) {
+    polySynth.triggerRelease( freq );
+  };
+
+  /////////////////////////////////
+
+  keyboardInput.bind( vm.start, vm.stop );
+
+  $scope.$on( '$destroy', () => {
+    keyboardInput.unbind();
+  });
+};
+
+IndexController.$inject = [
+  '$scope',
+  'polySynth',
+  'keyboardInput'
+];
+

@@ -1,10 +1,9 @@
-define([
-  'angular',
-  'app/keyboard/keyboard-input.factory'
-], function (angular, KeyboardInputFactory) {
-  'use strict';
+'use strict';
 
-  let module = angular.module('app.keyboard', []);
+import angular from 'angular';
 
-  module.factory('keyboardInput', KeyboardInputFactory);
-});
+import KeyboardInputFactory from './keyboard-input.factory';
+
+const module = angular.module( 'app.keyboard', []);
+
+module.factory( 'keyboardInput', KeyboardInputFactory );

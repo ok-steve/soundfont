@@ -56,6 +56,3 @@ System.config({
   },
   transpiler: 'babel'
 });
-
-window.define = System.amdDefine;
-window.require = window.requirejs = System.amdRequire;

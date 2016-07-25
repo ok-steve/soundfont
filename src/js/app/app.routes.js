@@ -1,24 +1,19 @@
-define([], function () {
-  'use strict';
+'use strict';
 
-  Routes.$inject = [
-    '$routeProvider'
-  ];
+export default function AppRoutes( $routeProvider ) {
+  $routeProvider.when( '/settings', {
+    templateUrl: 'templates/settings.controller.html',
+    controller: 'SettingsController',
+    controllerAs: 'vm'
+  }).when( '/', {
+    templateUrl: 'templates/index.controller.html',
+    controller: 'IndexController',
+    controllerAs: 'vm'
+  }).otherwise({
+    redirectTo: '/'
+  });
+}
 
-  function Routes($routeProvider) {
-    $routeProvider.when('/settings', {
-      templateUrl: '../templates/settings.controller.html',
-      controller: 'SettingsController',
-      controllerAs: 'vm'
-    }).when('/', {
-      templateUrl: '../templates/index.controller.html',
-      controller: 'IndexController',
-      controllerAs: 'vm'
-    }).otherwise({
-      redirectTo: '/'
-    });
-  }
-
-  return Routes;
-});
-
+AppRoutes.$inject = [
+  '$routeProvider'
+];

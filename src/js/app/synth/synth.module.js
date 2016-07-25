@@ -1,10 +1,9 @@
-define([
-  'angular',
-  'app/synth/poly-synth.factory'
-], function (angular, PolySynthFactory) {
-  'use strict';
+'use strict';
 
-  let module = angular.module('app.synth', []);
+import angular from 'angular';
 
-  module.factory('polySynth', PolySynthFactory);
-});
+import PolySynthFactory from './poly-synth.factory';
+
+const module = angular.module( 'app.synth', []);
+
+module.factory( 'polySynth', PolySynthFactory );

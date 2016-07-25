@@ -1,42 +1,40 @@
-define([
-  'web-midi-api'
-], function () {
-  'use strict';
+'use strict';
 
-  Factory.$inject = [
-    '$q'
-  ];
+import 'web-midi-api;
 
-  function Factory($q) {
-    var factory = {
-      request: request
-    };
 
-    return factory;
+export default function MidiAccessFactory( $q ) {
+  const factory = {
+    request: request
+  };
 
-    ///////////////
+  return factory;
 
-    function request(key) {
-      return $q(function (resolve, reject) {
-        if (navigator['requestMIDIAccess'] !== undefined) {
-          navigator.requestMIDIAccess().then(function (access) {
-            var iter = access[key].values(),
-              devices = [];
+  ///////////////
 
-            for (let item = iter.next(); item && !item.done; item = iter.next()) {
-              devices.push(item.value);
-            }
+  function request( key ) {
+    return $q(( resolve, reject ) => {
+      if ( navigator['requestMIDIAccess'] !== undefined ) {
+        navigator.requestMIDIAccess().then(access => {
+          const iter = access[key].values(),
+            devices = [];
 
-            resolve(devices);
-          }).catch(function (error) {
-            reject(error);
-          });
-        } else {
-          console.log('MIDI is not supported on this device.');
-        }
-      });
-    }
+          for ( let item = iter.next(); item && !item.done; item = iter.next() ) {
+            devices.push( item.value );
+          }
+
+          resolve( devices );
+        }).catch(error => {
+          reject( error );
+        });
+      } else {
+        console.log( 'MIDI is not supported on this device.' );
+      }
+    });
   }
+}
 
-  return Factory;
-});
+MidiAccessFactory.$inject = [
+  '$q'
+];
+

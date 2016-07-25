@@ -1,10 +1,9 @@
-define([
-  'angular',
-  'app/piano/piano-roll.directive'
-], function (angular, PianoRollDirective) {
-  'use strict';
+'use strict';
 
-  var module = angular.module('app.piano', []);
+import angular from 'angular';
 
-  module.directive('pianoRoll', PianoRollDirective);
-});
+import PianoRollDirective from './piano-roll.directive';
+
+const module = angular.module( 'app.piano', []);
+
+module.directive( 'pianoRoll', PianoRollDirective );

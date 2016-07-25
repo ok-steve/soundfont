@@ -1,20 +1,19 @@
-require([
-  'angular',
-  'app/app.module'
-], function (angular) {
-  'use strict';
+'use strict';
 
-  if (navigator.hasOwnProperty('serviceWorker')) {
-    navigator.serviceWorker.register('/service-worker.js', {
-      scope: '/'
-    }).then(response => {
-      console.log(reponse);
-    }).catch(error => {
-      console.log(error);
-    });
-  }
+import angular from 'angular';
 
-  angular.bootstrap(document, [
-    'app'
-  ]);
-});
+import './app/app.module';
+
+if ( navigator.hasOwnProperty('serviceWorker') ) {
+  navigator.serviceWorker.register( '/service-worker.js', {
+    scope: '/'
+  }).then(response => {
+    console.log( response );
+  }).catch(error => {
+    console.log( error );
+  });
+}
+
+angular.bootstrap( document, [
+  'app'
+]);

@@ -1,31 +1,29 @@
-define([
-  'angular',
-  'app/app.routes',
-  'app/index.controller',
-  'app/settings.controller',
+'use strict';
 
-  'angular-route',
-  'angular-material',
+import angular from 'angular';
+import AppRoutes from './app.routes';
+import IndexController from './index.controller';
+import SettingsController from './settings.controller';
 
-  'app/keyboard/keyboard.module',
-  'app/midi/midi.module',
-  'app/piano/piano.module',
-  'app/synth/synth.module'
-], function (angular, AppRoutes, IndexController, SettingsController) {
-  'use strict';
+import 'angular-route';
+import 'angular-material';
 
-  var app = angular.module('app', [
-    'ngRoute',
-    'ngMaterial',
+import './keyboard/keyboard.module';
+import './midi/midi.module';
+import './piano/piano.module';
+import './synth/synth.module';
 
-    'app.keyboard',
-    'app.midi',
-    'app.piano',
-    'app.synth'
-  ]);
+const app = angular.module( 'app', [
+  'ngRoute',
+  'ngMaterial',
 
-  app.config(AppRoutes);
+  'app.keyboard',
+  'app.midi',
+  'app.piano',
+  'app.synth'
+]);
 
-  app.controller('IndexController', IndexController);
-  app.controller('SettingsController', SettingsController);
-});
+app.config( AppRoutes );
+
+app.controller( 'IndexController', IndexController );
+app.controller( 'SettingsController', SettingsController );

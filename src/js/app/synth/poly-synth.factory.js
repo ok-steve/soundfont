@@ -1,14 +1,11 @@
-define([
-  'tone',
-  'lib/synth-def'
-], function (Tone, SynthDef) {
-  'use strict';
+'use strict';
 
-  function Factory() {
-    let factory = new Tone.PolySynth(10, SynthDef).toMaster();
+import Tone from 'tone';
 
-    return factory;
-  }
+import SynthDef from '../../lib/synth-def';
 
-  return Factory;
-});
+export default function PolySynthFactory() {
+  const factory = new Tone.PolySynth( 10, SynthDef ).toMaster();
+
+  return factory;
+}
