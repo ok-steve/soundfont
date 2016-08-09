@@ -1,0 +1,101 @@
+<template>
+  <div change.delegate="onChange()">
+    <h2>Oscillator</h2>
+
+    <label for="oscillator-type">Type</label>
+    <select id="oscillator-type"
+      value.bind="params.oscillator.type">
+      <option repeat.for="type of oscillatorTypes" value.bind="type">${type}</option>
+    </select>
+
+    <h3>Envelope</h3>
+
+    <label for="envelope-attack">Attack</label>
+    <input type="range" id="envelope-attack" min="0" max="1" step="0.001"
+      aria-label="Envelope attack"
+      value.bind="params.envelope.attack">
+    <input type="number" min="0" max="1" step="0.001"
+      aria-label="Envelope attack" aria-controls="envelope-attack"
+      value.bind="params.envelope.attack">
+
+    <label for="envelope-decay">Decay</label>
+    <input type="range" id="envelope-decay" min="0" max="1" step="0.001"
+      aria-label="Envelope decay"
+      value.bind="params.envelope.decay">
+    <input type="number" min="0" max="1" step="0.001"
+      aria-label="Envelope decay" aria-controls="envelope-decay"
+      value.bind="params.envelope.decay">
+
+    <label for="envelope-sustain">Sustain</label>
+    <input type="range" id="envelope-sustain" min="0" max="1" step="0.001"
+      aria-label="Envelope sustain"
+      value.bind="params.envelope.sustain">
+    <input type="number" min="0" max="1" step="0.001"
+      aria-label="Envelope sustain" aria-controls="envelope-sustain"
+      value.bind="params.envelope.sustain">
+
+    <label class="envelope-release">Release</label>
+    <input type="range" id="envelope-release" min="0" max="1" step="0.001"
+      aria-label="Envelope release"
+      value.bind="params.envelope.release">
+    <input type="number" min="0" max="1" step="0.001"
+      aria-label="Envelope release" aria-controls="envelope-release"
+      value.bind="params.envelope.release">
+
+    <h2>Filter</h2>
+
+    <label for="filter-type">Type</label>
+    <select id="filter-type"
+      value.bind="params.filter.type">
+      <option repeat.for="type of filterTypes" value.bind="type">${type}</option>
+    </select>
+
+    <label for="filter-rolloff">Rolloff</label>
+    <select id="filter-rolloff"
+      value.bind="params.filter.rolloff">
+      <option repeat.for="value of rolloffs" value.bind="value">${value}</option>
+    </select>
+
+    <label for="filter-q">Q</label>
+    <input type="range" id="filter-q" min="0" max="1000"
+      aria-label="Filter Q value"
+      value.bind="params.filter.Q">
+    <input type="number" min="0" max="1000"
+      aria-label="Filter Q" aria-controls="filter-q"
+      value.bind="params.filter.Q">
+
+    <h3>Envelope</h3>
+
+    <label for="filter-envelope-attack">Attack</label>
+    <input type="range" id="filter-envelope-attack" min="0" max="1" step="0.001"
+      aria-label="Filter envelope attack"
+      value.bind="params.filterEnvelope.attack">
+    <input type="number" min="0" max="1" step="0.001"
+      aria-label="Filter envelope attack" aria-controls="filter-envelope-attack"
+      value.bind="params.filterEnvelope.attack">
+
+    <label for="filter-envelope-decay">Decay</label>
+    <input type="range" id="filter-envelope-decay" min="0" max="1" step="0.001"
+      aria-label="Filter envelope decay"
+      value.bind="params.filterEnvelope.decay">
+    <input type="number" min="0" max="1" step="0.001"
+      aria-label="Filter envelope decay" aria-controls="filter-envelope-decay"
+      value.bind="params.filterEnvelope.decay">
+
+    <label for="filter-envelope-sustain">Sustain</label>
+    <input type="range" id="filter-envelope-sustain" min="0" max="1" step="0.001"
+      aria-label="Filter envelope sustain"
+      value.bind="params.filterEnvelope.sustain">
+    <input type="number" min="0" max="1" step="0.001"
+      aria-label="Filter envelope sustain" aria-controls="filter-envelope-sustain"
+      value.bind="params.filterEnvelope.sustain">
+
+    <label for="filter-envelope-release">Release</label>
+    <input type="range" id="filter-envelope-release" min="0" max="10" step="0.001"
+      aria-label="Filter envelope release"
+      value.bind="params.filterEnvelope.release">
+    <input type="number" min="0" max="10" step="0.001"
+      aria-label="Filter envelope release" aria-controls="filter-envelope-release"
+      value.bind="params.filterEnvelope.release">
+  </div>
+</template>

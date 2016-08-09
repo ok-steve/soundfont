@@ -1,0 +1,12 @@
+<template bindable="router">
+  <header role="banner">
+    <h1>${router.title}</h1>
+
+    <nav role="navigation">
+      <ul>
+        <li class="${row.isActive ? 'is-active' : ''}" repeat.for="row of router.navigation"><a href.bind="row.href">${row.title}</a></li>
+        <li><a href="https://github.com/sccherry/synthia">About</a></li>
+      </ul>
+    </nav>
+  </header>
+</template>

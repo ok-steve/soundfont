@@ -25,6 +25,7 @@ const modernizr = require('gulp-modernizr');
 gulp.task('modernizr', () => {
   return gulp.src([
     'src/css/**/*.css',
+    //'src/js/**/*.css',
     'src/js/**/*.js'
   ]).pipe(modernizr()).pipe(gulp.dest('dist/js'));
 });
@@ -45,24 +46,22 @@ gulp.task('copy', () => {
 });
 
 gulp.task('styles:serve', () => {
-  // TODO stylelint
   return gulp.src([
+    //'src/js/**/*.css',
     'src/css/**/*.css'
   ]).pipe(csscomb()).pipe(gulp.dest('src/css')).pipe(browserSync.stream());
 });
 
 gulp.task('scripts:serve', () => {
-  // TODO es6lint
   return gulp.src([
     'src/js/**/*.js'
   ]).pipe(gulp.dest('src/js')).pipe(browserSync.stream());
 });
 
 gulp.task('pages', () => {
-  // TODO minify
   return gulp.src([
     'src/**/*.html',
-    '!src/jspm_packages/**'
+    '!jspm_packages/**'
   ]).pipe(htmlreplace({
     'js': 'js/main.bundle.js',
     'modernizr': 'js/modernizr.js'
@@ -72,8 +71,8 @@ gulp.task('pages', () => {
 gulp.task('styles', [
   'styles:serve'
 ], () => {
-  // TODO minify
   return gulp.src([
+    //'src/js/**/*.css',
     'src/css/main.css'
   ]).pipe(postcss([
     importCss(),
@@ -87,7 +86,6 @@ gulp.task('scripts', [
   'scripts:serve',
   'modernizr'
 ], () => {
-  // TODO polyfills (fetch, promise)
   gulp.src([
     'src/js/main.js'
   ]).pipe(jspm({
@@ -121,7 +119,10 @@ gulp.task('serve', [
     'src/**/*.html'
   ]).on('change', browserSync.reload);
 
-  gulp.watch('src/css/**/*.css', [
+  gulp.watch([
+    //'src/js/**/*.css',
+    'src/css/**/*.css'
+  ], [
     'styles:serve'
   ]);
 
@@ -145,7 +146,10 @@ gulp.task('watch', [
     'pages'
   ]);
 
-  gulp.watch('src/css/**/*.css', [
+  gulp.watch([
+    //'src/js/**/*.css',
+    'src/css/**/*.css'
+  ], [
     'styles'
   ]);
 

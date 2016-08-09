@@ -1,8 +1,10 @@
-'use strict';
+export function configure( aurelia ) {
+  aurelia.use
+    //.developmentLogging()
+    .standardConfiguration();
 
-import angular from 'angular';
-
-import './app/app.module';
+  aurelia.start().then(() => aurelia.setRoot());
+}
 
 if ( navigator.hasOwnProperty('serviceWorker') ) {
   navigator.serviceWorker.register( '/service-worker.js', {
@@ -13,7 +15,3 @@ if ( navigator.hasOwnProperty('serviceWorker') ) {
     console.log( error );
   });
 }
-
-angular.bootstrap( document, [
-  'app'
-]);

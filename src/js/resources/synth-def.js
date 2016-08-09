@@ -1,5 +1,3 @@
-'use strict';
-
 import Tone from 'tone';
 
 export default function SynthDef( options ) {

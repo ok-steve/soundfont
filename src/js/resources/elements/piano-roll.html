@@ -1,0 +1,190 @@
+<template>
+  <require from="./piano-roll.css"></require>
+
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 518 99" class="PianoRoll">
+    <rect width="8" height="48" x="0" y="50" class="PianoRoll-key PianoRoll-key--natural"
+      mousedown.delegate="onMousedown(21)" mouseup.delegate="onMouseup(21)" />
+      <rect width="8" height="48" x="5" class="PianoRoll-key PianoRoll-key--accidental"
+        mousedown.delegate="onMousedown(22)" mouseup.delegate="onMouseup(22)" />
+    <rect width="8" height="48" x="10" y="50" class="PianoRoll-key PianoRoll-key--natural"
+      mousedown.delegate="onMousedown(23)" mouseup.delegate="onMouseup(23)" />
+
+    <rect width="8" height="48" x="20" y="50" class="PianoRoll-key PianoRoll-key--natural"
+      mousedown.delegate="onMousedown(24)" mouseup.delegate="onMouseup(24)" />
+      <rect width="8" height="48" x="25" class="PianoRoll-key PianoRoll-key--accidental"
+        mousedown.delegate="onMousedown(25)" mouseup.delegate="onMouseup(25)" />
+    <rect width="8" height="48" x="30" y="50" class="PianoRoll-key PianoRoll-key--natural"
+      mousedown.delegate="onMousedown(26)" mouseup.delegate="onMouseup(26)" />
+      <rect width="8" height="48" x="35" class="PianoRoll-key PianoRoll-key--accidental"
+        mousedown.delegate="onMousedown(27)" mouseup.delegate="onMouseup(27)" />
+    <rect width="8" height="48" x="40" y="50" class="PianoRoll-key PianoRoll-key--natural"
+      mousedown.delegate="onMousedown(28)" mouseup.delegate="onMouseup(28)" />
+    <rect width="8" height="48" x="50" y="50" class="PianoRoll-key PianoRoll-key--natural"
+      mousedown.delegate="onMousedown(29)" mouseup.delegate="onMouseup(29)" />
+      <rect width="8" height="48" x="55" class="PianoRoll-key PianoRoll-key--accidental"
+        mousedown.delegate="onMousedown(30)" mouseup.delegate="onMouseup(30)" />
+    <rect width="8" height="48" x="60" y="50" class="PianoRoll-key PianoRoll-key--natural"
+      mousedown.delegate="onMousedown(31)" mouseup.delegate="onMouseup(31)" />
+      <rect width="8" height="48" x="65" class="PianoRoll-key PianoRoll-key--accidental"
+        mousedown.delegate="onMousedown(32)" mouseup.delegate="onMouseup(32)" />
+    <rect width="8" height="48" x="70" y="50" class="PianoRoll-key PianoRoll-key--natural"
+      mousedown.delegate="onMousedown(33)" mouseup.delegate="onMouseup(33)" />
+      <rect width="8" height="48" x="75" class="PianoRoll-key PianoRoll-key--accidental"
+        mousedown.delegate="onMousedown(34)" mouseup.delegate="onMouseup(34)" />
+    <rect width="8" height="48" x="80" y="50" class="PianoRoll-key PianoRoll-key--natural"
+      mousedown.delegate="onMousedown(35)" mouseup.delegate="onMouseup(35)" />
+
+    <rect width="8" height="48" x="90" y="50" class="PianoRoll-key PianoRoll-key--natural"
+      mousedown.delegate="onMousedown(36)" mouseup.delegate="onMouseup(36)" />
+      <rect width="8" height="48" x="95" class="PianoRoll-key PianoRoll-key--accidental"
+        mousedown.delegate="onMousedown(37)" mouseup.delegate="onMouseup(37)" />
+    <rect width="8" height="48" x="100" y="50" class="PianoRoll-key PianoRoll-key--natural"
+      mousedown.delegate="onMousedown(38)" mouseup.delegate="onMouseup(38)" />
+      <rect width="8" height="48" x="105" class="PianoRoll-key PianoRoll-key--accidental"
+        mousedown.delegate="onMousedown(39)" mouseup.delegate="onMouseup(39)" />
+    <rect width="8" height="48" x="110" y="50" class="PianoRoll-key PianoRoll-key--natural"
+      mousedown.delegate="onMousedown(40)" mouseup.delegate="onMouseup(40)" />
+    <rect width="8" height="48" x="120" y="50" class="PianoRoll-key PianoRoll-key--natural"
+      mousedown.delegate="onMousedown(41)" mouseup.delegate="onMouseup(41)" />
+      <rect width="8" height="48" x="125" class="PianoRoll-key PianoRoll-key--accidental"
+        mousedown.delegate="onMousedown(42)" mouseup.delegate="onMouseup(42)" />
+    <rect width="8" height="48" x="130" y="50" class="PianoRoll-key PianoRoll-key--natural"
+      mousedown.delegate="onMousedown(43)" mouseup.delegate="onMouseup(43)" />
+      <rect width="8" height="48" x="135" class="PianoRoll-key PianoRoll-key--accidental"
+        mousedown.delegate="onMousedown(44)" mouseup.delegate="onMouseup(44)" />
+    <rect width="8" height="48" x="140" y="50" class="PianoRoll-key PianoRoll-key--natural"
+      mousedown.delegate="onMousedown(45)" mouseup.delegate="onMouseup(45)" />
+      <rect width="8" height="48" x="145" class="PianoRoll-key PianoRoll-key--accidental"
+        mousedown.delegate="onMousedown(46)" mouseup.delegate="onMouseup(46)" />
+    <rect width="8" height="48" x="150" y="50" class="PianoRoll-key PianoRoll-key--natural"
+      mousedown.delegate="onMousedown(47)" mouseup.delegate="onMouseup(47)" />
+
+    <rect width="8" height="48" x="160" y="50" class="PianoRoll-key PianoRoll-key--natural"
+      mousedown.delegate="onMousedown(48)" mouseup.delegate="onMouseup(48)" />
+      <rect width="8" height="48" x="165" class="PianoRoll-key PianoRoll-key--accidental"
+        mousedown.delegate="onMousedown(49)" mouseup.delegate="onMouseup(49)" />
+    <rect width="8" height="48" x="170" y="50" class="PianoRoll-key PianoRoll-key--natural"
+      mousedown.delegate="onMousedown(50)" mouseup.delegate="onMouseup(50)" />
+      <rect width="8" height="48" x="175" class="PianoRoll-key PianoRoll-key--accidental"
+        mousedown.delegate="onMousedown(51)" mouseup.delegate="onMouseup(51)" />
+    <rect width="8" height="48" x="180" y="50" class="PianoRoll-key PianoRoll-key--natural"
+      mousedown.delegate="onMousedown(52)" mouseup.delegate="onMouseup(52)" />
+    <rect width="8" height="48" x="190" y="50" class="PianoRoll-key PianoRoll-key--natural"
+      mousedown.delegate="onMousedown(53)" mouseup.delegate="onMouseup(53)" />
+      <rect width="8" height="48" x="195" class="PianoRoll-key PianoRoll-key--accidental"
+        mousedown.delegate="onMousedown(54)" mouseup.delegate="onMouseup(54)" />
+    <rect width="8" height="48" x="200" y="50" class="PianoRoll-key PianoRoll-key--natural"
+      mousedown.delegate="onMousedown(55)" mouseup.delegate="onMouseup(55)" />
+      <rect width="8" height="48" x="205" class="PianoRoll-key PianoRoll-key--accidental"
+        mousedown.delegate="onMousedown(56)" mouseup.delegate="onMouseup(56)" />
+    <rect width="8" height="48" x="210" y="50" class="PianoRoll-key PianoRoll-key--natural"
+      mousedown.delegate="onMousedown(57)" mouseup.delegate="onMouseup(57)" />
+      <rect width="8" height="48" x="215" class="PianoRoll-key PianoRoll-key--accidental"
+        mousedown.delegate="onMousedown(58)" mouseup.delegate="onMouseup(58)" />
+    <rect width="8" height="48" x="220" y="50" class="PianoRoll-key PianoRoll-key--natural"
+      mousedown.delegate="onMousedown(59)" mouseup.delegate="onMouseup(59)" />
+
+    <rect width="8" height="48" x="230" y="50" class="PianoRoll-key PianoRoll-key--natural"
+      mousedown.delegate="onMousedown(60)" mouseup.delegate="onMouseup(60)" />
+      <rect width="8" height="48" x="235" class="PianoRoll-key PianoRoll-key--accidental"
+        mousedown.delegate="onMousedown(61)" mouseup.delegate="onMouseup(61)" />
+    <rect width="8" height="48" x="240" y="50" class="PianoRoll-key PianoRoll-key--natural"
+      mousedown.delegate="onMousedown(62)" mouseup.delegate="onMouseup(62)" />
+      <rect width="8" height="48" x="245" class="PianoRoll-key PianoRoll-key--accidental"
+        mousedown.delegate="onMousedown(63)" mouseup.delegate="onMouseup(63)" />
+    <rect width="8" height="48" x="250" y="50" class="PianoRoll-key PianoRoll-key--natural"
+      mousedown.delegate="onMousedown(64)" mouseup.delegate="onMouseup(64)" />
+    <rect width="8" height="48" x="260" y="50" class="PianoRoll-key PianoRoll-key--natural"
+      mousedown.delegate="onMousedown(65)" mouseup.delegate="onMouseup(65)" />
+      <rect width="8" height="48" x="265" class="PianoRoll-key PianoRoll-key--accidental"
+        mousedown.delegate="onMousedown(66)" mouseup.delegate="onMouseup(66)" />
+    <rect width="8" height="48" x="270" y="50" class="PianoRoll-key PianoRoll-key--natural"
+      mousedown.delegate="onMousedown(67)" mouseup.delegate="onMouseup(67)" />
+      <rect width="8" height="48" x="275" class="PianoRoll-key PianoRoll-key--accidental"
+        mousedown.delegate="onMousedown(68)" mouseup.delegate="onMouseup(68)" />
+    <rect width="8" height="48" x="280" y="50" class="PianoRoll-key PianoRoll-key--natural"
+      mousedown.delegate="onMousedown(69)" mouseup.delegate="onMouseup(69)" />
+      <rect width="8" height="48" x="285" class="PianoRoll-key PianoRoll-key--accidental"
+        mousedown.delegate="onMousedown(70)" mouseup.delegate="onMouseup(70)" />
+    <rect width="8" height="48" x="290" y="50" class="PianoRoll-key PianoRoll-key--natural"
+      mousedown.delegate="onMousedown(71)" mouseup.delegate="onMouseup(71)" />
+
+    <rect width="8" height="48" x="300" y="50" class="PianoRoll-key PianoRoll-key--natural"
+      mousedown.delegate="onMousedown(72)" mouseup.delegate="onMouseup(72)" />
+      <rect width="8" height="48" x="305" class="PianoRoll-key PianoRoll-key--accidental"
+        mousedown.delegate="onMousedown(73)" mouseup.delegate="onMouseup(73)" />
+    <rect width="8" height="48" x="310" y="50" class="PianoRoll-key PianoRoll-key--natural"
+      mousedown.delegate="onMousedown(74)" mouseup.delegate="onMouseup(74)" />
+      <rect width="8" height="48" x="315" class="PianoRoll-key PianoRoll-key--accidental"
+        mousedown.delegate="onMousedown(75)" mouseup.delegate="onMouseup(75)" />
+    <rect width="8" height="48" x="320" y="50" class="PianoRoll-key PianoRoll-key--natural"
+      mousedown.delegate="onMousedown(76)" mouseup.delegate="onMouseup(76)" />
+    <rect width="8" height="48" x="330" y="50" class="PianoRoll-key PianoRoll-key--natural"
+      mousedown.delegate="onMousedown(77)" mouseup.delegate="onMouseup(77)" />
+      <rect width="8" height="48" x="335" class="PianoRoll-key PianoRoll-key--accidental"
+        mousedown.delegate="onMousedown(78)" mouseup.delegate="onMouseup(78)" />
+    <rect width="8" height="48" x="340" y="50" class="PianoRoll-key PianoRoll-key--natural"
+      mousedown.delegate="onMousedown(79)" mouseup.delegate="onMouseup(79)" />
+      <rect width="8" height="48" x="345" class="PianoRoll-key PianoRoll-key--accidental"
+        mousedown.delegate="onMousedown(80)" mouseup.delegate="onMouseup(80)" />
+    <rect width="8" height="48" x="350" y="50" class="PianoRoll-key PianoRoll-key--natural"
+      mousedown.delegate="onMousedown(81)" mouseup.delegate="onMouseup(81)" />
+      <rect width="8" height="48" x="355" class="PianoRoll-key PianoRoll-key--accidental"
+        mousedown.delegate="onMousedown(82)" mouseup.delegate="onMouseup(82)" />
+    <rect width="8" height="48" x="360" y="50" class="PianoRoll-key PianoRoll-key--natural"
+      mousedown.delegate="onMousedown(83)" mouseup.delegate="onMouseup(83)" />
+
+    <rect width="8" height="48" x="370" y="50" class="PianoRoll-key PianoRoll-key--natural"
+      mousedown.delegate="onMousedown(84)" mouseup.delegate="onMouseup(84)" />
+      <rect width="8" height="48" x="375" class="PianoRoll-key PianoRoll-key--accidental"
+        mousedown.delegate="onMousedown(85)" mouseup.delegate="onMouseup(85)" />
+    <rect width="8" height="48" x="380" y="50" class="PianoRoll-key PianoRoll-key--natural"
+      mousedown.delegate="onMousedown(86)" mouseup.delegate="onMouseup(86)" />
+      <rect width="8" height="48" x="385" class="PianoRoll-key PianoRoll-key--accidental"
+        mousedown.delegate="onMousedown(87)" mouseup.delegate="onMouseup(87)" />
+    <rect width="8" height="48" x="390" y="50" class="PianoRoll-key PianoRoll-key--natural"
+      mousedown.delegate="onMousedown(88)" mouseup.delegate="onMouseup(88)" />
+    <rect width="8" height="48" x="400" y="50" class="PianoRoll-key PianoRoll-key--natural"
+      mousedown.delegate="onMousedown(89)" mouseup.delegate="onMouseup(89)" />
+      <rect width="8" height="48" x="405" class="PianoRoll-key PianoRoll-key--accidental"
+        mousedown.delegate="onMousedown(90)" mouseup.delegate="onMouseup(90)" />
+    <rect width="8" height="48" x="410" y="50" class="PianoRoll-key PianoRoll-key--natural"
+      mousedown.delegate="onMousedown(91)" mouseup.delegate="onMouseup(91)" />
+      <rect width="8" height="48" x="415" class="PianoRoll-key PianoRoll-key--accidental"
+        mousedown.delegate="onMousedown(92)" mouseup.delegate="onMouseup(92)" />
+    <rect width="8" height="48" x="420" y="50" class="PianoRoll-key PianoRoll-key--natural"
+      mousedown.delegate="onMousedown(93)" mouseup.delegate="onMouseup(93)" />
+      <rect width="8" height="48" x="425" class="PianoRoll-key PianoRoll-key--accidental"
+        mousedown.delegate="onMousedown(94)" mouseup.delegate="onMouseup(94)" />
+    <rect width="8" height="48" x="430" y="50" class="PianoRoll-key PianoRoll-key--natural"
+      mousedown.delegate="onMousedown(95)" mouseup.delegate="onMouseup(95)" />
+
+    <rect width="8" height="48" x="440" y="50" class="PianoRoll-key PianoRoll-key--natural"
+      mousedown.delegate="onMousedown(96)" mouseup.delegate="onMouseup(96)" />
+      <rect width="8" height="48" x="445" class="PianoRoll-key PianoRoll-key--accidental"
+        mousedown.delegate="onMousedown(97)" mouseup.delegate="onMouseup(97)" />
+    <rect width="8" height="48" x="450" y="50" class="PianoRoll-key PianoRoll-key--natural"
+      mousedown.delegate="onMousedown(98)" mouseup.delegate="onMouseup(98)" />
+      <rect width="8" height="48" x="455" class="PianoRoll-key PianoRoll-key--accidental"
+        mousedown.delegate="onMousedown(99)" mouseup.delegate="onMouseup(99)" />
+    <rect width="8" height="48" x="460" y="50" class="PianoRoll-key PianoRoll-key--natural"
+      mousedown.delegate="onMousedown(100)" mouseup.delegate="onMouseup(100)" />
+    <rect width="8" height="48" x="470" y="50" class="PianoRoll-key PianoRoll-key--natural"
+      mousedown.delegate="onMousedown(101)" mouseup.delegate="onMouseup(101)" />
+      <rect width="8" height="48" x="475" class="PianoRoll-key PianoRoll-key--accidental"
+        mousedown.delegate="onMousedown(102)" mouseup.delegate="onMouseup(102)" />
+    <rect width="8" height="48" x="480" y="50" class="PianoRoll-key PianoRoll-key--natural"
+      mousedown.delegate="onMousedown(103)" mouseup.delegate="onMouseup(103)" />
+      <rect width="8" height="48" x="485" class="PianoRoll-key PianoRoll-key--accidental"
+        mousedown.delegate="onMousedown(104)" mouseup.delegate="onMouseup(104)" />
+    <rect width="8" height="48" x="490" y="50" class="PianoRoll-key PianoRoll-key--natural"
+      mousedown.delegate="onMousedown(105)" mouseup.delegate="onMouseup(105)" />
+      <rect width="8" height="48" x="495" class="PianoRoll-key PianoRoll-key--accidental"
+        mousedown.delegate="onMousedown(106)" mouseup.delegate="onMouseup(106)" />
+    <rect width="8" height="48" x="500" y="50" class="PianoRoll-key PianoRoll-key--natural"
+      mousedown.delegate="onMousedown(107)" mouseup.delegate="onMouseup(107)" />
+
+    <rect width="8" height="48" x="510" y="50" class="PianoRoll-key PianoRoll-key--natural"
+      mousedown.delegate="onMousedown(108)" mouseup.delegate="onMouseup(108)" />
+  </svg>
+</template>
