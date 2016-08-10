@@ -1,0 +1,33 @@
+<template>
+  <label for="filter-envelope-attack">Attack</label>
+  <input type="range" id="filter-envelope-attack" min="0" max="1" step="0.001"
+    aria-label="Filter envelope attack"
+    value.bind="params.attack">
+  <input type="number" min="0" max="1" step="0.001"
+    aria-label="Filter envelope attack" aria-controls="filter-envelope-attack"
+    value.bind="params.attack">
+
+  <label for="filter-envelope-decay">Decay</label>
+  <input type="range" id="filter-envelope-decay" min="0" max="1" step="0.001"
+    aria-label="Filter envelope decay"
+    value.bind="params.decay">
+  <input type="number" min="0" max="1" step="0.001"
+    aria-label="Filter envelope decay" aria-controls="filter-envelope-decay"
+    value.bind="params.decay">
+
+  <label for="filter-envelope-sustain">Sustain</label>
+  <input type="range" id="filter-envelope-sustain" min="0" max="1" step="0.001"
+    aria-label="Filter envelope sustain"
+    value.bind="params.sustain">
+  <input type="number" min="0" max="1" step="0.001"
+    aria-label="Filter envelope sustain" aria-controls="filter-envelope-sustain"
+    value.bind="params.sustain">
+
+  <label for="filter-envelope-release">Release</label>
+  <input type="range" id="filter-envelope-release" min="0" max="10" step="0.001"
+    aria-label="Filter envelope release"
+    value.bind="params.release">
+  <input type="number" min="0" max="10" step="0.001"
+    aria-label="Filter envelope release" aria-controls="filter-envelope-release"
+    value.bind="params.release">
+</template>

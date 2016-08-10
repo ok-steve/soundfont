@@ -1,0 +1,21 @@
+<template>
+  <label for="filter-type">Type</label>
+  <select id="filter-type"
+    value.bind="params.type">
+    <option repeat.for="type of types" value.bind="type">${type}</option>
+  </select>
+
+  <label for="filter-rolloff">Rolloff</label>
+  <select id="filter-rolloff"
+    value.bind="params.rolloff">
+    <option repeat.for="value of rolloffs" value.bind="value">${value}</option>
+  </select>
+
+  <label for="filter-q">Q</label>
+  <input type="range" id="filter-q" min="0" max="1000"
+    aria-label="Filter Q value"
+    value.bind="params.Q">
+  <input type="number" min="0" max="1000"
+    aria-label="Filter Q" aria-controls="filter-q"
+    value.bind="params.Q">
+</template>
