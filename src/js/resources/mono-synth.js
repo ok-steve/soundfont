@@ -1,7 +1,7 @@
 import Tone from 'tone';
 import { extend } from './utilities/underscore';
 
-export class SynthDef extends Tone.Monophonic {
+export class MonoSynth extends Tone.Monophonic {
   constructor( options ) {
     super();
 

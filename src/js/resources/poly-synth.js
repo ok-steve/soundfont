@@ -1,4 +1,4 @@
 import Tone from 'tone';
-import { SynthDef } from './synth-def';
+import { MonoSynth } from './mono-synth';
 
-export const polySynth = new Tone.PolySynth( 10, SynthDef ).toMaster();
+export const polySynth = new Tone.PolySynth( 10, MonoSynth ).toMaster();
