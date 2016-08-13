@@ -1,33 +1,11 @@
 <template>
-  <label for="envelope-attack">Attack</label>
-  <input type="range" id="envelope-attack" min="0" max="1" step="0.001"
-    aria-label="Envelope attack"
-    value.bind="params.attack">
-  <input type="number" min="0" max="1" step="0.001"
-    aria-label="Envelope attack" aria-controls="envelope-attack"
-    value.bind="params.attack">
+  <require from="./input-range"></require>
 
-  <label for="envelope-decay">Decay</label>
-  <input type="range" id="envelope-decay" min="0" max="1" step="0.001"
-    aria-label="Envelope decay"
-    value.bind="params.decay">
-  <input type="number" min="0" max="1" step="0.001"
-    aria-label="Envelope decay" aria-controls="envelope-decay"
-    value.bind="params.decay">
+  <input-range value.bind="params.attack" min="0" max="1" step="0.001" label="Attack" id="envelope-attack"></input-range>
 
-  <label for="envelope-sustain">Sustain</label>
-  <input type="range" id="envelope-sustain" min="0" max="1" step="0.001"
-    aria-label="Envelope sustain"
-    value.bind="params.sustain">
-  <input type="number" min="0" max="1" step="0.001"
-    aria-label="Envelope sustain" aria-controls="envelope-sustain"
-    value.bind="params.sustain">
+  <input-range value.bind="params.decay" min="0" max="1" step="0.001" label="Decay" id="envelope-decay"></input-range>
 
-  <label class="envelope-release">Release</label>
-  <input type="range" id="envelope-release" min="0" max="1" step="0.001"
-    aria-label="Envelope release"
-    value.bind="params.release">
-  <input type="number" min="0" max="1" step="0.001"
-    aria-label="Envelope release" aria-controls="envelope-release"
-    value.bind="params.release">
+  <input-range value.bind="params.sustain" min="0" max="1" step="0.001" label="Sustain" id="envelope-sustain"></input-range>
+
+  <input-range value.bind="params.release" min="0" max="1" step="0.001" label="Release" id="envelope-release"></input-range>
 </template>
