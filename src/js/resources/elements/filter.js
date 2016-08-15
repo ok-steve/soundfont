@@ -1,14 +1,7 @@
 import { bindable, bindingMode } from 'aurelia-framework';
-import { polySynth } from '../poly-synth';
 
 export class FilterCustomElement {
-  @bindable({ defaultBindingMode: bindingMode.twoWay }) params;
-
-  defaults = polySynth.get([
-    'filter.Q',
-    'filter.type',
-    'filter.rolloff'
-  ]).filter;
+  @bindable({ defaultBindingMode: bindingMode.twoWay }) model;
 
   types = [
     'lowpass',
@@ -27,8 +20,4 @@ export class FilterCustomElement {
     -48,
     -96
   ];
-
-  attached() {
-    this.params = this.defaults;
-  }
 }

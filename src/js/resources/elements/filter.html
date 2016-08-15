@@ -3,15 +3,15 @@
 
   <label for="filter-type">Type</label>
   <select id="filter-type"
-    value.bind="params.type">
-    <option repeat.for="type of types" value.bind="type">${type}</option>
+    value.bind="model.type">
+    <option repeat.for="type of types" model.bind="type">${type}</option>
   </select>
 
   <label for="filter-rolloff">Rolloff</label>
   <select id="filter-rolloff"
-    value.bind="params.rolloff">
-    <option repeat.for="value of rolloffs" value.bind="value">${value}</option>
+    value.bind="model.rolloff">
+    <option repeat.for="value of rolloffs" model.bind="value">${value}</option>
   </select>
 
-  <input-range value.bind="params.Q" max="1000" label="Q" id="filter-q" change.trigger="onChange()"></input-range>
+  <input-range value.bind="model.Q" max="1000" label="Q" id="filter-q" change.trigger="onChange()"></input-range>
 </template>

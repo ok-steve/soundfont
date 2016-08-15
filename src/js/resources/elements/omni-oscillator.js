@@ -1,12 +1,7 @@
 import { bindable, bindingMode } from 'aurelia-framework';
-import { polySynth } from '../poly-synth';
 
 export class OmniOscillatorCustomElement {
-  @bindable({ defaultBindingMode: bindingMode.twoWay }) params;
-
-  defaults = polySynth.get([
-    'oscillator.type'
-  ]).oscillator;
+  @bindable({ defaultBindingMode: bindingMode.twoWay }) model;
 
   types = [
     'sine',
@@ -14,8 +9,4 @@ export class OmniOscillatorCustomElement {
     'triangle',
     'sawtooth'
   ];
-
-  attached() {
-    this.params = this.defaults;
-  }
 }

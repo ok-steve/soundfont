@@ -1,11 +1,11 @@
 <template>
   <require from="./input-range"></require>
 
-  <input-range value.bind="params.attack" min="0" max="1" step="0.001" label="Attack" id="filter-envelope-attack"></input-range>
+  <input-range value.bind="model.attack" min="0" max="1" step="0.001" label="Attack" id="filter-envelope-attack"></input-range>
 
-  <input-range value.bind="params.decay" min="0" max="1" step="0.001" label="Decay" id="filter-envelope-decay"></input-range>
+  <input-range value.bind="model.decay" min="0" max="1" step="0.001" label="Decay" id="filter-envelope-decay"></input-range>
 
-  <input-range value.bind="params.sustain" min="0" max="1" step="0.001" label="Sustain" id="filter-envelope-sustain"></input-range>
+  <input-range value.bind="model.sustain" min="0" max="1" step="0.001" label="Sustain" id="filter-envelope-sustain"></input-range>
 
-  <input-range value.bind="params.release" min="0" max="1" step="0.001" label="Release" id="filter-envelope-release"></input-range>
+  <input-range value.bind="model.release" min="0" max="1" step="0.001" label="Release" id="filter-envelope-release"></input-range>
 </template>

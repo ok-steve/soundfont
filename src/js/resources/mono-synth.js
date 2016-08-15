@@ -1,98 +1,61 @@
 import Tone from 'tone';
-import { extend } from './utilities/underscore';
+import { nodeGraph } from './node-graph';
 
 export class MonoSynth extends Tone.Monophonic {
   constructor( options ) {
     super();
 
-    options = extend( options || {}, this.defaults );
-
-    this.oscillator = new Tone.OmniOscillator( options.oscillator );
-    this.filter = new Tone.Filter( options.filter );
-    this.filterEnvelope = new Tone.FrequencyEnvelope( options.filterEnvelope );
-    this.envelope = new Tone.AmplitudeEnvelope( options.envelope );
+    nodeGraph.forEach(node => {
+      this[node.id] = new node.constructor( node.defaults );
+    });
 
     this.frequency = this.oscillator.frequency;
     this.detune = this.oscillator.detune;
 
-    this.oscillator.chain( this.filter, this.envelope, this.output );
-    this.filterEnvelope.connect( this.filter.frequency );
+    nodeGraph.forEach(node => {
+      let to = node.connect.split('.').reduce((o, i) => o[i], this);
 
-    this.oscillator.start();
+      this[node.id].connect( to );
+    });
 
-    this._readOnly([
-      'oscillator',
+    nodeGraph.filter(node => node.type === 'oscillator').forEach(node => {
+      this[node.id].start();
+    });
+
+    this.properties = [
+      ...nodeGraph.map(node => node.id),
       'frequency',
-      'detune',
-      'filter',
-      'filterEnvelope',
-      'envelope'
-    ]);
+      'detune'
+    ];
+
+    this._readOnly(this.properties);
   }
 
-  defaults = {
-    'frequency': 'C4',
-    'detune': 0,
-    'oscillator': {
-      'type': 'square'
-    },
-    'filter': {
-      'Q': 6,
-      'type': 'lowpass',
-      'rolloff': -24
-    },
-    'envelope': {
-      'attack': 0.005,
-      'decay': 0.1,
-      'sustain': 0.9,
-      'release': 1
-    },
-    'filterEnvelope': {
-      'attack': 0.06,
-      'decay': 0.2,
-      'sustain': 0.5,
-      'release': 2,
-      'baseFrequency': 200,
-      'octaves': 7,
-      'exponent': 2
-    }
-  };
-
   _triggerEnvelopeAttack( time, velocity ) {
-    this.envelope.triggerAttack( time, velocity );
-    this.filterEnvelope.triggerAttack( time );
+    nodeGraph.filter(node => node.type === 'envelope').forEach(node => {
+      this[node.id].triggerAttack( time, velocity );
+      this[node.id].triggerAttack( time );
+    });
 
     return this;
   }
 
   _triggerEnvelopeRelease( time ) {
-    this.envelope.triggerRelease( time );
-    this.filterEnvelope.triggerRelease( time );
+    nodeGraph.filter(node => node.type === 'envelope').forEach(node => {
+      this[node.id].triggerRelease( time );
+      this[node.id].triggerRelease( time );
+    });
 
     return this;
   }
 
   dispose() {
-    this._writable([
-      'oscillator',
-      'frequency',
-      'detune',
-      'filter',
-      'filterEnvelope',
-      'envelope'
-    ]);
+    this._writable(this.properties);
 
-    this.oscillator.dispose();
-    this.oscillator = null;
-
-    this.envelope.dispose();
-    this.envelope = null;
-
-    this.filterEnvelope.dispose();
-    this.filterEnvelope = null;
-
-    this.filter.dispose();
-    this.filter = null;
+    nodeGraph.forEach(node => {
+      this[node.id].dispose();
+      this[node.id] = null;
+    });
 
     this.frequency = null;
     this.detune = null;
