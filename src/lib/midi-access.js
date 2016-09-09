@@ -1,6 +1,6 @@
 import 'web-midi-api';
 
-export function request( key ) {
+export const requestMIDIAccess = ( key ) => {
   return new Promise(( resolve, reject ) => {
     if ( navigator['requestMIDIAccess'] !== undefined ) {
       navigator.requestMIDIAccess().then(access => {
@@ -19,4 +19,4 @@ export function request( key ) {
       console.log( 'MIDI is not supported on this device.' );
     }
   });
-}
+};

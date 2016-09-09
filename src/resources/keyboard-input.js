@@ -18,7 +18,7 @@ const keyMap = {
   'k': 72  // k:C
 };
 
-export function bind( keydown, keyup ) {
+export const bind = ( keydown, keyup ) => {
   keyboardJS.bind( keys( keyMap ), e => {
     e.preventRepeat();
 
@@ -30,8 +30,8 @@ export function bind( keydown, keyup ) {
 
     keyup( freq );
   });
-}
+};
 
-export function unbind() {
+export const unbind = () => {
   keyboardJS.reset();
-}
+};

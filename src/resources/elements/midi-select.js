@@ -1,10 +1,10 @@
-import { request } from '../../lib/midi-access';
+import { requestMIDIAccess } from '../../lib/midi-access';
 import { mtof, vtog } from '../../lib/midi';
 import { polySynth } from '../poly-synth';
 
 export class MidiSelectCustomElement {
   constructor() {
-    request( 'inputs' ).then(devices => {
+    requestMIDIAccess('inputs').then(devices => {
       this.hasMIDI = true;
 
       this.devices = devices;
