@@ -1,6 +1,6 @@
 import { bindable } from 'aurelia-framework';
-import { range } from '../utilities/underscore';
-import { mtof } from '../utilities/midi';
+import { range } from '../../lib/underscore';
+import { mtof } from '../../lib/midi';
 
 export class PianoRollCustomElement {
   @bindable noteon;

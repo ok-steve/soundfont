@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="no-js" lang="en">
+<html lang="en">
 
 <head>
   <script>
@@ -30,23 +30,22 @@
   <meta name="application-name" content="Synthia">
   <link rel="manifest" href="manifest.json">
 
-  <link rel="stylesheet" href="css/main.css">
-
-  <!-- build:modernizr -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
-  <!-- endbuild -->
+  <link rel="stylesheet" href="styles/styles.css">
 </head>
 
 <body aurelia-app="main">
-  <!-- build:js -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.19.31/system.js"></script>
-  <script src="js/config.js"></script>
-  <script src="https://gitcdn.xyz/repo/aurelia/aurelia/1.0.0/scripts/aurelia-core.min.js"></script>
-  <script src="https://gitcdn.xyz/repo/aurelia/aurelia/1.0.0/scripts/aurelia-router.min.js"></script>
+  <!-- The bluebird version is locked at 4.6.3 in the package.json file to keep this from breaking -->
+  <!-- We include bluebird to bypass Edge's very slow Native Promise implementation. The Edge team -->
+  <!-- has fixed the issues with their implementation with these fixes being distributed with the  -->
+  <!-- Windows 10 Anniversary Update on 2 August 2016. Once that update has pushed out, you may    -->
+  <!-- consider removing bluebird from your project and simply using native promises if you do     -->
+  <!-- not need to support Internet Explorer.                                                      -->
+  <script src="jspm_packages/npm/bluebird@3.4.1/js/browser/bluebird.min.js"></script>
+  <script src="jspm_packages/system.js"></script>
+  <script src="config.js"></script>
   <script>
     System.import('aurelia-bootstrapper');
   </script>
-  <!-- endbuild -->
 </body>
 
 </html>

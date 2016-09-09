@@ -1,5 +1,5 @@
-import { request } from '../midi-access';
-import { mtof, vtog } from '../utilities/midi';
+import { request } from '../../lib/midi-access';
+import { mtof, vtog } from '../../lib/midi';
 import { polySynth } from '../poly-synth';
 
 export class MidiSelectCustomElement {

@@ -1,6 +1,6 @@
 import keyboardJS from 'keyboardjs';
-import { keys } from './utilities/underscore';
-import { mtof } from './utilities/midi';
+import { keys } from '../lib/underscore';
+import { mtof } from '../lib/midi';
 
 const keyMap = {
   'a': 60, // a:C
