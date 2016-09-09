@@ -3,8 +3,8 @@ export class App {
     config.title = 'Synthia';
 
     config.map([
-      { route: ['', 'synth'], name: 'synth',    moduleId: './synth/synth',       nav: true, title: 'Synth'    },
-      { route: 'settings',    name: 'settings', moduleId: './settings/settings', nav: true, title: 'Settings' }
+      { route: ['', 'settings'], name: 'settings', moduleId: './settings/settings', nav: true, title: 'Settings' },
+      { route: 'synth',          name: 'synth',    moduleId: './synth/synth',       nav: true, title: 'Synth'    }
     ]);
 
     this.router = router;
