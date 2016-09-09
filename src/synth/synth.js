@@ -1,20 +1,11 @@
-import { polySynth } from '../resources/poly-synth';
-import { bind, unbind } from '../resources/keyboard-input';
+import { start, stop } from '../resources/poly-synth';
 
 export class Index {
-  constructor() {
-    bind( this.start, this.stop );
-  }
-
   start( freq ) {
-    polySynth.triggerAttack( freq );
+    start( freq );
   }
 
   stop( freq ) {
-    polySynth.triggerRelease( freq );
-  }
-
-  canDeactivate() {
-    unbind();
+    stop( freq );
   }
 }

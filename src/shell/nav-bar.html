@@ -1,4 +1,6 @@
 <template bindable="router">
+  <require from="../resources/elements/midi-select"></require>
+
   <header role="banner">
     <h1>${router.title}</h1>
 
@@ -8,5 +10,7 @@
         <li><a href="https://github.com/sccherry/synthia">About</a></li>
       </ul>
     </nav>
+
+    <midi-select></midi-select>
   </header>
 </template>

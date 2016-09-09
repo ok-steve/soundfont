@@ -1,3 +1,6 @@
+import { start, stop } from './resources/poly-synth';
+import { bind, unbind } from './resources/keyboard-input';
+
 export class App {
   configureRouter( config, router ) {
     config.title = 'Synthia';
@@ -8,5 +11,13 @@ export class App {
     ]);
 
     this.router = router;
+  }
+
+  activate() {
+    bind( start, stop );
+  }
+
+  deactivate() {
+    unbind();
   }
 }
