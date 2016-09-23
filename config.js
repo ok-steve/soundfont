@@ -22,7 +22,6 @@ System.config({
     "aurelia-templating-router": "npm:aurelia-templating-router@1.0.0",
     "bluebird": "npm:bluebird@3.4.1",
     "fetch": "github:github/fetch@1.0.0",
-    "keyboardjs": "npm:keyboardjs@2.3.1",
     "text": "github:systemjs/plugin-text@0.0.8",
     "tone": "npm:tone@0.7.1",
     "web-midi-api": "npm:web-midi-api@1.4.4",
