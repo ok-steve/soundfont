@@ -1,11 +1,16 @@
+import { inject } from 'aurelia-framework';
+
 import { mtof, vtog } from '../../lib/midi';
 import { inputs } from '../../lib/request-midi-access';
 import { toArray } from '../../lib/underscore';
 
-import { polySynth } from '../poly-synth';
+import { SynthService } from '../services/synth-service';
 
+@inject( SynthService )
 export class MidiSelectCustomElement {
-  constructor() {
+  constructor( SynthService ) {
+    this.synth = SynthService;
+
     inputs.then(devices => {
       this.hasMIDI = true;
 
@@ -26,7 +31,7 @@ export class MidiSelectCustomElement {
       return device;
     });
 
-    this.activeDevice.onmidimessage = this.onmidimessage;
+    this.activeDevice.onmidimessage = this.onmidimessage.bind( this );
   }
 
   onmidimessage( e ) {
@@ -37,15 +42,15 @@ export class MidiSelectCustomElement {
 
     switch ( status ) {
       case 144: // noteOn
-        polySynth.triggerAttack( mtof( data1 ), vtog( data2 ) );
+        this.synth.triggerAttack( mtof( data1 ), vtog( data2 ) );
       break;
 
       case 128: // noteOff
-        polySynth.triggerRelease( mtof( data1 ) );
+        this.synth.triggerRelease( mtof( data1 ) );
       break;
 
       case 176: // control
-        console.log( data );
+        //this.synth.set({ data1: data2 });
       break;
     }
   }

@@ -1,9 +1,9 @@
 import { inject } from 'aurelia-framework';
-import { start, stop } from './resources/poly-synth';
 
 import { KeyboardService } from './resources/services/keyboard-service';
+import { SynthService } from './resources/services/synth-service';
 
-@inject( KeyboardService )
+@inject( KeyboardService, SynthService )
 export class App {
   configureRouter( config, router ) {
     config.title = 'Synthia';
@@ -16,8 +16,9 @@ export class App {
     this.router = router;
   }
 
-  constructor( KeyboardService ) {
+  constructor( KeyboardService, SynthService ) {
     this.keyboard = KeyboardService;
+    this.synth = SynthService;
 
     this.boundOnKeydown = this.onKeydown.bind( this );
     this.boundOnKeyup = this.onKeyup.bind( this );
@@ -34,10 +35,10 @@ export class App {
   }
 
   onKeydown( e ) {
-    this.keyboard.onKeypress( e, start );
+    this.keyboard.onKeypress( e, this.synth.triggerAttack );
   }
 
   onKeyup( e ) {
-    this.keyboard.onKeypress( e, stop );
+    this.keyboard.onKeypress( e, this.synth.triggerRelease );
   }
 }
