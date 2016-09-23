@@ -1,4 +1,5 @@
 import Tone from 'tone';
+
 import { nodeGraph } from './node-graph';
 
 export class MonoSynth extends Tone.Monophonic {

@@ -1,4 +1,5 @@
 import { bindable } from 'aurelia-framework';
+
 import { range } from '../../lib/underscore';
 import { mtof } from '../../lib/midi';
 
@@ -12,10 +13,10 @@ export class PianoRollCustomElement {
   }
 
   onMousedown( value ) {
-    this.noteon( mtof( value ));
+    this.noteon(mtof( value ));
   }
 
   onMouseup( value ) {
-    this.noteoff( mtof( value ));
+    this.noteoff(mtof( value ));
   }
 }
