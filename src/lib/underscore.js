@@ -1,19 +1,24 @@
-import _ from 'underscore';
-
 export const each = ( list, iteratee, context ) => {
   return list.forEach( iteratee, context );
 };
 
-export const extend = ( destination, sources ) => {
-  return _.extend( destination, sources );
+export const assign = ( destination, ...sources ) => {
+  return Object.assign( destination, ...sources );
 };
 
 export const keys = ( object ) => {
   return Object.keys( object );
 };
 
-export const range = ( start, stop, step ) => {
-  return _.range( start, stop, step );
+export const range = ( start, stop, step = 1 ) => {
+  if ( !stop ) {
+    stop = start || 0;
+    start = 0;
+  }
+
+  const n = stop - start;
+
+  return Array.from(Array(n), (_, i) => start + i * step);
 };
 
 export const toArray = ( generator ) => {

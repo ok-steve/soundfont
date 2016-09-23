@@ -25,7 +25,6 @@ System.config({
     "keyboardjs": "npm:keyboardjs@2.3.1",
     "text": "github:systemjs/plugin-text@0.0.8",
     "tone": "npm:tone@0.7.1",
-    "underscore": "npm:underscore@1.8.3",
     "web-midi-api": "npm:web-midi-api@1.4.4",
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.4.1"
