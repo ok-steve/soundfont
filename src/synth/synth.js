@@ -1,11 +1,10 @@
-import { start, stop } from '../resources/poly-synth';
+import { inject } from 'aurelia-framework';
 
-export class Index {
-  start( freq ) {
-    start( freq );
-  }
+import { SynthService } from '../resources/services/synth-service';
 
-  stop( freq ) {
-    stop( freq );
+@inject( SynthService )
+export class Synth {
+  constructor( SynthService ) {
+    this.synth = SynthService;
   }
 }
