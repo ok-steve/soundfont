@@ -1,6 +1,6 @@
-import { bindable, bindingMode } from 'aurelia-framework';
+import { bindable } from 'aurelia-framework';
 
 export class AmplitudeEnvelopeCustomElement {
-  @bindable({ defaultBindingMode: bindingMode.twoWay }) model;
+  @bindable model;
 }
 

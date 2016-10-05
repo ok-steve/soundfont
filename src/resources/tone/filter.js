@@ -1,7 +1,7 @@
-import { bindable, bindingMode } from 'aurelia-framework';
+import { bindable } from 'aurelia-framework';
 
 export class FilterCustomElement {
-  @bindable({ defaultBindingMode: bindingMode.twoWay }) model;
+  @bindable model;
 
   types = [
     'lowpass',

@@ -12,7 +12,7 @@
       </div>
 
       <div slot="main">
-        <omni-oscillator model.bind="params.oscillator"></omni-oscillator>
+        <omni-oscillator model.two-way="params.oscillator"></omni-oscillator>
       </div>
     </card>
 
@@ -22,7 +22,7 @@
       </div>
 
       <div slot="main">
-        <amplitude-envelope model.bind="params.envelope"></amplitude-envelope>
+        <amplitude-envelope model.two-way="params.envelope"></amplitude-envelope>
       </div>
     </card>
 
@@ -32,7 +32,7 @@
       </div>
 
       <div slot="main">
-        <filter model.bind="params.filter"></filter>
+        <filter model.two-way="params.filter"></filter>
       </div>
     </card>
 
@@ -42,7 +42,7 @@
       </div>
 
       <div slot="main">
-        <frequency-envelope model.bind="params.filterEnvelope"></frequency-envelope>
+        <frequency-envelope model.two-way="params.filterEnvelope"></frequency-envelope>
       </div>
     </card>
   </div>
