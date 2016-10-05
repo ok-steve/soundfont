@@ -41,16 +41,16 @@ export class MidiSelectCustomElement {
       data2 = data[2];
 
     switch ( status ) {
-      case 144: // noteOn
+      case 144:
         this.synth.triggerAttack( mtof( data1 ), vtog( data2 ) );
       break;
 
-      case 128: // noteOff
+      case 128:
         this.synth.triggerRelease( mtof( data1 ) );
       break;
 
-      case 176: // control
-        //this.synth.set({ data1: data2 });
+      case 176:
+        this.synth.set({ data1: data2 });
       break;
     }
   }

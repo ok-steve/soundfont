@@ -25,8 +25,8 @@ export class App {
   }
 
   activate() {
-    window.addEventListener('keydown', this.boundOnKeydown, false);
-    window.addEventListener('keyup', this.boundOnKeyup, false);
+    window.addEventListener( 'keydown', this.boundOnKeydown, false );
+    window.addEventListener( 'keyup', this.boundOnKeyup, false );
   }
 
   deactivate() {
