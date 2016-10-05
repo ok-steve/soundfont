@@ -1,3 +1,4 @@
+import { has } from '../../lib/underscore';
 import { mtof } from '../../lib/midi';
 
 const keyMap = {
@@ -18,7 +19,7 @@ const keyMap = {
 
 export class KeyboardService {
   onKeypress( e, callback ) {
-    if ( keyMap[e.key] && !e.repeat ) {
+    if ( has( keyMap, e.key ) && !e.repeat ) {
       const freq = mtof( keyMap[e.key] );
 
       callback( freq );

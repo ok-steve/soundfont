@@ -6,6 +6,10 @@ export const assign = ( destination, ...sources ) => {
   return Object.assign( destination, ...sources );
 };
 
+export const has = ( object, key ) => {
+  return Object.keys( object ).includes( key );
+};
+
 export const keys = ( object ) => {
   return Object.keys( object );
 };
