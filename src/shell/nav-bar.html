@@ -6,7 +6,7 @@
 
     <nav role="navigation">
       <ul>
-        <li class="${row.isActive ? 'is-active' : ''}" repeat.for="row of router.navigation">
+        <li repeat.for="row of router.navigation" class="${row.isActive ? 'is-active' : ''}">
           <a href.bind="row.href">${row.title}</a>
         </li>
         <li><a href="https://github.com/sccherry/synthia">About</a></li>

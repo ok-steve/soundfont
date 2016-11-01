@@ -1,5 +1,3 @@
 {
-  "rules": {
-    "no-alert": 0
-  }
+  "extends": "./node_modules/aurelia-tools/.eslintrc.json"
 }
