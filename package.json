@@ -52,6 +52,7 @@
     "gulp-postcss": "^6.2.0",
     "gulp-protractor": "3.0.0",
     "gulp-sourcemaps": "^1.6.0",
+    "gulp-stylelint": "^3.3.0",
     "isparta": "^4.0.0",
     "istanbul": "^1.0.0-alpha.2",
     "jasmine-core": "^2.4.1",

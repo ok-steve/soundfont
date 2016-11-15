@@ -17,6 +17,8 @@ var autoprefixer = require('autoprefixer');
 var calc = require('postcss-calc');
 var customProperties = require('postcss-custom-properties');
 var importCss = require('postcss-import');
+var stylelint = require('gulp-stylelint');
+
 // transpiles changed es6 files to SystemJS format
 // the plumber() call prevents 'pipe breaking' caused
 // by errors from other gulp plugins
@@ -56,6 +58,7 @@ gulp.task('build-css', ['prebuild-css'], function() {
       calc(),
       autoprefixer()
     ]))
+    .pipe(stylelint())
     .pipe(gulp.dest(paths.output))
     .pipe(browserSync.stream());
 });
