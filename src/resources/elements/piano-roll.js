@@ -12,11 +12,11 @@ export class PianoRollCustomElement {
     this.keys = range( 21, 109 );
   }
 
-  onMousedown( value ) {
-    this.noteon(mtof( value ));
+  onMousedown( e ) {
+    this.noteon(mtof( e.target.getAttribute('data-midi') ));
   }
 
-  onMouseup( value ) {
-    this.noteoff(mtof( value ));
+  onMouseup( e ) {
+    this.noteoff(mtof( e.target.getAttribute('data-midi') ));
   }
 }
