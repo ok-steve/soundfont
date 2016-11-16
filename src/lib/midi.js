@@ -1,6 +1,6 @@
 // Midi to frequency
 export const mtof = ( midi ) => {
-  return 440.0 * Math.pow(2, (Math.floor(midi) - 69) / 12.0);
+  return 440.0 * Math.pow(2, (Math.floor( midi ) - 69) / 12.0);
 };
 
 // Frequency to midi

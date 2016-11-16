@@ -32,10 +32,10 @@ export class MidiSelectCustomElement {
       return device;
     });
 
-    this.activeDevice.onmidimessage = this.onmidimessage.bind( this );
+    this.activeDevice.onmidimessage = this.onMidimessage.bind( this );
   }
 
-  onmidimessage( e ) {
+  onMidimessage( e ) {
     this.ea.publish( ONMIDIMESSAGE, this.midi.toMessage( ...e.data ) );
   }
 }

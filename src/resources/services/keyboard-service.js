@@ -53,7 +53,7 @@ export class KeyboardService {
           break;
       }
 
-      this.ea.publish(ONMIDIMESSAGE, this.midi.toMessage(
+      this.ea.publish( ONMIDIMESSAGE, this.midi.toMessage(
         status,
         keyMap[e.key]
       ));

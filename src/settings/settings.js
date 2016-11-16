@@ -16,10 +16,10 @@ export class Settings {
       });
     });
 
-    this.params = this.synth.get(Array.prototype.concat( ...defaults ));
+    this.params = this.synth.get( Array.prototype.concat( ...defaults ) );
   }
 
-  onChange() {
+  onChange( e ) {
     this.ea.publish( SET_SYNTH, this.params );
   }
 }

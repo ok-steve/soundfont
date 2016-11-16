@@ -25,8 +25,8 @@ export const range = ( start, stop, step = 1 ) => {
   return Array.from(Array(n), (_, i) => start + i * step);
 };
 
-export const toArray = ( generator ) => {
-  const iter = generator.values(),
+export const toArray = ( iterator ) => {
+  const iter = iterator.values(),
     items = [];
 
   for ( let item = iter.next(); item && !item.done; item = iter.next() ) {
