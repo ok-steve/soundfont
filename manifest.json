@@ -3,7 +3,7 @@
   "name": "Synthia",
   "version" :"0.1.0",
   "default_locale": "en",
-  "description": "A configurable modular synthesizer.",
+  "description": "A configurable, modular synthesizer.",
   "display": "fullscreen",
   "orientation": "portrait",
   "icons": [{

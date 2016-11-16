@@ -2,7 +2,7 @@
   "name": "synthia",
   "private": true,
   "version": "0.1.0",
-  "description": "A configurable modular synthesizer.",
+  "description": "A configurable, modular synthesizer.",
   "keywords": [
     "aurelia",
     "webaudio"
