@@ -1,15 +1,16 @@
 import { inject } from 'aurelia-framework';
+import { EventAggregator } from 'aurelia-event-aggregator';
 
-import { mtof, vtog } from '../../lib/midi';
 import { inputs } from '../../lib/request-midi-access';
 import { toArray } from '../../lib/underscore';
 
-import { SynthService } from '../services/synth-service';
+import { ONMIDIMESSAGE, MidiService } from '../services/midi-service';
 
-@inject( SynthService )
+@inject( EventAggregator, MidiService )
 export class MidiSelectCustomElement {
-  constructor( SynthService ) {
-    this.synth = SynthService;
+  constructor( EventAggregator, MidiService ) {
+    this.ea = EventAggregator;
+    this.midi = MidiService;
 
     inputs.then(devices => {
       this.hasMIDI = true;
@@ -35,23 +36,6 @@ export class MidiSelectCustomElement {
   }
 
   onmidimessage( e ) {
-    const data = e.data,
-      status = data[0],
-      data1 = data[1],
-      data2 = data[2];
-
-    switch ( status ) {
-      case 144:
-        this.synth.triggerAttack( mtof( data1 ), vtog( data2 ) );
-      break;
-
-      case 128:
-        this.synth.triggerRelease( mtof( data1 ) );
-      break;
-
-      case 176:
-        this.synth.set({ data1: data2 });
-      break;
-    }
+    this.ea.publish( ONMIDIMESSAGE, this.midi.toMessage( ...e.data ) );
   }
 }

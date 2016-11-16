@@ -1,5 +1,9 @@
+import { inject } from 'aurelia-framework';
+import { EventAggregator } from 'aurelia-event-aggregator';
+
 import { has } from '../../lib/underscore';
-import { mtof } from '../../lib/midi';
+
+import { NOTE_ON, NOTE_OFF, ONMIDIMESSAGE, MidiService } from './midi-service';
 
 const keyMap = {
   'a': 60,
@@ -17,12 +21,42 @@ const keyMap = {
   'k': 72
 };
 
+@inject( EventAggregator, MidiService )
 export class KeyboardService {
-  onKeypress( e, callback ) {
-    if ( has( keyMap, e.key ) && !e.repeat ) {
-      const freq = mtof( keyMap[e.key] );
+  constructor( EventAggregator, MidiService ) {
+    this.ea = EventAggregator;
+    this.midi = MidiService;
 
-      callback( freq );
+    this.boundOnKeypress = this.onKeypress.bind( this );
+  }
+
+  bind() {
+    window.addEventListener( 'keydown', this.boundOnKeypress, false );
+    window.addEventListener( 'keyup', this.boundOnKeypress, false );
+  }
+
+  unbind() {
+    window.removeEventListener('keydown');
+    window.removeEventListener('keyup');
+  }
+
+  onKeypress( e ) {
+    if ( has( keyMap, e.key ) && !e.repeat ) {
+      let status;
+
+      switch( e.type ) {
+        case 'keydown':
+          status = NOTE_ON;
+          break;
+        case 'keyup':
+          status = NOTE_OFF;
+          break;
+      }
+
+      this.ea.publish(ONMIDIMESSAGE, this.midi.toMessage(
+        status,
+        keyMap[e.key]
+      ));
     }
   }
 }

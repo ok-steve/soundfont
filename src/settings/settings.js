@@ -1,11 +1,13 @@
 import { inject } from 'aurelia-framework';
+import { EventAggregator } from 'aurelia-event-aggregator';
 
-import { SynthService } from '../resources/services/synth-service';
+import { SET_SYNTH, SynthService } from '../resources/services/synth-service';
 import { nodeGraph } from '../resources/node-graph';
 
-@inject( SynthService )
+@inject( EventAggregator, SynthService )
 export class Settings {
-  constructor( SynthService ) {
+  constructor( EventAggregator, SynthService ) {
+    this.ea = EventAggregator;
     this.synth = SynthService;
 
     const defaults = nodeGraph.map(node => {
@@ -18,6 +20,6 @@ export class Settings {
   }
 
   onChange() {
-    this.synth.set( this.params );
+    this.ea.publish( SET_SYNTH, this.params );
   }
 }
