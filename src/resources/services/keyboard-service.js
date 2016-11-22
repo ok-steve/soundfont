@@ -1,8 +1,6 @@
 import { inject } from 'aurelia-framework';
 import { EventAggregator } from 'aurelia-event-aggregator';
 
-import { has } from '../../lib/underscore';
-
 import { NOTE_ON, NOTE_OFF, ONMIDIMESSAGE, MidiService } from './midi-service';
 
 const keyMap = {
@@ -41,7 +39,7 @@ export class KeyboardService {
   }
 
   onKeypress( e ) {
-    if ( has( keyMap, e.key ) && !e.repeat ) {
+    if ( Object.keys( keyMap ).includes( e.key ) && !e.repeat ) {
       let status;
 
       switch( e.type ) {

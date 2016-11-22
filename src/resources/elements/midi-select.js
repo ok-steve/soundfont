@@ -2,7 +2,6 @@ import { inject } from 'aurelia-framework';
 import { EventAggregator } from 'aurelia-event-aggregator';
 
 import { inputs } from '../../lib/request-midi-access';
-import { toArray } from '../../lib/underscore';
 
 import { ONMIDIMESSAGE, MidiService } from '../services/midi-service';
 
@@ -12,10 +11,18 @@ export class MidiSelectCustomElement {
     this.ea = EventAggregator;
     this.midi = MidiService;
 
-    inputs.then(devices => {
+    inputs.then(inputMap => {
+      const devices = [];
+
+      for ( let device of inputMap.values() ) {
+        devices.push( device );
+      }
+
+      return devices;
+    }).then(devices => {
       this.hasMIDI = true;
 
-      this.devices = toArray( devices );
+      this.devices = devices;
     }).catch(error => {
       this.error = true;
 

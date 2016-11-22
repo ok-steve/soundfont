@@ -1,6 +1,5 @@
 import { inject } from 'aurelia-framework';
 
-import { range } from '../lib/underscore';
 import { mtof } from '../lib/midi';
 
 import { SynthService } from '../resources/services/synth-service';
