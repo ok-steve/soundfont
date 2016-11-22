@@ -9,7 +9,7 @@ export class App {
 
     config.map([
       { route: ['', 'settings'], name: 'settings', moduleId: './settings/settings', nav: true, title: 'Settings' },
-      { route: 'synth',          name: 'synth',    moduleId: './synth/synth',       nav: true, title: 'Synth'    }
+      { route: 'piano',          name: 'piano',    moduleId: './piano/piano',       nav: true, title: 'Piano'    }
     ]);
 
     this.router = router;

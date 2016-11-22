@@ -1,14 +1,14 @@
-.PianoRoll {
+.Piano {
   background-color: hsla(0, 0%, 90%, 1);
 }
 
-.PianoRoll-key {
+.Piano-key {
 }
 
-.PianoRoll-key--natural {
+.Piano-key--natural {
   fill: hsla(0, 0%, 100%, 1);
 }
 
-.PianoRoll-key--accidental {
+.Piano-key--accidental {
   fill: hsla(0, 0%, 0%, 1);
 }
