@@ -6,6 +6,7 @@ import { KeyboardService } from './resources/services/keyboard-service';
 export class App {
   configureRouter( config, router ) {
     config.title = 'Synthia';
+    config.options.pushState = true;
 
     config.map([
       { route: ['', 'settings'], name: 'settings', moduleId: './settings/settings', nav: true, title: 'Settings' },
