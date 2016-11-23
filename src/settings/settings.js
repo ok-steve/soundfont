@@ -1,7 +1,8 @@
 import { inject } from 'aurelia-framework';
 import { EventAggregator } from 'aurelia-event-aggregator';
 
-import { SET_SYNTH, SynthService } from '../resources/services/synth-service';
+import { SynthService } from '../resources/services/synth-service';
+import { SetSynthEvent } from '../resources/events/set-synth';
 import { nodeGraph } from '../resources/node-graph';
 
 @inject( EventAggregator, SynthService )
@@ -17,9 +18,13 @@ export class Settings {
     });
 
     this.params = this.synth.get( Array.prototype.concat( ...defaults ) );
+
+    this.ea.subscribe( SetSynthEvent, e => {
+      this.params = e.message;
+    });
   }
 
   onChange( e ) {
-    this.ea.publish( SET_SYNTH, this.params );
+    this.ea.publish( new SetSynthEvent( this.params ) );
   }
 }

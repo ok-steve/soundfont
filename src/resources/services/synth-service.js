@@ -7,12 +7,11 @@ import { mtof, vtog } from '../../lib/midi'
 
 import { NOTE_ON, NOTE_OFF } from './midi-service';
 import { OnmidimessageEvent } from '../events/onmidimessage';
+import { SetSynthEvent } from '../events/set-synth';
 
 import { MonoSynth } from '../mono-synth';
 
 const polySynth = new PolySynth( 10, MonoSynth ).toMaster();
-
-export const SET_SYNTH = 'SET_SYNTH';
 
 @inject( EventAggregator )
 export class SynthService {
@@ -22,7 +21,7 @@ export class SynthService {
     this.boundOnMidimessage = this.onMidimessage.bind( this );
 
     this.ea.subscribe( OnmidimessageEvent, this.boundOnMidimessage );
-    this.ea.subscribe( SET_SYNTH, this.set );
+    this.ea.subscribe( SetSynthEvent, this.set );
   }
 
   triggerAttack( freq, gain = 1 ) {
