@@ -2,7 +2,6 @@ import 'web-midi-api';
 
 export const NOTE_ON = 144;
 export const NOTE_OFF = 128;
-export const ONMIDIMESSAGE = 'ONMIDIMESSAGE';
 
 export class MidiService {
   request( type ) {

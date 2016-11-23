@@ -1,7 +1,8 @@
 import { inject } from 'aurelia-framework';
 import { EventAggregator } from 'aurelia-event-aggregator';
 
-import { NOTE_ON, NOTE_OFF, ONMIDIMESSAGE, MidiService } from './midi-service';
+import { NOTE_ON, NOTE_OFF, MidiService } from './midi-service';
+import { OnmidimessageEvent } from '../events/onmidimessage';
 
 const keyMap = {
   'a': 60,
@@ -51,10 +52,10 @@ export class KeyboardService {
           break;
       }
 
-      this.ea.publish( ONMIDIMESSAGE, this.midi.toMessage(
+      this.ea.publish( new OnmidimessageEvent( this.midi.toMessage(
         status,
         keyMap[e.key]
-      ));
+      ) ) );
     }
   }
 }

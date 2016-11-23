@@ -1,20 +1,32 @@
 import { inject } from 'aurelia-framework';
+import { EventAggregator } from 'aurelia-event-aggregator';
 
-import { mtof } from '../lib/midi';
+import { NOTE_ON, NOTE_OFF, MidiService } from '../resources/services/midi-service';
+import { OnmidimessageEvent } from '../resources/events/onmidimessage';
 
-import { SynthService } from '../resources/services/synth-service';
-
-@inject( SynthService )
+@inject( EventAggregator, MidiService )
 export class Piano {
-  constructor( SynthService ) {
-    this.synth = SynthService;
+  constructor( EventAggregator, MidiService ) {
+    this.ea = EventAggregator;
+    this.midi = MidiService;
+  }
+
+  sendMessage( status, note ) {
+    this.ea.publish( new OnmidimessageEvent( this.midi.toMessage(
+      status,
+      note
+    ) ) );
   }
 
   onMousedown( e ) {
-    this.synth.triggerAttack( mtof( e.target.getAttribute('data-midi') ) );
+    const note = e.target.getAttribute('data-midi');
+
+    this.sendMessage( NOTE_ON, note );
   }
 
   onMouseup( e ) {
-    this.synth.triggerRelease( mtof( e.target.getAttribute('data-midi') ) );
+    const note = e.target.getAttribute('data-midi');
+
+    this.sendMessage( NOTE_OFF, note );
   }
 }

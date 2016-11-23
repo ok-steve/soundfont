@@ -1,7 +1,8 @@
 import { inject } from 'aurelia-framework';
 import { EventAggregator } from 'aurelia-event-aggregator';
 
-import { ONMIDIMESSAGE, MidiService } from '../services/midi-service';
+import { MidiService } from '../services/midi-service';
+import { OnmidimessageEvent } from '../events/onmidimessage';
 
 @inject( EventAggregator, MidiService )
 export class MidiSelectCustomElement {
@@ -33,6 +34,6 @@ export class MidiSelectCustomElement {
   }
 
   onMidimessage( e ) {
-    this.ea.publish( ONMIDIMESSAGE, this.midi.toMessage( ...e.data ) );
+    this.ea.publish( new OnmidimessageEvent( this.midi.toMessage( ...e.data ) ) );
   }
 }
