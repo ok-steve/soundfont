@@ -4,20 +4,13 @@ import { EventAggregator } from 'aurelia-event-aggregator';
 import { NOTE_ON, NOTE_OFF, MidiService } from './midi-service';
 import { OnmidimessageEvent } from '../events/onmidimessage';
 
-const keyMap = {
-  'a': 60,
-  'w': 61,
-  's': 62,
-  'e': 63,
-  'd': 64,
-  'f': 65,
-  't': 66,
-  'g': 67,
-  'y': 68,
-  'h': 69,
-  'u': 70,
-  'j': 71,
-  'k': 72
+const keys = ['a','w','s','e','d','f','t','g','y','h','u','j'];
+
+const keyToNote = ( key ) => {
+  const pitch = keys.indexOf( key );
+  const octave = 5;
+
+  return (pitch + (12 * octave));
 };
 
 @inject( EventAggregator, MidiService )
@@ -40,8 +33,12 @@ export class KeyboardService {
   }
 
   onKeypress( e ) {
-    if ( Object.keys( keyMap ).includes( e.key ) && !e.repeat ) {
+    const key = e.key;
+
+    if ( keys.includes( key ) && !e.repeat ) {
       let status;
+
+      const note = keyToNote( key );
 
       switch( e.type ) {
         case 'keydown':
@@ -54,7 +51,7 @@ export class KeyboardService {
 
       this.ea.publish( new OnmidimessageEvent( this.midi.toMessage(
         status,
-        keyMap[e.key]
+        note
       ) ) );
     }
   }
