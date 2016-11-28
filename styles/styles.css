@@ -1,12 +1,1 @@
 @charset "utf-8";
-
-@import url("_variables.css");
-
-@import url("core/_axioms.css");
-@import url("core/_text.css");
-@import url("core/_embed.css");
-@import url("core/_forms.css");
-
-@import url("components/_container.css");
-
-@import url("theme/_svg.css");

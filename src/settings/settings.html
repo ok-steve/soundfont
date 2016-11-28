@@ -1,43 +1,27 @@
 <template>
   <div change.delegate="onChange($event)">
-    <card>
-      <div slot="header">
-        <h2>Oscillator</h2>
-      </div>
+    <ui-card>
+      <h2>Oscillator</h2>
 
-      <div slot="main">
-        <omni-oscillator model.two-way="params.oscillator"></omni-oscillator>
-      </div>
-    </card>
+      <omni-oscillator model.two-way="params.oscillator"></omni-oscillator>
+    </ui-card>
 
-    <card>
-      <div slot="header">
-        <h2>Amplitude Envelope</h2>
-      </div>
+    <ui-card>
+      <h2>Amplitude Envelope</h2>
 
-      <div slot="main">
-        <amplitude-envelope model.two-way="params.envelope"></amplitude-envelope>
-      </div>
-    </card>
+      <amplitude-envelope model.two-way="params.envelope"></amplitude-envelope>
+    </ui-card>
 
-    <card>
-      <div slot="header">
-        <h2>Filter</h2>
-      </div>
+    <ui-card>
+      <h2>Filter</h2>
 
-      <div slot="main">
-        <filter model.two-way="params.filter"></filter>
-      </div>
-    </card>
+      <filter model.two-way="params.filter"></filter>
+    </ui-card>
 
-    <card>
-      <div slot="header">
-        <h2>Frequency Envelope</h2>
-      </div>
+    <ui-card>
+      <h2>Frequency Envelope</h2>
 
-      <div slot="main">
-        <frequency-envelope model.two-way="params.filterEnvelope"></frequency-envelope>
-      </div>
-    </card>
+      <frequency-envelope model.two-way="params.filterEnvelope"></frequency-envelope>
+    </ui-card>
   </div>
 </template>

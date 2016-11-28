@@ -23,9 +23,14 @@ System.config({
     "aurelia-templating-router": "npm:aurelia-templating-router@1.0.0",
     "bluebird": "npm:bluebird@3.4.1",
     "fetch": "github:github/fetch@1.0.0",
+    "semantic-ui": "github:Semantic-Org/Semantic-UI@2.2.6",
     "text": "github:systemjs/plugin-text@0.0.8",
     "tone": "npm:tone@0.8.0",
     "web-midi-api": "npm:web-midi-api@1.4.4",
+    "github:Semantic-Org/Semantic-UI@2.2.6": {
+      "css": "github:systemjs/plugin-css@0.1.32",
+      "jquery": "npm:jquery@2.2.4"
+    },
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.4.1"
     },

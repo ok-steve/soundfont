@@ -1,15 +1,26 @@
 <template>
-  <label for="filter-type">Type</label>
-  <select id="filter-type"
-    value.bind="model.type">
-    <option repeat.for="type of types" model.bind="type">${type}</option>
-  </select>
+  <ui-input>
+    <label for="filter-type">Type</label>
 
-  <label for="filter-rolloff">Rolloff</label>
-  <select id="filter-rolloff"
-    value.bind="model.rolloff">
-    <option repeat.for="value of rolloffs" model.bind="value">${value}</option>
-  </select>
+    <select id="filter-type" value.bind="model.type">
+      <option repeat.for="type of types" model.bind="type">${type}</option>
+    </select>
+  </ui-input>
 
-  <input-range value.bind="model.Q" max="1000" label="Q" id="filter-q"></input-range>
+  <ui-input>
+    <label for="filter-rolloff">Rolloff</label>
+
+    <select id="filter-rolloff" value.bind="model.rolloff">
+      <option repeat.for="value of rolloffs" model.bind="value">${value}</option>
+    </select>
+  </ui-input>
+
+  <ui-input>
+    <label for="filter-q">Q</label>
+
+    <input type="range" id="filter-q" min="0" max="1000" step="1" value.bind="model.Q"
+      aria-label="Q">
+    <input type="number" min="0" max="1000" step="1" value.bind="model.Q"
+      aria-hidden="true">
+  </ui-input>
 </template>
