@@ -1,6 +1,6 @@
 import { bindable } from 'aurelia-framework';
 
-export class FilterCustomElement {
+export class ToneFilterCustomElement {
   @bindable model;
 
   types = [

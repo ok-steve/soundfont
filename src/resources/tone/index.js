@@ -1,8 +1,8 @@
 export function configure( config ) {
   config.globalResources([
-    './elements/amplitude-envelope',
-    './elements/filter',
-    './elements/frequency-envelope',
-    './elements/omni-oscillator'
+    './elements/tone-amplitude-envelope',
+    './elements/tone-filter',
+    './elements/tone-frequency-envelope',
+    './elements/tone-omni-oscillator'
   ]);
 }

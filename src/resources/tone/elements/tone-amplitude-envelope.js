@@ -1,6 +1,5 @@
 import { bindable } from 'aurelia-framework';
 
-export class AmplitudeEnvelopeCustomElement {
+export class ToneAmplitudeEnvelopeCustomElement {
   @bindable model;
 }
-

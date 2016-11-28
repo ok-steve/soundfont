@@ -1,6 +1,6 @@
 import { bindable } from 'aurelia-framework';
 
-export class OmniOscillatorCustomElement {
+export class ToneOmniOscillatorCustomElement {
   @bindable model;
 
   types = [
