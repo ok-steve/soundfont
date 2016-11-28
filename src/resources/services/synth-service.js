@@ -3,7 +3,7 @@ import { EventAggregator } from 'aurelia-event-aggregator';
 
 import { PolySynth } from 'tone';
 
-import { mtof, vtog } from '../../lib/midi'
+import { mtof, vtog } from '../../lib/midi';
 
 import { NOTE_ON, NOTE_OFF } from './midi-service';
 import { OnmidimessageEvent } from '../events/onmidimessage';

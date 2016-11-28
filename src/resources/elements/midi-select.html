@@ -3,7 +3,7 @@
     <ui-input>
       <label for="midi-select-active">MIDI Device</label>
 
-      <select id="midi-select-active" value.bind="activeDevice" change.delegate="onChange()">
+      <select id="midi-select-active" value.bind="activeDevice" change.delegate="onChange($event)">
         <option value="">Choose a MIDI device&hellip;</option>
         <option repeat.for="device of devices" model.bind="device">${device.manufacturer} ${device.name}</option>
       </select>

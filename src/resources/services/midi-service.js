@@ -26,7 +26,7 @@ export class MidiService {
     });
   }
 
-  toMessage( status, note, velocity ) {
+  toMessage( status, note, velocity = 127 ) {
     return {
       status: status,
       data: [

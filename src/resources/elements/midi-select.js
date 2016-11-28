@@ -21,7 +21,7 @@ export class MidiSelectCustomElement {
     });
   }
 
-  onChange() {
+  onChange( e ) {
     this.devices.map(device => {
       if ( device.onmidimessage !== null ) {
         device.onmidimessage = null;
