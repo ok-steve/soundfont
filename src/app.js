@@ -1,22 +1,16 @@
 import { inject } from 'aurelia-framework';
+import { Router } from 'aurelia-router';
 
 import { KeyboardService } from './resources/services/keyboard-service';
 
-@inject( KeyboardService )
+import { routes } from './shell/routes';
+
+@inject( Router, KeyboardService )
 export class App {
-  configureRouter( config, router ) {
-    config.title = 'Synthia';
-    config.options.pushState = true;
+  constructor( Router, KeyboardService ) {
+    this.router = Router;
+    this.router.configure( routes );
 
-    config.map([
-      { route: ['', 'settings'], name: 'settings', moduleId: './settings/settings', nav: true, title: 'Settings' },
-      { route: 'piano',          name: 'piano',    moduleId: './piano/piano',       nav: true, title: 'Piano'    }
-    ]);
-
-    this.router = router;
-  }
-
-  constructor( KeyboardService ) {
     this.keyboard = KeyboardService;
   }
 
