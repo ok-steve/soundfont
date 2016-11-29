@@ -9,9 +9,16 @@ import { NOTE_ON, NOTE_OFF } from './midi-service';
 import { OnmidimessageEvent } from '../events/onmidimessage';
 import { SetSynthEvent } from '../events/set-synth';
 
+import { nodeGraph } from '../node-graph';
 import { MonoSynth } from '../mono-synth';
 
 const polySynth = new PolySynth( 10, MonoSynth ).toMaster();
+
+const defaults = Array.prototype.concat( ...nodeGraph.map(node => {
+  return Object.keys( node.defaults ).map(key => {
+    return `${node.id}.${key}`;
+  });
+}));
 
 @inject( EventAggregator )
 export class SynthService {
@@ -32,7 +39,7 @@ export class SynthService {
     polySynth.triggerRelease( freq );
   }
 
-  get( params ) {
+  get( params = defaults ) {
     return polySynth.get( params );
   }
 
