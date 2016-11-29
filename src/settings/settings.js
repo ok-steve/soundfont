@@ -13,7 +13,7 @@ export class Settings {
     this.params = this.synth.get();
 
     this.ea.subscribe( SetSynthEvent, e => {
-      this.params = e.message;
+      this.params = e.data;
     });
   }
 

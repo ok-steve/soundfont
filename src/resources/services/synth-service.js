@@ -48,7 +48,7 @@ export class SynthService {
   }
 
   onMidimessage( e ) {
-    const message = e.message;
+    const message = e.data;
 
     switch( message.status ) {
       case NOTE_ON:
