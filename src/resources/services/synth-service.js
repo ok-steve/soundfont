@@ -12,7 +12,7 @@ import { SetSynthEvent } from '../events/set-synth';
 import { nodeGraph } from '../node-graph';
 import { MonoSynth } from '../mono-synth';
 
-const polySynth = new PolySynth( 10, MonoSynth ).toMaster();
+const polySynth = new PolySynth( 10, MonoSynth, nodeGraph ).toMaster();
 
 const defaults = Array.prototype.concat( ...nodeGraph.map(node => {
   return Object.keys( node.defaults ).map(key => {

@@ -1,39 +1,41 @@
-import Tone from 'tone';
+import { Monophonic } from 'tone';
 
-import { nodeGraph } from './node-graph';
-
-export class MonoSynth extends Tone.Monophonic {
+export class MonoSynth extends Monophonic {
   constructor( options ) {
     super();
 
-    nodeGraph.forEach(node => {
+    this.options = options;
+
+    this.options.forEach(node => {
       this[node.id] = new node.constructor( node.defaults );
     });
 
-    this.frequency = this.oscillator.frequency;
-    this.detune = this.oscillator.detune;
+    if ( this.oscillator ) {
+      this.frequency = this.oscillator.frequency;
+      this.detune = this.oscillator.detune;
+    }
 
-    nodeGraph.forEach(node => {
+    this.options.forEach(node => {
       let to = node.connect.split('.').reduce((o, i) => o[i], this);
 
       this[node.id].connect( to );
     });
 
-    nodeGraph.filter(node => node.type === 'oscillator').forEach(node => {
+    this.options.filter(node => node.type === 'oscillator').forEach(node => {
       this[node.id].start();
     });
 
     this.properties = [
-      ...nodeGraph.map(node => node.id),
+      ...this.options.map(node => node.id),
       'frequency',
       'detune'
     ];
 
-    this._readOnly(this.properties);
+    this._readOnly( this.properties );
   }
 
   _triggerEnvelopeAttack( time, velocity ) {
-    nodeGraph.filter(node => node.type === 'envelope').forEach(node => {
+    this.options.filter(node => node.type === 'envelope').forEach(node => {
       this[node.id].triggerAttack( time, velocity );
       this[node.id].triggerAttack( time );
     });
@@ -42,7 +44,7 @@ export class MonoSynth extends Tone.Monophonic {
   }
 
   _triggerEnvelopeRelease( time ) {
-    nodeGraph.filter(node => node.type === 'envelope').forEach(node => {
+    this.options.filter(node => node.type === 'envelope').forEach(node => {
       this[node.id].triggerRelease( time );
       this[node.id].triggerRelease( time );
     });
@@ -51,9 +53,9 @@ export class MonoSynth extends Tone.Monophonic {
   }
 
   dispose() {
-    this._writable(this.properties);
+    this._writable( this.properties );
 
-    nodeGraph.forEach(node => {
+    this.options.forEach(node => {
       this[node.id].dispose();
       this[node.id] = null;
     });
