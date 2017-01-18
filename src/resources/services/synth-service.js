@@ -1,6 +1,7 @@
 import { inject } from 'aurelia-framework';
 import { EventAggregator } from 'aurelia-event-aggregator';
 
+import { AddNodeEvent } from '../tone/events/add-node';
 import { PolySynthService } from '../tone/services/poly-synth';
 
 import { mtof, vtog } from '../../lib/midi';
@@ -10,14 +11,7 @@ import { NOTE_ON, NOTE_OFF } from './midi-service';
 import { OnmidimessageEvent } from '../events/onmidimessage';
 import { SetSynthEvent } from '../events/set-synth';
 
-import { nodeGraph } from '../node-graph';
 import { MonoSynth } from '../mono-synth';
-
-const defaults = Array.prototype.concat( ...nodeGraph.map(node => {
-  return Object.keys( node.defaults ).map(key => {
-    return `${node.id}.${key}`;
-  });
-}));
 
 @inject( EventAggregator, PolySynthService )
 export class SynthService {
@@ -25,12 +19,16 @@ export class SynthService {
     this.ea = EventAggregator;
     this.poly = PolySynthService;
 
-    this.synth = this.poly.create( 10, MonoSynth, nodeGraph );
+    this.graph = [];
+    this.synth = this.create();
 
     this.boundOnMidimessage = this.onMidimessage.bind(this);
+    this.boundOnAddNode = this.onAddNode.bind(this);
+    this.boundOnSetSynth = this.onSetSynth.bind(this);
 
     this.ea.subscribe( OnmidimessageEvent, this.boundOnMidimessage );
-    this.ea.subscribe( SetSynthEvent, this.set );
+    this.ea.subscribe( AddNodeEvent, this.boundOnAddNode );
+    this.ea.subscribe( SetSynthEvent, this.boundOnSetSynth );
   }
 
   triggerAttack( freq, gain = 1 ) {
@@ -41,12 +39,26 @@ export class SynthService {
     this.synth.triggerRelease( freq );
   }
 
-  get( params = defaults ) {
+  get( params ) {
     return this.synth.get( params );
   }
 
   set( params ) {
     this.synth.set( params );
+  }
+
+  create() {
+    return this.poly.create( 10, MonoSynth, this.graph );
+  }
+
+  onAddNode( e ) {
+    this.graph.push( e.data );
+
+    this.synth = this.create();
+  }
+
+  onSetSynth( e ) {
+    this.set( e.data );
   }
 
   onMidimessage( e ) {

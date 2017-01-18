@@ -1,23 +1,27 @@
 import { inject } from 'aurelia-framework';
 import { EventAggregator } from 'aurelia-event-aggregator';
 
-import { SynthService } from '../resources/services/synth-service';
+import { AddNodeEvent } from '../resources/tone/events/add-node';
+
 import { SetSynthEvent } from '../resources/events/set-synth';
 
-@inject( EventAggregator, SynthService )
+@inject( EventAggregator )
 export class Settings {
-  constructor( EventAggregator, SynthService ) {
+  constructor( EventAggregator ) {
     this.ea = EventAggregator;
-    this.synth = SynthService;
 
-    this.params = this.synth.get();
+    this.params = {};
 
-    this.ea.subscribe( SetSynthEvent, e => {
-      this.params = e.data;
-    });
+    this.boundOnAddNode = this.onAddNode.bind(this);
+
+    this.ea.subscribe( AddNodeEvent, this.boundOnAddNode );
   }
 
   onChange( e ) {
     this.ea.publish( new SetSynthEvent( this.params ) );
+  }
+
+  onAddNode( e ) {
+    this.params[e.data.id] = e.data.defaults;
   }
 }

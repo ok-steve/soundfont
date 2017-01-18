@@ -3,25 +3,25 @@
     <ui-card>
       <h2>Oscillator</h2>
 
-      <tone-omni-oscillator model.two-way="params.oscillator"></tone-omni-oscillator>
+      <tone-omni-oscillator id="oscillator" connect="filter" model.two-way="params.oscillator"></tone-omni-oscillator>
     </ui-card>
 
     <ui-card>
       <h2>Amplitude Envelope</h2>
 
-      <tone-amplitude-envelope model.two-way="params.envelope"></tone-amplitude-envelope>
+      <tone-amplitude-envelope id="envelope" model.two-way="params.envelope"></tone-amplitude-envelope>
     </ui-card>
 
     <ui-card>
       <h2>Filter</h2>
 
-      <tone-filter model.two-way="params.filter"></tone-filter>
+      <tone-filter id="filter" connect="envelope" model.two-way="params.filter"></tone-filter>
     </ui-card>
 
     <ui-card>
       <h2>Frequency Envelope</h2>
 
-      <tone-frequency-envelope model.two-way="params.filterEnvelope"></tone-frequency-envelope>
+      <tone-frequency-envelope id="filterEnvelope" connect="filter.frequency" model.two-way="params.filterEnvelope"></tone-frequency-envelope>
     </ui-card>
   </div>
 </template>
