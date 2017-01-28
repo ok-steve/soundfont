@@ -9,10 +9,10 @@ import { AddNodeEvent } from '../events/add-node';
 export class ToneAmplitudeEnvelopeCustomElement {
   @bindable id;
   @bindable connect;
-  @bindable attack = 0.005;
-  @bindable decay = 0.1;
-  @bindable sustain = 0.9;
-  @bindable release = 1;
+  @bindable attack;
+  @bindable decay;
+  @bindable sustain;
+  @bindable release;
 
   constructor( EventAggregator ) {
     this.ea = EventAggregator;

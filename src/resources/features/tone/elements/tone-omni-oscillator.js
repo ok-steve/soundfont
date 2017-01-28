@@ -9,7 +9,9 @@ import { AddNodeEvent } from '../events/add-node';
 export class ToneOmniOscillatorCustomElement {
   @bindable id;
   @bindable connect;
-  @bindable type = 'square';
+  @bindable detune = 0;
+  @bindable type = 'sine';
+  @bindable phase = 0;
 
   constructor( EventAggregator ) {
     this.ea = EventAggregator;

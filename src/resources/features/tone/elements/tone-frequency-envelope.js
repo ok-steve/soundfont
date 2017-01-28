@@ -9,13 +9,13 @@ import { AddNodeEvent } from '../events/add-node';
 export class ToneFrequencyEnvelopeCustomElement {
   @bindable id;
   @bindable connect;
-  @bindable attack: 0.06;
-  @bindable decay: 0.2;
-  @bindable sustain: 0.5;
-  @bindable release: 2;
-  @bindable baseFrequency: 200;
-  @bindable octaves: 7;
-  @bindable exponent: 2;
+  @bindable attack;
+  @bindable decay;
+  @bindable sustain;
+  @bindable release;
+  @bindable baseFrequency = 200;
+  @bindable octaves = 4;
+  @bindable exponent = 2;
 
   constructor( EventAggregator ) {
     this.ea = EventAggregator;
