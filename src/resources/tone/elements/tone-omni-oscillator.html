@@ -1,9 +1,7 @@
 <template>
-  <ui-input>
-    <label for="oscillator-type">Type</label>
+  <label for="oscillator-type">Type</label>
 
-    <select id="oscillator-type" value.bind="model.type">
-      <option repeat.for="type of types" value.bind="type">${type}</option>
-    </select>
-  </ui-input>
+  <select id="oscillator-type" value.bind="model.type">
+    <option repeat.for="type of types" value.bind="type">${type}</option>
+  </select>
 </template>
