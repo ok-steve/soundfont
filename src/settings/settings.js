@@ -1,7 +1,7 @@
 import { inject } from 'aurelia-framework';
 import { EventAggregator } from 'aurelia-event-aggregator';
 
-import { AddNodeEvent } from '../resources/tone/events/add-node';
+import { AddNodeEvent } from '../resources/features/tone/events/add-node';
 
 import { SetSynthEvent } from '../resources/events/set-synth';
 

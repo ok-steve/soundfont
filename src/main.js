@@ -1,7 +1,7 @@
 export function configure( aurelia ) {
   aurelia.use
     //.developmentLogging()
-    .feature('resources/tone')
+    .feature('resources/features/tone')
     .standardConfiguration();
 
   //Uncomment the line below to enable animation.
