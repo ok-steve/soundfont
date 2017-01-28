@@ -9,7 +9,7 @@ import { AddNodeEvent } from '../events/add-node';
 export class ToneOmniOscillatorCustomElement {
   @bindable id;
   @bindable connect;
-  @bindable model;
+  @bindable type = 'square';
 
   constructor( EventAggregator ) {
     this.ea = EventAggregator;
@@ -26,7 +26,7 @@ export class ToneOmniOscillatorCustomElement {
       connect: this.connect,
       constructor: OmniOscillator,
       defaults: {
-        type: 'square'
+        type: this.type
       }
     };
   }

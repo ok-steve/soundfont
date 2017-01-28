@@ -1,7 +1,7 @@
 <template>
   <label for="oscillator-type">Type</label>
 
-  <select id="oscillator-type" value.bind="model.type">
+  <select id="oscillator-type" value.bind="type">
     <option repeat.for="type of types" value.bind="type">${type}</option>
   </select>
 </template>

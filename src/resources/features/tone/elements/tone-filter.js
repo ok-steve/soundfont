@@ -9,7 +9,9 @@ import { AddNodeEvent } from '../events/add-node';
 export class ToneFilterCustomElement {
   @bindable id;
   @bindable connect;
-  @bindable model;
+  @bindable Q = 6;
+  @bindable type = 'lowpass';
+  @bindable rolloff = -24;
 
   constructor( EventAggregator ) {
     this.ea = EventAggregator;
@@ -26,9 +28,9 @@ export class ToneFilterCustomElement {
       connect: this.connect,
       constructor: Filter,
       defaults: {
-        Q: 6,
-        type: 'lowpass',
-        rolloff: -24
+        Q: this.Q,
+        type: this.type,
+        rolloff: this.rolloff
       }
     };
   }

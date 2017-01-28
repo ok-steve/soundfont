@@ -9,7 +9,13 @@ import { AddNodeEvent } from '../events/add-node';
 export class ToneFrequencyEnvelopeCustomElement {
   @bindable id;
   @bindable connect;
-  @bindable model;
+  @bindable attack: 0.06;
+  @bindable decay: 0.2;
+  @bindable sustain: 0.5;
+  @bindable release: 2;
+  @bindable baseFrequency: 200;
+  @bindable octaves: 7;
+  @bindable exponent: 2;
 
   constructor( EventAggregator ) {
     this.ea = EventAggregator;
@@ -26,13 +32,13 @@ export class ToneFrequencyEnvelopeCustomElement {
       connect: this.connect,
       constructor: FrequencyEnvelope,
       defaults: {
-        attack: 0.06,
-        decay: 0.2,
-        sustain: 0.5,
-        release: 2,
-        baseFrequency: 200,
-        octaves: 7,
-        exponent: 2
+        attack: this.attack,
+        decay: this.decay,
+        sustain: this.sustain,
+        release: this.release,
+        baseFrequency: this.baseFrequency,
+        octaves: this.octaves,
+        exponent: this.exponent
       }
     };
   }

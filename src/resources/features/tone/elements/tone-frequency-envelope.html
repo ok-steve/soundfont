@@ -1,29 +1,29 @@
 <template>
   <label for="frequency-envelope-attack">Attack</label>
 
-  <input type="range" id="frequency-envelope-attack" min="0" max="1" step="0.001" value.bind="model.attack"
+  <input type="range" id="frequency-envelope-attack" min="0" max="1" step="0.001" value.bind="attack"
     aria-label="Attack">
-  <input type="number" min="0" max="1" step="0.001" value.bind="model.attack"
+  <input type="number" min="0" max="1" step="0.001" value.bind="attack"
     aria-hidden="true">
 
   <label for="frequency-envelope-decay">Decay</label>
 
-  <input type="range" id="frequency-envelope-decay" min="0" max="1" step="0.001" value.bind="model.decay"
+  <input type="range" id="frequency-envelope-decay" min="0" max="1" step="0.001" value.bind="decay"
     aria-label="Decay">
-  <input type="number" min="0" max="1" step="0.001" value.bind="model.decay"
+  <input type="number" min="0" max="1" step="0.001" value.bind="decay"
     aria-hidden="true">
 
   <label for="frequency-envelope-sustain">Sustain</label>
 
-  <input type="range" id="frequency-envelope-sustain" min="0" max="1" step="0.001" value.bind="model.sustain"
+  <input type="range" id="frequency-envelope-sustain" min="0" max="1" step="0.001" value.bind="sustain"
     aria-label="Sustain">
-  <input type="number" min="0" max="1" step="0.001" value.bind="model.sustain"
+  <input type="number" min="0" max="1" step="0.001" value.bind="sustain"
     aria-hidden="true">
 
   <label for="frequency-envelope-release">Release</label>
 
-  <input type="range" id="frequency-envelope-release" min="0" max="1" step="0.001" value.bind="model.release"
+  <input type="range" id="frequency-envelope-release" min="0" max="1" step="0.001" value.bind="release"
     aria-label="Release">
-  <input type="number" min="0" max="1" step="0.001" value.bind="model.release"
+  <input type="number" min="0" max="1" step="0.001" value.bind="release"
     aria-hidden="true">
 </template>
