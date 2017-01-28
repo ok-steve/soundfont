@@ -1,18 +1,17 @@
 import { inject } from 'aurelia-framework';
 import { EventAggregator } from 'aurelia-event-aggregator';
 
-import { NOTE_ON, NOTE_OFF, MidiService } from '../resources/services/midi-service';
+import { NOTE_ON, NOTE_OFF, toMessage } from '../lib/midi';
 import { OnmidimessageEvent } from '../resources/events/onmidimessage';
 
-@inject( EventAggregator, MidiService )
+@inject( EventAggregator )
 export class Piano {
-  constructor( EventAggregator, MidiService ) {
+  constructor( EventAggregator ) {
     this.ea = EventAggregator;
-    this.midi = MidiService;
   }
 
   sendMessage( status, note ) {
-    this.ea.publish( new OnmidimessageEvent( this.midi.toMessage(
+    this.ea.publish( new OnmidimessageEvent( toMessage(
       status,
       note
     ) ) );

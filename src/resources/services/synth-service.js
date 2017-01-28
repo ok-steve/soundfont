@@ -4,10 +4,7 @@ import { EventAggregator } from 'aurelia-event-aggregator';
 import { AddNodeEvent } from '../tone/events/add-node';
 import { PolySynthService } from '../tone/services/poly-synth';
 
-import { mtof, vtog } from '../../lib/midi';
-
-import { NOTE_ON, NOTE_OFF } from './midi-service';
-
+import { NOTE_ON, NOTE_OFF, mtof, vtog } from '../../lib/midi';
 import { OnmidimessageEvent } from '../events/onmidimessage';
 import { SetSynthEvent } from '../events/set-synth';
 
