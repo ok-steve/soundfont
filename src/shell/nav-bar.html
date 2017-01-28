@@ -1,6 +1,4 @@
 <template bindable="router">
-  <require from="../resources/elements/midi-select"></require>
-
   <header role="banner">
     <h1><a href="/">${router.title}</a></h1>
 
@@ -13,6 +11,6 @@
       </ul>
     </nav>
 
-    <midi-select></midi-select>
+    <slot></slot>
   </header>
 </template>
