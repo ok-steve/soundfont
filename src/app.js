@@ -1,5 +1,4 @@
 import { inject } from 'aurelia-framework';
-import { Router } from 'aurelia-router';
 import { EventAggregator } from 'aurelia-event-aggregator';
 
 import { KeyboardService } from './resources/services/keyboard-service';
@@ -10,15 +9,20 @@ import { OnmidimessageEvent } from './resources/events/onmidimessage';
 
 import { routes } from './shell/routes';
 
-@inject( EventAggregator, Router, KeyboardService, SynthService )
+@inject( EventAggregator, KeyboardService, SynthService )
 export class App {
-  constructor( EventAggregator, Router, KeyboardService, SynthService ) {
+  constructor( EventAggregator, KeyboardService, SynthService ) {
     this.ea = EventAggregator;
-    this.router = Router;
     this.keyboard = KeyboardService;
     this.synth = SynthService;
+  }
 
-    this.router.configure( routes );
+  configureRouter( config, router ) {
+    config.title = 'Synthia';
+    config.options.pushState = true;
+    config.map( routes );
+
+    this.router = router;
   }
 
   activate() {
