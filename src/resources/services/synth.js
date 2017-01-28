@@ -4,6 +4,8 @@ import { EventAggregator } from 'aurelia-event-aggregator';
 import { AddNodeEvent } from '../features/tone/events/add-node';
 import { PolySynthService } from '../features/tone/services/poly-synth';
 
+import { NOTE_ON, NOTE_OFF, mtof, vtog } from '../../lib/midi';
+import { OnmidimessageEvent } from '../events/onmidimessage';
 import { SetSynthEvent } from '../events/set-synth';
 
 import { MonoSynth } from '../mono-synth';
@@ -18,9 +20,11 @@ export class SynthService {
     this.synth = this.create();
 
     this.boundOnAddNode = this.onAddNode.bind(this);
+    this.boundOnMidimessage = this.onMidimessage.bind(this);
     this.boundOnSetSynth = this.onSetSynth.bind(this);
 
     this.ea.subscribe( AddNodeEvent, this.boundOnAddNode );
+    this.ea.subscribe( OnmidimessageEvent, this.boundOnMidimessage );
     this.ea.subscribe( SetSynthEvent, this.boundOnSetSynth );
   }
 
