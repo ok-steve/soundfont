@@ -18,17 +18,17 @@ export class KeyboardService {
   constructor( EventAggregator ) {
     this.ea = EventAggregator;
 
-    this.boundOnKeypress = this.onKeypress.bind( this );
+    this.boundOnKeypress = this.onKeypress.bind(this);
   }
 
   bind() {
-    window.addEventListener( 'keydown', this.boundOnKeypress, false );
-    window.addEventListener( 'keyup', this.boundOnKeypress, false );
+    window.addEventListener( 'keydown', this.boundOnKeypress );
+    window.addEventListener( 'keyup', this.boundOnKeypress );
   }
 
   unbind() {
-    window.removeEventListener('keydown');
-    window.removeEventListener('keyup');
+    window.removeEventListener( 'keydown', this.boundOnKeypress, false );
+    window.removeEventListener( 'keyup', this.boundOnKeypress, false );
   }
 
   onKeypress( e ) {

@@ -4,7 +4,7 @@ import { EventAggregator } from 'aurelia-event-aggregator';
 import { KeyboardService } from './resources/services/keyboard';
 import { SynthService } from './resources/services/synth';
 
-import { toMessage } from './lib/midi';
+import { NOTE_ON, NOTE_OFF, mtof, vtog, toMessage } from './lib/midi';
 import { OnmidimessageEvent } from './resources/events/onmidimessage';
 
 import { routes } from './shell/routes';
@@ -15,6 +15,8 @@ export class App {
     this.ea = EventAggregator;
     this.keyboard = KeyboardService;
     this.synth = SynthService;
+
+    this.ea.subscribe( OnmidimessageEvent, this.synth.onMidimessage );
   }
 
   configureRouter( config, router ) {
