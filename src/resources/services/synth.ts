@@ -1,4 +1,4 @@
-import { inject } from 'aurelia-framework';
+import { autoinject } from 'aurelia-framework';
 import { EventAggregator } from 'aurelia-event-aggregator';
 
 import { PolySynth, MonoSynth } from 'tone';
@@ -6,10 +6,14 @@ import { PolySynth, MonoSynth } from 'tone';
 import { NOTE_ON, NOTE_OFF, mtof, vtog } from '../../lib/midi';
 import { OnmidimessageEvent } from '../events/onmidimessage';
 
-@inject( EventAggregator )
+@autoinject
 export class SynthService {
-  constructor( EventAggregator ) {
-    this.ea = EventAggregator;
+  ea: EventAggregator;
+  synth: any;
+  boundOnMidimessage: EventListener;
+
+  constructor( ea: EventAggregator ) {
+    this.ea = ea;
     this.synth = new PolySynth( 10, MonoSynth ).toMaster();
 
     this.boundOnMidimessage = this.onMidimessage.bind(this);

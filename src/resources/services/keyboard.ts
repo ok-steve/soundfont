@@ -1,4 +1,4 @@
-import { inject } from 'aurelia-framework';
+import { autoinject } from 'aurelia-framework';
 import { EventAggregator } from 'aurelia-event-aggregator';
 
 import { NOTE_ON, NOTE_OFF, toMessage } from '../../lib/midi';
@@ -13,10 +13,13 @@ const keyToNote = ( key ) => {
   return (pitch + (12 * octave));
 };
 
-@inject( EventAggregator )
+@autoinject
 export class KeyboardService {
-  constructor( EventAggregator ) {
-    this.ea = EventAggregator;
+  ea: EventAggregator;
+  boundOnKeypress: EventListener;
+
+  constructor( ea: EventAggregator ) {
+    this.ea = ea;
 
     this.boundOnKeypress = this.onKeypress.bind(this);
   }
@@ -34,7 +37,7 @@ export class KeyboardService {
   onKeypress( e ) {
     const key = e.key;
 
-    if ( keys.includes( key ) && !e.repeat ) {
+    if ( keys.indexOf( key ) !== -1 && !e.repeat ) {
       let status;
 
       const note = keyToNote( key );

@@ -1,14 +1,19 @@
-import { bindable, inject } from 'aurelia-framework';
+import { bindable, autoinject } from 'aurelia-framework';
 
 import { WebmidiService } from '../services/webmidi';
 
-@inject( WebmidiService )
+@autoinject
 export class WebmidiAccessCustomElement {
+  midi: WebmidiService;
+  error: boolean;
+  devices: Array<any>;
+  activeDevice: any;
+
   @bindable type;
   @bindable midimessage;
 
-  constructor( WebmidiService ) {
-    this.midi = WebmidiService;
+  constructor( midi: WebmidiService ) {
+    this.midi = midi;
 
     this.midi.requestMidiAccess().then(access => {
       access.onstatechange = e => {

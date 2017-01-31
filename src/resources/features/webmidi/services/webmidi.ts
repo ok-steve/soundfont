@@ -1,7 +1,7 @@
 import 'web-midi-api';
 
 export class WebmidiService {
-  requestMidiAccess() {
+  requestMidiAccess(): any {
     return new Promise(( resolve, reject ) => {
       if ( navigator['requestMIDIAccess'] !== undefined ) {
         navigator.requestMIDIAccess().then(access => {

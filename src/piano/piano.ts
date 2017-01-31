@@ -1,13 +1,15 @@
-import { inject } from 'aurelia-framework';
+import { autoinject } from 'aurelia-framework';
 import { EventAggregator } from 'aurelia-event-aggregator';
 
 import { NOTE_ON, NOTE_OFF, toMessage } from '../lib/midi';
 import { OnmidimessageEvent } from '../resources/events/onmidimessage';
 
-@inject( EventAggregator )
+@autoinject
 export class Piano {
-  constructor( EventAggregator ) {
-    this.ea = EventAggregator;
+  ea: EventAggregator;
+
+  constructor( ea: EventAggregator ) {
+    this.ea = ea;
   }
 
   sendMessage( status, note ) {
