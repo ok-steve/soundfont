@@ -5,7 +5,6 @@ import { PolySynthService } from '../features/tone/services/poly-synth';
 
 import { NOTE_ON, NOTE_OFF, mtof, vtog } from '../../lib/midi';
 import { OnmidimessageEvent } from '../events/onmidimessage';
-import { SetSynthEvent } from '../events/set-synth';
 
 import { MonoSynth } from '../mono-synth';
 
@@ -19,10 +18,8 @@ export class SynthService {
     this.synth = this.create();
 
     this.boundOnMidimessage = this.onMidimessage.bind(this);
-    this.boundOnSetSynth = this.onSetSynth.bind(this);
 
     this.ea.subscribe( OnmidimessageEvent, this.boundOnMidimessage );
-    this.ea.subscribe( SetSynthEvent, this.boundOnSetSynth );
   }
 
   triggerAttack( freq, gain = 1 ) {
@@ -43,10 +40,6 @@ export class SynthService {
 
   create() {
     return this.poly.create( 10, MonoSynth, this.graph );
-  }
-
-  onSetSynth( e ) {
-    this.set( e.data );
   }
 
   onMidimessage( e ) {
