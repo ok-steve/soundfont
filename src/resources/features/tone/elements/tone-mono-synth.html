@@ -1,17 +1,17 @@
 <template>
   <h2>Oscillator</h2>
 
-  <tone-omni-oscillator id="oscillator" connect="filter" type.bind="oscillator.type"></tone-omni-oscillator>
+  <tone-omni-oscillator type.bind="oscillator.type"></tone-omni-oscillator>
 
   <h2>Amplitude Envelope</h2>
 
-  <tone-amplitude-envelope id="envelope" attack.bind="envelope.attack" decay.bind="envelope.decay" sustain.bind="envelope.sustain" release.bind="envelope.release"></tone-amplitude-envelope>
+  <tone-amplitude-envelope attack.bind="envelope.attack" decay.bind="envelope.decay" sustain.bind="envelope.sustain" release.bind="envelope.release"></tone-amplitude-envelope>
 
   <h2>Filter</h2>
 
-  <tone-filter id="filter" connect="envelope" type.bind="filter.type" rolloff.bind="filter.rolloff" q.bind="filter.Q"></tone-filter>
+  <tone-filter type.bind="filter.type" rolloff.bind="filter.rolloff" q.bind="filter.Q"></tone-filter>
 
   <h2>Frequency Envelope</h2>
 
-  <tone-frequency-envelope id="filterEnvelope" connect="filter.frequency" attack.bind="filterEnvelope.attack" decay.bind="filterEnvelope.decay" sustain.bind="filterEnvelope.sustain" release.bind="filterEnvelope.release"></tone-frequency-envelope>
+  <tone-frequency-envelope attack.bind="filterEnvelope.attack" decay.bind="filterEnvelope.decay" sustain.bind="filterEnvelope.sustain" release.bind="filterEnvelope.release"></tone-frequency-envelope>
 </template>

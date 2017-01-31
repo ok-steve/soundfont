@@ -1,7 +1,6 @@
 import { inject } from 'aurelia-framework';
 import { EventAggregator } from 'aurelia-event-aggregator';
 
-import { AddNodeEvent } from '../features/tone/events/add-node';
 import { PolySynthService } from '../features/tone/services/poly-synth';
 
 import { NOTE_ON, NOTE_OFF, mtof, vtog } from '../../lib/midi';
@@ -19,11 +18,9 @@ export class SynthService {
     this.graph = [];
     this.synth = this.create();
 
-    this.boundOnAddNode = this.onAddNode.bind(this);
     this.boundOnMidimessage = this.onMidimessage.bind(this);
     this.boundOnSetSynth = this.onSetSynth.bind(this);
 
-    this.ea.subscribe( AddNodeEvent, this.boundOnAddNode );
     this.ea.subscribe( OnmidimessageEvent, this.boundOnMidimessage );
     this.ea.subscribe( SetSynthEvent, this.boundOnSetSynth );
   }
@@ -46,12 +43,6 @@ export class SynthService {
 
   create() {
     return this.poly.create( 10, MonoSynth, this.graph );
-  }
-
-  onAddNode( e ) {
-    this.graph.push( e.data );
-
-    this.synth = this.create();
   }
 
   onSetSynth( e ) {
