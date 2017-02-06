@@ -1,5 +1,3 @@
-import 'web-midi-api';
-
 export class WebmidiService {
   requestMidiAccess(): any {
     return new Promise(( resolve, reject ) => {

@@ -25,15 +25,11 @@ System.config({
     "fetch": "github:github/fetch@1.1.1",
     "text": "github:systemjs/plugin-text@0.0.8",
     "tone": "npm:tone@0.8.0",
-    "web-midi-api": "npm:web-midi-api@1.4.4",
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.4.1"
     },
     "github:jspm/nodelibs-buffer@0.1.0": {
       "buffer": "npm:buffer@3.6.0"
-    },
-    "github:jspm/nodelibs-path@0.1.0": {
-      "path-browserify": "npm:path-browserify@0.0.0"
     },
     "github:jspm/nodelibs-process@0.1.2": {
       "process": "npm:process@0.11.9"
@@ -184,15 +180,6 @@ System.config({
     "npm:inherits@2.0.1": {
       "util": "github:jspm/nodelibs-util@0.1.0"
     },
-    "npm:jazz-midi@1.5.3": {
-      "process": "github:jspm/nodelibs-process@0.1.2"
-    },
-    "npm:path-browserify@0.0.0": {
-      "process": "github:jspm/nodelibs-process@0.1.2"
-    },
-    "npm:performance-now@2.0.0": {
-      "process": "github:jspm/nodelibs-process@0.1.2"
-    },
     "npm:process@0.11.9": {
       "assert": "github:jspm/nodelibs-assert@0.1.0",
       "fs": "github:jspm/nodelibs-fs@0.1.2",
@@ -208,13 +195,6 @@ System.config({
     },
     "npm:vm-browserify@0.0.4": {
       "indexof": "npm:indexof@0.0.1"
-    },
-    "npm:web-midi-api@1.4.4": {
-      "fs": "github:jspm/nodelibs-fs@0.1.2",
-      "jazz-midi": "npm:jazz-midi@1.5.3",
-      "path": "github:jspm/nodelibs-path@0.1.0",
-      "performance-now": "npm:performance-now@2.0.0",
-      "process": "github:jspm/nodelibs-process@0.1.2"
     }
   }
 });
