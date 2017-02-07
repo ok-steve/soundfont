@@ -27,6 +27,7 @@
   },
   "globalDependencies": {
     "Tone": "github:Tonejs/TypeScript/Tone.d.ts",
+    "service_worker_api": "registry:dt/service_worker_api#0.0.0+20170102221807",
     "url": "github:aurelia/fetch-client/doc/url.d.ts#bbe0777ef710d889a05759a65fa2c9c3865fc618",
     "webmidi": "registry:dt/webmidi#0.0.0+20160726191732",
     "whatwg-fetch": "registry:dt/whatwg-fetch#0.0.0+20160524142046"
