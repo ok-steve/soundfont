@@ -2,7 +2,6 @@ import { autoinject } from 'aurelia-framework';
 import { EventAggregator } from 'aurelia-event-aggregator';
 
 import { NOTE_ON, NOTE_OFF, toMessage } from '../../lib/midi';
-import { OnmidimessageEvent } from '../events/onmidimessage';
 
 const keys = ['a','w','s','e','d','f','t','g','y','h','u','j'];
 
@@ -51,10 +50,10 @@ export class KeyboardService {
           break;
       }
 
-      this.ea.publish( new OnmidimessageEvent( toMessage(
+      this.ea.publish( 'midimessage', toMessage(
         status,
         note
-      ) ) );
+      ) );
     }
   }
 }

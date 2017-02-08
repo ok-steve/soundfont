@@ -4,7 +4,6 @@ import { EventAggregator } from 'aurelia-event-aggregator';
 import { PolySynth, MonoSynth } from 'tone';
 
 import { NOTE_ON, NOTE_OFF, mtof, vtog } from '../../lib/midi';
-import { OnmidimessageEvent } from '../events/onmidimessage';
 
 @autoinject
 export class SynthService {
@@ -18,7 +17,7 @@ export class SynthService {
 
     this.boundOnMidimessage = this.onMidimessage.bind(this);
 
-    this.ea.subscribe( OnmidimessageEvent, this.boundOnMidimessage );
+    this.ea.subscribe( 'midimessage', this.boundOnMidimessage );
   }
 
   triggerAttack( freq, gain = 1 ) {

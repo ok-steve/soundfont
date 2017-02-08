@@ -1,18 +1,22 @@
 import { bindable, autoinject } from 'aurelia-framework';
+import { EventAggregator } from 'aurelia-event-aggregator';
 
 import { WebmidiService } from '../services/webmidi';
 
+import { toMessage } from '../../../../lib/midi';
+
 @autoinject
 export class WebmidiAccessCustomElement {
+  ea: EventAggregator;
   midi: WebmidiService;
   error: boolean;
   devices: Array<any>;
   activeDevice: any;
 
   @bindable type;
-  @bindable midimessage;
 
-  constructor( midi: WebmidiService ) {
+  constructor( ea: EventAggregator, midi: WebmidiService ) {
+    this.ea = ea;
     this.midi = midi;
 
     this.midi.requestMidiAccess().then(access => {
@@ -39,6 +43,8 @@ export class WebmidiAccessCustomElement {
       return device;
     });
 
-    this.activeDevice.onmidimessage = this.midimessage;
+    this.activeDevice.onmidimessage = e => {
+      this.ea.publish( 'midimessage', toMessage( ...e.data ) );
+    };
   }
 }

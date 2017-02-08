@@ -2,7 +2,6 @@ import { autoinject } from 'aurelia-framework';
 import { EventAggregator } from 'aurelia-event-aggregator';
 
 import { NOTE_ON, NOTE_OFF, toMessage } from '../lib/midi';
-import { OnmidimessageEvent } from '../resources/events/onmidimessage';
 
 @autoinject
 export class Piano {
@@ -13,10 +12,10 @@ export class Piano {
   }
 
   sendMessage( status, note ) {
-    this.ea.publish( new OnmidimessageEvent( toMessage(
+    this.ea.publish( 'midimessage', toMessage(
       status,
       note
-    ) ) );
+    ) );
   }
 
   onMousedown( e ) {
