@@ -3,6 +3,7 @@ import {Aurelia} from 'aurelia-framework';
 export function configure(aurelia: Aurelia) {
   aurelia.use
     //.developmentLogging()
+    .feature('resources/features/mdl')
     .feature('resources/features/tone')
     .feature('resources/features/webmidi')
     .standardConfiguration();

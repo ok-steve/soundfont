@@ -1,16 +1,5 @@
 <template bindable="router">
-  <header role="banner">
-    <h1>
-      <a href="/">${router.title}</a>
-    </h1>
-
-    <nav role="navigation">
-      <ul>
-        <li repeat.for="row of router.navigation" class="${row.isActive ? 'is-active' : ''}">
-          <a href.bind="row.href">${row.title}</a>
-        </li>
-        <li><a href="https://github.com/sccherry/synthia">About</a></li>
-      </ul>
-    </nav>
-  </header>
+  <mdl-navigation links.bind="router.navigation">
+    <a class="mdl-navigation__link" href="https://github.com/sccherry/synthia">About</a>
+  </mdl-navigation>
 </template>

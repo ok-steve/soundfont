@@ -23,6 +23,7 @@ System.config({
     "aurelia-templating-router": "npm:aurelia-templating-router@1.0.1",
     "bluebird": "npm:bluebird@3.4.1",
     "fetch": "github:github/fetch@1.1.1",
+    "material-design-lite": "github:google/material-design-lite@1.3.0",
     "text": "github:systemjs/plugin-text@0.0.8",
     "tone": "npm:tone@0.8.0",
     "github:jspm/nodelibs-assert@0.1.0": {

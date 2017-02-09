@@ -27,6 +27,7 @@
   },
   "globalDependencies": {
     "Tone": "github:Tonejs/TypeScript/Tone.d.ts",
+    "material-design-lite": "registry:dt/material-design-lite#1.1.3+20160510002910",
     "service_worker_api": "registry:dt/service_worker_api#0.0.0+20170102221807",
     "url": "github:aurelia/fetch-client/doc/url.d.ts#bbe0777ef710d889a05759a65fa2c9c3865fc618",
     "webmidi": "registry:dt/webmidi#0.0.0+20160726191732",

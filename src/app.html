@@ -1,9 +1,17 @@
 <template>
   <require from="./shell/nav-bar.html"></require>
 
-  <nav-bar router.bind="router"></nav-bar>
+  <mdl-layout>
+    <mdl-layout-header>
+      <mdl-layout-title>${router.title}</mdl-layout-title>
+    </mdl-layout-header>
 
-  <main role="main">
-    <router-view></router-view>
-  </main>
+    <mdl-layout-drawer>
+      <nav-bar router.bind="router"></nav-bar>
+    </mdl-layout-drawer>
+
+    <mdl-layout-content>
+      <router-view></router-view>
+    </mdl-layout-content>
+  </mdl-layout>
 </template>
