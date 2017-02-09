@@ -1,6 +1,14 @@
 export const routes = [{
   route: [
     '',
+    'index'
+  ],
+  name: 'home',
+  moduleId: './home/home',
+  nav: true,
+  title: 'Home'
+}, {
+  route: [
     'settings'
   ],
   name: 'settings',
