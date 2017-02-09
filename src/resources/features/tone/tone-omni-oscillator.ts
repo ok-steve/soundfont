@@ -1,6 +1,6 @@
 import { bindable } from 'aurelia-framework';
 
-import { OmniOscillator } from 'tone';
+import 'tone';
 
 export class ToneOmniOscillatorCustomElement {
   @bindable frequency = 440;

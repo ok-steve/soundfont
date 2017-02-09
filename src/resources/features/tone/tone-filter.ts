@@ -1,6 +1,6 @@
 import { bindable } from 'aurelia-framework';
 
-import { Filter } from 'tone';
+import 'tone';
 
 export class ToneFilterCustomElement {
   @bindable frequency = 350;

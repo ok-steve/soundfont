@@ -1,6 +1,6 @@
 import { bindable } from 'aurelia-framework';
 
-import { MonoSynth } from 'tone';
+import 'tone';
 
 export class ToneMonoSynthCustomElement {
   @bindable frequency = 'C4';

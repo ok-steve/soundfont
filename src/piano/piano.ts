@@ -1,7 +1,7 @@
 import { autoinject } from 'aurelia-framework';
 import { EventAggregator } from 'aurelia-event-aggregator';
 
-import { NOTE_ON, NOTE_OFF, toMessage } from '../lib/midi';
+import { NOTE_ON, NOTE_OFF, toMessage } from '../lib/func/utilities';
 
 @autoinject
 export class Piano {

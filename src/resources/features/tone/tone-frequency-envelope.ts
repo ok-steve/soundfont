@@ -1,6 +1,6 @@
 import { bindable } from 'aurelia-framework';
 
-import { FrequencyEnvelope } from 'tone';
+import 'tone';
 
 export class ToneFrequencyEnvelopeCustomElement {
   @bindable attack;
