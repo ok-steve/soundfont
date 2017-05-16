@@ -1,7 +1,5 @@
 import { bindable } from 'aurelia-framework';
 
-import 'tone';
-
 export class ToneFrequencyEnvelopeCustomElement {
   @bindable attack;
   @bindable decay;
