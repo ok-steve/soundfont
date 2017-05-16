@@ -1,5 +1,6 @@
-import { bindable } from 'aurelia-framework';
+import { bindable, containerless } from 'aurelia-framework';
 
+@containerless()
 export class MdlSliderCustomElement {
   @bindable min = 0;
   @bindable max = 100;
