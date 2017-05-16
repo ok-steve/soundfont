@@ -1,6 +1,6 @@
 import { inject } from 'aurelia-framework';
 
-import { mtof, vtog } from './lib/func/utilities';
+import { midiToNote, velocityToGain } from './lib/utilities';
 
 import { MidimessageService } from './resources/services/midimessage';
 import { SynthService } from './resources/services/synth';
@@ -22,14 +22,22 @@ export class App {
     this.triggerSynth( e.detail );
   }
 
+  setSoundfont( e ) {
+    this.synth.set({
+      player: {
+        type: e.target.value
+      }
+    });
+  }
+
   triggerSynth( message ) {
     switch( message.status ) {
       case 144:
-        this.synth.triggerAttack( mtof( message.data[0] ), vtog( message.data[1] ) );
+        this.synth.triggerAttack( midiToNote( message.data[0] ), velocityToGain( message.data[1] ) );
         break;
 
       case 128:
-        this.synth.triggerRelease( mtof( message.data[0] ) );
+        this.synth.triggerRelease( midiToNote( message.data[0] ) );
         break;
     }
   }

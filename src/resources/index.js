@@ -3,6 +3,7 @@ export function configure( config ) {
     './elements/input-range',
     './elements/input-select',
     './elements/piano-roll',
+    './elements/soundfont',
     './elements/webmidi-access',
 
     './mdl/mdl-card',

@@ -12,7 +12,7 @@
 
     <mdl-layout-content>
       <webmidi-access type="inputs" midimessage.delegate="onMidimessage($event)"></webmidi-access>
-      <tone-synth></tone-synth>
+      <soundfont type="acoustic_grand_piano" change.delegate="setSoundfont($event)"></soundfont>
       <piano-roll midimessage.delegate="onMidimessage($event)"></piano-roll>
     </mdl-layout-content>
   </mdl-layout>
