@@ -1,21 +1,6 @@
 <template>
-  <label for="">Attack</label>
-
-  <mdl-slider id="" min="0" max="1" step="0.001" value.two-way="attack"></mdl-slider>
-  <mdl-textfield type="number" min="0" max="1" step="0.001" value.two-way="attack" label="Attack"></mdl-textfield>
-
-  <label for="">Decay</label>
-
-  <mdl-slider id="" min="0" max="1" step="0.001" value.two-way="decay"></mdl-slider>
-  <mdl-textfield type="number" min="0" max="1" step="0.001" value.two-way="decay" label="Decay"></mdl-textfield>
-
-  <label for="">Sustain</label>
-
-  <mdl-slider id="" min="0" max="1" step="0.001" value.two-way="sustain"></mdl-slider>
-  <mdl-textfield type="number" min="0" max="1" step="0.001" value.two-way="sustain" label="Sustain"></mdl-textfield>
-
-  <label for="">Release</label>
-
-  <mdl-slider id="" min="0" max="1" step="0.001" value.two-way="release"></mdl-slider>
-  <mdl-textfield type="number" min="0" max="1" step="0.001" value.two-way="release" label="Release"></mdl-textfield>
+  <input-range label="Attack" min="0" max="1" step="0.001" value.bind="attack"></input-range>
+  <input-range label="Decay" min="0" max="1" step="0.001" value.bind="decay"></input-range>
+  <input-range label="Sustain" min="0" max="1" step="0.001" value.bind="sustain"></input-range>
+  <input-range label="Release" min="0" max="1" step="0.001" value.bind="release"></input-range>
 </template>

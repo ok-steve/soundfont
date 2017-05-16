@@ -1,7 +1,3 @@
 <template>
-  <label for="">Type</label>
-
-  <select id="" value.bind="type">
-    <option repeat.for="type of types" value.bind="type">${type}</option>
-  </select>
+  <input-select label="Type" options.bind="types" value.bind="type"></input-select>
 </template>
