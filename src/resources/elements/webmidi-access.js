@@ -6,9 +6,15 @@ import 'rxjs/add/observable/fromEvent';
 import 'rxjs/add/observable/merge';
 import 'rxjs/add/operator/mergeMap';
 
-import { requestMidiAccess } from '../../lib/func/webmidi';
+const request = () => {
+  if ( navigator['requestMIDIAccess'] === undefined ) {
+    return Promise.reject( new Error('MIDI is not supported on this device') );
+  }
 
-const request = Observable.fromEvent( requestMidiAccess() );
+  return navigator.requestMIDIAccess();
+}
+
+const requestAccess = Observable.fromEvent( request() );
 
 @inject( Element )
 export class WebmidiAccessCustomElement {
@@ -20,8 +26,8 @@ export class WebmidiAccessCustomElement {
     this.boundOnMidimessage = this.onMidimessage.bind(this);
 
     Observable.merge(
-      request,
-      request.mergeMap(access => Observable.fromEvent( access, 'statechange' ))
+      requestAccess,
+      requestAccess.mergeMap(access => Observable.fromEvent( access, 'statechange' ))
     ).subscribe(access => {
       this.devices = new Map( access[this.type] );
     }, err => {
