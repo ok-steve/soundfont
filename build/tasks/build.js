@@ -11,14 +11,6 @@ var notify = require('gulp-notify');
 var browserSync = require('browser-sync');
 var htmlmin = require('gulp-htmlmin');
 
-var csscomb = require('gulp-csscomb');
-var postcss = require('gulp-postcss');
-var autoprefixer = require('autoprefixer');
-var calc = require('postcss-calc');
-var customProperties = require('postcss-custom-properties');
-var importCss = require('postcss-import');
-var stylelint = require('gulp-stylelint');
-
 // transpiles changed es6 files to SystemJS format
 // the plumber() call prevents 'pipe breaking' caused
 // by errors from other gulp plugins
@@ -42,24 +34,10 @@ gulp.task('build-html', function() {
     .pipe(gulp.dest(paths.output));
 });
 
-// formats css in place
-gulp.task('prebuild-css', function() {
-  return gulp.src(paths.css)
-    .pipe(csscomb())
-    .pipe(gulp.dest(paths.root));
-});
-
 // copies changed css files to the output directory
-gulp.task('build-css', ['prebuild-css'], function() {
+gulp.task('build-css', function() {
   return gulp.src(paths.css)
     .pipe(changed(paths.output, {extension: '.css'}))
-    .pipe(postcss([
-      importCss(),
-      customProperties(),
-      calc(),
-      autoprefixer()
-    ]))
-    .pipe(stylelint())
     .pipe(gulp.dest(paths.output))
     .pipe(browserSync.stream());
 });
