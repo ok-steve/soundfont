@@ -1,7 +1,7 @@
 import { inject } from 'aurelia-framework';
 import { EventAggregator } from 'aurelia-event-aggregator';
 
-import { NOTE_ON, NOTE_OFF, toMessage } from '../lib/func/utilities';
+import { NOTE_ON, NOTE_OFF, toMessage } from '../../lib/func/utilities';
 
 @inject( EventAggregator )
 export class Piano {

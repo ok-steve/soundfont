@@ -2,6 +2,7 @@ export function configure( config ) {
   config.globalResources([
     './elements/input-range',
     './elements/input-select',
+    './elements/piano-roll',
     './elements/webmidi-access',
 
     './mdl/mdl-card',

@@ -3,15 +3,16 @@
 
   <mdl-layout>
     <mdl-layout-header>
-      <mdl-layout-title>${router.title}</mdl-layout-title>
+      <mdl-layout-title>${title}</mdl-layout-title>
     </mdl-layout-header>
 
     <mdl-layout-drawer>
-      <nav-bar router.bind="router"></nav-bar>
+      <nav-bar links.bind="links"></nav-bar>
     </mdl-layout-drawer>
 
     <mdl-layout-content>
-      <router-view></router-view>
+      <tone-mono-synth></tone-mono-synth>
+      <piano-roll></piano-roll>
     </mdl-layout-content>
   </mdl-layout>
 </template>
