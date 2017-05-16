@@ -1,17 +1,13 @@
-import { autoinject } from 'aurelia-framework';
+import { inject } from 'aurelia-framework';
 import { EventAggregator } from 'aurelia-event-aggregator';
 
 import 'tone';
 
 import { NOTE_ON, NOTE_OFF, mtof, vtog } from '../../lib/func/utilities';
 
-@autoinject
+@inject( EventAggregator )
 export class SynthService {
-  ea: EventAggregator;
-  synth: any;
-  boundOnMidimessage: EventListener;
-
-  constructor( ea: EventAggregator ) {
+  constructor( ea ) {
     this.ea = ea;
     this.synth = new Tone.PolySynth( 10 ).toMaster();
 

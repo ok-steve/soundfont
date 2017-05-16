@@ -1,6 +1,4 @@
-import {Aurelia} from 'aurelia-framework';
-
-export function configure(aurelia: Aurelia) {
+export function configure( aurelia ) {
   aurelia.use
     //.developmentLogging()
     .feature('resources/features/mdl')

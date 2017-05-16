@@ -1,4 +1,4 @@
-import { autoinject } from 'aurelia-framework';
+import { inject } from 'aurelia-framework';
 import { EventAggregator } from 'aurelia-event-aggregator';
 
 import { NOTE_ON, NOTE_OFF, toMessage } from '../../lib/func/utilities';
@@ -12,12 +12,9 @@ const keyToNote = ( key ) => {
   return (pitch + (12 * octave));
 };
 
-@autoinject
+@inject( EventAggregator )
 export class KeyboardService {
-  ea: EventAggregator;
-  boundOnKeypress: EventListener;
-
-  constructor( ea: EventAggregator ) {
+  constructor( ea ) {
     this.ea = ea;
 
     this.boundOnKeypress = this.onKeypress.bind(this);

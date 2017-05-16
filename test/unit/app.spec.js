@@ -1,8 +1,6 @@
 import {App} from '../../src/app';
 
 class RouterStub {
-  routes;
-
   configure(handler) {
     handler(this);
   }
@@ -13,7 +11,8 @@ class RouterStub {
 }
 
 describe('the App module', () => {
-  var sut, mockedRouter;
+  var sut;
+  var mockedRouter;
 
   beforeEach(() => {
     mockedRouter = new RouterStub();
@@ -30,14 +29,14 @@ describe('the App module', () => {
   });
 
   it('should have a welcome route', () => {
-    expect(sut.router.routes).toContain({ route: ['','welcome'], name: 'welcome',  moduleId: 'welcome', nav: true, title:'Welcome' });
+    expect(sut.router.routes).toContain({ route: ['', 'welcome'], name: 'welcome',  moduleId: 'welcome', nav: true, title: 'Welcome' });
   });
 
   it('should have a users route', () => {
-     expect(sut.router.routes).toContain({ route: 'users', name: 'users', moduleId: 'users', nav: true, title:'Github Users' });
+    expect(sut.router.routes).toContain({ route: 'users', name: 'users', moduleId: 'users', nav: true, title: 'Github Users' });
   });
 
   it('should have a child router route', () => {
-    expect(sut.router.routes).toContain({ route: 'child-router', name: 'child-router', moduleId: 'child-router', nav: true, title:'Child Router' });
+    expect(sut.router.routes).toContain({ route: 'child-router', name: 'child-router', moduleId: 'child-router', nav: true, title: 'Child Router' });
   });
 });

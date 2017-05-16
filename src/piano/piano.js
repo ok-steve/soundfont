@@ -1,13 +1,11 @@
-import { autoinject } from 'aurelia-framework';
+import { inject } from 'aurelia-framework';
 import { EventAggregator } from 'aurelia-event-aggregator';
 
 import { NOTE_ON, NOTE_OFF, toMessage } from '../lib/func/utilities';
 
-@autoinject
+@inject( EventAggregator )
 export class Piano {
-  ea: EventAggregator;
-
-  constructor( ea: EventAggregator ) {
+  constructor( ea ) {
     this.ea = ea;
   }
 

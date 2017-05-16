@@ -1,19 +1,14 @@
-import { bindable, autoinject } from 'aurelia-framework';
+import { bindable, inject } from 'aurelia-framework';
 import { EventAggregator } from 'aurelia-event-aggregator';
 
 import { toMessage } from '../../../lib/func/utilities';
 import { requestMidiAccess } from '../../../lib/func/webmidi';
 
-@autoinject
+@inject( EventAggregator )
 export class WebmidiAccessCustomElement {
-  ea: EventAggregator;
-  error: boolean;
-  devices: Array<any>;
-  activeDevice: any;
-
   @bindable type;
 
-  constructor( ea: EventAggregator ) {
+  constructor( ea ) {
     this.ea = ea;
 
     requestMidiAccess().then(access => {

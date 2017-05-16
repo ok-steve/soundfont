@@ -2,8 +2,6 @@ import { bindable, containerless } from 'aurelia-framework';
 
 @containerless()
 export class MdlCellCustomElement {
-  public classList: string = '';
-
   @bindable col;
 
   bind() {

@@ -1,4 +1,4 @@
-export function requestMidiAccess(): any {
+export function requestMidiAccess() {
   return new Promise(( resolve, reject ) => {
     if ( navigator['requestMIDIAccess'] !== undefined ) {
       navigator.requestMIDIAccess().then(access => {

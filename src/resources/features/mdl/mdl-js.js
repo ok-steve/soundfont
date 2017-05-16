@@ -1,12 +1,10 @@
-import { autoinject } from 'aurelia-framework';
+import { inject } from 'aurelia-framework';
 
 import 'material-design-lite';
 
-@autoinject
+@inject( Element )
 export class MdlJsCustomAttribute {
-  element: Element;
-
-  constructor( element: Element ) {
+  constructor( element ) {
     this.element = element;
   }
 
