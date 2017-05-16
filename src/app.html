@@ -11,8 +11,9 @@
     </mdl-layout-drawer>
 
     <mdl-layout-content>
+      <webmidi-access type="inputs" midimessage.delegate="onMidimessage($event)"></webmidi-access>
       <tone-synth></tone-synth>
-      <piano-roll></piano-roll>
+      <piano-roll midimessage.delegate="onMidimessage($event)"></piano-roll>
     </mdl-layout-content>
   </mdl-layout>
 </template>

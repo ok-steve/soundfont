@@ -1,30 +1,39 @@
 import { inject } from 'aurelia-framework';
-import { EventAggregator } from 'aurelia-event-aggregator';
 
-import { NOTE_ON, NOTE_OFF, toMessage } from '../../lib/func/utilities';
-
-@inject( EventAggregator )
-export class Piano {
-  constructor( ea ) {
-    this.ea = ea;
+@inject( Element )
+export class PianoRollCustomElement {
+  constructor( element ) {
+    this.element = element;
   }
 
-  sendMessage( status, note ) {
-    this.ea.publish( 'midimessage', toMessage(
-      status,
-      note
-    ) );
+  sendMessage( detail ) {
+    const e =  new CustomEvent( 'midimessage', {
+      bubbles: true,
+      detail: detail
+    } );
+
+    this.element.dispatchEvent( e );
   }
 
   onMousedown( e ) {
+    e.stopPropagation();
+
     const note = e.target.getAttribute('data-midi');
 
-    this.sendMessage( NOTE_ON, note );
+    this.sendMessage({
+      status: 144,
+      data: [note, 127]
+    });
   }
 
   onMouseup( e ) {
+    e.stopPropagation();
+
     const note = e.target.getAttribute('data-midi');
 
-    this.sendMessage( NOTE_OFF, note );
+    this.sendMessage({
+      status: 128,
+      data: [note, 127]
+    });
   }
 }

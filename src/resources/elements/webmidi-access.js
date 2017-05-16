@@ -1,25 +1,30 @@
 import { bindable, inject } from 'aurelia-framework';
-import { EventAggregator } from 'aurelia-event-aggregator';
 
-import { toMessage } from '../../lib/func/utilities';
+import { Observable } from 'rxjs/Observable';
+
+import 'rxjs/add/observable/fromEvent';
+import 'rxjs/add/observable/merge';
+import 'rxjs/add/operator/mergeMap';
+
 import { requestMidiAccess } from '../../lib/func/webmidi';
 
-@inject( EventAggregator )
+const request = Observable.fromEvent( requestMidiAccess() );
+
+@inject( Element )
 export class WebmidiAccessCustomElement {
   @bindable type;
 
-  constructor( ea ) {
-    this.ea = ea;
+  constructor( element ) {
+    this.element = element;
 
-    requestMidiAccess().then(access => {
-      access.onstatechange = e => {
-        this.devices = Array.from( e.target[this.type].values() );
-      };
+    this.boundOnMidimessage = this.onMidimessage.bind(this);
 
-      return access[this.type];
-    }).then(devices => {
-      this.devices = Array.from( devices.values() );
-    }).catch(err => {
+    Observable.merge(
+      request,
+      request.mergeMap(access => Observable.fromEvent( access, 'statechange' ))
+    ).subscribe(access => {
+      this.devices = new Map( access[this.type] );
+    }, err => {
       this.error = true;
 
       console.log( err.message );
@@ -27,16 +32,26 @@ export class WebmidiAccessCustomElement {
   }
 
   onChange( e ) {
-    this.devices.map(device => {
+    e.stopPropagation();
+
+    this.devices.forEach(device => {
       if ( device.onmidimessage !== null ) {
         device.onmidimessage = null;
       }
-
-      return device;
     });
 
-    this.activeDevice.onmidimessage = e => {
-      this.ea.publish( 'midimessage', toMessage( ...e.data ) );
-    };
+    this.activeDevice.onmidimessage = this.boundOnMidimessage;
+  }
+
+  onMidimessage( e ) {
+    const ce = new CustomEvent( 'midimessage', {
+      bubbles: true,
+      detail: {
+        status: e.data[0],
+        data: [e.data[1], e.data[2]]
+      }
+    } );
+
+    this.element.dispatchEvent( ce );
   }
 }

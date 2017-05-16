@@ -19,6 +19,7 @@ System.config({
     "aurelia-templating-resources": "npm:aurelia-templating-resources@1.4.0",
     "fetch": "github:github/fetch@1.1.1",
     "material-design-lite": "github:google/material-design-lite@1.3.0",
+    "rxjs": "npm:rxjs@5.4.0",
     "text": "github:systemjs/plugin-text@0.0.8",
     "tone": "npm:tone@0.10.0",
     "github:jspm/nodelibs-assert@0.1.0": {
@@ -168,6 +169,11 @@ System.config({
       "assert": "github:jspm/nodelibs-assert@0.1.0",
       "fs": "github:jspm/nodelibs-fs@0.1.2",
       "vm": "github:jspm/nodelibs-vm@0.1.0"
+    },
+    "npm:rxjs@5.4.0": {
+      "buffer": "github:jspm/nodelibs-buffer@0.1.1",
+      "process": "github:jspm/nodelibs-process@0.1.2",
+      "symbol-observable": "npm:symbol-observable@1.0.4"
     },
     "npm:tone@0.10.0": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.1",
