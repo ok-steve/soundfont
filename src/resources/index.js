@@ -23,6 +23,7 @@ export function configure( config ) {
     './tone/tone-filter',
     './tone/tone-frequency-envelope',
     './tone/tone-mono-synth',
-    './tone/tone-omni-oscillator'
+    './tone/tone-omni-oscillator',
+    './tone/tone-synth'
   ]);
 }
