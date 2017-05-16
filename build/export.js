@@ -7,7 +7,6 @@ module.exports = {
     'config.js',
     'favicon.ico',
     'LICENSE',
-    "jspm_packages/npm/bluebird@3.4.1/js/browser/bluebird.min.js",
     'jspm_packages/system.js',
     'jspm_packages/system-polyfills.js',
     'jspm_packages/system-csp-production.js',
@@ -19,21 +18,5 @@ module.exports = {
   // must be 'normalized' by jspm to get the proper
   // path.
   'normalize': [
-    [
-      // include font-awesome.css and its fonts files
-      'font-awesome', [
-        '/css/font-awesome.min.css',
-        '/fonts/*'
-      ]
-    ], [
-      // include bootstrap's font files
-      'bootstrap', [
-        '/fonts/*'
-      ]
-    ], [
-      'bluebird', [
-        '/js/browser/bluebird.min.js'
-      ]
-    ]
   ]
 };

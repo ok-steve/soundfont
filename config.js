@@ -15,7 +15,6 @@ System.config({
     "aurelia-history-browser": "npm:aurelia-history-browser@1.0.0",
     "aurelia-loader-default": "npm:aurelia-loader-default@1.0.2",
     "aurelia-logging-console": "npm:aurelia-logging-console@1.0.0",
-    "bluebird": "npm:bluebird@3.4.1",
     "aurelia-pal-browser": "npm:aurelia-pal-browser@1.2.1",
     "aurelia-polyfills": "npm:aurelia-polyfills@1.2.1",
     "aurelia-router": "npm:aurelia-router@1.3.0",
@@ -166,9 +165,6 @@ System.config({
       "aurelia-pal": "npm:aurelia-pal@1.3.0",
       "aurelia-path": "npm:aurelia-path@1.1.1",
       "aurelia-task-queue": "npm:aurelia-task-queue@1.2.0"
-    },
-    "npm:bluebird@3.4.1": {
-      "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:buffer@5.0.6": {
       "base64-js": "npm:base64-js@1.2.0",
