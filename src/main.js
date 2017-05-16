@@ -1,9 +1,7 @@
 export function configure( aurelia ) {
   aurelia.use
     //.developmentLogging()
-    .feature('resources/features/mdl')
-    .feature('resources/features/tone')
-    .feature('resources/features/webmidi')
+    .feature('resources')
     .standardConfiguration();
 
   // Uncomment the line below to enable animation.

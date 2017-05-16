@@ -1,8 +1,8 @@
 import { bindable, inject } from 'aurelia-framework';
 import { EventAggregator } from 'aurelia-event-aggregator';
 
-import { toMessage } from '../../../lib/func/utilities';
-import { requestMidiAccess } from '../../../lib/func/webmidi';
+import { toMessage } from '../../lib/func/utilities';
+import { requestMidiAccess } from '../../lib/func/webmidi';
 
 @inject( EventAggregator )
 export class WebmidiAccessCustomElement {
