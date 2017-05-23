@@ -1,0 +1,43 @@
+<template>
+  <mdl-grid>
+    <mdl-cell col="6">
+      <mdl-card shadow="2">
+        <mdl-card-title>Oscillator</mdl-card-title>
+
+        <mdl-card-supporting-text>
+          <tone-omni-oscillator type.bind="oscillator.type"></tone-omni-oscillator>
+        </mdl-card-supporting-text>
+      </mdl-card>
+    </mdl-cell>
+
+    <mdl-cell col="6">
+      <mdl-card shadow="2">
+        <mdl-card-title>Amplitude Envelope</mdl-card-title>
+
+        <mdl-card-supporting-text>
+          <tone-amplitude-envelope attack.bind="envelope.attack" decay.bind="envelope.decay" sustain.bind="envelope.sustain" release.bind="envelope.release"></tone-amplitude-envelope>
+        </mdl-card-supporting-text>
+      </mdl-card>
+    </mdl-cell>
+
+    <mdl-cell col="6">
+      <mdl-card shadow="2">
+        <mdl-card-title>Filter</mdl-card-title>
+
+        <mdl-card-supporting-text>
+          <tone-filter type.bind="filter.type" rolloff.bind="filter.rolloff" q.bind="filter.Q"></tone-filter>
+        </mdl-card-supporting-text>
+      </mdl-card>
+    </mdl-cell>
+
+    <mdl-cell col="6">
+      <mdl-card shadow="2">
+        <mdl-card-title>Frequency Envelope</mdl-card-title>
+
+        <mdl-card-supporting-text>
+          <tone-frequency-envelope attack.bind="filterEnvelope.attack" decay.bind="filterEnvelope.decay" sustain.bind="filterEnvelope.sustain" release.bind="filterEnvelope.release"></tone-frequency-envelope>
+        </mdl-card-supporting-text>
+      </mdl-card>
+    </mdl-cell>
+  </mdl-grid>
+</template>

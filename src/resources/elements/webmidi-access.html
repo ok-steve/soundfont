@@ -1,0 +1,14 @@
+<template>
+  <div if.bind="!error">
+    <label for="" hidden aria-hidden="false">MIDI Device</label>
+
+    <select id="" name="" value.bind="activeDevice" change.delegate="onChange($event)">
+      <option value="">Choose a MIDI device&hellip;</option>
+      <option repeat.for="device of devices" model.bind="device">${device.manufacturer} ${device.name}</option>
+    </select>
+  </div>
+
+  <div if.bind="error">
+    <p>To enable MIDI input, <a href="http://jazz-soft.net/download/">download the Jazz-Plugin from Jazz-Soft.net</a>.</p>
+  </div>
+</template>

@@ -1,67 +1,23 @@
 <!DOCTYPE html>
-<html class="no-js" lang="en">
-
+<html lang="en">
 <head>
-  <script type="text/javascript">
-    var host = "sccherry.github.io";
-
-    if ((host === window.location.host) && (window.location.protocol !== 'https:')) {
-      window.location.protocol = 'https';
-    }
-  </script>
-
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>Synthia</title>
-  <meta name="description" content="A configurable modular synthesizer.">
+  <meta name="description" content="A configurable, modular synthesizer.">
 
-  <!-- Icons -->
-  <link rel="apple-touch-icon" sizes="180x180" href="img/favicon-180.png">
-  <link rel="apple-touch-startup-image" href="images/startup-image.png">
-  <link rel="icon" type="image/png" href="img/favicon-32.png" sizes="32x32">
-  <link rel="icon" type="image/png" href="img/favicon-16.png" sizes="16x16">
-  <link rel="mask-icon" href="img/favicon.svg" color="#3f51b5">
-
-  <!-- Webapp configuration -->
-  <meta name="apple-mobile-web-app-title" content="Synthia">
-  <meta name="application-name" content="Synthia">
-  <link rel="manifest" href="manifest.json">
-
-  <link rel="stylesheet" href="css/main.css">
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="styles/styles.css">
 </head>
+<body aurelia-app="main">
+  <div class="is-loading">Loading&hellip;</div>
 
-<body tabindex="-1">
-  <div layout="column" layout-fill>
-    <md-toolbar>
-      <div class="md-toolbar-tools">
-        <span>Synthia</span>
-        <span flex></span>
-        <a class="md-button md-icon-button" href="#/">
-          <md-icon md-font-set="material-icons">equalizer</md-icon>
-        </a>
-        <a class="md-button md-icon-button" href="#/settings">
-          <md-icon md-font-set="material-icons">settings</md-icon>
-        </a>
-        <a class="md-button md-icon-button" href="https://github.com/sccherry/synthia">
-          <md-icon md-font-set="material-icons">info_outline</md-icon>
-        </a>
-      </div>
-    </md-toolbar>
-
-    <md-content>
-      <div ng-view></div>
-    </md-content>
-  </div>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.19.31/system.js"></script>
-  <script src="js/config.js"></script>
+  <script src="jspm_packages/system.js"></script>
+  <script src="config.js"></script>
   <script>
-    System.import('main');
+    System.import('aurelia-bootstrapper');
   </script>
 </body>
-
 </html>

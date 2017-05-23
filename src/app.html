@@ -1,0 +1,19 @@
+<template>
+  <require from="./shell/nav-bar.html"></require>
+
+  <mdl-layout>
+    <mdl-layout-header>
+      <mdl-layout-title>${title}</mdl-layout-title>
+    </mdl-layout-header>
+
+    <mdl-layout-drawer>
+      <nav-bar links.bind="links"></nav-bar>
+    </mdl-layout-drawer>
+
+    <mdl-layout-content>
+      <webmidi-access type="inputs" midimessage.delegate="onMidimessage($event)"></webmidi-access>
+      <soundfont type="acoustic_grand_piano" change.delegate="setSoundfont($event)"></soundfont>
+      <piano-roll midimessage.delegate="onMidimessage($event)"></piano-roll>
+    </mdl-layout-content>
+  </mdl-layout>
+</template>

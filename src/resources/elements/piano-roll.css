@@ -1,0 +1,14 @@
+.Piano {
+  background-color: hsla(0, 0%, 90%, 1);
+}
+
+.Piano-key {
+}
+
+.Piano-key--natural {
+  fill: hsla(0, 0%, 100%, 1);
+}
+
+.Piano-key--accidental {
+  fill: hsla(0, 0%, 0%, 1);
+}
