@@ -3,6 +3,7 @@ import { bindable, inject } from 'aurelia-framework';
 import { Observable } from 'rxjs/Observable';
 
 import 'rxjs/add/observable/fromEvent';
+import 'rxjs/add/observable/fromPromise';
 import 'rxjs/add/observable/merge';
 import 'rxjs/add/operator/mergeMap';
 
@@ -14,7 +15,7 @@ const request = () => {
   return navigator.requestMIDIAccess();
 }
 
-const requestAccess = Observable.fromEvent( request() );
+const requestAccess = Observable.fromPromise( request() );
 
 @inject( Element )
 export class WebmidiAccessCustomElement {
