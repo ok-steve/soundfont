@@ -1,4 +1,4 @@
-export function configure( config ) {
+export function configure(config) {
   config.globalResources([
     './elements/input-range',
     './elements/input-select',
@@ -27,14 +27,7 @@ export function configure( config ) {
     './mdl/mdl-snackbar',
     './mdl/mdl-spinner',
     './mdl/mdl-switch',
-    './mdl/mdl-textfield',
     './mdl/mdl-tooltip',
-
-    './tone/tone-amplitude-envelope',
-    './tone/tone-filter',
-    './tone/tone-frequency-envelope',
-    './tone/tone-mono-synth',
-    './tone/tone-omni-oscillator',
-    './tone/tone-synth'
+    './mdl/mdl-textfield'
   ]);
 }
