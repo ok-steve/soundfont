@@ -1,6 +1,6 @@
 import { bindable, containerless } from 'aurelia-framework';
 
 @containerless()
-export class MdlLayoutTitleCustomElement {
-  @bindable spacer;
+export class MdlButtonCustomElement {
+  @bindable id;
 }

@@ -1,6 +1,6 @@
 import { bindable, containerless } from 'aurelia-framework';
 
-@containerless
+@containerless()
 export class MdlNavigationCustomElement {
   @bindable links;
 }

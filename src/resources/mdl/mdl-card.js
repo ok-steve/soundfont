@@ -2,10 +2,12 @@ import { bindable, containerless } from 'aurelia-framework';
 
 @containerless()
 export class MdlCardCustomElement {
-  @bindable shadow; // 2-16, evens
+  @bindable shadow;
+
+  classList = '';
 
   bind() {
-    if ( this.shadow ) {
+    if (this.shadow) {
       this.classList += ` mdl-shadow--${this.shadow}dp`;
     }
   }

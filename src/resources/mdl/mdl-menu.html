@@ -1,0 +1,10 @@
+<template>
+  <require from="material-design-lite/material.css"></require>
+  <require from="./mdl-js"></require>
+
+  <mdl-button id.bind="id">Button</mdl-button>
+
+  <ul class="mdl-menu mdl-js-menu" for.bind="id" mdl-js>
+    <li class="mdl-menu__item" repeat.for="item of items">${item}</li>
+  </ul>
+</template>
