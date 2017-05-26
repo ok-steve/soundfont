@@ -6,28 +6,17 @@ export function configure(config) {
     './elements/soundfont',
     './elements/webmidi-access',
 
-    './mdl/mdl-button',
-    './mdl/mdl-card',
-    './mdl/mdl-card-supporting-text',
-    './mdl/mdl-card-title',
     './mdl/mdl-cell',
-    './mdl/mdl-checkbox',
     './mdl/mdl-grid',
-    './mdl/mdl-icon-toggle',
     './mdl/mdl-layout',
     './mdl/mdl-layout-content',
     './mdl/mdl-layout-drawer',
     './mdl/mdl-layout-header',
     './mdl/mdl-layout-title',
-    './mdl/mdl-menu',
     './mdl/mdl-navigation',
-    './mdl/mdl-progress',
-    './mdl/mdl-radio',
     './mdl/mdl-slider',
     './mdl/mdl-snackbar',
     './mdl/mdl-spinner',
-    './mdl/mdl-switch',
-    './mdl/mdl-tooltip',
     './mdl/mdl-textfield'
   ]);
 }
