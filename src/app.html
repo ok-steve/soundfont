@@ -10,12 +10,13 @@
     <mdl-layout-drawer>
       <webmidi-access type="inputs" midimessage.delegate="onMidimessage($event)"></webmidi-access>
       <soundfont type="acoustic_grand_piano" change.delegate="setSoundfont($event)"></soundfont>
+      <input-range min="2" max="8" value.bind="octave" change.delegate="setOctave($event)"></input-range>
     </mdl-layout-drawer>
 
     <mdl-layout-content>
       <mdl-grid>
         <mdl-cell col="12">
-          <piano-roll midimessage.delegate="onMidimessage($event)"></piano-roll>
+          <piano-roll octave.bind="octave" midimessage.delegate="onMidimessage($event)"></piano-roll>
         </mdl-cell>
       </mdl-grid>
     </mdl-layout-content>

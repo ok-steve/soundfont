@@ -3,12 +3,16 @@ import { inject } from 'aurelia-framework';
 import { midiToNote, velocityToGain } from './lib/utilities';
 
 import { MidimessageService } from './resources/services/midimessage';
+import { ShortcutService } from './resources/services/shortcut';
 import { SynthService } from './resources/services/synth';
 
-@inject( MidimessageService, SynthService )
+@inject(MidimessageService, ShortcutService, SynthService)
 export class App {
-  constructor( midi, synth ) {
+  octave = 4;
+
+  constructor(midi, shortcut, synth) {
     this.midi = midi;
+    this.shortcut = shortcut;
     this.synth = synth;
 
     this.title = 'Synthia';
@@ -28,6 +32,11 @@ export class App {
         type: e.target.value
       }
     });
+  }
+
+  setOctave(e) {
+    this.octave = parseInt(e.target.value, 10);
+    this.shotcut.octave = this.octave;
   }
 
   triggerSynth( message ) {

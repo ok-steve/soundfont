@@ -1,102 +1,35 @@
 <template>
   <require from="./piano-roll.css"></require>
 
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 518 99" class="Piano" mousedown.delegate="onMousedown($event)" mouseup.delegate="onMouseup($event)">
-    <rect width="8" height="48" x="0" y="50" class="Piano-key Piano-key--natural" data-midi="21" />
-      <rect width="8" height="48" x="5" class="Piano-key Piano-key--accidental" data-midi="22" />
-    <rect width="8" height="48" x="10" y="50" class="Piano-key Piano-key--natural" data-midi="23" />
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 316 82" class="Piano" mousedown.delegate="onMousedown($event)" mouseup.delegate="onMouseup($event)">
+    <rect width="20" height="80" x="1" y="1" class="Piano-key Piano-key--natural" data-note="0" />
+    <rect width="20" height="80" x="22" y="1" class="Piano-key Piano-key--natural" data-note="2" />
+    <rect width="20" height="80" x="43" y="1" class="Piano-key Piano-key--natural" data-note="4" />
+    <rect width="20" height="80" x="64" y="1" class="Piano-key Piano-key--natural" data-note="5" />
+    <rect width="20" height="80" x="85" y="1" class="Piano-key Piano-key--natural" data-note="7" />
+    <rect width="20" height="80" x="106" y="1" class="Piano-key Piano-key--natural" data-note="9" />
+    <rect width="20" height="80" x="127" y="1" class="Piano-key Piano-key--natural" data-note="11" />
+    <rect width="20" height="80" x="148" y="1" class="Piano-key Piano-key--natural" data-note="12" />
+    <rect width="20" height="80" x="169" y="1" class="Piano-key Piano-key--natural" data-note="14" />
+    <rect width="20" height="80" x="190" y="1" class="Piano-key Piano-key--natural" data-note="16" />
+    <rect width="20" height="80" x="211" y="1" class="Piano-key Piano-key--natural" data-note="17" />
+    <rect width="20" height="80" x="232" y="1" class="Piano-key Piano-key--natural" data-note="19" />
+    <rect width="20" height="80" x="253" y="1" class="Piano-key Piano-key--natural" data-note="21" />
+    <rect width="20" height="80" x="274" y="1" class="Piano-key Piano-key--natural" data-note="23" />
+    <rect width="20" height="80" x="295" y="1" class="Piano-key Piano-key--natural" data-note="34" />
 
-    <rect width="8" height="48" x="20" y="50" class="Piano-key Piano-key--natural" data-midi="24" />
-      <rect width="8" height="48" x="25" class="Piano-key Piano-key--accidental" data-midi="25" />
-    <rect width="8" height="48" x="30" y="50" class="Piano-key Piano-key--natural" data-midi="26" />
-      <rect width="8" height="48" x="35" class="Piano-key Piano-key--accidental" data-midi="27" />
-    <rect width="8" height="48" x="40" y="50" class="Piano-key Piano-key--natural" data-midi="28" />
-    <rect width="8" height="48" x="50" y="50" class="Piano-key Piano-key--natural" data-midi="29" />
-      <rect width="8" height="48" x="55" class="Piano-key Piano-key--accidental" data-midi="30" />
-    <rect width="8" height="48" x="60" y="50" class="Piano-key Piano-key--natural" data-midi="31" />
-      <rect width="8" height="48" x="65" class="Piano-key Piano-key--accidental" data-midi="32" />
-    <rect width="8" height="48" x="70" y="50" class="Piano-key Piano-key--natural" data-midi="33" />
-      <rect width="8" height="48" x="75" class="Piano-key Piano-key--accidental" data-midi="34" />
-    <rect width="8" height="48" x="80" y="50" class="Piano-key Piano-key--natural" data-midi="35" />
+    <rect width="11" height="43" x="16" y="1" class="Piano-key Piano-key--accidental" data-note="1" />
+    <rect width="11" height="43" x="37" y="1" class="Piano-key Piano-key--accidental" data-note="3" />
 
-    <rect width="8" height="48" x="90" y="50" class="Piano-key Piano-key--natural" data-midi="36" />
-      <rect width="8" height="48" x="95" class="Piano-key Piano-key--accidental" data-midi="37" />
-    <rect width="8" height="48" x="100" y="50" class="Piano-key Piano-key--natural" data-midi="38" />
-      <rect width="8" height="48" x="105" class="Piano-key Piano-key--accidental" data-midi="39" />
-    <rect width="8" height="48" x="110" y="50" class="Piano-key Piano-key--natural" data-midi="40" />
-    <rect width="8" height="48" x="120" y="50" class="Piano-key Piano-key--natural" data-midi="41" />
-      <rect width="8" height="48" x="125" class="Piano-key Piano-key--accidental" data-midi="42" />
-    <rect width="8" height="48" x="130" y="50" class="Piano-key Piano-key--natural" data-midi="43" />
-      <rect width="8" height="48" x="135" class="Piano-key Piano-key--accidental" data-midi="44" />
-    <rect width="8" height="48" x="140" y="50" class="Piano-key Piano-key--natural" data-midi="45" />
-      <rect width="8" height="48" x="145" class="Piano-key Piano-key--accidental" data-midi="46" />
-    <rect width="8" height="48" x="150" y="50" class="Piano-key Piano-key--natural" data-midi="47" />
+    <rect width="11" height="43" x="79" y="1" class="Piano-key Piano-key--accidental" data-note="6" />
+    <rect width="11" height="43" x="100" y="1" class="Piano-key Piano-key--accidental" data-note="8" />
+    <rect width="11" height="43" x="121" y="1" class="Piano-key Piano-key--accidental" data-note="10" />
 
-    <rect width="8" height="48" x="160" y="50" class="Piano-key Piano-key--natural" data-midi="48" />
-      <rect width="8" height="48" x="165" class="Piano-key Piano-key--accidental" data-midi="49" />
-    <rect width="8" height="48" x="170" y="50" class="Piano-key Piano-key--natural" data-midi="50" />
-      <rect width="8" height="48" x="175" class="Piano-key Piano-key--accidental" data-midi="51" />
-    <rect width="8" height="48" x="180" y="50" class="Piano-key Piano-key--natural" data-midi="52" />
-    <rect width="8" height="48" x="190" y="50" class="Piano-key Piano-key--natural" data-midi="53" />
-      <rect width="8" height="48" x="195" class="Piano-key Piano-key--accidental" data-midi="54" />
-    <rect width="8" height="48" x="200" y="50" class="Piano-key Piano-key--natural" data-midi="55" />
-      <rect width="8" height="48" x="205" class="Piano-key Piano-key--accidental" data-midi="56" />
-    <rect width="8" height="48" x="210" y="50" class="Piano-key Piano-key--natural" data-midi="57" />
-      <rect width="8" height="48" x="215" class="Piano-key Piano-key--accidental" data-midi="58" />
-    <rect width="8" height="48" x="220" y="50" class="Piano-key Piano-key--natural" data-midi="59" />
+    <rect width="11" height="43" x="163" y="1" class="Piano-key Piano-key--accidental" data-note="13" />
+    <rect width="11" height="43" x="184" y="1" class="Piano-key Piano-key--accidental" data-note="15" />
 
-    <rect width="8" height="48" x="230" y="50" class="Piano-key Piano-key--natural" data-midi="60" />
-      <rect width="8" height="48" x="235" class="Piano-key Piano-key--accidental" data-midi="61" />
-    <rect width="8" height="48" x="240" y="50" class="Piano-key Piano-key--natural" data-midi="62" />
-      <rect width="8" height="48" x="245" class="Piano-key Piano-key--accidental" data-midi="63" />
-    <rect width="8" height="48" x="250" y="50" class="Piano-key Piano-key--natural" data-midi="64" />
-    <rect width="8" height="48" x="260" y="50" class="Piano-key Piano-key--natural" data-midi="65" />
-      <rect width="8" height="48" x="265" class="Piano-key Piano-key--accidental" data-midi="66" />
-    <rect width="8" height="48" x="270" y="50" class="Piano-key Piano-key--natural" data-midi="67" />
-      <rect width="8" height="48" x="275" class="Piano-key Piano-key--accidental" data-midi="68" />
-    <rect width="8" height="48" x="280" y="50" class="Piano-key Piano-key--natural" data-midi="69" />
-      <rect width="8" height="48" x="285" class="Piano-key Piano-key--accidental" data-midi="70" />
-    <rect width="8" height="48" x="290" y="50" class="Piano-key Piano-key--natural" data-midi="71" />
-
-    <rect width="8" height="48" x="300" y="50" class="Piano-key Piano-key--natural" data-midi="72" />
-      <rect width="8" height="48" x="305" class="Piano-key Piano-key--accidental" data-midi="73" />
-    <rect width="8" height="48" x="310" y="50" class="Piano-key Piano-key--natural" data-midi="74" />
-      <rect width="8" height="48" x="315" class="Piano-key Piano-key--accidental" data-midi="75" />
-    <rect width="8" height="48" x="320" y="50" class="Piano-key Piano-key--natural" data-midi="76" />
-    <rect width="8" height="48" x="330" y="50" class="Piano-key Piano-key--natural" data-midi="77" />
-      <rect width="8" height="48" x="335" class="Piano-key Piano-key--accidental" data-midi="78" />
-    <rect width="8" height="48" x="340" y="50" class="Piano-key Piano-key--natural" data-midi="79" />
-      <rect width="8" height="48" x="345" class="Piano-key Piano-key--accidental" data-midi="80" />
-    <rect width="8" height="48" x="350" y="50" class="Piano-key Piano-key--natural" data-midi="81" />
-      <rect width="8" height="48" x="355" class="Piano-key Piano-key--accidental" data-midi="82" />
-    <rect width="8" height="48" x="360" y="50" class="Piano-key Piano-key--natural" data-midi="83" />
-
-    <rect width="8" height="48" x="370" y="50" class="Piano-key Piano-key--natural" data-midi="84" />
-      <rect width="8" height="48" x="375" class="Piano-key Piano-key--accidental" data-midi="85" />
-    <rect width="8" height="48" x="380" y="50" class="Piano-key Piano-key--natural" data-midi="86" />
-      <rect width="8" height="48" x="385" class="Piano-key Piano-key--accidental" data-midi="87" />
-    <rect width="8" height="48" x="390" y="50" class="Piano-key Piano-key--natural" data-midi="88" />
-    <rect width="8" height="48" x="400" y="50" class="Piano-key Piano-key--natural" data-midi="89" />
-      <rect width="8" height="48" x="405" class="Piano-key Piano-key--accidental" data-midi="90" />
-    <rect width="8" height="48" x="410" y="50" class="Piano-key Piano-key--natural" data-midi="91" />
-      <rect width="8" height="48" x="415" class="Piano-key Piano-key--accidental" data-midi="92" />
-    <rect width="8" height="48" x="420" y="50" class="Piano-key Piano-key--natural" data-midi="93" />
-      <rect width="8" height="48" x="425" class="Piano-key Piano-key--accidental" data-midi="94" />
-    <rect width="8" height="48" x="430" y="50" class="Piano-key Piano-key--natural" data-midi="95" />
-
-    <rect width="8" height="48" x="440" y="50" class="Piano-key Piano-key--natural" data-midi="96" />
-      <rect width="8" height="48" x="445" class="Piano-key Piano-key--accidental" data-midi="97" />
-    <rect width="8" height="48" x="450" y="50" class="Piano-key Piano-key--natural" data-midi="98" />
-      <rect width="8" height="48" x="455" class="Piano-key Piano-key--accidental" data-midi="99" />
-    <rect width="8" height="48" x="460" y="50" class="Piano-key Piano-key--natural" data-midi="100" />
-    <rect width="8" height="48" x="470" y="50" class="Piano-key Piano-key--natural" data-midi="101" />
-      <rect width="8" height="48" x="475" class="Piano-key Piano-key--accidental" data-midi="102" />
-    <rect width="8" height="48" x="480" y="50" class="Piano-key Piano-key--natural" data-midi="103" />
-      <rect width="8" height="48" x="485" class="Piano-key Piano-key--accidental" data-midi="104" />
-    <rect width="8" height="48" x="490" y="50" class="Piano-key Piano-key--natural" data-midi="105" />
-      <rect width="8" height="48" x="495" class="Piano-key Piano-key--accidental" data-midi="106" />
-    <rect width="8" height="48" x="500" y="50" class="Piano-key Piano-key--natural" data-midi="107" />
-
-    <rect width="8" height="48" x="510" y="50" class="Piano-key Piano-key--natural" data-midi="108" />
+    <rect width="11" height="43" x="226" y="1" class="Piano-key Piano-key--accidental" data-note="18" />
+    <rect width="11" height="43" x="247" y="1" class="Piano-key Piano-key--accidental" data-note="20" />
+    <rect width="11" height="43" x="268" y="1" class="Piano-key Piano-key--accidental" data-note="22" />
   </svg>
 </template>

@@ -14,9 +14,7 @@ const keyToMidi = ( octave, key ) => {
 };
 
 export class ShortcutService {
-  constructor() {
-    this.octave = 4;
-  }
+  octave = 4;
 
   get midimessage() {
     return Observable.merge(
@@ -43,14 +41,14 @@ export class ShortcutService {
     });
   }
 
-  fromEvent( type ) {
-    return Observable.fromEvent( window, type )
+  fromEvent(type) {
+    return Observable.fromEvent(window, type)
       .filter(e => !e.repeat)
-      .filter(e => keys.indexOf( e.key.toLowerCase() ) !== -1)
+      .filter(e => keys.indexOf(e.key.toLowerCase()) !== -1)
       .map(e => {
         const octave = e.shiftKey ? this.octave + 1 : this.octave;
 
-        return keyToMidi( octave, e.key );
+        return keyToMidi(octave, e.key);
       });
   }
 }
