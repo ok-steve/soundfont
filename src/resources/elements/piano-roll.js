@@ -23,6 +23,8 @@ export class PianoRollCustomElement {
     const el = e.target;
     const note = el.getAttribute('data-note') + (12 * this.octave);
 
+    el.classList.add('is-active');
+
     this.sendMessage({
       status: 144,
       data: [note, 127]
@@ -34,6 +36,8 @@ export class PianoRollCustomElement {
 
     const el = e.target;
     const note = el.getAttribute('data-note') + (12 * this.octave);
+
+    el.classList.remove('is-active');
 
     this.sendMessage({
       status: 128,

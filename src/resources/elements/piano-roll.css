@@ -1,14 +1,22 @@
-.Piano {
-  background-color: hsla(0, 0%, 90%, 1);
+.piano-roll {
+  background-color: black;
 }
 
-.Piano-key {
+.piano-roll__key {
 }
 
-.Piano-key--natural {
-  fill: hsla(0, 0%, 100%, 1);
+.piano-roll__key:hover {
+  cursor: pointer;
 }
 
-.Piano-key--accidental {
-  fill: hsla(0, 0%, 0%, 1);
+.piano-roll__key.is-active {
+  fill: #e91e63;
+}
+
+.piano-roll__key--natural {
+  fill: white;
+}
+
+.piano-roll__key--accidental {
+  fill: black;
 }
