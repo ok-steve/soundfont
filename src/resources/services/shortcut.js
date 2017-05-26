@@ -7,8 +7,8 @@ import 'rxjs/add/operator/map';
 
 const keys = ['a','w','s','e','d','f','t','g','y','h','u','j','k'];
 
-const keyToMidi = ( octave, key ) => {
-  const pitch = keys.indexOf( key.toLowerCase() );
+const keyToMidi = (octave, key) => {
+  const pitch = keys.indexOf(key.toLowerCase());
 
   return (pitch + (12 * octave));
 };

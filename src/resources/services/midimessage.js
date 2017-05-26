@@ -7,9 +7,9 @@ import 'rxjs/add/operator/filter';
 
 import { ShortcutService } from './shortcut';
 
-@inject( ShortcutService )
+@inject(ShortcutService)
 export class MidimessageService {
-  constructor( shortcut ) {
+  constructor(shortcut) {
     this.shortcut = shortcut;
   }
 

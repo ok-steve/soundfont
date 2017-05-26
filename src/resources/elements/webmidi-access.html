@@ -1,5 +1,5 @@
 <template>
-  <div if.bind="!error">
+  <div if.bind="devices.length > 0">
     <label for="" hidden aria-hidden="false">MIDI Device</label>
 
     <select id="" name="" value.bind="activeDevice" change.delegate="onChange($event)">

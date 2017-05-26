@@ -2,6 +2,7 @@ import { bindable, containerless } from 'aurelia-framework';
 
 @containerless()
 export class InputRangeCustomElement {
+  @bindable id;
   @bindable label;
   @bindable min = 0;
   @bindable max = 100;
@@ -9,7 +10,7 @@ export class InputRangeCustomElement {
   @bindable value;
 
   bind() {
-    if ( !this.value ) {
+    if (this.value === null) {
       this.value = (this.max - this.min) / 2 + this.min;
     }
   }

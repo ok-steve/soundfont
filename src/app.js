@@ -19,14 +19,14 @@ export class App {
 
     this.boundTriggerSynth = this.triggerSynth.bind(this);
 
-    this.midi.midimessage.subscribe( this.boundTriggerSynth );
+    this.midi.midimessage.subscribe(this.boundTriggerSynth);
   }
 
-  onMidimessage( e ) {
-    this.triggerSynth( e.detail );
+  onMidimessage(e) {
+    this.triggerSynth(e.detail);
   }
 
-  setSoundfont( e ) {
+  setSoundfont(e) {
     this.synth.set({
       player: {
         type: e.target.value
@@ -39,14 +39,14 @@ export class App {
     this.shotcut.octave = this.octave;
   }
 
-  triggerSynth( message ) {
-    switch( message.status ) {
+  triggerSynth(message) {
+    switch(message.status) {
       case 144:
-        this.synth.triggerAttack( midiToNote( message.data[0] ), velocityToGain( message.data[1] ) );
+        this.synth.triggerAttack(midiToNote(message.data[0]), velocityToGain(message.data[1]));
         break;
 
       case 128:
-        this.synth.triggerRelease( midiToNote( message.data[0] ) );
+        this.synth.triggerRelease(midiToNote(message.data[0]));
         break;
     }
   }
