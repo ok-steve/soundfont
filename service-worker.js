@@ -1,7 +1,7 @@
 'use strict';
 
 var config = {
-  version: '0.1.0',
+  version: '0.3.0',
   staticCacheItems: [
     '/dist/app-build.js',
     '/dist/aurelia.js',
