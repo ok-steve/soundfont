@@ -8,7 +8,6 @@ System.config({
   },
   map: {
     "aurelia-bootstrapper": "npm:aurelia-bootstrapper@1.0.1",
-    "aurelia-event-aggregator": "npm:aurelia-event-aggregator@1.0.1",
     "aurelia-fetch-client": "npm:aurelia-fetch-client@1.1.2",
     "aurelia-framework": "npm:aurelia-framework@1.1.2",
     "aurelia-loader-default": "npm:aurelia-loader-default@1.0.2",

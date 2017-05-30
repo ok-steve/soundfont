@@ -1,7 +1,7 @@
 <template>
-  <label for="">${label}</label>
+  <label for.bind="id">${label}</label>
 
-  <select id="" value.bind="value">
+  <select id.bind="id" value.bind="value">
     <option repeat.for="option of options" model.bind="option">${option}</option>
   </select>
 </template>

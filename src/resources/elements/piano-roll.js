@@ -1,24 +1,29 @@
-import { inject } from 'aurelia-framework';
+import { bindable, inject } from 'aurelia-framework';
 
-@inject( Element )
+@inject(Element)
 export class PianoRollCustomElement {
-  constructor( element ) {
+  @bindable octave = 4;
+
+  constructor(element) {
     this.element = element;
   }
 
-  sendMessage( detail ) {
-    const e =  new CustomEvent( 'midimessage', {
+  sendMessage(detail) {
+    const e =  new CustomEvent('midimessage', {
       bubbles: true,
       detail: detail
-    } );
+    });
 
-    this.element.dispatchEvent( e );
+    this.element.dispatchEvent(e);
   }
 
-  onMousedown( e ) {
+  onMousedown(e) {
     e.stopPropagation();
 
-    const note = e.target.getAttribute('data-midi');
+    const el = e.target;
+    const note = parseInt(el.getAttribute('data-note'), 10) + (12 * this.octave);
+
+    el.classList.add('is-active');
 
     this.sendMessage({
       status: 144,
@@ -26,10 +31,13 @@ export class PianoRollCustomElement {
     });
   }
 
-  onMouseup( e ) {
+  onMouseup(e) {
     e.stopPropagation();
 
-    const note = e.target.getAttribute('data-midi');
+    const el = e.target;
+    const note = parseInt(el.getAttribute('data-note')) + (12 * this.octave);
+
+    el.classList.remove('is-active');
 
     this.sendMessage({
       status: 128,

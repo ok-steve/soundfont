@@ -3,17 +3,22 @@
 
   <mdl-layout>
     <mdl-layout-header>
-      <mdl-layout-title>${title}</mdl-layout-title>
+      <mdl-layout-title spacer>${title}</mdl-layout-title>
+      <nav-bar links.bind="links"></nav-bar>
     </mdl-layout-header>
 
     <mdl-layout-drawer>
-      <nav-bar links.bind="links"></nav-bar>
+      <webmidi-access type="inputs" midimessage.delegate="onMidimessage($event)"></webmidi-access>
+      <soundfont type="acoustic_grand_piano" change.delegate="setSoundfont($event)"></soundfont>
+      <input-range min="2" max="8" value.bind="octave" change.delegate="setOctave($event)"></input-range>
     </mdl-layout-drawer>
 
     <mdl-layout-content>
-      <webmidi-access type="inputs" midimessage.delegate="onMidimessage($event)"></webmidi-access>
-      <soundfont type="acoustic_grand_piano" change.delegate="setSoundfont($event)"></soundfont>
-      <piano-roll midimessage.delegate="onMidimessage($event)"></piano-roll>
+      <mdl-grid>
+        <mdl-cell col="12">
+          <piano-roll octave.bind="octave" midimessage.delegate="onMidimessage($event)"></piano-roll>
+        </mdl-cell>
+      </mdl-grid>
     </mdl-layout-content>
   </mdl-layout>
 </template>

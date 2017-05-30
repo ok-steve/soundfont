@@ -7,13 +7,13 @@ export class SoundfontCustomElement {
 
   types = GM.map(instrument => {
     return instrument.category;
-  }).filter(( category, i, arr ) => {
-    return arr.indexOf( category ) === i;
-  }).reduce(( acc, curr ) => {
+  }).filter((category, i, arr) => {
+    return arr.indexOf(category) === i;
+  }).reduce((acc, curr) => {
     const instrumentsInCategory = GM.filter(instrument => {
       return instrument.category === curr;
     });
 
-    return acc.set( curr, new Set( instrumentsInCategory ) );
-  }, new Map() );
+    return acc.set(curr, new Set(instrumentsInCategory));
+  }, new Map());
 }

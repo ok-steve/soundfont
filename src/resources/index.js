@@ -1,4 +1,4 @@
-export function configure( config ) {
+export function configure(config) {
   config.globalResources([
     './elements/input-range',
     './elements/input-select',
@@ -6,9 +6,6 @@ export function configure( config ) {
     './elements/soundfont',
     './elements/webmidi-access',
 
-    './mdl/mdl-card',
-    './mdl/mdl-card-supporting-text',
-    './mdl/mdl-card-title',
     './mdl/mdl-cell',
     './mdl/mdl-grid',
     './mdl/mdl-layout',
@@ -18,13 +15,8 @@ export function configure( config ) {
     './mdl/mdl-layout-title',
     './mdl/mdl-navigation',
     './mdl/mdl-slider',
-    './mdl/mdl-textfield',
-
-    './tone/tone-amplitude-envelope',
-    './tone/tone-filter',
-    './tone/tone-frequency-envelope',
-    './tone/tone-mono-synth',
-    './tone/tone-omni-oscillator',
-    './tone/tone-synth'
+    './mdl/mdl-snackbar',
+    './mdl/mdl-spinner',
+    './mdl/mdl-textfield'
   ]);
 }

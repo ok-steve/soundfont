@@ -17,10 +17,10 @@ const generalMidiData = {
   'Sound effects': ['120 Reverse Cymbal', '121 Guitar Fret Noise', '122 Breath Noise', '123 Seashore', '124 Bird Tweet', '125 Telephone Ring', '126 Helicopter', '127 Applause', '128 Gunshot']
 };
 
-export const GM = Object.keys( generalMidiData ).map(( category ) => {
-  return generalMidiData[category].map(( instrument ) => {
-    const num = parseInt( instrument.substr( 0, instrument.indexOf(' ') ), 10 );
-    const name = instrument.replace( num + ' ', '' );
+export const GM = Object.keys(generalMidiData).map(category => {
+  return generalMidiData[category].map(instrument => {
+    const num = parseInt(instrument.substr(0, instrument.indexOf(' ')), 10);
+    const name = instrument.replace(num + ' ', '');
 
     return {
       category,
@@ -29,6 +29,6 @@ export const GM = Object.keys( generalMidiData ).map(( category ) => {
       number: num
     };
   });
-}).reduce(( acc, curr ) => {
-  return acc.concat( curr );
+}).reduce((acc, curr) => {
+  return acc.concat(curr);
 });

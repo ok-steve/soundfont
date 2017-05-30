@@ -23,6 +23,17 @@ module.exports = {
         "aurelia-templating-resources",
         "aurelia-loader-default",
         "aurelia-logging-console",
+        "aurelia-event-aggregator",
+        "material-design-lite",
+        "material-design-lite/material.css!text",
+        "rxjs/Observable",
+        "rxjs/add/observable/fromEvent",
+        "rxjs/add/observable/fromPromise",
+        "rxjs/add/observable/merge",
+        "rxjs/add/operator/filter",
+        "rxjs/add/operator/map",
+        "rxjs/add/operator/mergeMap",
+        "tone",
         "fetch"
       ],
       "options": {

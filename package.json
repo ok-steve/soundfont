@@ -1,7 +1,7 @@
 {
   "name": "synthia",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.3.0",
   "description": "A configurable, modular synthesizer.",
   "keywords": [
     "aurelia",
@@ -42,6 +42,7 @@
     "gulp-bump": "^2.5.0",
     "gulp-changed": "^1.3.2",
     "gulp-eslint": "^3.0.1",
+    "gulp-gh-pages": "^0.5.4",
     "gulp-htmlmin": "^3.0.0",
     "gulp-notify": "^2.2.0",
     "gulp-plumber": "^1.1.0",
@@ -65,7 +66,6 @@
   "jspm": {
     "dependencies": {
       "aurelia-bootstrapper": "npm:aurelia-bootstrapper@^1.0.0",
-      "aurelia-event-aggregator": "npm:aurelia-event-aggregator@^1.0.1",
       "aurelia-fetch-client": "npm:aurelia-fetch-client@^1.0.0",
       "aurelia-framework": "npm:aurelia-framework@^1.0.0",
       "aurelia-loader-default": "npm:aurelia-loader-default@^1.0.0",

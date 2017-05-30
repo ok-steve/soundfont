@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script>
+    var host = 'stevecherry.net';
+
+    if ((host === window.location.host) && (window.location.protocol !== 'https:')) {
+      window.location.protocol = 'https';
+    }
+  </script>
+
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,11 +16,23 @@
   <title>Synthia</title>
   <meta name="description" content="A configurable, modular synthesizer.">
 
+  <link rel="apple-touch-icon" sizes="180x180" href="img/favicon-180.png">
+  <link rel="apple-touch-startup-image" href="img/favicon-192.png">
+  <link rel="icon" type="image/png" href="img/favicon-32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="img/favicon-16.png" sizes="16x16">
+  <link rel="mask-icon" href="img/favicon.svg" color="#3f51b5">
+
+  <meta name="apple-mobile-web-app-title" content="Synthia">
+  <meta name="theme-color" content="#3f51b5">
+  <meta name="application-name" content="Synthia">
+  <link rel="manifest" href="manifest.json">
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="styles/styles.css">
 </head>
 <body aurelia-app="main">
-  <div class="is-loading">Loading&hellip;</div>
+  <div class="mdl-spnner mdl-js-spinner is-active"></div>
 
   <script src="jspm_packages/system.js"></script>
   <script src="config.js"></script>
