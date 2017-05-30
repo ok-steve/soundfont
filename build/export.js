@@ -4,8 +4,17 @@
 module.exports = {
   'list': [
     'index.html',
+    'browserconfig.xml',
     'config.js',
     'favicon.ico',
+    'manifest.json',
+    'service-worker.js',
+    'img/favicon-150.png',
+    'img/favicon-16.png',
+    'img/favicon-180.png',
+    'img/favicon-192.png',
+    'img/favicon-32.png',
+    'img/favicon.svg',
     'LICENSE',
     'jspm_packages/system.js',
     'jspm_packages/system-polyfills.js',

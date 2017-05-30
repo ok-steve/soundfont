@@ -6,3 +6,11 @@ export function configure(aurelia) {
 
   aurelia.start().then(() => aurelia.setRoot());
 }
+
+if (navigator.serviceWorker !== undefined) {
+  navigator.serviceWorker.register('/service-worker.js', {
+    scope: '/'
+  })
+  .then(console.log)
+  .catch(console.log);
+}
