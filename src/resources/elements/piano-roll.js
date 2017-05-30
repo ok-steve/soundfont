@@ -21,7 +21,7 @@ export class PianoRollCustomElement {
     e.stopPropagation();
 
     const el = e.target;
-    const note = el.getAttribute('data-note') + (12 * this.octave);
+    const note = parseInt(el.getAttribute('data-note'), 10) + (12 * this.octave);
 
     el.classList.add('is-active');
 
@@ -35,7 +35,7 @@ export class PianoRollCustomElement {
     e.stopPropagation();
 
     const el = e.target;
-    const note = el.getAttribute('data-note') + (12 * this.octave);
+    const note = parseInt(el.getAttribute('data-note')) + (12 * this.octave);
 
     el.classList.remove('is-active');
 
