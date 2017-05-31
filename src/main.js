@@ -8,8 +8,8 @@ export function configure(aurelia) {
 }
 
 if (navigator.serviceWorker !== undefined) {
-  navigator.serviceWorker.register('/service-worker.js', {
-    scope: '/'
+  navigator.serviceWorker.register('./service-worker.js', {
+    scope: './'
   })
   .then(console.log)
   .catch(console.log);

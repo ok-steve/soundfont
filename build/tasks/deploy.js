@@ -4,5 +4,7 @@ var ghPages = require('gulp-gh-pages');
 
 gulp.task('deploy', ['export'], function() {
   return gulp.src(paths.exportSrv + '/**/*')
-    .pipe(ghPages());
+    .pipe(ghPages({
+      force: true
+    }));
 });

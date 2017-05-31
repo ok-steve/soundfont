@@ -3,16 +3,16 @@
 var config = {
   version: '0.3.0',
   staticCacheItems: [
-    '/dist/app-build.js',
-    '/dist/aurelia.js',
-    '/jspm_packages/system-csp-production.js',
-    '/jspm_packages/system-polyfills.js',
-    '/jspm_packages/system.js',
-    '/styles/styles.css',
+    './dist/app-build.js',
+    './dist/aurelia.js',
+    './jspm_packages/system-csp-production.js',
+    './jspm_packages/system-polyfills.js',
+    './jspm_packages/system.js',
+    './styles/styles.css',
     'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700',
     'https://fonts.googleapis.com/icon?family=Material+Icons',
-    '/config.js',
-    '/'
+    './config.js',
+    './'
   ],
   cachePathPattern: /^\/(.+)\/midi-js-soundfonts\/(.+)$/
 };
