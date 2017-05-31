@@ -15,7 +15,6 @@ export function configure(config) {
     './mdl/mdl-layout-title',
     './mdl/mdl-navigation',
     './mdl/mdl-slider',
-    './mdl/mdl-snackbar',
     './mdl/mdl-spinner',
     './mdl/mdl-textfield'
   ]);
