@@ -1,7 +1,7 @@
 'use strict';
 
 const CACHE_NAME = 'synthia';
-const CACHE_VERSION = '0.3.0';
+const CACHE_VERSION = 'v2';
 const CACHE = `${CACHE_VERSION}-${CACHE_NAME}`;
 
 const STATIC_ASSETS = [

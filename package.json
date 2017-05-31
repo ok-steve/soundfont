@@ -1,7 +1,7 @@
 {
   "name": "synthia",
   "private": true,
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "A configurable, modular synthesizer.",
   "keywords": [
     "aurelia",
