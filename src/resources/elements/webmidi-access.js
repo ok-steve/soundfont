@@ -26,16 +26,20 @@ export class WebmidiAccessCustomElement {
 
     this.boundOnMidimessage = this.onMidimessage.bind(this);
 
-    Observable.merge(
-      requestAccess,
-      requestAccess.mergeMap(access => Observable.fromEvent(access, 'statechange'))
-   ).subscribe(access => {
+    this.access.subscribe(access => {
       this.devices = new Map(access[this.type]);
     }, err => {
-      this.error = true;
+      this.error = 'To enable MIDI input, download the Jazz-Plugin from Jazz-Soft.net (http://jazz-soft.net/download)';
 
-      console.log(err.message);
+      console.log(this.error, err.message);
     });
+  }
+
+  get access() {
+    return Observable.merge(
+      requestAccess,
+      requestAccess.mergeMap(access => Observable.fromEvent(access, 'statechange'))
+   );
   }
 
   onChange(e) {
