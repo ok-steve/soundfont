@@ -6,12 +6,6 @@ const defaults = {
   volume: 1,
   player: {
     type: 'acoustic_grand_piano'
-  },
-  envelope: {
-    attack: 0.001,
-    decay: 0,
-    sustain: 1,
-    release: 0.1
   }
 };
 
@@ -32,7 +26,6 @@ export class SoundfontSampler extends Instrument {
     time = this.toSeconds(time);
 
     this.player.start(bufferName, time);
-    this.envelope.triggerAttack(time, velocity);
 
     return this;
   }
