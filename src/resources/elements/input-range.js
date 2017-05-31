@@ -1,6 +1,5 @@
-import { bindable, containerless } from 'aurelia-framework';
+import { bindable } from 'aurelia-framework';
 
-@containerless()
 export class InputRangeCustomElement {
   @bindable id;
   @bindable label;

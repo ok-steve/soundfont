@@ -36,7 +36,7 @@ export class App {
 
   setOctave(e) {
     this.octave = parseInt(e.target.value, 10);
-    this.shotcut.octave = this.octave;
+    this.shortcut.octave = this.octave;
   }
 
   triggerSynth(message) {
