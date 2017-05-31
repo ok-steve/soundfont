@@ -1,9 +1,8 @@
 <template>
   <div if.bind="devices.length > 0">
-    <label for="" hidden aria-hidden="false">MIDI Device</label>
+    <label for="">MIDI Device</label>
 
     <select id="" name="" value.bind="activeDevice" change.delegate="onChange($event)">
-      <option value="">Choose a MIDI device&hellip;</option>
       <option repeat.for="device of devices" model.bind="device">${device.manufacturer} ${device.name}</option>
     </select>
   </div>

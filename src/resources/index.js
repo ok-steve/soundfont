@@ -13,6 +13,8 @@ export function configure(config) {
     './mdl/mdl-layout-drawer',
     './mdl/mdl-layout-header',
     './mdl/mdl-layout-title',
+    './mdl/mdl-list',
+    './mdl/mdl-list-item',
     './mdl/mdl-navigation',
     './mdl/mdl-slider',
     './mdl/mdl-spinner',
