@@ -17,7 +17,7 @@ export class PianoRollCustomElement {
     this.element.dispatchEvent(e);
   }
 
-  onMousedown(e) {
+  onNoteon(e) {
     e.stopPropagation();
 
     const el = e.target;
@@ -31,7 +31,7 @@ export class PianoRollCustomElement {
     });
   }
 
-  onMouseup(e) {
+  onNoteoff(e) {
     e.stopPropagation();
 
     const el = e.target;
