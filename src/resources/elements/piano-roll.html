@@ -1,7 +1,7 @@
 <template>
   <require from="./piano-roll.css"></require>
 
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 316 82" class="piano-roll" mousedown.delegate="onMousedown($event)" mouseup.delegate="onMouseup($event)">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 316 82" class="piano-roll" mousedown.delegate="onNoteon($event)" mouseup.delegate="onNoteoff($event)" touchstart.delegate="onNoteon($event)" touchend.delegate="onNoteoff($event)">
     <rect width="20" height="80" x="1" y="1" class="piano-roll__key piano-roll__key--natural" data-note="0" />
     <rect width="20" height="80" x="22" y="1" class="piano-roll__key piano-roll__key--natural" data-note="2" />
     <rect width="20" height="80" x="43" y="1" class="piano-roll__key piano-roll__key--natural" data-note="4" />
