@@ -19,4 +19,6 @@
 
 .piano-roll__key--accidental {
   fill: black;
+  stroke: black;
+  stroke-width: 1px;
 }
