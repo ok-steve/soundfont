@@ -1,0 +1,19 @@
+/* =========================================================================
+   Container
+   ========================================================================= */
+
+/**
+ * Container
+ *
+ * Limit width of content.
+ *
+ * Markup: container.html
+ *
+ * Styleguide: objects.container
+ */
+
+.o-container {
+  max-width: map-get($container, width);
+  margin-right: auto;
+  margin-left: auto;
+}

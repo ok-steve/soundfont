@@ -1,0 +1,54 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "system",
+    "lib": [
+      "es6",
+      "dom"
+    ],
+    "allowJs": true,
+    "checkJs": true,
+    "declaration": true,
+    "sourceMap": true,
+    "outDir": "./dist",
+    "removeComments": true,
+    "noEmit": false,
+    "importHelpers": false,
+    "downlevelIteration": true,
+    "isolatedModules": true,
+
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+
+    "moduleResolution": "node",
+    "baseUrl": "./",
+    "paths": {
+      "rxjs/*": ["jspm_packages/npm/rxjs@5.4.0/*"],
+      "snabbdom/*": ["jspm_packages/npm/snabbdom@0.6.9/*"]
+    },
+    "allowSyntheticDefaultImports": false,
+
+    "inlineSourceMap": false,
+    "inlineSources": false,
+
+    "experimentalDecorators": false,
+    "emitDecoratorMetadata": false
+  },
+  "include": [
+    "src"
+  ],
+  "exclude": [
+    "dist",
+    "jspm_packages",
+    "node_modules",
+    "src/**/*.spec.ts"
+  ]
+}

@@ -1,0 +1,13 @@
+{% extends "templates/base.njk" %}
+
+{% block content %}
+
+<div class="o-container">
+  {% for route in routes %}
+    <div id="{{ route.path }}" class="o-view">
+      {% include "templates/routes/" + route.path + ".njk" ignore missing %}
+    </div>
+  {% endfor %}
+</div>
+
+{% endblock %}
