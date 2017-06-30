@@ -1,7 +1,7 @@
 {
   "name": "synthia",
   "private": true,
-  "version": "0.4.2",
+  "version": "0.5.0",
   "description": "A configurable, modular synthesizer.",
   "main": "dist/main.js",
   "directories": {
@@ -66,11 +66,11 @@
       "baseURL": "src"
     },
     "dependencies": {
-      "rxjs": "npm:rxjs@^5.4.0",
+      "rxjs": "npm:rxjs@^5.4.1",
       "snabbdom": "npm:snabbdom@^0.6.9"
     },
     "devDependencies": {
-      "typescript": "npm:typescript@^2.2.1"
+      "typescript": "npm:typescript@^2.4.1"
     }
   }
 }

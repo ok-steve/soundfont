@@ -12,6 +12,6 @@ const request = requestMidiAccess();
 export const midiAccess = Observable.merge(
   request,
   request.mergeMap(midiConnectionEvent).map((e: WebMidi.MIDIConnectionEvent): WebMidi.MIDIAccess => {
-    return <WebMidi.MIDIAccess> e.target;
+    return e.target as WebMidi.MIDIAccess;
   })
 );
