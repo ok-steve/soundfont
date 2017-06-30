@@ -18,7 +18,7 @@ export const select = (label: string, { attrs, on }, options: IOption[]): VNode 
   return h('div', [
     h('label', {
       attrs: {
-        for: id,
+        for: attrs.id,
       },
     }, label),
     h('select', {

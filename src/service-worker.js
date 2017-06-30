@@ -26,12 +26,18 @@ const onActivate = e => {
 };
 
 const onFetch = e => {
-  return caches.match(e.request).then(response => {
+  const request = e.request;
+
+  if (request.method !== 'GET') {
+    return;
+  }
+
+  return caches.match(request).then(response => {
     if (response) {
       return response;
     }
 
-    const req = e.request.clone();
+    const req = request.clone();
 
     return fetch(req).then(response => {
       if (!response || response.status !== 200 || response.type !== 'basic') {
@@ -41,7 +47,7 @@ const onFetch = e => {
       const res = response.clone();
 
       caches.open(CACHE).then(cache => {
-        return cache.put(e.request, res);
+        return cache.put(req, res);
       });
 
       return response;

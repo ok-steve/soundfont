@@ -26,7 +26,7 @@ import {
 } from './select';
 
 const toOption = (map: WebMidi.MIDIInputMap): IOption[] => {
-  return Array.from(map).map((input: WebMidi.MIDIInput): IOption => {
+  return Array.from(map.values()).map((input: WebMidi.MIDIInput): IOption => {
     return {
       textContent: input.name,
       value: input.id,
@@ -50,9 +50,10 @@ store.map((state): string => state.webmidi.current)
   });
 
 export const webmidi = ({ current, map }: { current: string, map: WebMidi.MIDIInputMap }): VNode => {
-  if (map.length > 0) {
+  if (map.size > 0) {
     return select('MIDI Input', {
       attrs: {
+        id: 'webmidi',
         value: current,
       },
       on: {
