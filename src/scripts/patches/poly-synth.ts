@@ -35,13 +35,15 @@ export class PolySynth {
   stop(midi: number) {
     const voice = this.voices.get(midi);
 
-    voice.stop();
+    if (voice) {
+      voice.stop();
 
-    if (this.cache.size < this.numVoices) {
-      this.cache.add(voice);
+      if (this.cache.size < this.numVoices) {
+        this.cache.add(voice);
+      }
+
+      this.voices.delete(midi);
     }
-
-    this.voices.delete(midi);
   };
 
   set(key: string, value: string | number): void {

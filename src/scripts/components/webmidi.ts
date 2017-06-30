@@ -42,12 +42,15 @@ midiInputMap.subscribe((map: WebMidi.MIDIInputMap): void => {
   dispatch(setMidiInputMap(map));
 });
 
-store.map((state): string => state.webmidi.current)
-  .mergeMap(midiInput)
-  .mergeMap(midiMessageEvent)
-  .subscribe((e: WebMidi.MIDIMessageEvent): void => {
-    publish(midimessage(...e.data));
-  });
+store.subscribe((state): string => {
+  if (state.webmidi.current !== '') {
+    midiInput(state.webmidi.current)
+      .mergeMap(midiMessageEvent)
+      .subscribe((e: WebMidi.MIDIMessageEvent): void => {
+        publish(midimessage(...e.data));
+      });
+  }
+});
 
 export const webmidi = ({ current, map }: { current: string, map: WebMidi.MIDIInputMap }): VNode => {
   if (map.size > 0) {
