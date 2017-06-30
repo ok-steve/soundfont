@@ -1,0 +1,23 @@
+/* =========================================================================
+   Color
+   ========================================================================= */
+
+@function brightness($color) {
+  @if type-of($color) == "color" {
+    @return (red($color) * .299 + green($color) * .587 + blue($color) * .114) / 255 * 100%;
+  }
+  @else {
+    @return unquote("brightness(#{$color})");
+  }
+}
+
+@function contrast($color, $dark: map-get($color, default), $light: #fff) {
+  @return brightness($color);
+}
+
+@function color($swatch, $num, $palette: $color-palette-default) {
+  $index: $num + 1;
+  $list: map-get($palette, $swatch);
+
+  @return nth($list, $index);
+}

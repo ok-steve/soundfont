@@ -1,0 +1,260 @@
+/* =========================================================================
+   Forms
+   ========================================================================= */
+
+/**
+ * Change the font styles in all browsers (opinionated).
+ */
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: $font-family-default;
+  font-size: ms(0);
+  line-height: vh(1);
+}
+
+/**
+ * Remove the default styling in all browsers (opinionated).
+ */
+
+button,
+input,
+select,
+textarea {
+  color: inherit;
+  border: 1px solid;
+  background-color: transparent;
+}
+
+/**
+ * Show the overflow in IE.
+ * 1. Show the overflow in Edge.
+ */
+
+button,
+input {
+  /* 1 */
+  overflow: visible;
+}
+
+/**
+ * Remove the inheritance of text transform in Edge, Firefox, and IE.
+ * 1. Remove the inheritance of text transform in Firefox.
+ */
+
+button,
+select {
+  /* 1 */
+  text-transform: none;
+}
+
+/*
+ * Remove the tapping delay on clickable elements (opinionated).
+ * 1. Remove the tapping delay in IE 10.
+ */
+
+button,
+input,
+label,
+select,
+textarea {
+  /* stylelint-disable indentation */
+  -ms-touch-action: manipulation; /* 1 */
+      touch-action: manipulation;
+  /* stylelint-enable */
+}
+
+select,
+textarea {
+  max-width: 100%;
+}
+
+/**
+ * 1. Prevent a WebKit bug where (2) destroys native `audio` and `video`
+ *    controls in Android 4.
+ * 2. Correct the inability to style clickable types in iOS and Safari.
+ */
+
+button,
+html [type="button"],
+/* 1 */
+[type="reset"],
+[type="submit"] {
+  -webkit-appearance: button; /* 2 */
+}
+
+/**
+ * Remove the inner border and padding in Firefox.
+ */
+
+::-moz-focus-inner {
+  padding: 0;
+
+  border-style: none;
+}
+
+/**
+ * Restore the focus styles unset by the previous rule.
+ */
+
+:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+
+/* stylelint-disable block-no-empty */
+form {
+}
+/* stylelint-enable */
+
+/**
+ * Remove default fieldset styles.
+ */
+
+fieldset {
+  padding: 0;
+
+  border: 0;
+}
+
+/**
+ * 1. Correct the text wrapping in Edge and IE.
+ * 2. Correct the color inheritance from `fieldset` elements in IE.
+ * 3. Remove the padding so developers are not caught out when they zero out
+ *    `fieldset` elements in all browsers.
+ */
+
+legend {
+  display: table; /* 1 */
+
+  max-width: 100%; /* 1 */
+  padding: 0; /* 3 */
+
+  white-space: normal; /* 1 */
+
+  color: inherit; /* 2 */
+}
+
+/* stylelint-disable block-no-empty */
+label {
+}
+
+input {
+}
+/* stylelint-enable */
+
+/**
+ * 1. Remove the vertical scrollbar in IE.
+ * 2. Change the resize direction on textareas in all browsers (opinionated).
+ */
+
+textarea {
+  overflow: auto; /* 1 */
+
+  width: 100%;
+
+  resize: vertical; /* 2 */
+}
+
+/**
+ * Remove the padding in IE 10-.
+ */
+
+[type="checkbox"],
+[type="radio"] {
+  padding: 0;
+}
+
+/**
+ * Correct the cursor style of increment and decrement buttons in Chrome.
+ */
+
+::-webkit-inner-spin-button,
+::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+ * 1. Correct the odd appearance in Chrome and Safari.
+ * 2. Correct the outline style in Safari.
+ */
+
+[type="search"] {
+  outline-offset: -2px; /* 2 */
+
+  -webkit-appearance: textfield; /* 1 */
+}
+
+/**
+ * Remove the inner padding and cancel buttons in Chrome and Safari on macOS.
+ */
+
+::-webkit-search-cancel-button,
+::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+ * Correct the text style on placeholders in Chrome, Edge, and Safari.
+ */
+
+::-webkit-input-placeholder {
+  opacity: .54;
+  color: inherit;
+}
+
+/**
+ * 1. Correct the inability to style clickable types in iOS and Safari.
+ * 2. Change font properties to `inherit` in Safari.
+ */
+
+::-webkit-file-upload-button {
+  font: inherit; /* 2 */
+
+  -webkit-appearance: button; /* 1 */
+}
+
+/* stylelint-disable block-no-empty */
+select {
+}
+/* stylelint-enable */
+
+option,
+optgroup {
+  margin-top: 0;
+}
+
+optgroup {
+  font-weight: 700;
+}
+
+/**
+ * Turns on lining, proportional numerals without clarified zeroes.
+ */
+
+[type="color"],
+[type="date"],
+[type="datetime"],
+[type="datetime-local"],
+[type="number"],
+[type="range"],
+[type="tel"],
+[type="week"] {
+  font-feature-settings: "kern" 0, "liga" 1, "calt" 1, "pnum" 1, "tnum" 0, "onum" 0, "lnum" 1, "zero" 0;
+}
+
+/* stylelint-disable block-no-empty */
+output {
+}
+
+datalist {
+}
+/* stylelint-enable */
+
+@media print {
+  form {
+    display: none;
+  }
+}

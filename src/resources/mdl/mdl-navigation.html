@@ -1,8 +1,0 @@
-<template>
-  <require from="material-design-lite/material.css"></require>
-
-  <nav class="mdl-navigation" role="navigation">
-    <a repeat.for="link of links" class="mdl-navigation__link ${link.isActive ? 'is-active' : ''}" href.bind="link.href">${link.title}</a>
-    <slot></slot>
-  </nav>
-</template>

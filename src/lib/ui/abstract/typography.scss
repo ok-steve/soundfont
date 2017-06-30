@@ -1,0 +1,25 @@
+/* =========================================================================
+   Typography
+   ========================================================================= */
+
+@function vertical-rhythm($num, $font-size: $font-size-default, $line-height: $line-height-default) {
+  @return $num * $line-height * $font-size;
+}
+
+@function vr($args...) {
+  @return vertical-rhythm($args...);
+}
+
+@function modular-scale($num: 0, $ratio: $modular-scale-ratio, $font-size: $font-size-default) {
+  @if $num != 0 {
+    @for $i from 1 through abs($num) {
+      $font-size: if($num > 0, $font-size * $ratio, $font-size / $ratio);
+    }
+  }
+
+  @return $font-size;
+}
+
+@function ms($args...) {
+  @return modular-scale($args...);
+}

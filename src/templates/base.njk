@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>
+    var host = 'stevecherry.net';
+
+    if ((host === window.location.host) && (window.location.protocol !== 'https:')) {
+      window.location.protocol = 'https';
+    }
+  </script>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Synthia</title>
+  <meta name="description" content="A configurable, modular synthesizer.">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon-180.png">
+  <link rel="apple-touch-startup-image" href="./assets/favicon-192.png">
+  <link rel="icon" type="image/png" href="./assets/favicon-32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="./assets/favicon-16.png" sizes="16x16">
+  <link rel="mask-icon" href="./assets/favicon.svg" color="#2b8a3e">
+
+  <meta name="apple-mobile-web-app-title" content="Synthia">
+  <meta name="theme-color" content="#2b8a3e">
+  <meta name="application-name" content="Synthia">
+  <link rel="manifest" href="./manifest.json">
+
+  <link rel="stylesheet" href="./main.css">
+</head>
+<body class="o-sticky-footer">
+  <header role="banner">
+    <h1>Synthia</h1>
+  </header>
+
+  <nav role="navigation">
+    <ul>
+      {% for route in routes | reverse %}
+        <li><a href="#{{ route.path }}">{{ route.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </nav>
+
+  <main class="o-sticky-footer__content" role="main">
+    {% block content %}
+    <div class="is-loading">Loading&hellip;</div>
+    {% endblock %}
+  </main>
+
+  <footer role="contentinfo">
+    <p>A <a href="https://github.com/sccherry/synthia">project</a> by <a href="https://stevecherry.net">Steve Cherry</a>.</p>
+  </footer>
+
+  <script src="./main.js"></script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+<label for="soundfont">Soundfont</label>
+<select id="soundfont" name="soundfont">
+  {% for label, optgroup in generalMidi %}
+    <optgroup label="{{ label }}">
+      {% for option in optgroup %}
+        {% set text = option | replace(r/\d+/, "") | trim %}
+        {% set value = text | replace(" ", "_") | lower %}
+        <option value="{{ value }}"{% if value == state.soundfont %} selected{% endif %}>{{ text }}</option>
+      {% endfor %}
+    </optgroup>
+  {% endfor %}
+</select>
