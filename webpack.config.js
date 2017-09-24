@@ -6,14 +6,11 @@ var ENV = process.env.NODE_ENV;
 
 var baseConfig = {
   entry: {
-    main: './src/scripts/main.ts',
+    main: './src/scripts/main.js',
   },
   output: {
     filename: '[name].js',
     path: path.resolve('./dist'),
-  },
-  resolve: {
-    extensions: ['.ts', '.js'],
   },
   module: {
     rules: [
@@ -35,9 +32,19 @@ var baseConfig = {
         }),
       },
       {
-        test: /\.ts$/,
+        test: /\.js$/,
+        exclude: /(node_modules)/,
         use: [
-          { loader: 'awesome-typescript-loader' },
+          {
+            loader: 'babel-loader',
+            options: {
+              presets: ['babel-preset-env'],
+              plugins: [
+                'babel-plugin-transform-object-rest-spread',
+                'babel-plugin-transform-class-properties',
+              ],
+            },
+          },
         ],
       },
     ],
