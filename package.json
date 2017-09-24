@@ -13,9 +13,6 @@
   "scripts": {
     "clean": "rimraf dist && mkdirp dist/assets",
     "copy": "cpy '*.{ico,xml,json}' 'assets/*.{png,svg}' 'service-worker.js' '../dist' --cwd=src --parents",
-    "lint:css": "csscomb src/**/*.scss && stylelint src/**/*.scss",
-    "lint:js": "tslint src/**/*.ts",
-    "lint": "npm run lint:css & npm run lint:js",
     "build:html": "nunjucks *.njk data.json -p src -o dist",
     "build:css": "node-sass src/styles/main.scss | postcss > dist/main.css",
     "build:js": "jspm bundle-sfx --minify scripts/main dist/main.js",
@@ -47,7 +44,6 @@
     "autoprefixer": "^7.1.1",
     "browser-sync": "^2.18.12",
     "cpy-cli": "^1.0.1",
-    "csscomb": "^4.1.0",
     "cssnano": "^3.10.0",
     "jspm": "^0.16.53",
     "mkdirp": "^0.5.1",
@@ -56,9 +52,6 @@
     "onchange": "^3.2.1",
     "postcss-cli": "^4.0.0",
     "rimraf": "^2.6.1",
-    "stylelint": "^7.10.1",
-    "stylelint-config-standard": "^16.0.0",
-    "tslint": "^5.4.2",
     "typescript": "^2.3.4"
   },
   "jspm": {
