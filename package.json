@@ -1,8 +1,8 @@
 {
-  "name": "synthia",
+  "name": "soundfont",
   "private": true,
   "version": "0.5.1",
-  "description": "A configurable, modular synthesizer.",
+  "description": "A soundfont player.",
   "main": "dist/main.js",
   "directories": {
     "lib": "dist"
@@ -24,7 +24,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sccherry/synthia.git"
+    "url": "https://github.com/sccherry/soundfont.git"
   },
   "keywords": [
     "audio",
@@ -34,9 +34,9 @@
   "author": "Steve Cherry <stevenccherry@gmail.com> (https://stevecherry.net/)",
   "license": "GPL-3.0",
   "bugs": {
-    "url": "https://github.com/sccherry/synthia/issues"
+    "url": "https://github.com/sccherry/soundfont/issues"
   },
-  "homepage": "https://stevecherry.net/synthia",
+  "homepage": "https://github.com/sccherry/soundfont#readme",
   "dependencies": {
     "rxjs": "5.4.2",
     "snabbdom": "0.6.9"

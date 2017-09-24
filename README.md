@@ -1,4 +1,4 @@
-Synthia
-=======
+Soundfont
+=========
 
-A configurable, modular synthesizer.
+A soundfont player.

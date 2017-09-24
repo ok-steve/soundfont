@@ -1,5 +1,5 @@
-const CACHE_NAME = 'synthia';
-const CACHE_VERSION = 'v3';
+const CACHE_NAME = 'soundfont';
+const CACHE_VERSION = 'v4';
 const CACHE = `${CACHE_VERSION}-${CACHE_NAME}`;
 
 const STATIC_ASSETS = [
