@@ -13,17 +13,14 @@
   "scripts": {
     "clean": "rimraf dist && mkdirp dist/assets",
     "copy": "cpy '*.{ico,xml,json}' 'assets/*.{png,svg}' 'service-worker.js' '../dist' --cwd=src --parents",
+    "serve": "npm run watch:html & NODE_ENV=development webpack-dev-server --content-base dist/ --port 3000",
     "build:html": "nunjucks *.njk data.json -p src -o dist",
-    "build:css": "node-sass src/styles/main.scss | postcss > dist/main.css",
-    "build:js": "jspm bundle-sfx --minify scripts/main dist/main.js",
+    "build:app": "NODE_ENV=production webpack",
     "prebuild": "npm run clean && npm run copy",
-    "build": "npm run build:html & npm run build:css & npm run build:js",
     "watch:html": "onchange 'src/**/*.njk' -- npm run build:html",
-    "watch:css": "onchange 'src/**/*.scss' -- npm run build:css",
-    "watch:js": "onchange 'src/**/*.ts' -- npm run build:js",
-    "watch": "npm run watch:html & npm run watch:css & npm run watch:js",
-    "preserve": "npm run build",
-    "serve": "browser-sync start --config bs-config.js & npm run watch"
+    "build": "npm run build:html & npm run build:app",
+    "test": "echo \"Error: no test specified \" && exit 1",
+    "start": "npm run serve"
   },
   "repository": {
     "type": "git",
@@ -40,30 +37,27 @@
     "url": "https://github.com/sccherry/synthia/issues"
   },
   "homepage": "https://stevecherry.net/synthia",
-  "devDependencies": {
-    "autoprefixer": "^7.1.1",
-    "browser-sync": "^2.18.12",
-    "cpy-cli": "^1.0.1",
-    "cssnano": "^3.10.0",
-    "jspm": "^0.16.53",
-    "mkdirp": "^0.5.1",
-    "node-sass": "^4.5.3",
-    "nunjucks-cli": "^0.5.1",
-    "onchange": "^3.2.1",
-    "postcss-cli": "^4.0.0",
-    "rimraf": "^2.6.1",
-    "typescript": "^2.3.4"
+  "dependencies": {
+    "rxjs": "5.4.2",
+    "snabbdom": "0.6.9"
   },
-  "jspm": {
-    "directories": {
-      "baseURL": "src"
-    },
-    "dependencies": {
-      "rxjs": "npm:rxjs@^5.4.1",
-      "snabbdom": "npm:snabbdom@^0.6.9"
-    },
-    "devDependencies": {
-      "typescript": "npm:typescript@^2.4.1"
-    }
+  "devDependencies": {
+    "autoprefixer": "7.1.1",
+    "awesome-typescript-loader": "3.2.1",
+    "cpy-cli": "1.0.1",
+    "css-loader": "0.28.4",
+    "cssnano": "3.10.0",
+    "extract-text-webpack-plugin": "3.0.0",
+    "mkdirp": "0.5.1",
+    "node-sass": "4.5.3",
+    "nunjucks-cli": "0.5.1",
+    "onchange": "3.2.1",
+    "postcss-cli": "4.0.0",
+    "postcss-loader": "2.0.6",
+    "rimraf": "2.6.1",
+    "sass-loader": "6.0.6",
+    "typescript": "2.3.4",
+    "webpack": "3.4.1",
+    "webpack-dev-server": "2.6.1"
   }
 }
