@@ -1,0 +1,10 @@
+version: '3.3'
+services:
+  node:
+    image: node:alpine
+    command: npm start
+    volumes:
+      - .:/usr/src
+    working_dir: /usr/src
+    ports:
+      - 3000:3000
