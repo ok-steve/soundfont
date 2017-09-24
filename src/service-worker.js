@@ -32,25 +32,25 @@ const onFetch = e => {
     return;
   }
 
-  return caches.match(request).then(response => {
-    if (response) {
-      return response;
+  return caches.match(request).then(cached => {
+    if (cached) {
+      return cached;
     }
 
     const req = request.clone();
 
-    return fetch(req).then(response => {
-      if (!response || response.status !== 200 || response.type !== 'basic') {
-        return response;
+    return fetch(req).then(networked => {
+      if (!networked || networked.status !== 200 || networked.type !== 'basic') {
+        return networked;
       }
 
-      const res = response.clone();
+      const res = networked.clone();
 
       caches.open(CACHE).then(cache => {
         return cache.put(req, res);
       });
 
-      return response;
+      return networked;
     });
   });
 };
