@@ -40,11 +40,12 @@
   },
   "homepage": "https://github.com/sccherry/soundfont#readme",
   "dependencies": {
-    "rxjs": "5.4.2",
-    "snabbdom": "0.6.9"
+    "redux": "3.7.2",
+    "snabbdom": "0.6.9",
+    "soundfont-player": "0.10.5",
+    "tachyons": "4.8.0"
   },
   "devDependencies": {
-    "autoprefixer": "7.1.1",
     "babel-core": "6.25.0",
     "babel-loader": "7.1.1",
     "babel-plugin-transform-class-properties": "6.24.1",
@@ -52,16 +53,11 @@
     "babel-preset-env": "1.6.0",
     "cpy-cli": "1.0.1",
     "css-loader": "0.28.4",
-    "cssnano": "3.10.0",
     "extract-text-webpack-plugin": "3.0.0",
     "mkdirp": "0.5.1",
-    "node-sass": "4.5.3",
     "nunjucks-cli": "0.5.1",
     "onchange": "3.2.1",
-    "postcss-cli": "4.0.0",
-    "postcss-loader": "2.0.6",
     "rimraf": "2.6.1",
-    "sass-loader": "6.0.6",
     "webpack": "3.4.1",
     "webpack-dev-server": "2.6.1"
   }

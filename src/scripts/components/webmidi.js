@@ -1,57 +1,50 @@
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/mergeMap';
-
 import { h } from 'snabbdom/h';
 
-import { midiInput } from '../../lib/func/webmidi/input';
-import { midiInputMap } from '../../lib/func/webmidi/input-map';
-import { midiMessageEvent } from '../../lib/func/webmidi/message-event';
-
 import { midimessage } from '../actions/midimessage';
+import { setMidiInputMap, setMidiInput } from '../actions/webmidi';
+import { store } from '../store';
+import { synth } from '../synth';
 
-import {
-  setMidiInputMap,
-  setMidiInput,
-} from '../actions/webmidi';
+const toOption = map => (
+  Array.from(map.values()).map(({ name, id }) => ({
+    textContent: name,
+    value: id,
+  }))
+);
 
-import {
-  dispatch,
-  publish,
-  store,
-} from '../store';
+const onChange = e => store.dispatch(setMidiInput(e.target.value));
 
-import { select } from './select';
+navigator.requestMIDIAccess().then(access => {
+  access.onstatechange = e => {
+    store.dispatch(setMidiInputMap(e.target.inputs));
+  };
 
-const toOption = (map) => {
-  return Array.from(map.values()).map((input) => {
-    return {
-      textContent: input.name,
-      value: input.id,
-    };
-  });
-};
-
-const onChange = (e) => {
-  dispatch(setMidiInput(e.target.value));
-};
-
-midiInputMap.subscribe((map) => {
-  dispatch(setMidiInputMap(map));
+  store.dispatch(setMidiInputMap(access.inputs));
 });
 
-store.subscribe((state) => {
-  if (state.webmidi.current !== '') {
-    midiInput(state.webmidi.current)
-      .mergeMap(midiMessageEvent)
-      .subscribe((e: WebMidi.MIDIMessageEvent) => {
-        publish(midimessage(...e.data));
-      });
+store.subscribe(() => {
+  const state = store.getState();
+
+  if (state.webmidi.current && state.webmidi.current !== '') {
+    state.webmidi.current.onmidimessage = e => {
+      synth(midimessage(...e.data));
+    };
   }
 });
 
 export const webmidi = ({ current, map }) => {
-  if (map.size > 0) {
-    return select('MIDI Input', {
+  if (!map || map.size < 1) {
+    return;
+  }
+
+  return h('div', [
+    h('label', {
+      attrs: {
+        for: 'webmidi',
+      },
+    }, 'MIDI Input'),
+
+    h('select', {
       attrs: {
         id: 'webmidi',
         value: current,
@@ -59,6 +52,11 @@ export const webmidi = ({ current, map }) => {
       on: {
         change: onChange,
       },
-    }, toOption(map));
-  }
+    }, toOption(map).map(({ textContent, value }) => (
+      h('option', {
+        value,
+        selected: value === current,
+      }, textContent)
+    ))),
+  ]);
 };

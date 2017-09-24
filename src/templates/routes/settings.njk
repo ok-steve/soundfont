@@ -1,11 +1,17 @@
-<div class="o-grid">
-  <div>
-    {% include "templates/components/octave.njk" %}
-  </div>
-  <div>
-    {% include "templates/components/soundfont.njk" %}
-  </div>
-  <div id="app"></div>
-</div>
+<div class="flex-ns">
+  <div class="flex-auto">
+    <div>
+      {% include "templates/components/octave.njk" %}
+    </div>
 
-{% include "templates/components/envelope.njk" %}
+    <div class="mt2">
+      {% include "templates/components/soundfont.njk" %}
+    </div>
+
+    <div id="app"></div>
+  </div>
+
+  <div class="flex-auto">
+    {% include "templates/components/envelope.njk" %}
+  </div>
+</div>

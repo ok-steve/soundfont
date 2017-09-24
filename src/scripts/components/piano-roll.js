@@ -1,59 +1,27 @@
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/merge';
-import 'rxjs/add/operator/filter';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/withLatestFrom';
-
-import { pitchToMidi } from '../../lib/conversion';
-
-import {
-  keydown,
-  keyup,
-  pointerdown,
-  pointerup,
-  PointerEvent,
-} from '../../lib/events';
-
-import { MIDIStatus } from '../../lib/general-midi';
-
 import { midimessage } from '../actions/midimessage';
+import { store } from '../store';
+import { synth } from '../synth';
 
-import {
-  publish,
-  store,
-} from '../store';
+const el = document.querySelector('.piano-roll');
 
-const el = document.querySelector('.c-piano-roll');
-const octave = store.map((state) => state.octave);
+const sendMessage = (e, status) => {
+  const octave = store.getState().octave;
+  const note = 12 * octave + parseInt(e.target.dataset.note, 10);
 
-const getNote = (oct, e) => {
-  return pitchToMidi(oct, parseInt(e.target.dataset.note, 10));
+  synth(midimessage(status, note));
 };
 
-const isSpaceOrEnter = (keyCode) => {
-  return keyCode === 32 || keyCode === 13;
-};
-
-const noteon = Observable.merge(
-  pointerdown(el),
-  keydown(el).filter((e: KeyboardEvent) => isSpaceOrEnter(e.keyCode)),
-).withLatestFrom(octave);
-
-const noteoff = Observable.merge(
-  pointerup(el),
-  keyup(el).filter((e) => isSpaceOrEnter(e.keyCode)),
-).withLatestFrom(octave);
-
-noteon.subscribe(([e, oct]) => {
-  const note = getNote(oct, e);
-
+const onNoteon = e => {
+  sendMessage(e, 144);
   e.target.classList.add('is-pressed');
-  publish(midimessage(MIDIStatus.NoteOn, note));
-});
+};
 
-noteoff.subscribe(([e, oct]) => {
-  const note = getNote(oct, e);
-
+const onNoteoff = e => {
+  sendMessage(e, 128);
   e.target.classList.remove('is-pressed');
-  publish(midimessage(MIDIStatus.NoteOff, note));
-});
+};
+
+el.addEventListener('mousedown', onNoteon);
+el.addEventListener('touchstart', onNoteon);
+el.addEventListener('mouseup', onNoteoff);
+el.addEventListener('touchend', onNoteoff);

@@ -15,19 +15,15 @@ var baseConfig = {
   module: {
     rules: [
       {
-        test: /\.scss$/,
+        test: /\.css$/,
         use: ExtractTextPlugin.extract({
           use: [
-            { loader: 'css-loader' },
             {
-              loader: 'postcss-loader',
+              loader: 'css-loader',
               options: {
-                config: {
-                  path: 'postcss.config.js',
-                },
+                minimize: true,
               },
             },
-            { loader: 'sass-loader' },
           ],
         }),
       },

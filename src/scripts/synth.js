@@ -1,27 +1,41 @@
-import { PolySynth } from './patches/poly-synth';
-import { Soundfont } from './patches/soundfont';
-
-import {
-  bus,
-  store,
-} from './store';
+import Soundfont from 'soundfont-player';
+import { store } from './store';
 
 const context = new AudioContext();
-const synth = PolySynth.of(context, Soundfont);
 
-store.subscribe((state) => {
-  synth.set('envelope', state.envelope);
-  synth.set('type', state.soundfont);
+const getSoundfont = () => {
+  const state = store.getState();
+
+  return Soundfont.instrument(context, state.soundfont, {
+    ...state.envelope,
+  });
+};
+
+let sf = getSoundfont();
+
+store.subscribe(() => {
+  sf = getSoundfont();
 });
 
-bus.subscribe((message) => {
-  switch (message.status) {
+const cache = new Map();
+
+export const synth = ({ status, data }) => {
+  const [note, velocity] = data;
+
+  switch (status) {
     case 144:
-      synth.start(message.data[0], message.data[1]);
+      if (!cache.has(note)) {
+        sf.then(instrument => {
+          cache.set(note, instrument.play(note));
+        });
+      }
       break;
 
     case 128:
-      synth.stop(message.data[0]);
+      if (cache.has(note)) {
+        cache.get(note).stop(context.currentTime);
+        cache.delete(note);
+      }
       break;
   }
-});
+};

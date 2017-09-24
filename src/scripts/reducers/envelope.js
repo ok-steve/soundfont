@@ -1,7 +1,7 @@
 import { SET_ENVELOPE } from '../constants/index';
 
 const INITIAL_STATE = {
-  attack: 0.1,
+  attack: 0.0,
   decay: 0.2,
   sustain: 0.8,
   release: 0.8,

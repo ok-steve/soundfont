@@ -1,12 +1,12 @@
 import { app } from './app';
-import './synth';
 
-const el = document.querySelector('#app');
-
-app(el).subscribe();
+import '../styles/main.css';
 
 const html = document.querySelector('html');
 const body = document.querySelector('body');
+const el = document.querySelector('#app');
+
+app(el);
 
 window.addEventListener('hashchange', (e) => {
   html.scrollTop = 0;

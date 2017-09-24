@@ -29,26 +29,26 @@
 
   <link rel="stylesheet" href="./main.css">
 </head>
-<body class="o-sticky-footer">
-  <header role="banner">
+<body class="sans-serif flex flex-column min-vh-100">
+  <header class="flex items-center ph3" role="banner">
     <h1>Soundfont</h1>
+
+    <nav role="navigation">
+      <ul class="flex list">
+        {% for route in routes | reverse %}
+          <li><a class="db pa2" href="#{{ route.path }}">{{ route.title }}</a></li>
+        {% endfor %}
+      </ul>
+    </nav>
   </header>
 
-  <nav role="navigation">
-    <ul>
-      {% for route in routes | reverse %}
-        <li><a href="#{{ route.path }}">{{ route.title }}</a></li>
-      {% endfor %}
-    </ul>
-  </nav>
-
-  <main class="o-sticky-footer__content" role="main">
+  <main class="flex-auto ph3" role="main">
     {% block content %}
     <div class="is-loading">Loading&hellip;</div>
     {% endblock %}
   </main>
 
-  <footer role="contentinfo">
+  <footer class="ph3 bt mt3" role="contentinfo">
     <p>A <a href="https://github.com/sccherry/soundfont">project</a> by <a href="https://stevecherry.net">Steve Cherry</a>.</p>
   </footer>
 
