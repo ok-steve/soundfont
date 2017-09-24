@@ -52,11 +52,16 @@ export const webmidi = ({ current, map }) => {
       on: {
         change: onChange,
       },
-    }, toOption(map).map(({ textContent, value }) => (
+    }, [
       h('option', {
-        value,
-        selected: value === current,
-      }, textContent)
-    ))),
+        value: '',
+      }, 'Select an option'),
+      ...toOption(map).map(({ textContent, value }) => (
+        h('option', {
+          value,
+          selected: value === current,
+        }, textContent)
+      )),
+    ]),
   ]);
 };
