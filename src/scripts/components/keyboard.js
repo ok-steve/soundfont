@@ -2,7 +2,7 @@ import { midimessage } from '../actions/midimessage';
 import { store } from '../store';
 import { synth } from '../synth';
 
-const keys = ['a', 'w', 's', 'e', 'd', 'f', 't', 'g', 'y', 'h', 'u', 'j', 'k'];
+const keys = 'awsedftgyhujk';
 
 const sendMessage = (e, status) => {
   const index = keys.indexOf(e.key.toLowerCase());
