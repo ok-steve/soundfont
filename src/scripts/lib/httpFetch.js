@@ -1,13 +1,13 @@
-import { Observable } from './observable';
+import Observable from 'zen-observable';
 
-export const httpFetch = (url, { method = 'GET', responseType = 'text' } = {}) => new Observable((observer) => {
+const httpFetch = (url, { method = 'GET', responseType = 'text' } = {}) => new Observable((observer) => {
   const xhr = new XMLHttpRequest();
 
   xhr.responseType = responseType;
   xhr.open(method, url);
 
   xhr.onreadystatechange = () => {
-    if (xhr.readyState == XMLHttpRequest.DONE) {
+    if (xhr.readyState === XMLHttpRequest.DONE) {
       if (xhr.status === 200) {
         observer.next(xhr.response);
       } else {
@@ -20,3 +20,5 @@ export const httpFetch = (url, { method = 'GET', responseType = 'text' } = {}) =
 
   xhr.send();
 });
+
+export default httpFetch;

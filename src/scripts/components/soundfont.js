@@ -1,6 +1,6 @@
-import { setSoundfont } from '../actions/soundfont';
-import { fromEvent } from '../lib/observable';
-import { store } from '../store';
+import setSoundfont from '../actions/setSoundfont';
+import fromEvent from '../lib/fromEvent';
+import store from '../store';
 
 const el = document.querySelector('#soundfont');
 

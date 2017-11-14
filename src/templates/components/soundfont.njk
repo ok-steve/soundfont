@@ -4,8 +4,8 @@
     <optgroup label="{{ label }}">
       {% for option in optgroup %}
         {% set text = option | replace(r/\d+/, "") | trim %}
-        {% set value = text | replace(" ", "_") | lower %}
-        <option value="{{ value }}"{% if value == state.soundfont %} selected{% endif %}>{{ text }}</option>
+        {% set value = text | replace(" ", "_") | replace(r/[()]/g, "") | lower %}
+        <option value="{{ value }}"{% if value == initialState.soundfont %} selected{% endif %}>{{ text }}</option>
       {% endfor %}
     </optgroup>
   {% endfor %}

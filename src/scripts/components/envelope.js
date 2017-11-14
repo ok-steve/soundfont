@@ -1,6 +1,6 @@
-import { setEnvelope } from '../actions/envelope';
-import { fromEvent } from '../lib/observable';
-import { store } from '../store';
+import setEnvelope from '../actions/setEnvelope';
+import fromEvent from '../lib/fromEvent';
+import store from '../store';
 
 const attack = document.querySelector('#envelope-attack');
 const decay = document.querySelector('#envelope-decay');

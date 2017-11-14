@@ -6,7 +6,7 @@
     "path": "index",
     "title": "Home"
   }],
-  "state": {
+  "initialState": {
     "envelope": {
       "attack": 0.0,
       "decay": 0.2,

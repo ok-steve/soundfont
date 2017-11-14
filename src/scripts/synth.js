@@ -1,7 +1,7 @@
-import { Observable } from './lib/observable';
-import { createSoundfont } from './lib/soundfont';
-import { store } from './store';
-import { midimessage } from './midi';
+import Observable from 'zen-observable';
+import createSoundfont from './lib/createSoundfont';
+import store from './store';
+import bus from './bus';
 
 const context = new AudioContext();
 
@@ -21,8 +21,7 @@ const instrument = new Observable(observer => {
 const cache = new Map();
 
 instrument.flatMap(sf => createSoundfont(context, sf)).subscribe(soundfont => {
-  console.log(soundfont);
-  midimessage.subscribe(({ status, data }) => {
+  bus.subscribe(({ status, data }) => {
     const [note, velocity] = data;
 
     switch (status) {

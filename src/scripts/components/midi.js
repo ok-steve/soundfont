@@ -1,10 +1,9 @@
 import { h } from 'snabbdom/h';
 
-import { Observable } from '../lib/observable';
-import { toMessage } from '../lib/util';
-import { requestMIDIAccess } from '../lib/webmidi';
-import { setMidiInputMap, setMidiInput } from '../actions/webmidi';
-import { store } from '../store';
+import requestMIDIAccess from '../lib/requestMIDIAccess';
+import setDevices from '../actions/setDevices';
+import setActiveDevice from '../actions/setActiveDevice';
+import store from '../store';
 
 const toOption = map => (
   Array.from(map.values()).map(({ name, id }) => ({
@@ -13,28 +12,14 @@ const toOption = map => (
   }))
 );
 
-const onChange = e => store.dispatch(setMidiInput(e.target.value));
+const onChange = e => store.dispatch(setActiveDevice(e.target.value));
 
 requestMIDIAccess().map(access => access.inputs).subscribe((inputs) => {
-  store.dispatch(setMidiInputMap(inputs));
+  store.dispatch(setDevices(inputs));
 });
 
-export const onmidimessage = new Observable(observer => {
-  store.subscribe(() => {
-    const state = store.getState();
-
-    if (state.webmidi.current && state.webmidi.current !== '') {
-      state.webmidi.current.onmidimessage = e => {
-        observer.next(toMessage(...e.data));
-      };
-    }
-  });
-});
-
-export const webmidi = ({ current, map }) => {
-  if (!map || map.size < 1) {
-    return;
-  }
+const midi = ({ current, map }) => {
+  if (!map || map.size < 1) return undefined;
 
   return h('div', [
     h('label', {
@@ -66,3 +51,5 @@ export const webmidi = ({ current, map }) => {
     ]),
   ]);
 };
+
+export default midi;

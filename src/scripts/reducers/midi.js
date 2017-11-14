@@ -5,7 +5,7 @@ const INITIAL_STATE = {
   map: null,
 };
 
-export const webmidi = (state = INITIAL_STATE, action) => {
+const midi = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case SET_MIDI_INPUT:
       return {
@@ -23,3 +23,5 @@ export const webmidi = (state = INITIAL_STATE, action) => {
       return state;
   }
 };
+
+export default midi;

@@ -1,13 +1,15 @@
 import { combineReducers } from 'redux';
 
-import { envelope } from './envelope';
-import { octave } from './octave';
-import { soundfont } from './soundfont';
-import { webmidi } from './webmidi';
+import envelope from './envelope';
+import midi from './midi';
+import octave from './octave';
+import soundfont from './soundfont';
 
-export const rootReducer = combineReducers({
+const rootReducer = combineReducers({
   envelope,
+  midi,
   octave,
   soundfont,
-  webmidi,
 });
+
+export default rootReducer;

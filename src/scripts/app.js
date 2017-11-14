@@ -3,8 +3,8 @@ import attributes from 'snabbdom/modules/attributes';
 import dataset from 'snabbdom/modules/dataset';
 import eventlisteners from 'snabbdom/modules/eventlisteners';
 
-import { appShell } from './components/index';
-import { store } from './store';
+import appShell from './components/index';
+import store from './store';
 import './synth';
 
 const patch = init([
@@ -13,18 +13,14 @@ const patch = init([
   eventlisteners,
 ]);
 
-const render = (vnode) => {
-  const newVnode = appShell(store.getState());
+const render = (oldVnode) => patch(oldVnode, appShell(store.getState()));
 
-  patch(vnode, newVnode);
-
-  return newVnode;
-};
-
-export const app = root => {
+const app = root => {
   let vnode = render(root);
 
   store.subscribe(() => {
     vnode = render(vnode);
   });
-}
+};
+
+export default app;

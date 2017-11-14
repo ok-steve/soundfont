@@ -1,9 +1,9 @@
 import { SET_ENVELOPE } from '../constants/index';
-import { state } from '../../data.json';
+import { initialState } from '../../data.json';
 
-const { envelope: INITIAL_STATE } = state;
+const { envelope: INITIAL_STATE } = initialState;
 
-export const envelope = (state = INITIAL_STATE, action) => {
+const envelope = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case SET_ENVELOPE:
       return {
@@ -15,3 +15,5 @@ export const envelope = (state = INITIAL_STATE, action) => {
       return state;
   }
 };
+
+export default envelope;

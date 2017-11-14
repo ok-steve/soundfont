@@ -1,9 +1,9 @@
 import { SET_SOUNDFONT } from '../constants/index';
-import { state } from '../../data.json';
+import { initialState } from '../../data.json';
 
-const { soundfont: INITIAL_STATE } = state;
+const { soundfont: INITIAL_STATE } = initialState;
 
-export const soundfont = (state = INITIAL_STATE, action) => {
+const soundfont = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case SET_SOUNDFONT:
       return action.value;
@@ -12,3 +12,5 @@ export const soundfont = (state = INITIAL_STATE, action) => {
       return state;
   }
 };
+
+export default soundfont;

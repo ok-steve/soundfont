@@ -1,9 +1,9 @@
 import { SET_OCTAVE } from '../constants/index';
-import { state } from '../../data.json';
+import { initialState } from '../../data.json';
 
-const { octave: INITIAL_STATE } = state;
+const { octave: INITIAL_STATE } = initialState;
 
-export const octave = (state = INITIAL_STATE, action) => {
+const octave = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case SET_OCTAVE:
       return parseInt(action.value, 10);
@@ -12,3 +12,5 @@ export const octave = (state = INITIAL_STATE, action) => {
       return state;
   }
 };
+
+export default octave;

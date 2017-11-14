@@ -1,17 +1,21 @@
-import { Observable } from './observable';
+import Observable from 'zen-observable';
 
-export const requestMIDIAccess = () => new Observable((observer) => {
+const requestMIDIAccess = () => new Observable((observer) => {
   if (navigator.requestMIDIAccess === undefined) {
     observer.error(new Error('The WebMIDI API is not supported in your browser.'));
   }
 
   navigator.requestMIDIAccess().then((access) => {
-    observer.next(access);
+    const midiAccess = access;
 
-    access.onstatechange = (e) => {
+    observer.next(midiAccess);
+
+    midiAccess.onstatechange = (e) => {
       observer.next(e.target);
     };
   }).catch((err) => {
     observer.error(err);
   });
 });
+
+export default requestMIDIAccess;

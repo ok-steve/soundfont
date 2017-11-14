@@ -1,15 +1,15 @@
 import { h } from 'snabbdom/h';
 
-import { webmidi } from './webmidi';
+import midi from './midi';
 
 import './envelope';
 import './keyboard';
 import './octave';
-import './piano-roll';
+import './pianoRoll';
 import './soundfont';
 
-export const appShell = state => {
-  return h('div', [
-    webmidi(state.webmidi),
-  ]);
-};
+const appShell = state => h('div', [
+  midi(state.midi),
+]);
+
+export default appShell;
