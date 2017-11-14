@@ -50,7 +50,6 @@
   "dependencies": {
     "redux": "3.7.2",
     "snabbdom": "0.6.9",
-    "soundfont-player": "0.10.5",
     "tachyons": "4.8.0",
     "zen-observable": "0.6.0"
   },

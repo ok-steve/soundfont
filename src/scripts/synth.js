@@ -1,42 +1,49 @@
-import Soundfont from 'soundfont-player';
+import { Observable } from './lib/observable';
+import { createSoundfont } from './lib/soundfont';
 import { store } from './store';
 import { midimessage } from './midi';
 
 const context = new AudioContext();
 
-const getSoundfont = () => {
-  const state = store.getState();
+const instrument = new Observable(observer => {
+  let currentSoundfont = '';
 
-  return Soundfont.instrument(context, state.soundfont, {
-    ...state.envelope,
+  store.subscribe(() => {
+    const { soundfont } = store.getState();
+
+    if (soundfont !== currentSoundfont) {
+      observer.next(soundfont);
+      currentSoundfont = soundfont;
+    }
   });
-};
-
-let sf = getSoundfont();
-
-store.subscribe(() => {
-  sf = getSoundfont();
 });
 
 const cache = new Map();
 
-midimessage.subscribe(({ status, data }) => {
-  const [note, velocity] = data;
+instrument.flatMap(sf => createSoundfont(context, sf)).subscribe(soundfont => {
+  console.log(soundfont);
+  midimessage.subscribe(({ status, data }) => {
+    const [note, velocity] = data;
 
-  switch (status) {
-    case 144:
-      if (!cache.has(note)) {
-        sf.then(instrument => {
-          cache.set(note, instrument.play(note));
-        });
-      }
-      break;
+    switch (status) {
+      case 144:
+        if (!cache.has(note)) {
+          const buffer = soundfont[note];
+          const source = context.createBufferSource();
+          source.connect(context.destination);
+          source.buffer = buffer;
+          cache.set(note, source);
+          source.start();
+        }
+        break;
 
-    case 128:
-      if (cache.has(note)) {
-        cache.get(note).stop(context.currentTime);
-        cache.delete(note);
-      }
-      break;
-  }
+      case 128:
+        if (cache.has(note)) {
+          const source = cache.get(note);
+          source.stop();
+          cache.delete(note);
+        }
+        break;
+    }
+  });
 });
