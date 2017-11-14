@@ -1,0 +1,17 @@
+.piano-roll {
+  background-color: var(--black);
+}
+
+.piano-roll__key:hover {
+  cursor: pointer;
+}
+
+.piano-roll__key--natural {
+  fill: white;
+}
+
+.piano-roll__key--accidental {
+  fill: black;
+  stroke: black;
+  stroke-width: 1;
+}

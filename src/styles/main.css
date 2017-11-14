@@ -1,37 +1,18 @@
 @charset "utf-8";
 
-@import url("~tachyons/css/tachyons.css");
+@import url("./base/normalize.css");
 
-.piano-roll {
-  background-color: black;
-}
+@import url("../../node_modules/tachyons/src/_media-queries.css");
+@import url("../../node_modules/tachyons/src/_colors.css");
 
-.piano-roll__key:hover {
-  cursor: pointer;
-}
+@import url("../../node_modules/tachyons/src/_borders.css");
+@import url("../../node_modules/tachyons/src/_display.css");
+@import url("../../node_modules/tachyons/src/_flexbox.css");
+@import url("../../node_modules/tachyons/src/_font-family.css");
+@import url("../../node_modules/tachyons/src/_heights.css");
+@import url("../../node_modules/tachyons/src/_lists.css");
+@import url("../../node_modules/tachyons/src/_spacing.css");
+@import url("../../node_modules/tachyons/src/_widths.css");
 
-.piano-roll__key--natural {
-  fill: white;
-}
-
-.piano-roll__key--accidental {
-  fill: black;
-  stroke: black;
-  stroke-width: 1;
-}
-
-.view {
-  display: none;
-}
-
-.view:target {
-  display: block;
-}
-
-.view:last-child {
-  display: block;
-}
-
-.view:target ~ * {
-  display: none;
-}
+@import url("./components/piano-roll.css");
+@import url("./components/view.css");

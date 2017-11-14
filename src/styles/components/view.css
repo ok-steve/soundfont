@@ -1,0 +1,15 @@
+.view {
+  display: none;
+}
+
+.view:target {
+  display: block;
+}
+
+.view:last-child {
+  display: block;
+}
+
+.view:target ~ * {
+  display: none;
+}
