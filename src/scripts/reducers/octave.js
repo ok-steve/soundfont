@@ -1,6 +1,7 @@
 import { SET_OCTAVE } from '../constants/index';
+import { state } from '../../data.json';
 
-const INITIAL_STATE = 4;
+const { octave: INITIAL_STATE } = state;
 
 export const octave = (state = INITIAL_STATE, action) => {
   switch (action.type) {

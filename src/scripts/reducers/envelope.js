@@ -1,11 +1,7 @@
 import { SET_ENVELOPE } from '../constants/index';
+import { state } from '../../data.json';
 
-const INITIAL_STATE = {
-  attack: 0.0,
-  decay: 0.2,
-  sustain: 0.8,
-  release: 0.8,
-};
+const { envelope: INITIAL_STATE } = state;
 
 export const envelope = (state = INITIAL_STATE, action) => {
   switch (action.type) {

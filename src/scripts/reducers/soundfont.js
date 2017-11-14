@@ -1,6 +1,7 @@
 import { SET_SOUNDFONT } from '../constants/index';
+import { state } from '../../data.json';
 
-const INITIAL_STATE = 'acoustic_grand_piano';
+const { soundfont: INITIAL_STATE } = state;
 
 export const soundfont = (state = INITIAL_STATE, action) => {
   switch (action.type) {

@@ -19,7 +19,7 @@
     "lint:js": "eslint src/scripts/**/*.js --fix",
     "lint": "npm run lint:css & npm run lint:js",
     "serve": "npm run watch:html & NODE_ENV=development webpack-dev-server --content-base dist/ --port 3000 --host 0.0.0.0",
-    "build:html": "nunjucks *.njk data.json -p src -o dist",
+    "build:html": "nunjucks *.njk src/data.json -p src -o dist",
     "build:app": "NODE_ENV=production webpack",
     "prebuild": "npm run clean && npm run copy",
     "prewatch:html": "npm run build:html",
