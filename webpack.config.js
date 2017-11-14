@@ -17,11 +17,21 @@ var baseConfig = {
       {
         test: /\.css$/,
         use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
           use: [
             {
               loader: 'css-loader',
               options: {
-                minimize: true,
+                importLoaders: 1,
+                minimize: ENV === 'production',
+              },
+            },
+            {
+              loader: 'postcss-loader',
+              options: {
+                config: {
+                  path: 'postcss.config.js',
+                },
               },
             },
           ],

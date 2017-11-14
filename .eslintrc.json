@@ -1,0 +1,13 @@
+{
+  "extends": "eslint-config-airbnb-base",
+  "plugins": [
+    "compat"
+  ],
+  "env": {
+    "browser": true
+  },
+  "rules": {
+    "import/prefer-default-export": 0,
+    "compat/compat": "error"
+  }
+}
