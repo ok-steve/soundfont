@@ -1,9 +1,7 @@
 sudo: false
 dist: trusty
 language: node_js
-cache:
-  directories:
-    - node_modules
+cache: yarn
 branches:
   only:
     - master
@@ -11,8 +9,6 @@ notifications:
   email: false
 node_js:
   - node
-before_script:
-  - npm prune
 script:
   - npm run build
 deploy:
