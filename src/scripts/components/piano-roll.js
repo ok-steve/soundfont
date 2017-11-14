@@ -1,27 +1,41 @@
-import { midimessage } from '../actions/midimessage';
+import { toMessage } from '../lib/util';
+import { fromEvent, merge } from '../lib/observable';
 import { store } from '../store';
-import { synth } from '../synth';
 
 const el = document.querySelector('.piano-roll');
 
-const sendMessage = (e, status) => {
-  const octave = store.getState().octave;
-  const note = 12 * octave + parseInt(e.target.dataset.note, 10);
+const toNote = e => {
+  const { octave } = store.getState();
 
-  synth(midimessage(status, note));
+  return 12 * octave + parseInt(e.target.dataset.note, 10);
 };
 
-const onNoteon = e => {
-  sendMessage(e, 144);
+const pointerdown = target => merge(
+  fromEvent(target, 'mousedown'),
+  fromEvent(target, 'touchstart')
+);
+
+const pointerup = target => merge(
+  fromEvent(target, 'mouseup'),
+  fromEvent(target, 'touchend')
+);
+
+const noteon = pointerdown(el).map(e => {
   e.target.classList.add('is-pressed');
-};
 
-const onNoteoff = e => {
-  sendMessage(e, 128);
+  return e;
+}).map(toNote).map(note => {
+  return toMessage(144, note);
+});
+
+const noteoff = pointerup(el).map(e => {
   e.target.classList.remove('is-pressed');
-};
+  return e;
+}).map(toNote).map(note => {
+  return toMessage(128, note);
+});
 
-el.addEventListener('mousedown', onNoteon);
-el.addEventListener('touchstart', onNoteon);
-el.addEventListener('mouseup', onNoteoff);
-el.addEventListener('touchend', onNoteoff);
+export const pianoMessages = merge(
+  noteon,
+  noteoff
+);

@@ -1,5 +1,6 @@
 import Soundfont from 'soundfont-player';
 import { store } from './store';
+import { midimessage } from './midi';
 
 const context = new AudioContext();
 
@@ -19,7 +20,7 @@ store.subscribe(() => {
 
 const cache = new Map();
 
-export const synth = ({ status, data }) => {
+midimessage.subscribe(({ status, data }) => {
   const [note, velocity] = data;
 
   switch (status) {
@@ -38,4 +39,4 @@ export const synth = ({ status, data }) => {
       }
       break;
   }
-};
+});

@@ -1,9 +1,10 @@
 import { h } from 'snabbdom/h';
 
-import { midimessage } from '../actions/midimessage';
+import { Observable } from '../lib/observable';
+import { toMessage } from '../lib/util';
+import { requestMIDIAccess } from '../lib/webmidi';
 import { setMidiInputMap, setMidiInput } from '../actions/webmidi';
 import { store } from '../store';
-import { synth } from '../synth';
 
 const toOption = map => (
   Array.from(map.values()).map(({ name, id }) => ({
@@ -14,22 +15,20 @@ const toOption = map => (
 
 const onChange = e => store.dispatch(setMidiInput(e.target.value));
 
-navigator.requestMIDIAccess().then(access => {
-  access.onstatechange = e => {
-    store.dispatch(setMidiInputMap(e.target.inputs));
-  };
-
-  store.dispatch(setMidiInputMap(access.inputs));
+requestMIDIAccess().map(access => access.inputs).subscribe((inputs) => {
+  store.dispatch(setMidiInputMap(inputs));
 });
 
-store.subscribe(() => {
-  const state = store.getState();
+export const onmidimessage = new Observable(observer => {
+  store.subscribe(() => {
+    const state = store.getState();
 
-  if (state.webmidi.current && state.webmidi.current !== '') {
-    state.webmidi.current.onmidimessage = e => {
-      synth(midimessage(...e.data));
-    };
-  }
+    if (state.webmidi.current && state.webmidi.current !== '') {
+      state.webmidi.current.onmidimessage = e => {
+        observer.next(toMessage(...e.data));
+      };
+    }
+  });
 });
 
 export const webmidi = ({ current, map }) => {

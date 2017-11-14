@@ -1,4 +1,5 @@
 import { setEnvelope } from '../actions/envelope';
+import { fromEvent } from '../lib/observable';
 import { store } from '../store';
 
 const attack = document.querySelector('#envelope-attack');
@@ -8,7 +9,7 @@ const release = document.querySelector('#envelope-release');
 
 const onChange = key => e => store.dispatch(setEnvelope(key, e.target.value));
 
-attack.addEventListener('change', onChange('attack'));
-decay.addEventListener('change', onChange('decay'));
-sustain.addEventListener('change', onChange('sustain'));
-release.addEventListener('change', onChange('release'));
+fromEvent(attack, 'change').subscribe(onChange('attack'));
+fromEvent(decay, 'change').subscribe(onChange('decay'));
+fromEvent(sustain, 'change').subscribe(onChange('sustain'));
+fromEvent(release, 'change').subscribe(onChange('release'));

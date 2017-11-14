@@ -5,6 +5,7 @@ import eventlisteners from 'snabbdom/modules/eventlisteners';
 
 import { appShell } from './components/index';
 import { store } from './store';
+import './synth';
 
 const patch = init([
   attributes,

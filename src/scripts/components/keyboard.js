@@ -1,31 +1,26 @@
-import { midimessage } from '../actions/midimessage';
+import { toMessage } from '../lib/util';
+import { fromEvent, merge } from '../lib/observable';
 import { store } from '../store';
-import { synth } from '../synth';
 
-const keys = 'awsedftgyhujk';
+const KEYS = 'awsedftgyhujk';
 
-const sendMessage = (e, status) => {
-  const index = keys.indexOf(e.key.toLowerCase());
+const includes = list => e => list.includes(e.key.toLowerCase());
 
-  if (index === -1) {
-    return;
-  }
+const toNote = e => {
+  const { octave } = store.getState();
+  const index = KEYS.indexOf(e.key.toLowerCase());
+  const note = (12 * (e.shiftKey ? octave + 1 : octave)) + index;
 
-  const octave = store.getState().octave;
-  const note = 12 * (e.shiftKey ? octave + 1 : octave) + index;
-
-  synth(midimessage(status, note));
+  return note;
 };
 
-document.addEventListener('keydown', e => {
-  if (e.repeat) {
-    return;
-  }
+const keydown = fromEvent(document, 'keydown').filter(e => !e.repeat);
+const keyup = fromEvent(document, 'keyup');
 
-  sendMessage(e, 144);
-
+const noteon = keydown.filter(includes(KEYS)).map(toNote).map(note => {
+  return toMessage(144, note);
 });
 
-document.addEventListener('keyup', e => {
-  sendMessage(e, 128);
+const noteoff = keyup.filter(includes(KEYS)).map(toNote).map(note => {
+  return toMessage(128, note);
 });
