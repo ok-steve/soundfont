@@ -10,10 +10,12 @@ import store from './store';
 
 const onmidimessage = new Observable(observer => {
   store.subscribe(() => {
-    const state = store.getState();
+    const { midi } = store.getState();
 
-    if (state.webmidi.current && state.webmidi.current !== '') {
-      state.webmidi.current.onmidimessage = e => {
+    if (midi.current && midi.current !== '') {
+      const activeDevice = midi.map.get(midi.current);
+
+      activeDevice.onmidimessage = e => {
         observer.next(toMessage(...e.data));
       };
     }
