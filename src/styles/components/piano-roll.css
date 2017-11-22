@@ -11,11 +11,11 @@
 }
 
 .piano-roll__key--natural {
-  fill: white;
+  fill: var(--white);
 }
 
 .piano-roll__key--accidental {
-  fill: black;
-  stroke: black;
+  fill: var(--black);
+  stroke: var(--black);
   stroke-width: 1;
 }

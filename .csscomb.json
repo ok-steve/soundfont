@@ -11,7 +11,7 @@
   "color-shorthand": true,
   "element-case": "lower",
   "eof-newline": true,
-  "leading-zero": false,
+  "leading-zero": true,
   "quotes": "double",
   "remove-empty-rulesets": false,
   "space-after-colon": " ",

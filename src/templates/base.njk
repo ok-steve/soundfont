@@ -32,27 +32,27 @@
 
   <link rel="canonical" href="https://stevecherry.net/soundfont/">
 </head>
-<body class="sans-serif flex flex-column min-vh-100">
-  <header class="flex items-center ph3" role="banner">
-    <h1>Soundfont</h1>
+<body class="sans-serif flex flex-column min-vh-100 ma0 bg-near-white">
+  <header class="flex items-center justify-between pv2 white bg-green w-100-ns" role="banner">
+    <h1 class="f4 mv0 ml2">Soundfont</h1>
 
-    <nav role="navigation">
-      <ul class="flex list">
+    <nav class="mr2" role="navigation">
+      <ul class="flex list pl0 mv0">
         {% for route in routes | reverse %}
-          <li><a class="db pa2" href="#{{ route.path }}">{{ route.title }}</a></li>
+          <li><a class="db pa2 color-inherit link hover-white-70" href="#{{ route.path }}">{{ route.title }}</a></li>
         {% endfor %}
       </ul>
     </nav>
   </header>
 
-  <main class="flex-auto ph3" role="main">
+  <main class="flex-auto ma2" role="main">
     {% block content %}
     <div class="is-loading">Loading&hellip;</div>
     {% endblock %}
   </main>
 
-  <footer class="ph3 bt mt3" role="contentinfo">
-    <p>A <a href="https://github.com/sccherry/soundfont">project</a> by <a href="https://stevecherry.net">Steve Cherry</a>.</p>
+  <footer class="ph4 bt bg-white b--moon-gray" role="contentinfo">
+    <p>A <a class="color-inherit hover-green" href="https://github.com/sccherry/soundfont">project</a> by <a class="color-inherit hover-green" href="https://stevecherry.net">Steve Cherry</a>.</p>
   </footer>
 
   <script src="./scripts/main.js" defer></script>

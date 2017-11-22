@@ -6,12 +6,20 @@
 @import url("../../node_modules/tachyons/src/_colors.css");
 
 @import url("../../node_modules/tachyons/src/_borders.css");
+@import url("../../node_modules/tachyons/src/_border-colors.css");
+@import url("../../node_modules/tachyons/src/_border-radius.css");
+@import url("../../node_modules/tachyons/src/_clears.css");
 @import url("../../node_modules/tachyons/src/_display.css");
 @import url("../../node_modules/tachyons/src/_flexbox.css");
+@import url("../../node_modules/tachyons/src/_floats.css");
 @import url("../../node_modules/tachyons/src/_font-family.css");
 @import url("../../node_modules/tachyons/src/_heights.css");
+@import url("../../node_modules/tachyons/src/_links.css");
 @import url("../../node_modules/tachyons/src/_lists.css");
 @import url("../../node_modules/tachyons/src/_spacing.css");
+@import url("../../node_modules/tachyons/src/_skins.css");
+@import url("../../node_modules/tachyons/src/_skins-pseudo.css");
+@import url("../../node_modules/tachyons/src/_type-scale.css");
 @import url("../../node_modules/tachyons/src/_widths.css");
 
 @import url("./components/piano-roll.css");

@@ -4,6 +4,10 @@
 
 .view:target {
   display: block;
+  /* stylelint-disable plugin/no-unsupported-browser-features */
+
+  animation: fadeIn 0.3s;
+  /* stylelint-enable */
 }
 
 .view:last-child {
@@ -12,4 +16,14 @@
 
 .view:target ~ * {
   display: none;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }

@@ -1,5 +1,5 @@
-<label class="db" for="octave">Octave</label>
-<select id="octave" name="octave">
+<label class="db f4 bold mb3" for="octave">Octave</label>
+<select id="octave" class="w-100" name="octave">
   {% for option in [1, 2, 3, 4, 5, 6] %}
     <option value="{{ option }}"{% if option == initialState.octave %} selected{% endif %}>{{ option }}</option>
   {% endfor %}

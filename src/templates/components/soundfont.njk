@@ -1,23 +1,29 @@
-<fieldset>
-  <legend class="f5">Soundfont</legend>
+<fieldset class="bn ma0 pa0">
+  <div class="f4 bold">
+    <legend>Soundfont</legend>
+  </div>
 
-  <label class="db" for="soundfont">Soundfont</label>
-  <select id="soundfont" name="soundfont">
-    {% for option in soundfonts %}
-      <option value="{{ option }}"{% if option == initialState.soundfont.soundfont %} selected{% endif %}>{{ option }}</option>
-    {% endfor %}
-  </select>
+  <div class="mt3">
+    <label class="db" for="soundfont">Soundfont</label>
+    <select id="soundfont" class="w-100" name="soundfont">
+      {% for option in soundfonts %}
+        <option value="{{ option }}"{% if option == initialState.soundfont.soundfont %} selected{% endif %}>{{ option }}</option>
+      {% endfor %}
+    </select>
+  </div>
 
-  <label class="db" for="instrument">Instrument</label>
-  <select id="instrument" name="instrument">
-    {% for label, optgroup in generalMidi %}
-      <optgroup label="{{ label }}">
-        {% for option in optgroup %}
-          {% set text = option | replace(r/\d+/, "") | trim %}
-          {% set value = text | replace(" ", "_") | replace(r/[()-]/g, "") | lower %}
-          <option value="{{ value }}"{% if value == initialState.soundfont.instrument %} selected{% endif %}>{{ text }}</option>
-        {% endfor %}
-      </optgroup>
-    {% endfor %}
-  </select>
+  <div class="mt3">
+    <label class="db" for="instrument">Instrument</label>
+    <select id="instrument" class="w-100" name="instrument">
+      {% for label, optgroup in generalMidi %}
+        <optgroup label="{{ label }}">
+          {% for option in optgroup %}
+            {% set text = option | replace(r/\d+/, "") | trim %}
+            {% set value = text | replace(" ", "_") | replace(r/[()-]/g, "") | lower %}
+            <option value="{{ value }}"{% if value == initialState.soundfont.instrument %} selected{% endif %}>{{ text }}</option>
+          {% endfor %}
+        </optgroup>
+      {% endfor %}
+    </select>
+  </div>
 </fieldset>
