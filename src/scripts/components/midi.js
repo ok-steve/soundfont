@@ -1,9 +1,9 @@
-import { h } from 'snabbdom/h';
-
 import requestMIDIAccess from '../lib/requestMIDIAccess';
 import setDevices from '../actions/setDevices';
 import setActiveDevice from '../actions/setActiveDevice';
 import store from '../store';
+
+import select from './select';
 
 const toOption = map => (
   Array.from(map.values()).map(({ name, id }) => ({
@@ -21,35 +21,15 @@ requestMIDIAccess().map(access => access.inputs).subscribe((inputs) => {
 const midi = ({ current, map }) => {
   if (!map || map.size < 1) return undefined;
 
-  return h('div', [
-    h('label', {
-      attrs: {
-        for: 'webmidi',
-      },
-    }, 'MIDI Input'),
-
-    h('select', {
-      attrs: {
-        id: 'webmidi',
-        value: current,
-      },
-      on: {
-        change: onChange,
-      },
-    }, [
-      h('option', {
-        value: '',
-      }, 'Select an option'),
-      ...toOption(map).map(({ textContent, value }) => (
-        h('option', {
-          attrs: {
-            value,
-            selected: value === current,
-          },
-        }, textContent)
-      )),
-    ]),
-  ]);
+  return select('MIDI Input', {
+    attrs: {
+      id: 'webmidi',
+      value: current,
+    },
+    on: {
+      change: onChange,
+    },
+  }, toOption(map));
 };
 
 export default midi;
