@@ -1,5 +1,6 @@
 import Observable from './Observable';
 import httpFetch from './httpFetch';
+import storage, { getFromStorage, addToStorage } from './storage';
 import { decodeBase64, noteToMIDI } from './Util';
 import decodeAudioData from './decodeAudioData';
 
@@ -37,17 +38,32 @@ const fetchSoundfont = (name, sf) => {
     });
 };
 
-/* eslint-disable max-len */
-const createSoundfont = (context, name, soundfont) => fetchSoundfont(name, soundfont).flatMap(sf => Observable.from(Object.keys(sf)).flatMap((key) => {
-/* eslint-enable */
-  const base64 = sf[key].split(',')[1];
+const soundfontToArrayBuffer = soundfont => Observable.from(Object.keys(soundfont)).map((key) => {
+  const base64 = soundfont[key].split(',')[1];
 
-  return Observable.of(base64).map(decodeBase64)
-    .flatMap(buffer => decodeAudioData(context, buffer))
-    .map(buffer => [noteToMIDI(key), buffer]);
+  return [noteToMIDI(key), decodeBase64(base64)];
 }).reduce((prev, [key, buffer]) => ({
   ...prev,
   [key]: buffer,
-}), {}));
+}), {});
+
+const soundfontToAudioBuffer = (context, soundfont) => Observable.from(Object.keys(soundfont))
+  .flatMap(key => decodeAudioData(context, soundfont[key]).map(buffer => [key, buffer]))
+  .reduce((prev, [key, buffer]) => ({
+    ...prev,
+    [key]: buffer,
+  }), {});
+
+
+const createSoundfont = (context, name, soundfont) => storage
+  .flatMap(db => getFromStorage(db, soundfont, name)).flatMap((data) => {
+    if (data === undefined) {
+      return fetchSoundfont(name, soundfont).flatMap(soundfontToArrayBuffer)
+        .flatMap(sf => storage.flatMap(db => addToStorage(db, name, soundfont, sf)))
+        .flatMap(() => createSoundfont(context, name, soundfont));
+    }
+
+    return soundfontToAudioBuffer(context, data);
+  });
 
 export default createSoundfont;
