@@ -6,6 +6,10 @@
   cursor: pointer;
 }
 
+.piano-roll__key.is-pressed {
+  fill: var(--green);
+}
+
 .piano-roll__key--natural {
   fill: white;
 }
