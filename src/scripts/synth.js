@@ -1,6 +1,7 @@
 import Observable from 'zen-observable';
 import createSoundfont from './lib/createSoundfont';
 import BufferSynth from './lib/BufferSynth';
+import PolySynth from './lib/PolySynth';
 import store from './store';
 import bus from './bus';
 
@@ -19,7 +20,7 @@ const instrument = new Observable(observer => {
   });
 });
 
-const cache = new Map();
+const synth = new PolySynth(context, BufferSynth).connect(context.destination);
 
 instrument.flatMap(sf => createSoundfont(context, sf)).subscribe(soundfont => {
   bus.subscribe(({ status, data }) => {
@@ -28,23 +29,11 @@ instrument.flatMap(sf => createSoundfont(context, sf)).subscribe(soundfont => {
 
     switch (status) {
       case 144:
-        if (!cache.has(note)) {
-          const source = new BufferSynth(context, { envelope });
-
-          cache.set(note, source);
-
-          source.start(soundfont[note], velocity / 127);
-        }
+        synth.start(note, velocity, soundfont[note], { envelope })
         break;
 
       case 128:
-        if (cache.has(note)) {
-          const source = cache.get(note);
-
-          source.stop();
-
-          cache.delete(note);
-        }
+        synth.stop(note);
         break;
     }
   });

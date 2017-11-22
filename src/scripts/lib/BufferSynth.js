@@ -1,10 +1,8 @@
 class BufferSynth {
-
   constructor(context, { envelope }) {
     this.context = context;
     this.gain = this.context.createGain();
     this.envelope = envelope;
-    this.gain.connect(this.context.destination);
   }
 
   start(buffer, amplitude) {
@@ -15,8 +13,16 @@ class BufferSynth {
 
       this.gain.gain.setValueAtTime(0, this.context.currentTime);
       this.source.start(this.context.currentTime);
-      this.gain.gain.linearRampToValueAtTime(amplitude, this.context.currentTime + this.envelope.attack);
-      this.gain.gain.linearRampToValueAtTime(amplitude * this.envelope.sustain, this.context.currentTime + this.envelope.attack + this.envelope.decay);
+
+      this.gain.gain.linearRampToValueAtTime(
+        amplitude,
+        this.context.currentTime + this.envelope.attack,
+      );
+
+      this.gain.gain.linearRampToValueAtTime(
+        amplitude * this.envelope.sustain,
+        this.context.currentTime + this.envelope.attack + this.envelope.decay,
+      );
     }
 
     return this;
@@ -24,7 +30,7 @@ class BufferSynth {
 
   stop() {
     if (this.source) {
-      this.source.onended = e => {
+      this.source.onended = () => {
         this.source.disconnect();
         this.source = null;
       };
@@ -32,6 +38,18 @@ class BufferSynth {
       this.gain.gain.linearRampToValueAtTime(0, this.context.currentTime + this.envelope.release);
       this.source.stop(this.context.currentTime + this.envelope.release);
     }
+
+    return this;
+  }
+
+  connect(to) {
+    this.gain.connect(to);
+
+    return this;
+  }
+
+  disconnect(from) {
+    this.gain.disconnect(from);
 
     return this;
   }
