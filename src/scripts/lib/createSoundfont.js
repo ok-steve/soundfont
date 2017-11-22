@@ -9,7 +9,7 @@ if (typeof window.MIDI === 'undefined') {
 
 window.MIDI.Soundfont = window.MIDI.Soundfont || {};
 
-const nameToUrl = (name, sf = 'FluidR3_GM', format = 'ogg') => {
+const nameToUrl = (name, sf = 'FluidR3_GM', format = 'mp3') => {
   const baseURL = 'https://gleitz.github.io';
 
   return `${baseURL}/midi-js-soundfonts/${sf}/${name}-${format}.js`;
@@ -24,21 +24,21 @@ const createScript = (text) => {
   document.body.appendChild(el);
 };
 
-const fetchSoundfont = (name) => {
+const fetchSoundfont = (name, sf) => {
   if (window.MIDI.Soundfont[name]) {
     return Observable.of(window.MIDI.Soundfont[name]);
   }
 
-  return httpFetch(nameToUrl(name))
+  return httpFetch(nameToUrl(name, sf))
     .flatMap((text) => {
       createScript(text);
 
-      return fetchSoundfont(name);
+      return fetchSoundfont(name, sf);
     });
 };
 
 /* eslint-disable max-len */
-const createSoundfont = (context, name) => fetchSoundfont(name).flatMap(sf => Observable.from(Object.keys(sf)).flatMap((key) => {
+const createSoundfont = (context, name, soundfont) => fetchSoundfont(name, soundfont).flatMap(sf => Observable.from(Object.keys(sf)).flatMap((key) => {
 /* eslint-enable */
   const base64 = sf[key].split(',')[1];
 

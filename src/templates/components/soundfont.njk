@@ -1,12 +1,23 @@
-<label class="db" for="soundfont">Soundfont</label>
-<select id="soundfont" name="soundfont">
-  {% for label, optgroup in generalMidi %}
-    <optgroup label="{{ label }}">
-      {% for option in optgroup %}
-        {% set text = option | replace(r/\d+/, "") | trim %}
-        {% set value = text | replace(" ", "_") | replace(r/[()]/g, "") | lower %}
-        <option value="{{ value }}"{% if value == initialState.soundfont %} selected{% endif %}>{{ text }}</option>
-      {% endfor %}
-    </optgroup>
-  {% endfor %}
-</select>
+<fieldset>
+  <legend class="f5">Soundfont</legend>
+
+  <label class="db" for="soundfont">Soundfont</label>
+  <select id="soundfont" name="soundfont">
+    {% for option in soundfonts %}
+      <option value="{{ option }}"{% if option == initialState.soundfont.soundfont %} selected{% endif %}>{{ option }}</option>
+    {% endfor %}
+  </select>
+
+  <label class="db" for="instrument">Instrument</label>
+  <select id="instrument" name="instrument">
+    {% for label, optgroup in generalMidi %}
+      <optgroup label="{{ label }}">
+        {% for option in optgroup %}
+          {% set text = option | replace(r/\d+/, "") | trim %}
+          {% set value = text | replace(" ", "_") | replace(r/[()-]/g, "") | lower %}
+          <option value="{{ value }}"{% if value == initialState.soundfont.instrument %} selected{% endif %}>{{ text }}</option>
+        {% endfor %}
+      </optgroup>
+    {% endfor %}
+  </select>
+</fieldset>

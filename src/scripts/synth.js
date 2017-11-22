@@ -7,22 +7,24 @@ import bus from './bus';
 
 const context = new AudioContext();
 
-const instrument = new Observable(observer => {
+const instrumentObservable = new Observable(observer => {
   let currentSoundfont = '';
 
   store.subscribe(() => {
     const { soundfont } = store.getState();
 
-    if (soundfont !== currentSoundfont) {
+    if (soundfont.instrument !== currentSoundfont) {
       observer.next(soundfont);
-      currentSoundfont = soundfont;
+      currentSoundfont = soundfont.instrument;
     }
   });
 });
 
 const synth = new PolySynth(context, BufferSynth).connect(context.destination);
 
-instrument.flatMap(sf => createSoundfont(context, sf)).subscribe(soundfont => {
+instrumentObservable.flatMap(({ soundfont, instrument }) => {
+  return createSoundfont(context, instrument, soundfont);
+}).subscribe(soundfont => {
   bus.subscribe(({ status, data }) => {
     const [note, velocity] = data;
     const { envelope } = store.getState();
