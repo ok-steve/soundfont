@@ -19,6 +19,10 @@ const httpFetch = (url, { method = 'GET', responseType = 'text' } = {}) => new O
   };
 
   xhr.send();
+
+  return () => {
+    xhr.abort();
+  };
 });
 
 export default httpFetch;
