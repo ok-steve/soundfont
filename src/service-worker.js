@@ -1,22 +1,75 @@
+const CACHE_VERSION = 'v5';
 const CACHE_NAME = 'soundfont';
-const CACHE_VERSION = 'v4';
 const CACHE = `${CACHE_VERSION}-${CACHE_NAME}`;
 
 const STATIC_ASSETS = [
-  './main.css',
-  './main.js',
+  './styles/main.css',
+  './scripts/main.js',
   './'
 ];
+
+const CACHE_PATH_PATTERN = /^\/(?:(assets|scripts|styles)\/(.+)?)?$/
+
+/**
+ * Utility functions
+ */
+
+const shouldHandleFetch = e => {
+  const request = e.request;
+  const url = new URL(request.url);
+
+  const criteria = {
+    matchesPathPattern: !!(CACHE_PATH_PATTERN).exec(url.pathname),
+    isGETRequest: request.method === 'GET',
+    isSameOrigin: url.origin === self.location.origin,
+  };
+
+  return Object.keys(criteria).map(key => criteria[key])
+    .reduce((prev, curr) => prev && curr);
+};
+
+const addToCache = (request, response) => {
+  if (response && response.ok && response.status === 200 && response.type === 'basic') {
+    const req = request.clone();
+    const res = response.clone();
+
+    caches.open(CACHE).then(cache => {
+      cache.put(req, res);
+    });
+  }
+
+  return response;
+};
+
+const fetchFromNetwork = request => {
+  const req = request.clone();
+
+  return fetch(req).then(response => addToCache(request, response));
+};
+
+const fetchFromCache = request => {
+  const req = request.clone();
+
+  return caches.open(CACHE).then(cache => cache.match(req))
+    .then(response => {
+      fetchFromNetwork(request);
+
+      return response || Promise.reject('no-match');
+    });
+  });
+};
 
 /**
  * Install event
  */
 
 const onInstall = e => {
-  return caches.open(CACHE).then(cache => {
-    return cache.addAll(STATIC_ASSETS);
-  });
+  return caches.open(CACHE).then(cache => cache.addAll(STATIC_ASSETS));
 };
+
+/**
+ * Activate event
+ */
 
 const onActivate = e => {
   return caches.keys().then(keys => Promise.all(
@@ -25,34 +78,15 @@ const onActivate = e => {
   ));
 };
 
+/**
+ * Fetch event
+ */
+
 const onFetch = e => {
   const request = e.request;
 
-  if (request.method !== 'GET') {
-    return;
-  }
-
-  return caches.match(request).then(cached => {
-    if (cached) {
-      return cached;
-    }
-
-    const req = request.clone();
-
-    return fetch(req).then(networked => {
-      if (!networked || networked.status !== 200 || networked.type !== 'basic') {
-        return networked;
-      }
-
-      const res = networked.clone();
-
-      caches.open(CACHE).then(cache => {
-        return cache.put(req, res);
-      });
-
-      return networked;
-    });
-  });
+  return fetchFromCache(request)
+    .catch(() => fetchFromNetwork(request));
 };
 
 /**
@@ -68,5 +102,7 @@ self.addEventListener('activate', e => {
 });
 
 self.addEventListener('fetch', e => {
-  e.respondWith(onFetch(e));
+  if (shouldHandleFetch(e)) {
+    e.respondWith(onFetch(e));
+  }
 });

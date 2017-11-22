@@ -9,7 +9,7 @@ var baseConfig = {
     main: './src/scripts/main.js',
   },
   output: {
-    filename: '[name].js',
+    filename: 'scripts/[name].js',
     path: path.resolve('./dist'),
   },
   module: {
@@ -56,7 +56,7 @@ var baseConfig = {
     ],
   },
   plugins: [
-    new ExtractTextPlugin('main.css'),
+    new ExtractTextPlugin('styles/[name].css'),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(ENV),
     }),
