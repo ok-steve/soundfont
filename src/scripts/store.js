@@ -1,7 +1,25 @@
 import { createStore } from 'redux';
 
+import Observable from './lib/Observable';
+
 import rootReducer from './reducers/index';
 
-const store = createStore(rootReducer);
+const reduxStore = createStore(rootReducer);
+
+export const dispatch = action => {
+  reduxStore.dispatch(action);
+};
+
+const store = new Observable(observer => {
+  const next = () => {
+    observer.next(reduxStore.getState());
+  };
+
+  next();
+
+  reduxStore.subscribe(() => {
+    next();
+  });
+});
 
 export default store;

@@ -2,12 +2,12 @@ import { fromEvent } from '../lib/Observable';
 
 import setInstrument from '../actions/setInstrument';
 import setSoundfont from '../actions/setSoundfont';
-import store from '../store';
+import { dispatch } from '../store';
 
 const instrument = document.querySelector('#instrument');
 const soundfont = document.querySelector('#soundfont');
 
-const onChange = action => store.dispatch(action);
+const onChange = action => dispatch(action);
 
 const toAction = action => e => action(e.target.value);
 

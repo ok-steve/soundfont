@@ -6,11 +6,10 @@ const el = document.querySelector('.piano-roll');
 
 const isSpaceOrEnter = keyCode => keyCode === 32 || keyCode === 13;
 
-const toNote = (e) => {
-  const { octave } = store.getState();
+const octaveStore = store.map(state => state.octave).distinctUntilChanged();
 
-  return pitchToMIDI(octave, parseInt(e.target.dataset.note, 10));
-};
+const toNote = e => octaveStore
+  .map(octave => pitchToMIDI(octave, parseInt(e.target.dataset.note, 10)));
 
 const noteon = merge(
   fromEvent(el, 'mousedown'),
@@ -25,8 +24,8 @@ const noteoff = merge(
 );
 
 const pianoRoll = merge(
-  noteon.map(toNote).map(note => toMessage(144, note)),
-  noteoff.map(toNote).map(note => toMessage(128, note)),
+  noteon.flatMap(toNote).map(note => toMessage(144, note)),
+  noteoff.flatMap(toNote).map(note => toMessage(128, note)),
 );
 
 export default pianoRoll;

@@ -6,7 +6,7 @@ const html = document.querySelector('html');
 const body = document.querySelector('body');
 const el = document.querySelector('#app');
 
-app(el);
+app(el).subscribe();
 
 window.addEventListener('hashchange', (e) => {
   html.scrollTop = 0;

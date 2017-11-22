@@ -1,7 +1,10 @@
+import { fromEvent } from '../lib/Observable';
 import requestMIDIAccess from '../lib/requestMIDIAccess';
+import { toMessage } from '../lib/Util';
+
 import setDevices from '../actions/setDevices';
 import setActiveDevice from '../actions/setActiveDevice';
-import store from '../store';
+import store, { dispatch } from '../store';
 
 import select from './select';
 
@@ -12,11 +15,26 @@ const toOption = map => (
   }))
 );
 
-const onChange = e => store.dispatch(setActiveDevice(e.target.value));
+const onChange = e => dispatch(setActiveDevice(e.target.value));
 
-requestMIDIAccess().map(access => access.inputs).subscribe((inputs) => {
-  store.dispatch(setDevices(inputs));
+const midiStore = store.map(({ midi }) => midi);
+
+const inputDevices = requestMIDIAccess().map(access => access.inputs);
+
+inputDevices.withLatestFrom(midiStore).subscribe(([inputs, state]) => {
+  const { current } = state;
+  dispatch(setDevices(inputs));
+
+  if (current && current !== '' && !inputs.has(current)) {
+    dispatch(setActiveDevice(''));
+  }
 });
+
+export const onmidimessage = midiStore
+  .filter(({ current, map }) => current && current !== '' && map.has(current))
+  .map(({ current, map }) => map.get(current))
+  .flatMap(device => fromEvent(device, 'midimessage'))
+  .map(e => toMessage(...e.data));
 
 const midi = ({ current, map }) => {
   if (!map || map.size < 1) return undefined;

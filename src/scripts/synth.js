@@ -7,36 +7,26 @@ import bus from './bus';
 
 const context = new AudioContext();
 
-const instrumentObservable = new Observable(observer => {
-  let currentSoundfont = '';
-
-  store.subscribe(() => {
-    const { soundfont } = store.getState();
-
-    if (soundfont.instrument !== currentSoundfont) {
-      observer.next(soundfont);
-      currentSoundfont = soundfont.instrument;
-    }
-  });
+const envelopeObservable = store.map(state => state.envelope);
+const instrumentObservable = store.map(state => state.soundfont).distinctUntilChanged().flatMap(({ soundfont, instrument }) => {
+  return createSoundfont(context, instrument, soundfont);
 });
 
 const synth = new PolySynth(context, BufferSynth).connect(context.destination);
 
-instrumentObservable.flatMap(({ soundfont, instrument }) => {
-  return createSoundfont(context, instrument, soundfont);
-}).subscribe(soundfont => {
-  bus.subscribe(({ status, data }) => {
-    const [note, velocity] = data;
-    const { envelope } = store.getState();
+bus.withLatestFrom(instrumentObservable, envelopeObservable).subscribe(([message, soundfont, envelope]) => {
+  const { status, data } = message;
+  const [note, velocity] = data;
 
-    switch (status) {
-      case 144:
-        synth.start(note, velocity, soundfont[note], { envelope })
-        break;
+  switch (status) {
+    case 144:
+      const buffer = soundfont[note];
 
-      case 128:
-        synth.stop(note);
-        break;
-    }
-  });
+      synth.start(note, velocity, buffer, { envelope })
+      break;
+
+    case 128:
+      synth.stop(note);
+      break;
+  }
 });

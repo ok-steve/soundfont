@@ -1,4 +1,4 @@
-import Observable from 'zen-observable';
+import Observable from './Observable';
 
 const requestMIDIAccess = () => new Observable((observer) => {
   if (navigator.requestMIDIAccess === undefined) {
@@ -11,7 +11,9 @@ const requestMIDIAccess = () => new Observable((observer) => {
     observer.next(midiAccess);
 
     midiAccess.onstatechange = (e) => {
-      observer.next(e.target);
+      if (e.port.connection !== 'open') {
+        observer.next(e.target);
+      }
     };
   }).catch((err) => {
     observer.error(err);

@@ -13,14 +13,6 @@ const patch = init([
   eventlisteners,
 ]);
 
-const render = (oldVnode) => patch(oldVnode, appShell(store.getState()));
-
-const app = root => {
-  let vnode = render(root);
-
-  store.subscribe(() => {
-    vnode = render(vnode);
-  });
-};
+const app = root => store.map(appShell).scan(patch, root);
 
 export default app;
