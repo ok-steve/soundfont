@@ -1,6 +1,7 @@
+import { fromEvent } from '../lib/Observable';
+
 import setInstrument from '../actions/setInstrument';
 import setSoundfont from '../actions/setSoundfont';
-import fromEvent from '../lib/fromEvent';
 import store from '../store';
 
 const instrument = document.querySelector('#instrument');

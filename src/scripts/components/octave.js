@@ -1,5 +1,6 @@
+import { fromEvent } from '../lib/Observable';
+
 import setOctave from '../actions/setOctave';
-import fromEvent from '../lib/fromEvent';
 import store from '../store';
 
 const el = document.querySelector('#octave');

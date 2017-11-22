@@ -1,4 +1,4 @@
-import Observable from 'zen-observable';
+import Observable from './Observable';
 import httpFetch from './httpFetch';
 import { decodeBase64, noteToMIDI } from './Util';
 import decodeAudioData from './decodeAudioData';

@@ -1,4 +1,4 @@
-import Observable from 'zen-observable';
+import Observable from './lib/Observable';
 import createSoundfont from './lib/createSoundfont';
 import BufferSynth from './lib/BufferSynth';
 import PolySynth from './lib/PolySynth';

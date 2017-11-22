@@ -1,5 +1,6 @@
+import { fromEvent } from '../lib/Observable';
+
 import setEnvelope from '../actions/setEnvelope';
-import fromEvent from '../lib/fromEvent';
 import store from '../store';
 
 const attack = document.querySelector('#envelope-attack');

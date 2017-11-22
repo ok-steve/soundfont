@@ -1,6 +1,4 @@
-import Observable from 'zen-observable';
-
-import merge from './lib/merge';
+import Observable, { merge } from './lib/Observable';
 import { toMessage } from './lib/Util';
 
 import keyboard from './components/keyboard';

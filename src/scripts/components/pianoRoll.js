@@ -1,6 +1,5 @@
+import { fromEvent, merge } from '../lib/Observable';
 import { toMessage, pitchToMIDI } from '../lib/Util';
-import fromEvent from '../lib/fromEvent';
-import merge from '../lib/merge';
 import store from '../store';
 
 const el = document.querySelector('.piano-roll');

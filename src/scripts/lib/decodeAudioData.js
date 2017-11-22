@@ -1,4 +1,4 @@
-import fromPromise from './fromPromise';
+import { fromPromise } from './Observable';
 
 const decodeAudioData = (context, buffer) => fromPromise(context.decodeAudioData(buffer));
 

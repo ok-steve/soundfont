@@ -1,6 +1,5 @@
 import { toMessage } from '../lib/Util';
-import fromEvent from '../lib/fromEvent';
-import merge from '../lib/merge';
+import { fromEvent, merge } from '../lib/Observable';
 import setOctave from '../actions/setOctave';
 import store from '../store';
 
