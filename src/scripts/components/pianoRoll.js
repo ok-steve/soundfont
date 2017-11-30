@@ -8,8 +8,7 @@ const isSpaceOrEnter = keyCode => keyCode === 32 || keyCode === 13;
 
 const octaveStore = store.map(state => state.octave).distinctUntilChanged();
 
-const toNote = e => octaveStore
-  .map(octave => pitchToMIDI(octave, parseInt(e.target.dataset.note, 10)));
+const toNote = ([e, octave]) => pitchToMIDI(octave, parseInt(e.target.dataset.note, 10));
 
 const noteon = merge(
   fromEvent(el, 'mousedown'),
@@ -24,8 +23,8 @@ const noteoff = merge(
 );
 
 const pianoRoll = merge(
-  noteon.flatMap(toNote).map(note => toMessage(144, note)),
-  noteoff.flatMap(toNote).map(note => toMessage(128, note)),
+  noteon.withLatestFrom(octaveStore).map(toNote).map(note => toMessage(144, note)),
+  noteoff.withLatestFrom(octaveStore).map(toNote).map(note => toMessage(128, note)),
 );
 
 export default pianoRoll;
