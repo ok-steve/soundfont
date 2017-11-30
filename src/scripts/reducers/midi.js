@@ -2,7 +2,7 @@ import { SET_MIDI_INPUT, SET_MIDI_INPUT_MAP } from '../constants/index';
 
 const INITIAL_STATE = {
   current: '',
-  map: null,
+  map: undefined,
 };
 
 const midi = (state = INITIAL_STATE, action) => {
