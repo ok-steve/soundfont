@@ -56,7 +56,6 @@ const fetchFromCache = request => {
 
       return response || Promise.reject('no-match');
     });
-  });
 };
 
 /**
