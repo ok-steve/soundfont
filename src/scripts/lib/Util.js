@@ -1,5 +1,11 @@
 const PITCH_CLASSES = ['C', 'Db', 'D', 'Eb', 'E', 'F', 'Gb', 'G', 'Ab', 'A', 'Bb', 'B'];
 
+export const clamp = (value, min, max) => {
+  if (value < min) return min;
+  if (value > max) return max;
+  return value;
+};
+
 export const decodeBase64 = (base64) => {
   const raw = atob(base64);
   const len = raw.length;
@@ -27,6 +33,7 @@ export const toMessage = (status, data0, data1 = 127) => ({
 });
 
 const Util = {
+  clamp,
   decodeBase64,
   pitchToMIDI,
   noteToMIDI,
