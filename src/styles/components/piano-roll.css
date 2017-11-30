@@ -1,21 +1,3 @@
-.piano-roll {
-  background-color: var(--black);
-}
-
-.piano-roll__key:hover {
-  cursor: pointer;
-}
-
-.piano-roll__key.is-pressed {
+.piano-roll .is-pressed {
   fill: var(--green);
-}
-
-.piano-roll__key--natural {
-  fill: var(--white);
-}
-
-.piano-roll__key--accidental {
-  fill: var(--black);
-  stroke: var(--black);
-  stroke-width: 1;
 }

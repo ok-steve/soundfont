@@ -22,5 +22,6 @@
 @import url("../../node_modules/tachyons/src/_type-scale.css");
 @import url("../../node_modules/tachyons/src/_widths.css");
 
+@import url("./utilities/svg.css");
 @import url("./components/piano-roll.css");
 @import url("./components/view.css");
