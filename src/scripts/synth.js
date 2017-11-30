@@ -1,3 +1,5 @@
+import './vendor/AudioContextMonkeyPatch';
+
 import Observable from './lib/Observable';
 import createSoundfont from './lib/createSoundfont';
 import BufferSynth from './lib/BufferSynth';
