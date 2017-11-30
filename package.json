@@ -16,7 +16,7 @@
     "clean": "rimraf dist && mkdirp dist/assets",
     "copy": "cpy '*.{ico,xml,json}' 'assets/*.{png,svg}' 'service-worker.js' '../dist' --cwd=src --parents",
     "lint:css": "csscomb src/styles && stylelint src/styles/**/*.css --fix",
-    "lint:js": "eslint src/scripts/**/*.js --fix",
+    "lint:js": "eslint src/scripts --fix",
     "lint": "npm run lint:css & npm run lint:js",
     "serve": "npm run watch:html & NODE_ENV=development webpack-dev-server --content-base dist/ --port 3000 --host 0.0.0.0",
     "build:html": "nunjucks *.njk src/data.json -p src -o dist",

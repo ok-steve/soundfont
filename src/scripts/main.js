@@ -8,11 +8,13 @@ const el = document.querySelector('#app');
 
 app(el).subscribe();
 
-window.addEventListener('hashchange', (e) => {
+window.addEventListener('hashchange', () => {
   html.scrollTop = 0;
   body.scrollTop = 0;
 });
 
+/* eslint-disable compat/compat */
 if (navigator.serviceWorker !== undefined) {
   navigator.serviceWorker.register('./service-worker.js');
 }
+/* eslint-enable */
