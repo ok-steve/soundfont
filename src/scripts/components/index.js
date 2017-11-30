@@ -8,7 +8,7 @@ import './octave';
 import './pianoRoll';
 import './soundfont';
 
-const appShell = state => h('div', [
+const appShell = state => h('div#app.mt2.bg-white.pa3.ba.b--moon-gray.br2', [
   midi(state.midi),
 ]);
 

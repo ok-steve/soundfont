@@ -13,7 +13,7 @@ const select = (label, { attrs, on }, options) => h('div', [
       for: attrs.id,
     },
   }, label),
-  h('select', {
+  h('select.w-100', {
     attrs,
     on,
   }, [
