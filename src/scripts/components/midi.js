@@ -1,3 +1,5 @@
+import { h } from 'snabbdom/h';
+
 import Observable from '../lib/Observable';
 import requestMIDIAccess from '../lib/requestMIDIAccess';
 import { toMessage } from '../lib/Util';
@@ -56,15 +58,17 @@ export const onmidimessage = midiStore
 const midi = ({ current, map }) => {
   if (!map || map.size < 1) return undefined;
 
-  return select('MIDI Input', {
-    attrs: {
-      id: 'webmidi',
-      value: current,
-    },
-    on: {
-      change: onChange,
-    },
-  }, toOption(map));
+  return h('div.mt2.bg-white.pa3.ba.b--moon-gray.br2', [
+    select('MIDI Input', {
+      attrs: {
+        id: 'webmidi',
+        value: current,
+      },
+      on: {
+        change: onChange,
+      },
+    }, toOption(map)),
+  ]);
 };
 
 export default midi;
