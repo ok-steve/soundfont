@@ -38,7 +38,7 @@ const fetchSoundfont = (name, sf) => {
     });
 };
 
-const soundfontToArrayBuffer = soundfont => Observable.from(Object.keys(soundfont)).map((key) => {
+const soundfontToArrayBuffer = soundfont => Observable.of(...Object.keys(soundfont)).map((key) => {
   const base64 = soundfont[key].split(',')[1];
 
   return [noteToMIDI(key), decodeBase64(base64)];
@@ -47,7 +47,7 @@ const soundfontToArrayBuffer = soundfont => Observable.from(Object.keys(soundfon
   [key]: buffer,
 }), {});
 
-const soundfontToAudioBuffer = (context, soundfont) => Observable.from(Object.keys(soundfont))
+const soundfontToAudioBuffer = (context, soundfont) => Observable.of(...Object.keys(soundfont))
   .flatMap(key => decodeAudioData(context, soundfont[key]).map(buffer => [key, buffer]))
   .reduce((prev, [key, buffer]) => ({
     ...prev,
