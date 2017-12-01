@@ -3,18 +3,25 @@ const CACHE_NAME = 'soundfont';
 const CACHE = `${CACHE_VERSION}-${CACHE_NAME}`;
 
 const STATIC_ASSETS = [
+  './assets/favicon-16.png',
+  './assets/favicon-32.png',
+  './assets/favicon-150.png',
+  './assets/favicon-180.png',
+  './assets/favicon-192.png',
+  './assets/favicon.svg',
   './styles/main.css',
   './scripts/main.js',
-  './'
+  './index.html',
+  './',
 ];
 
-const CACHE_PATH_PATTERN = /^\/(?:(assets|scripts|styles)\/(.+)?)?$/
+const CACHE_PATH_PATTERN = /^\/(?:(assets|scripts|styles)\/(.+)?)?$/;
 
 /**
  * Utility functions
  */
 
-const shouldHandleFetch = e => {
+const shouldHandleFetch = (e) => {
   const request = e.request;
   const url = new URL(request.url);
 
@@ -33,25 +40,23 @@ const addToCache = (request, response) => {
     const req = request.clone();
     const res = response.clone();
 
-    caches.open(CACHE).then(cache => {
-      cache.put(req, res);
-    });
+    caches.open(CACHE).then(cache => cache.put(req, res));
   }
 
   return response;
 };
 
-const fetchFromNetwork = request => {
+const fetchFromNetwork = (request) => {
   const req = request.clone();
 
   return fetch(req).then(response => addToCache(request, response));
 };
 
-const fetchFromCache = request => {
+const fetchFromCache = (request) => {
   const req = request.clone();
 
   return caches.open(CACHE).then(cache => cache.match(req))
-    .then(response => {
+    .then((response) => {
       fetchFromNetwork(request);
 
       return response || Promise.reject('no-match');
@@ -62,26 +67,21 @@ const fetchFromCache = request => {
  * Install event
  */
 
-const onInstall = e => {
-  return caches.open(CACHE).then(cache => cache.addAll(STATIC_ASSETS));
-};
+const onInstall = () => caches.open(CACHE).then(cache => cache.addAll(STATIC_ASSETS));
 
 /**
  * Activate event
  */
 
-const onActivate = e => {
-  return caches.keys().then(keys => Promise.all(
-    keys.filter(key => key.indexOf(CACHE_VERSION) !== 0)
-      .map(key => caches.delete(key))
-  ));
-};
+const onActivate = () => caches.keys()
+  .then(keys => Promise.all(keys.filter(key => key.indexOf(CACHE_VERSION) !== 0)
+    .map(key => caches.delete(key))));
 
 /**
  * Fetch event
  */
 
-const onFetch = e => {
+const onFetch = (e) => {
   const request = e.request;
 
   return fetchFromCache(request)
@@ -92,15 +92,15 @@ const onFetch = e => {
  * Event listeners
  */
 
-self.addEventListener('install', e => {
+self.addEventListener('install', (e) => {
   e.waitUntil(onInstall(e).then(() => self.skipWaiting()));
 });
 
-self.addEventListener('activate', e => {
+self.addEventListener('activate', (e) => {
   e.waitUntil(onActivate(e).then(() => self.clients.claim()));
 });
 
-self.addEventListener('fetch', e => {
+self.addEventListener('fetch', (e) => {
   if (shouldHandleFetch(e)) {
     e.respondWith(onFetch(e));
   }
