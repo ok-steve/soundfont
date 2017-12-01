@@ -1,0 +1,9 @@
+.hover-white-70:hover,
+.hover-white-70:focus {
+  color: var(--white-70);
+}
+
+.hover-green:hover,
+.hover-green:focus {
+  color: var(--green);
+}
