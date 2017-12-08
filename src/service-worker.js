@@ -1,28 +1,33 @@
-const CACHE_VERSION = 'v5';
+/* eslint-disable compat/compat, no-restricted-globals */
+const CACHE_VERSION = 'v6';
 const CACHE_NAME = 'soundfont';
 const CACHE = `${CACHE_VERSION}-${CACHE_NAME}`;
 
-const STATIC_ASSETS = [
-  './assets/favicon-16.png',
-  './assets/favicon-32.png',
-  './assets/favicon-150.png',
-  './assets/favicon-180.png',
-  './assets/favicon-192.png',
-  './assets/favicon.svg',
+const CRITICAL_ASSETS = [
   './styles/main.css',
   './scripts/main.js',
   './index.html',
   './',
 ];
 
-const CACHE_PATH_PATTERN = /^\/(?:(assets|scripts|styles)\/(.+)?)?$/;
+const OPTIONAL_ASSETS = [
+  './assets/favicon-16.png',
+  './assets/favicon-32.png',
+  './assets/favicon-150.png',
+  './assets/favicon-180.png',
+  './assets/favicon-192.png',
+  './assets/favicon-512.png',
+  './assets/favicon.svg',
+  './favicon.ico',
+];
+
+const CACHE_PATH_PATTERN = /\/(?:(assets|scripts|styles)\/(.+)?)?$/;
 
 /**
  * Utility functions
  */
 
-const shouldHandleFetch = (e) => {
-  const request = e.request;
+const shouldHandleFetch = (request) => {
   const url = new URL(request.url);
 
   const criteria = {
@@ -35,39 +40,26 @@ const shouldHandleFetch = (e) => {
     .reduce((prev, curr) => prev && curr);
 };
 
-const addToCache = (request, response) => {
-  if (response && response.ok && response.status === 200 && response.type === 'basic') {
-    const req = request.clone();
-    const res = response.clone();
+const staleWhileRevalidate = request => caches.open(CACHE)
+  .then(cache => cache.match(request).then((cachedResponse) => {
+    const fetchPromise = fetch(request).then((networkResponse) => {
+      cache.put(request, networkResponse.clone());
 
-    caches.open(CACHE).then(cache => cache.put(req, res));
-  }
-
-  return response;
-};
-
-const fetchFromNetwork = (request) => {
-  const req = request.clone();
-
-  return fetch(req).then(response => addToCache(request, response));
-};
-
-const fetchFromCache = (request) => {
-  const req = request.clone();
-
-  return caches.open(CACHE).then(cache => cache.match(req))
-    .then((response) => {
-      fetchFromNetwork(request);
-
-      return response || Promise.reject('no-match');
+      return networkResponse;
     });
-};
+
+    return cachedResponse || fetchPromise;
+  }));
 
 /**
  * Install event
  */
 
-const onInstall = () => caches.open(CACHE).then(cache => cache.addAll(STATIC_ASSETS));
+const onInstall = () => caches.open(CACHE).then((cache) => {
+  cache.addAll(OPTIONAL_ASSETS);
+
+  return cache.addAll(CRITICAL_ASSETS);
+});
 
 /**
  * Activate event
@@ -81,19 +73,14 @@ const onActivate = () => caches.keys()
  * Fetch event
  */
 
-const onFetch = (e) => {
-  const request = e.request;
-
-  return fetchFromCache(request)
-    .catch(() => fetchFromNetwork(request));
-};
+const onFetch = e => staleWhileRevalidate(e.request);
 
 /**
  * Event listeners
  */
 
 self.addEventListener('install', (e) => {
-  e.waitUntil(onInstall(e).then(() => self.skipWaiting()));
+  e.waitUntil(onInstall(e));
 });
 
 self.addEventListener('activate', (e) => {
@@ -101,7 +88,8 @@ self.addEventListener('activate', (e) => {
 });
 
 self.addEventListener('fetch', (e) => {
-  if (shouldHandleFetch(e)) {
+  if (shouldHandleFetch(e.request)) {
     e.respondWith(onFetch(e));
   }
 });
+/* eslint-enable */
