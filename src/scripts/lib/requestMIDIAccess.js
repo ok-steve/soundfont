@@ -2,7 +2,7 @@ import Observable from './Observable';
 
 const requestMIDIAccess = () => new Observable((observer) => {
   if (navigator.requestMIDIAccess === undefined) {
-    observer.error(new Error('The WebMIDI API is not supported in your browser.'));
+    observer.complete();
   } else {
     navigator.requestMIDIAccess().then((access) => {
       const midiAccess = access;
