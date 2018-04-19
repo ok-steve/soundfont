@@ -49,7 +49,6 @@
   ],
   "dependencies": {
     "redux": "3.7.2",
-    "snabbdom": "0.6.9",
     "zen-observable": "0.8.8"
   },
   "devDependencies": {
