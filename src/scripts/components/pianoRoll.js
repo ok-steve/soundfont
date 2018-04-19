@@ -1,4 +1,7 @@
-import { fromEvent, merge } from '../lib/Observable';
+import { merge } from 'zen-observable/extras';
+import fromEvent from '../lib/Observable/fromEvent';
+import withLatestFrom from '../lib/Observable/withLatestFrom';
+import distinctUntilChanged from '../lib/Observable/distinctUntilChanged';
 import { toMessage, pitchToMIDI } from '../lib/Util';
 import store from '../store';
 
@@ -6,7 +9,7 @@ const el = document.querySelector('.piano-roll');
 
 const isSpaceOrEnter = keyCode => keyCode === 32 || keyCode === 13;
 
-const octaveStore = store.map(state => state.octave).distinctUntilChanged();
+const octaveStore = distinctUntilChanged(store.map(state => state.octave));
 
 const toNote = ([e, octave]) => pitchToMIDI(octave, parseInt(e.target.dataset.note, 10));
 
@@ -23,8 +26,8 @@ const noteoff = merge(
 );
 
 const pianoRoll = merge(
-  noteon.withLatestFrom(octaveStore).map(toNote).map(note => toMessage(144, note)),
-  noteoff.withLatestFrom(octaveStore).map(toNote).map(note => toMessage(128, note)),
+  withLatestFrom(noteon, octaveStore).map(toNote).map(note => toMessage(144, note)),
+  withLatestFrom(noteoff, octaveStore).map(toNote).map(note => toMessage(128, note)),
 );
 
 export default pianoRoll;

@@ -1,4 +1,4 @@
-import { merge } from './lib/Observable';
+import { merge } from 'zen-observable/extras';
 
 import keyboard from './components/keyboard';
 import { onmidimessage } from './components/midi';

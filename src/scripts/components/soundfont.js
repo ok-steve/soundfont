@@ -1,5 +1,4 @@
-import { fromEvent } from '../lib/Observable';
-
+import fromEvent from '../lib/Observable/fromEvent';
 import setInstrument from '../actions/setInstrument';
 import setSoundfont from '../actions/setSoundfont';
 import { dispatch } from '../store';

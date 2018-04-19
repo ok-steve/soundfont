@@ -1,4 +1,4 @@
-import Observable from './Observable';
+import Observable from 'zen-observable';
 
 const httpFetch = (url, { method = 'GET', responseType = 'text' } = {}) => new Observable((observer) => {
   const xhr = new XMLHttpRequest();

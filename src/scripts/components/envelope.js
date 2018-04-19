@@ -1,5 +1,4 @@
-import { fromEvent } from '../lib/Observable';
-
+import fromEvent from '../lib/Observable/fromEvent';
 import setEnvelope from '../actions/setEnvelope';
 import { dispatch } from '../store';
 

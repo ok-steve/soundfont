@@ -1,4 +1,4 @@
-import Observable from './Observable';
+import Observable from 'zen-observable';
 
 const requestMIDIAccess = () => new Observable((observer) => {
   if (navigator.requestMIDIAccess === undefined) {

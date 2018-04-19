@@ -1,6 +1,6 @@
 import { h } from 'snabbdom/h';
 
-import Observable from '../lib/Observable';
+import Observable from 'zen-observable';
 import requestMIDIAccess from '../lib/requestMIDIAccess';
 import { toMessage } from '../lib/Util';
 

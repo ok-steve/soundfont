@@ -1,5 +1,7 @@
 import './vendor/AudioContextMonkeyPatch';
 
+import distinctUntilChanged from './lib/Observable/distinctUntilChanged';
+import withLatestFrom from './lib/Observable/withLatestFrom';
 import createSoundfont from './lib/createSoundfont';
 import BufferSynth from './lib/BufferSynth';
 import PolySynth from './lib/PolySynth';
@@ -9,12 +11,13 @@ import bus from './bus';
 const context = new AudioContext();
 
 const envelopeObservable = store.map(state => state.envelope);
-const instrumentObservable = store.map(state => state.soundfont).distinctUntilChanged()
+const instrumentObservable = distinctUntilChanged(store.map(state => state.soundfont))
   .flatMap(({ soundfont, instrument }) => createSoundfont(context, instrument, soundfont));
 
 const synth = new PolySynth(context, BufferSynth).connect(context.destination);
 
-bus.withLatestFrom(
+withLatestFrom(
+  bus,
   instrumentObservable,
   envelopeObservable,
 ).subscribe(([message, soundfont, envelope]) => {

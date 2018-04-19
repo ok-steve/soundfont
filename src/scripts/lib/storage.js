@@ -1,4 +1,4 @@
-import Observable from './Observable';
+import Observable from 'zen-observable';
 import { soundfonts } from '../../data.json';
 
 const dbFactory = (name, version) => new Observable((observer) => {

@@ -1,6 +1,6 @@
 import { createStore } from 'redux';
 
-import Observable from './lib/Observable';
+import Observable from 'zen-observable';
 
 import rootReducer from './reducers/index';
 
