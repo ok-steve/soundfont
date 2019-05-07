@@ -1,24 +1,27 @@
 import Observable from 'zen-observable';
 
-const distinctUntilChanged = source => new Observable((observer) => {
-  let value;
+const distinctUntilChanged = source =>
+  new Observable((observer) => {
+    let value;
 
-  source.subscribe({
-    next(v) {
-      const same = value === v;
-      value = v;
+    const subscription = source.subscribe({
+      next(v) {
+        const same = value === v;
+        value = v;
 
-      if (!same) { observer.next(v); }
-    },
-    error(e) {
-      observer.error(e);
-    },
-    complete() {
-      observer.complete();
-    },
+        if (!same) {
+          observer.next(v);
+        }
+      },
+      error(e) {
+        observer.error(e);
+      },
+      complete() {
+        observer.complete();
+      },
+    });
+
+    return () => subscription.unsubscribe();
   });
-
-  return () => source.unsubscribe();
-});
 
 export default distinctUntilChanged;
