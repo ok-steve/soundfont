@@ -1,6 +1,6 @@
 {
   "name": "Soundfont",
-  "short_name": "Sf",
+  "short_name": "Soundfont",
   "description": "A soundfont player.",
   "start_url": "./",
   "display": "minimal-ui",
