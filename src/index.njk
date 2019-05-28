@@ -1,11 +1,9 @@
-{% extends "templates/base.njk" %}
-
-{% block content %}
+---
+layout: base.njk
+---
 
 {% for route in routes %}
   <div id="{{ route.path }}" class="view pt5">
-    {% include "templates/routes/" + route.path + ".njk" ignore missing %}
+    {% include "routes/" + route.path + ".njk" ignore missing %}
   </div>
 {% endfor %}
-
-{% endblock %}

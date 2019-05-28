@@ -1,5 +1,5 @@
 import { SET_SOUNDFONT, SET_SOUNDFONT_INSTRUMENT } from '../constants/index';
-import { initialState } from '../../data.json';
+import initialState from '../../_data/initialState';
 
 const { soundfont: INITIAL_STATE } = initialState;
 

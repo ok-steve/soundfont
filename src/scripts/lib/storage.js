@@ -1,5 +1,5 @@
 import Observable from 'zen-observable';
-import { soundfonts } from '../../data.json';
+import soundfonts from '../../_data/soundfonts';
 
 const dbFactory = (name, version) => new Observable((observer) => {
   const request = indexedDB.open(name, version);

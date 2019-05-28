@@ -1,6 +1,6 @@
 import { clamp } from '../lib/Util';
 import { SET_OCTAVE } from '../constants/index';
-import { initialState } from '../../data.json';
+import initialState from '../../_data/initialState';
 
 const { octave: INITIAL_STATE } = initialState;
 

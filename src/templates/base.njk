@@ -28,7 +28,9 @@
   <meta name="msapplication-config" content="./browserconfig.xml">
   <link rel="manifest" href="./manifest.json">
 
+  {% if siteData.env === 'production' %}
   <link rel="stylesheet" href="./styles/main.css">
+  {% endif %}
 
   <link rel="canonical" href="https://stevecherry.net/soundfont/">
 </head>
@@ -46,9 +48,7 @@
   </header>
 
   <main class="flex-auto mh2" role="main">
-    {% block content %}
-    <div class="is-loading">Loading&hellip;</div>
-    {% endblock %}
+    {{ content | safe }}
   </main>
 
   <footer class="ph2 mt2 bt bg-white b--moon-gray" role="contentinfo">

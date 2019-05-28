@@ -1,5 +1,5 @@
 import { SET_ENVELOPE } from '../constants/index';
-import { initialState } from '../../data.json';
+import initialState from '../../_data/initialState';
 
 const { envelope: INITIAL_STATE } = initialState;
 
