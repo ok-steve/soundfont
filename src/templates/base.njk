@@ -34,25 +34,25 @@
 
   <link rel="canonical" href="https://stevecherry.net/soundfont/">
 </head>
-<body class="sans-serif flex flex-column min-vh-100 ma0 bg-near-white">
-  <header class="flex items-center justify-between pv2 white bg-green fixed w-100" role="banner">
-    <h1 class="f4 mv0 ml2">Soundfont</h1>
+<body class="font-sans flex flex-col min-h-screen m-0 bg-gray-100">
+  <header class="flex items-center justify-between py-2 text-white bg-green-600 fixed w-full" role="banner">
+    <h1 class="text-xl my-0 ml-2">Soundfont</h1>
 
-    <nav class="mr2" role="navigation">
-      <ul class="flex list pl0 mv0">
+    <nav class="mr-2" role="navigation">
+      <ul class="flex list-none pl-0 my-0">
         {% for route in routes | reverse %}
-          <li><a class="db pa2 color-inherit link hover-white-70" href="#{{ route.path }}">{{ route.title }}</a></li>
+          <li><a class="block p-2 text-inherit link focus:outline-current no-underline hover:opacity-75 focus:opacity-75" href="#{{ route.path }}">{{ route.title }}</a></li>
         {% endfor %}
       </ul>
     </nav>
   </header>
 
-  <main class="flex-auto mh2" role="main">
+  <main class="flex-auto mx-2" role="main">
     {{ content | safe }}
   </main>
 
-  <footer class="ph2 mt2 bt bg-white b--moon-gray" role="contentinfo">
-    <p>A <a class="color-inherit hover-green" href="https://github.com/sccherry/soundfont">project</a> by <a class="color-inherit hover-green" href="https://stevecherry.net">Steve Cherry</a>.</p>
+  <footer class="px-2 mt-2 border-0 border-t border-solid bg-white border-gray-400" role="contentinfo">
+    <p>A <a class="text-inherit hover:text-green-600 focus:text-green-600" href="https://github.com/sccherry/soundfont">project</a> by <a class="text-inherit hover:text-green-600 focus:text-green-600" href="https://stevecherry.net">Steve Cherry</a>.</p>
   </footer>
 
   <script src="./scripts/main.js" defer></script>

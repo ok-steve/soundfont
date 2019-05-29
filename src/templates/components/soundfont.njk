@@ -1,20 +1,20 @@
-<fieldset class="bn ma0 pa0">
-  <div class="f4 b">
+<fieldset class="border-0 border-none m-0 p-0">
+  <div class="text-xl font-bold">
     <legend>Soundfont</legend>
   </div>
 
-  <div class="mt3">
-    <label class="db" for="soundfont">Soundfont</label>
-    <select id="soundfont" class="w-100" name="soundfont">
+  <div class="mt-4">
+    <label class="block" for="soundfont">Soundfont</label>
+    <select id="soundfont" class="w-full" name="soundfont">
       {% for option in soundfonts %}
         <option value="{{ option }}"{% if option == initialState.soundfont.soundfont %} selected{% endif %}>{{ option }}</option>
       {% endfor %}
     </select>
   </div>
 
-  <div class="mt3">
-    <label class="db" for="instrument">Instrument</label>
-    <select id="instrument" class="w-100" name="instrument">
+  <div class="mt-4">
+    <label class="block" for="instrument">Instrument</label>
+    <select id="instrument" class="w-full" name="instrument">
       {% for label, optgroup in generalMidi %}
         <optgroup label="{{ label }}">
           {% for option in optgroup %}

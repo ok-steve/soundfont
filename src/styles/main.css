@@ -1,26 +1,6 @@
 @charset "utf-8";
 
-@import url("./base/variables.css");
 @import url("./base/normalize.css");
-
-@import url("./utilities/border-colors.css");
-@import url("./utilities/border-radius.css");
-@import url("./utilities/borders.css");
-@import url("./utilities/display.css");
-@import url("./utilities/flexbox.css");
-@import url("./utilities/font-family.css");
-@import url("./utilities/font-weight.css");
-@import url("./utilities/heights.css");
-@import url("./utilities/hovers.css");
-@import url("./utilities/links.css");
-@import url("./utilities/lists.css");
-@import url("./utilities/position.css");
-@import url("./utilities/skins-pseudo.css");
-@import url("./utilities/skins.css");
-@import url("./utilities/spacing.css");
-@import url("./utilities/svg.css");
-@import url("./utilities/type-scale.css");
-@import url("./utilities/widths.css");
-
 @import url("./components/piano-roll.css");
 @import url("./components/view.css");
+@import "tailwindcss/utilities";

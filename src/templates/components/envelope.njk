@@ -1,25 +1,25 @@
-<fieldset class="bg-white pa3 ba b--moon-gray br2">
-  <div class="f4 b">
+<fieldset class="bg-white p-3 border border-solid border-gray-400 rounded">
+  <div class="text-xl font-bold">
     <legend>Envelope</legend>
   </div>
 
-  <div class="mt3">
-    <label class="db" for="envelope-attack">Attack</label>
-    <input id="envelope-attack" class="w-100" type="range" name="envelope-attack" max="1" step="0.001" value="{{ initialState.envelope.attack }}">
+  <div class="mt-4">
+    <label class="block" for="envelope-attack">Attack</label>
+    <input id="envelope-attack" class="w-full" type="range" name="envelope-attack" max="1" step="0.001" value="{{ initialState.envelope.attack }}">
   </div>
 
-  <div class="mt3">
-    <label class="db" for="envelope-decay">Decay</label>
-    <input id="envelope-decay" class="w-100" type="range" name="envelope-decay" max="1" step="0.001" value="{{ initialState.envelope.decay }}">
+  <div class="mt-4">
+    <label class="block" for="envelope-decay">Decay</label>
+    <input id="envelope-decay" class="w-full" type="range" name="envelope-decay" max="1" step="0.001" value="{{ initialState.envelope.decay }}">
   </div>
 
-  <div class="mt3">
-    <label class="db" for="envelope-sustain">Sustain</label>
-    <input id="envelope-sustain" class="w-100" type="range" name="envelope-sustain" max="1" step="0.001" value="{{ initialState.envelope.sustain }}">
+  <div class="mt-4">
+    <label class="block" for="envelope-sustain">Sustain</label>
+    <input id="envelope-sustain" class="w-full" type="range" name="envelope-sustain" max="1" step="0.001" value="{{ initialState.envelope.sustain }}">
   </div>
 
-  <div class="mt3">
-    <label class="db" for="envelope-release">Release</label>
-    <input id="envelope-release" class="w-100" type="range" name="envelope-release" max="1" step="0.001" value="{{ initialState.envelope.release }}">
+  <div class="mt-4">
+    <label class="block" for="envelope-release">Release</label>
+    <input id="envelope-release" class="w-full" type="range" name="envelope-release" max="1" step="0.001" value="{{ initialState.envelope.release }}">
   </div>
 </fieldset>

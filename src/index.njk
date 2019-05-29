@@ -3,7 +3,7 @@ layout: base.njk
 ---
 
 {% for route in routes %}
-  <div id="{{ route.path }}" class="view pt5">
+  <div id="{{ route.path }}" class="view pt-16">
     {% include "routes/" + route.path + ".njk" ignore missing %}
   </div>
 {% endfor %}
