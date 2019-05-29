@@ -16,17 +16,22 @@
   <title>Soundfont</title>
   <meta name="description" content="A soundfont player.">
 
-  <link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon-180.png">
-  <link rel="apple-touch-startup-image" href="./assets/favicon-192.png">
-  <link rel="icon" type="image/png" href="./assets/favicon-32.png" sizes="32x32">
-  <link rel="icon" type="image/png" href="./assets/favicon-16.png" sizes="16x16">
-  <link rel="mask-icon" href="./assets/favicon.svg" color="#2b8a3e">
-
-  <meta name="apple-mobile-web-app-title" content="Soundfont">
-  <meta name="theme-color" content="#2b8a3e">
+  <meta name="mobile-web-app-capable" content="yes">
   <meta name="application-name" content="Soundfont">
+
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Soundfont">
+  <link rel="apple-touch-startup-image" href="./assets/android-chrome-192x192.png">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon-16x16.png">
+  <link rel="manifest" href="./site.webmanifest">
+  <link rel="mask-icon" href="./assets/safari-pinned-tab.svg" color="#2b8a3e">
+  <link rel="shortcut icon" href="./assets/favicon.ico">
+  <meta name="msapplication-TileColor" content="#2b8a3e">
   <meta name="msapplication-config" content="./browserconfig.xml">
-  <link rel="manifest" href="./manifest.json">
+  <meta name="theme-color" content="#2b8a3e">
 
   {% if siteData.env === 'production' %}
   <link rel="stylesheet" href="./styles/main.css">
