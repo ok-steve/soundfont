@@ -4,10 +4,9 @@
 
 .view:target {
   display: block;
-  /* stylelint-disable plugin/no-unsupported-browser-features */
 
+  /* stylelint-disable-next-line plugin/no-unsupported-browser-features */
   animation: fadeIn 0.3s;
-  /* stylelint-enable */
 }
 
 .view:last-child {
