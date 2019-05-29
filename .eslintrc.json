@@ -1,8 +1,6 @@
 {
   "extends": "eslint-config-airbnb-base",
-  "plugins": [
-    "compat"
-  ],
+  "plugins": ["compat"],
   "env": {
     "browser": true
   },

@@ -56,8 +56,11 @@ const storage = dbRequest.map(e => e.target.result);
 
 export default storage;
 
-dbRequest.filter(e => e.type === 'upgradeneeded').map(e => e.target.result).subscribe((db) => {
-  soundfonts.forEach((soundfont) => {
-    db.createObjectStore(soundfont);
+dbRequest
+  .filter(e => e.type === 'upgradeneeded')
+  .map(e => e.target.result)
+  .subscribe((db) => {
+    soundfonts.forEach((soundfont) => {
+      db.createObjectStore(soundfont);
+    });
   });
-});

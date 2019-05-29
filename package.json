@@ -43,7 +43,10 @@
   "homepage": "https://github.com/sccherry/soundfont#readme",
   "browserslist": [
     "> 1%",
-    "last 2 versions"
+    "last 2 versions",
+    "not ie <= 11",
+    "not ie_mob <= 11",
+    "not bb <= 10"
   ],
   "dependencies": {
     "redux": "3.7.2",
@@ -59,10 +62,10 @@
     "autoprefixer": "7.1.6",
     "babel-loader": "^8.0.6",
     "css-loader": "^2.1.1",
-    "eslint": "4.10.0",
-    "eslint-config-airbnb-base": "12.1.0",
-    "eslint-plugin-compat": "2.1.0",
-    "eslint-plugin-import": "2.8.0",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-compat": "^3.1.1",
+    "eslint-plugin-import": "^2.17.3",
     "mini-css-extract-plugin": "^0.6.0",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
     "postcss-import": "11.0.0",
