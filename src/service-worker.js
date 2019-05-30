@@ -1,5 +1,4 @@
-/* eslint-disable compat/compat, no-restricted-globals */
-const CACHE_VERSION = 'v6';
+const CACHE_VERSION = 'v7';
 const CACHE_NAME = 'soundfont';
 const CACHE = `${CACHE_VERSION}-${CACHE_NAME}`;
 
@@ -11,14 +10,18 @@ const CRITICAL_ASSETS = [
 ];
 
 const OPTIONAL_ASSETS = [
-  './assets/favicon-16.png',
-  './assets/favicon-32.png',
-  './assets/favicon-150.png',
-  './assets/favicon-180.png',
-  './assets/favicon-192.png',
-  './assets/favicon-512.png',
-  './assets/favicon.svg',
-  './favicon.ico',
+  './assets/android-chrome-192x192.png',
+  './assets/android-chrome-512x512.png',
+  './assets/apple-touch-icon.png',
+  './assets/favicon-16x16.png',
+  './assets/favicon-32x32.png',
+  './assets/favicon.ico',
+  './assets/mstile-70x70.png',
+  './assets/mstile-144x144.png',
+  './assets/mstile-150x150.png',
+  './assets/mstile-310x150.png',
+  './assets/mstile-310x310.png',
+  './assets/safari-pinned-tab.svg'
 ];
 
 const CACHE_PATH_PATTERN = /\/(?:(assets|scripts|styles)\/(.+)?)?$/;
