@@ -1,14 +1,16 @@
-module.exports = eleventyConfig => {
+module.exports = (eleventyConfig) => {
+  eleventyConfig.addFilter('capitalize', value => value.charAt(0).toUpperCase() + value.slice(1));
+
   eleventyConfig.addPassthroughCopy('src/assets');
-  eleventyConfig.addPassthroughCopy('src/browserconfig.xml');
-  eleventyConfig.addPassthroughCopy('src/site.webmanifest');
   eleventyConfig.addPassthroughCopy('src/service-worker.js');
 
   return {
+    pathPrefix:
+      process.env.ELEVENTY_ENV === 'production' ? `/${process.env.npm_package_name}/` : '/',
     dir: {
       input: 'src',
       output: 'dist',
-      includes: 'templates'
-    }
+      layouts: '_layouts',
+    },
   };
 };
