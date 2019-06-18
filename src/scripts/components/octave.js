@@ -1,15 +1,8 @@
-import fromEvent from '../lib/Observable/fromEvent';
 import distinctUntilChanged from '../lib/Observable/distinctUntilChanged';
-
-import setOctave from '../actions/setOctave';
-import store, { dispatch } from '../store';
+import fromEvent from '../lib/Observable/fromEvent';
+import startWith from '../lib/Observable/startWith';
 
 const el = document.querySelector('#octave');
+const octave = distinctUntilChanged(startWith(fromEvent(el, 'change'), +el.value));
 
-const onChange = e => dispatch(setOctave(e.target.value));
-
-fromEvent(el, 'change').subscribe(onChange);
-
-distinctUntilChanged(store.map(state => state.octave)).subscribe((octave) => {
-  el.value = octave;
-});
+export default octave;

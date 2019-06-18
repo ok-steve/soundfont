@@ -1,15 +1,24 @@
+import { combineLatest } from 'zen-observable/extras';
 import fromEvent from '../lib/Observable/fromEvent';
-import setEnvelope from '../actions/setEnvelope';
-import { dispatch } from '../store';
+import startWith from '../lib/Observable/startWith';
 
-const attack = document.querySelector('#envelope-attack');
-const decay = document.querySelector('#envelope-decay');
-const sustain = document.querySelector('#envelope-sustain');
-const release = document.querySelector('#envelope-release');
+const fromChange = (sel) => {
+  const el = document.querySelector(sel);
+  const val = +el.value;
 
-const onChange = key => e => dispatch(setEnvelope(key, e.target.value));
+  return startWith(fromEvent(el, 'change').map(e => +e.target.value), val);
+};
 
-fromEvent(attack, 'change').subscribe(onChange('attack'));
-fromEvent(decay, 'change').subscribe(onChange('decay'));
-fromEvent(sustain, 'change').subscribe(onChange('sustain'));
-fromEvent(release, 'change').subscribe(onChange('release'));
+const envelope = combineLatest(
+  fromChange('#envelope-attack'),
+  fromChange('#envelope-decay'),
+  fromChange('#envelope-sustain'),
+  fromChange('#envelope-release'),
+).map(([attack, decay, sustain, release]) => ({
+  attack,
+  decay,
+  sustain,
+  release,
+}));
+
+export default envelope;

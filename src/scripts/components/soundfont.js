@@ -1,14 +1,15 @@
+import { combineLatest } from 'zen-observable/extras';
 import fromEvent from '../lib/Observable/fromEvent';
-import setInstrument from '../actions/setInstrument';
-import setSoundfont from '../actions/setSoundfont';
-import { dispatch } from '../store';
+import startWith from '../lib/Observable/startWith';
 
-const instrument = document.querySelector('#instrument');
-const soundfont = document.querySelector('#soundfont');
+const fromChange = (sel) => {
+  const el = document.querySelector(sel);
 
-const onChange = action => dispatch(action);
+  return startWith(fromEvent(el, 'change'), el.value);
+};
 
-const toAction = action => e => action(e.target.value);
+const soundfont = combineLatest(fromChange('#instrument'), fromChange('#soundfont')).map(
+  ([instrument, sf]) => ({ instrument, soundfont: sf }),
+);
 
-fromEvent(instrument, 'change').map(toAction(setInstrument)).subscribe(onChange);
-fromEvent(soundfont, 'change').map(toAction(setSoundfont)).subscribe(onChange);
+export default soundfont;
