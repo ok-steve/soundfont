@@ -5,7 +5,9 @@ import { toMessage } from '../lib/Util';
 
 const inputDevices = requestMIDIAccess().map(access => access.inputs);
 
-export const onmidimessage = inputDevices
+const midi = inputDevices
   .flatMap(inputs => Observable.from(Array.from(inputs.values())))
   .flatMap(input => fromEvent(input, 'midimessage'))
   .map(e => toMessage(...e.data));
+
+export default midi;
