@@ -1,15 +1,8 @@
-import { combineLatest } from 'zen-observable/extras';
-import fromEvent from '../lib/Observable/fromEvent';
-import startWith from '../lib/Observable/startWith';
+import state from './state';
 
-const fromChange = (sel) => {
-  const el = document.querySelector(sel);
-
-  return startWith(fromEvent(el, 'change').map(e => e.target.value), el.value);
-};
-
-const soundfont = combineLatest(fromChange('#instrument'), fromChange('#soundfont')).map(
-  ([instrument, sf]) => ({ instrument, soundfont: sf }),
-);
+const soundfont = state.map((data) => ({
+  instrument: data.get('instrument'),
+  soundfont: data.get('soundfont'),
+}));
 
 export default soundfont;

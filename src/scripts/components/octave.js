@@ -1,13 +1,8 @@
 import distinctUntilChanged from '../lib/Observable/distinctUntilChanged';
-import fromEvent from '../lib/Observable/fromEvent';
-import startWith from '../lib/Observable/startWith';
+import state from './state';
 
-const fromChange = (sel) => {
-  const el = document.querySelector(sel);
-
-  return startWith(fromEvent(el, 'change').map(e => +e.target.value), +el.value);
-};
-
-const octave = distinctUntilChanged(fromChange('#octave'));
+const octave = distinctUntilChanged(
+  state.map((data) => parseInt(data.get('octave'), 10)),
+);
 
 export default octave;
