@@ -1,69 +1,45 @@
-import Observable from 'zen-observable';
-import httpFetch from './httpFetch';
-import storage, { getFromStorage, addToStorage } from './storage';
-import { decodeBase64, noteToMIDI } from './Util';
-import decodeAudioData from './decodeAudioData';
+import Worker from './soundfont.worker';
 
-if (typeof window.MIDI === 'undefined') {
-  window.MIDI = {};
-}
+const worker = new Worker();
 
-window.MIDI.Soundfont = window.MIDI.Soundfont || {};
+function soundfontToAudioBuffer({ context, buffers }) {
+  const cache = [];
 
-const nameToUrl = (name, sf = 'FluidR3_GM', format = 'mp3') => {
-  const baseURL = 'https://gleitz.github.io';
-
-  return `${baseURL}/midi-js-soundfonts/${sf}/${name}-${format}.js`;
-};
-
-const createScript = (text) => {
-  const el = document.createElement('script');
-
-  el.type = 'text/javascript';
-  el.text = text;
-
-  document.body.appendChild(el);
-};
-
-const fetchSoundfont = (name, sf) => {
-  if (window.MIDI.Soundfont[name]) {
-    return Observable.of(window.MIDI.Soundfont[name]);
-  }
-
-  return httpFetch(nameToUrl(name, sf))
-    .flatMap((text) => {
-      createScript(text);
-
-      return fetchSoundfont(name, sf);
-    });
-};
-
-const soundfontToArrayBuffer = soundfont => Observable.from(Object.keys(soundfont)).map((key) => {
-  const base64 = soundfont[key].split(',')[1];
-
-  return [noteToMIDI(key), decodeBase64(base64)];
-}).reduce((prev, [key, buffer]) => ({
-  ...prev,
-  [key]: buffer,
-}), {});
-
-const soundfontToAudioBuffer = (context, soundfont) => Observable.from(Object.keys(soundfont))
-  .flatMap(key => decodeAudioData(context, soundfont[key]).map(buffer => [key, buffer]))
-  .reduce((prev, [key, buffer]) => ({
-    ...prev,
-    [key]: buffer,
-  }), {});
-
-
-const createSoundfont = (context, name, soundfont) => storage
-  .flatMap(db => getFromStorage(db, soundfont, name)).flatMap((data) => {
-    if (data === undefined) {
-      return fetchSoundfont(name, soundfont).flatMap(soundfontToArrayBuffer)
-        .flatMap(sf => storage.flatMap(db => addToStorage(db, name, soundfont, sf)))
-        .flatMap(() => createSoundfont(context, name, soundfont));
-    }
-
-    return soundfontToAudioBuffer(context, data);
+  buffers.forEach((value, key) => {
+    cache.push(
+      context.decodeAudioData(value).then((buffer) => {
+        return [key, buffer];
+      }),
+    );
   });
 
-export default createSoundfont;
+  return Promise.all(cache).then((audioBuffers) => new Map(audioBuffers));
+}
+
+function requestFromWorker(message) {
+  worker.postMessage(message);
+
+  return new Promise((resolve, reject) => {
+    function handler(e) {
+      resolve(e.data);
+      worker.removeEventListener('message', handler);
+      // eslint-disable-next-line no-use-before-define
+      worker.removeEventListener('error', errorHandler);
+    }
+
+    function errorHandler(e) {
+      reject(e.message);
+      worker.removeEventListener('message', handler);
+      worker.removeEventListener('error', errorHandler);
+    }
+
+    worker.addEventListener('message', handler);
+    worker.addEventListener('error', errorHandler);
+  });
+}
+
+export default function(context, instrument = 'acoustic_grand_piano', soundfont = 'FluidR3_GM') {
+  return requestFromWorker({ instrument, soundfont }).then((buffers) => {
+    return soundfontToAudioBuffer({ context, buffers });
+  });
+}

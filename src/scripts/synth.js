@@ -1,3 +1,4 @@
+import fromPromise from './lib/Observable/fromPromise';
 import withLatestFrom from './lib/Observable/withLatestFrom';
 import createSoundfont from './lib/createSoundfont';
 import BufferSynth from './lib/BufferSynth';
@@ -11,7 +12,7 @@ import bus from './bus';
 const context = getAudioContext();
 
 const instrumentObservable = soundfont.flatMap(({ soundfont: sf, instrument }) =>
-  createSoundfont(context, instrument, sf),
+  fromPromise(createSoundfont(context, instrument, sf)),
 );
 
 const synth = new PolySynth(context, BufferSynth).connect(context.destination);
@@ -23,7 +24,7 @@ withLatestFrom(bus, instrumentObservable, envelope).subscribe(([message, sf, env
   switch (status) {
     case NOTE_ON: {
       const { note, velocity } = message;
-      synth.triggerAttack(note, context.currentTime, velocity, sf[note], { envelope: env });
+      synth.triggerAttack(note, context.currentTime, velocity, sf.get(note), { envelope: env });
       break;
     }
     case NOTE_OFF: {

@@ -1,66 +1,72 @@
-import Observable from 'zen-observable';
 import soundfonts from '../../_data/soundfonts';
 
-const dbFactory = (name, version) => new Observable((observer) => {
-  const request = indexedDB.open(name, version);
+const openDB = (name, version, { upgrade }) =>
+  new Promise((resolve, reject) => {
+    const request = indexedDB.open(name, version);
 
-  request.onupgradeneeded = (e) => {
-    observer.next(e);
-    observer.complete();
-  };
+    request.onupgradeneeded = (e) => {
+      upgrade(request.result, e.oldVersion, e.newVersion, request.transaction);
+    };
 
-  request.onerror = (e) => {
-    observer.error(e);
-  };
+    request.onerror = (e) => {
+      reject(e.target.result);
+    };
 
-  request.onsuccess = (e) => {
-    observer.next(e);
-    observer.complete();
-  };
-});
+    request.onsuccess = (e) => {
+      resolve(e.target.result);
+    };
+  });
 
-export const getFromStorage = (db, storeName, key) => new Observable((observer) => {
-  const transaction = db.transaction([storeName], 'readonly');
-  const store = transaction.objectStore(storeName);
-  const request = store.get(key);
+const getFromStorage = (db, storeName, key) =>
+  new Promise((resolve, reject) => {
+    const transaction = db.transaction([storeName], 'readonly');
+    const store = transaction.objectStore(storeName);
+    const request = store.get(key);
 
-  request.onsuccess = (e) => {
-    observer.next(e);
-    observer.complete();
-  };
+    request.onsuccess = (e) => {
+      resolve(e.target.result);
+    };
 
-  request.onerror = (e) => {
-    observer.error(e);
-  };
-}).map(e => e.target.result);
+    request.onerror = (e) => {
+      reject(e.target.result);
+    };
+  });
 
-export const addToStorage = (db, key, storeName, data) => new Observable((observer) => {
-  const transaction = db.transaction([storeName], 'readwrite');
-  const store = transaction.objectStore(storeName);
+const addToStorage = (db, storeName, key, data) =>
+  new Promise((resolve, reject) => {
+    const transaction = db.transaction([storeName], 'readwrite');
+    const store = transaction.objectStore(storeName);
 
-  transaction.oncomplete = (e) => {
-    observer.next(e);
-    observer.complete();
-  };
+    transaction.oncomplete = (e) => {
+      resolve(e);
+    };
 
-  transaction.onerror = (e) => {
-    observer.error(e);
-  };
+    transaction.onerror = (e) => {
+      reject(e);
+    };
 
-  store.add(data, key);
-});
+    store.add(data, key);
+  });
 
-const dbRequest = dbFactory('soundfont', 1);
-
-const storage = dbRequest.map(e => e.target.result);
-
-export default storage;
-
-dbRequest
-  .filter(e => e.type === 'upgradeneeded')
-  .map(e => e.target.result)
-  .subscribe((db) => {
+const storage = openDB('soundfont', 1, {
+  upgrade(db) {
     soundfonts.forEach((soundfont) => {
       db.createObjectStore(soundfont);
     });
-  });
+  },
+});
+
+export default function(callback) {
+  const returnFn = ({ storeName, key }) =>
+    storage
+      .then((db) => getFromStorage(db, storeName, key))
+      .then((data) => {
+        if (data) return data;
+
+        return callback({ storeName, key })
+          .then((result) => storage.then((db) => addToStorage(db, storeName, key, result)))
+          .then(() => returnFn({ storeName, key }));
+      });
+
+  return returnFn;
+}
