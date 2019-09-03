@@ -39,14 +39,14 @@
 
   <link rel="canonical" href="https://stevecherry.net/soundfont/">
 </head>
-<body class="font-sans flex flex-col min-h-screen m-0 bg-gray-100">
-  <header class="flex items-center justify-between py-2 text-white bg-green-600 fixed w-full" role="banner">
-    <h1 class="text-xl my-0 ml-2">{{ siteData.name | capitalize }}</h1>
+<body class="font-sans m-0 flex flex-col min-h-screen">
+  <header class="flex items-center justify-between p-2 border-0 border-b border-solid border-gray-400 mb-2" role="banner">
+    <h1 class="text-xl my-0">{{ siteData.name | capitalize }}</h1>
 
-    <nav class="mr-2" role="navigation">
+    <nav role="navigation">
       <ul class="flex list-none pl-0 my-0">
         {% for route in routes | reverse %}
-          <li><a class="block p-2 text-inherit link focus:outline-current no-underline hover:opacity-75 focus:opacity-75" href="#{{ route.path }}">{{ route.title }}</a></li>
+          <li><a class="block p-2 text-inherit hover:text-green-400 focus:text-green-400" href="#{{ route.path }}">{{ route.title }}</a></li>
         {% endfor %}
       </ul>
     </nav>
@@ -57,7 +57,7 @@
   </main>
 
   <footer class="px-2 mt-2 border-0 border-t border-solid bg-white border-gray-400" role="contentinfo">
-    <p>A <a class="text-inherit hover:text-green-600 focus:text-green-600" href="https://github.com/sccherry/soundfont">project</a> by <a class="text-inherit hover:text-green-600 focus:text-green-600" href="https://stevecherry.net">Steve Cherry</a>.</p>
+    <p>A <a class="text-inherit hover:text-green-400 focus:text-green-400" href="https://github.com/sccherry/soundfont">project</a> by <a class="text-inherit hover:text-green-400 focus:text-green-400" href="https://stevecherry.net">Steve Cherry</a>.</p>
   </footer>
 
   <script src="{{ '/scripts/main.js' | url }}" defer></script>

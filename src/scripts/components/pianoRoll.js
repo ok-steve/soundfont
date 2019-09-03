@@ -37,10 +37,10 @@ export default pianoRoll;
 
 noteon.subscribe((e) => {
   e.preventDefault();
-  e.target.classList.add('is-pressed');
+  e.target.setAttribute('aria-pressed', 'true');
 });
 
 noteoff.subscribe((e) => {
   e.preventDefault();
-  e.target.classList.remove('is-pressed');
+  e.target.setAttribute('aria-pressed', 'false');
 });
