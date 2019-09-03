@@ -6,7 +6,6 @@ import toMessage from '../lib/toMessage';
 import octave from './octave';
 
 const KEYS = 'awsedftgyhujk';
-const OCTAVE_KEYS = 'zx';
 
 const includes = list => e => list.includes(e.key.toLowerCase());
 
@@ -27,8 +26,6 @@ const noteon = withLatestFrom(keydown.filter(includes(KEYS)), octave)
 const noteoff = withLatestFrom(keyup.filter(includes(KEYS)), octave)
   .map(toNote)
   .map((note) => toMessage(128, note, 0));
-
-const octavechange = keyup.filter(includes(OCTAVE_KEYS));
 
 const keyboard = merge(noteon, noteoff);
 
