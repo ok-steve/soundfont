@@ -1,15 +1,14 @@
-import './vendor/AudioContextMonkeyPatch';
-
 import withLatestFrom from './lib/Observable/withLatestFrom';
 import createSoundfont from './lib/createSoundfont';
 import BufferSynth from './lib/BufferSynth';
 import PolySynth from './lib/PolySynth';
+import getAudioContext from './lib/getAudioContext';
 import { NOTE_ON, NOTE_OFF } from './lib/toMessage';
 import envelope from './components/envelope';
 import soundfont from './components/soundfont';
 import bus from './bus';
 
-const context = new AudioContext();
+const context = getAudioContext();
 
 const instrumentObservable = soundfont.flatMap(({ soundfont: sf, instrument }) =>
   createSoundfont(context, instrument, sf),
