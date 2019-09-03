@@ -9,7 +9,7 @@ const el = document.querySelector('.piano-roll');
 
 const isSpaceOrEnter = keyCode => keyCode === 32 || keyCode === 13;
 
-const toNote = ([e, octave]) => pitchToMIDI(octave, parseInt(e.target.dataset.note, 10));
+const toNote = ([e, oct]) => pitchToMIDI(oct, parseInt(e.target.dataset.note, 10));
 
 const noteon = merge(
   fromEvent(el, 'mousedown'),
