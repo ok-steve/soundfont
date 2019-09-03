@@ -1,7 +1,8 @@
 import { merge } from 'zen-observable/extras';
 import fromEvent from '../lib/Observable/fromEvent';
 import withLatestFrom from '../lib/Observable/withLatestFrom';
-import { toMessage, pitchToMIDI } from '../lib/Util';
+import { pitchToMIDI } from '../lib/Util';
+import toMessage from '../lib/toMessage';
 import octave from './octave';
 
 const el = document.querySelector('.piano-roll');
@@ -27,10 +28,10 @@ const noteoff = merge(
 const pianoRoll = merge(
   withLatestFrom(noteon, octave)
     .map(toNote)
-    .map(note => toMessage(144, note)),
+    .map((note) => toMessage(144, note, 127)),
   withLatestFrom(noteoff, octave)
     .map(toNote)
-    .map(note => toMessage(128, note)),
+    .map((note) => toMessage(128, note, 0)),
 );
 
 export default pianoRoll;

@@ -1,7 +1,8 @@
 import { merge } from 'zen-observable/extras';
 import fromEvent from '../lib/Observable/fromEvent';
 import withLatestFrom from '../lib/Observable/withLatestFrom';
-import { toMessage, pitchToMIDI } from '../lib/Util';
+import { pitchToMIDI } from '../lib/Util';
+import toMessage from '../lib/toMessage';
 import octave from './octave';
 
 const KEYS = 'awsedftgyhujk';
@@ -21,11 +22,11 @@ const keyup = fromEvent(document, 'keyup');
 
 const noteon = withLatestFrom(keydown.filter(includes(KEYS)), octave)
   .map(toNote)
-  .map(note => toMessage(144, note));
+  .map((note) => toMessage(144, note, 127));
 
 const noteoff = withLatestFrom(keyup.filter(includes(KEYS)), octave)
   .map(toNote)
-  .map(note => toMessage(128, note));
+  .map((note) => toMessage(128, note, 0));
 
 const octavechange = keyup.filter(includes(OCTAVE_KEYS));
 

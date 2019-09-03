@@ -25,17 +25,11 @@ export const noteToMIDI = (note) => {
   return pitchToMIDI(octave, pitch);
 };
 
-export const toMessage = (status, data0, data1 = 127) => ({
-  status,
-  data: [data0, data1],
-});
-
 const Util = {
   clamp,
   decodeBase64,
   pitchToMIDI,
   noteToMIDI,
-  toMessage,
 };
 
 export default Util;
