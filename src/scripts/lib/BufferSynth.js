@@ -1,42 +1,35 @@
+import Envelope from './Envelope';
+
 class BufferSynth {
   constructor(context, { envelope }) {
     this.context = context;
     this.gain = this.context.createGain();
-    this.envelope = envelope;
+    this.envelope = new Envelope(this.context, envelope);
+    this.envelope.connect(this.gain.gain);
   }
 
-  start(buffer, amplitude) {
+  triggerAttack(buffer, time = this.context.currentTime, velocity = 1) {
     if (!this.source) {
       this.source = this.context.createBufferSource();
       this.source.connect(this.gain);
       this.source.buffer = buffer;
 
-      this.gain.gain.setValueAtTime(0, this.context.currentTime);
-      this.source.start(this.context.currentTime);
-
-      this.gain.gain.linearRampToValueAtTime(
-        amplitude,
-        this.context.currentTime + this.envelope.attack,
-      );
-
-      this.gain.gain.linearRampToValueAtTime(
-        amplitude * this.envelope.sustain,
-        this.context.currentTime + this.envelope.attack + this.envelope.decay,
-      );
+      this.envelope.triggerAttack(time, velocity);
+      this.source.start(time);
     }
 
     return this;
   }
 
-  stop() {
+  triggerRelease(time = this.context.currentTime) {
     if (this.source) {
       this.source.onended = () => {
         this.source.disconnect();
         this.source = null;
       };
 
-      this.gain.gain.linearRampToValueAtTime(0, this.context.currentTime + this.envelope.release);
-      this.source.stop(this.context.currentTime + this.envelope.release);
+      this.envelope.triggerRelease(time);
+      this.source.stop(time + this.envelope.release);
     }
 
     return this;

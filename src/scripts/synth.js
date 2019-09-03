@@ -18,16 +18,16 @@ withLatestFrom(bus, instrumentObservable, envelope).subscribe(([message, sf, env
   const { status, data } = message;
   const [note, velocity] = data;
 
+  /* eslint-disable default-case */
   switch (status) {
-    case 144:
-      synth.start(note, velocity, sf[note], { envelope: env });
+    case 144: {
+      synth.triggerAttack(note, context.currentTime, velocity, sf[note], { envelope: env });
       break;
-
-    case 128:
-      synth.stop(note);
+    }
+    case 128: {
+      synth.triggerRelease(note);
       break;
-
-    default:
-      break;
+    }
   }
+  /* eslint-enable */
 });
