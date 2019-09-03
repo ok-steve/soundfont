@@ -1,6 +1,5 @@
 module.exports = (eleventyConfig) => {
-  eleventyConfig.addFilter('capitalize', value => value.charAt(0).toUpperCase() + value.slice(1));
-
+  eleventyConfig.setWatchJavaScriptDependencies(false);
   eleventyConfig.addPassthroughCopy('src/assets');
   eleventyConfig.addPassthroughCopy('src/service-worker.js');
 

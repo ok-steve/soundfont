@@ -1,11 +1,12 @@
 {
-  "extends": "eslint-config-airbnb-base",
-  "plugins": ["compat"],
-  "env": {
-    "browser": true
-  },
+  "extends": ["eslint-config-airbnb-base", "plugin:compat/recommended"],
   "rules": {
-    "import/prefer-default-export": 0,
-    "compat/compat": "error"
+    "import/prefer-default-export": 0
+  },
+  "settings": {
+    "polyfills": ["navigator.serviceWorker"]
+  },
+  "parserOptions": {
+    "sourceType": "module"
   }
 }
