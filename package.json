@@ -28,7 +28,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/sccherry/soundfont.git"
+    "url": "https://github.com/ok-steve/soundfont.git"
   },
   "keywords": [
     "audio",
@@ -38,9 +38,9 @@
   "author": "Steve Cherry <steve@stevecherry.net> (https://stevecherry.net/)",
   "license": "GPL-3.0",
   "bugs": {
-    "url": "https://github.com/sccherry/soundfont/issues"
+    "url": "https://github.com/ok-steve/soundfont/issues"
   },
-  "homepage": "https://github.com/sccherry/soundfont#readme",
+  "homepage": "https://github.com/ok-steve/soundfont#readme",
   "dependencies": {
     "zen-observable": "^0.8.14"
   },
