@@ -1,65 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <script>
-    var host = 'stevecherry.net';
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    if ((host === window.location.host) && (window.location.protocol !== 'https:')) {
-      window.location.protocol = 'https';
-    }
-  </script>
+    <title>{{ pkg.name | capitalize }}</title>
+    <meta name="description" content="{{ pkg.description }}">
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="canonical" href="{{ pkg.author.url }}/{{ pkg.name }}{{ page.url }}">
 
-  <title>{{ siteData.name | capitalize }}</title>
-  <meta name="description" content="{{ siteData.description }}">
+    <link
+      rel="stylesheet"
+      href="https://stevecherry.net/normcore/css/normcore.css"
+    />
+    <link rel="stylesheet" href="{{ '/public/style.css' | url }}" />
 
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="application-name" content="{{ siteData.name | capitalize }}">
+    <script
+      src="https://stevecherry.net/normcore/js/normcore.js"
+      defer
+    ></script>
+    <script src="{{ '/public/script.js' | url }}" type="module"></script>
+  </head>
+  <body>
+    <div class="cover stack">
+      <header class="[ site-header ] [ cluster ] [ padding-01 ]" role="banner">
+        <h1 class="flex-auto">{{ pkg.name | capitalize }}</h1>
 
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-title" content="{{ siteData.name | capitalize }}">
-  <link rel="apple-touch-startup-image" href="{{ '/assets/android-chrome-192x192.png' | url }}">
+        <nav role="navigation">
+          <ul class="cluster" role="list">
+            {% for route in routes | reverse %}
+              <li>
+                <a href="#{{ route.path }}">{{ route.title }}</a>
+              </li>
+            {% endfor %}
+          </ul>
+        </nav>
+      </header>
 
-  <link rel="apple-touch-icon" sizes="180x180" href="{{ '/assets/apple-touch-icon.png' | url }}">
-  <link rel="icon" type="image/png" sizes="32x32" href="{{ '/assets/favicon-32x32.png' | url }}">
-  <link rel="icon" type="image/png" sizes="16x16" href="{{ '/assets/favicon-16x16.png' | url }}">
-  <link rel="manifest" href="{{ '/site.webmanifest' | url }}">
-  <link rel="mask-icon" href="./assets/safari-pinned-tab.svg" color="{{ siteData.color }}">
-  <link rel="shortcut icon" href="{{ '/assets/favicon.ico' | url }}">
-  <meta name="msapplication-TileColor" content="{{ siteData.color }}">
-  <meta name="msapplication-config" content="{{ '/browserconfig.xml' | url }}">
-  <meta name="theme-color" content="{{ siteData.color }}">
+      <main class="[ site-main ] [ flex-auto ]" role="main">
+        {{ content | safe }}
+      </main>
 
-  {% if siteData.env === 'production' %}
-  <link rel="stylesheet" href="{{ '/styles/main.css' | url }}">
-  {% endif %}
-
-  <link rel="canonical" href="https://stevecherry.net/soundfont/">
-</head>
-<body class="font-sans m-0 flex flex-col min-h-screen">
-  <header class="flex items-center justify-between p-2 border-0 border-b border-solid border-gray-400 mb-2" role="banner">
-    <h1 class="text-xl my-0">{{ siteData.name | capitalize }}</h1>
-
-    <nav role="navigation">
-      <ul class="flex list-none pl-0 my-0">
-        {% for route in routes | reverse %}
-          <li><a class="block p-2 text-inherit hover:text-green-400 focus:text-green-400" href="#{{ route.path }}">{{ route.title }}</a></li>
-        {% endfor %}
-      </ul>
-    </nav>
-  </header>
-
-  <main class="flex-auto mx-2" role="main">
-    {{ content | safe }}
-  </main>
-
-  <footer class="px-2 mt-2 border-0 border-t border-solid bg-white border-gray-400" role="contentinfo">
-    <p>A <a class="text-inherit hover:text-green-400 focus:text-green-400" href="https://github.com/ok-steve/soundfont">project</a> by <a class="text-inherit hover:text-green-400 focus:text-green-400" href="https://stevecherry.net">Steve Cherry</a>.</p>
-  </footer>
-
-  <script src="{{ '/scripts/main.js' | url }}" defer></script>
-</body>
+      <footer class="site-footer" role="contentinfo">
+        <p>Yet another <a href="{{ pkg.homepage }}">project</a> by <a href="{{ pkg.author.url }}">{{ pkg.author.name }}</a>.</p>
+      </footer>
+    </div>
+  </body>
 </html>

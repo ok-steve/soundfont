@@ -1,28 +1,16 @@
-const htmlmin = require('html-minifier');
+const pkg = require('./package.json');
 
-module.exports = (eleventyConfig) => {
-  eleventyConfig.setWatchJavaScriptDependencies(false);
-  eleventyConfig.addPassthroughCopy('src/assets');
-  eleventyConfig.addPassthroughCopy('src/service-worker.js');
+module.exports = function (eleventyConfig) {
+  const pathPrefix =
+    process.env.ELEVENTY_RUN_MODE === 'build' ? `/${pkg.name}/` : '/';
 
-  eleventyConfig.addTransform('htmlmin', (content, outputPath) => {
-    if (process.env.ELEVENTY_ENV === 'production' && outputPath.endsWith('.html')) {
-      const minified = htmlmin.minify(content, {
-        useShortDoctype: true,
-        removeComments: true,
-        collapseWhitespace: true,
-        minifyJs: true,
-      });
-
-      return minified;
-    }
-
-    return content;
-  });
+  eleventyConfig.setServerPassthroughCopyBehavior('passthrough');
+  eleventyConfig.addPassthroughCopy('./public');
 
   return {
-    pathPrefix:
-      process.env.ELEVENTY_ENV === 'production' ? `/${process.env.npm_package_name}/` : '/',
+    pathPrefix,
+    htmlTemplateEngine: 'njk',
+    markdownTemplateEngine: 'njk',
     dir: {
       input: 'src',
       output: 'dist',

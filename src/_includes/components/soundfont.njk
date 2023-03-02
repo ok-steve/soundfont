@@ -1,27 +1,29 @@
-<fieldset class="border-none m-0 p-0">
-  <legend class="text-xl font-bold">Soundfont</legend>
+<fieldset>
+  <legend>Soundfont</legend>
 
-  <div class="mt-4">
-    <label class="block" for="soundfont">Soundfont</label>
-    <select id="soundfont" class="w-full" name="soundfont">
-      {% for option in soundfonts %}
-        <option value="{{ option }}"{% if option == initialState.soundfont.soundfont %} selected{% endif %}>{{ option }}</option>
-      {% endfor %}
-    </select>
-  </div>
+  <div class="stack">
+    <div class="field">
+      <label for="soundfont">Soundfont</label>
+      <select id="soundfont" name="soundfont" value="{{ initialState.soundfont.soundfont }}">
+        {% for option in soundfonts %}
+          <option value="{{ option }}"{% if option == initialState.soundfont.soundfont %} selected{% endif %}>{{ option }}</option>
+        {% endfor %}
+      </select>
+    </div>
 
-  <div class="mt-4">
-    <label class="block" for="instrument">Instrument</label>
-    <select id="instrument" class="w-full" name="instrument">
-      {% for label, optgroup in generalMidi %}
-        <optgroup label="{{ label }}">
-          {% for option in optgroup %}
-            {% set text = option | replace(r/\d+/, "") | trim %}
-            {% set value = text | replace(" ", "_") | replace(r/[()-]/g, "") | lower %}
-            <option value="{{ value }}"{% if value == initialState.soundfont.instrument %} selected{% endif %}>{{ text }}</option>
-          {% endfor %}
-        </optgroup>
-      {% endfor %}
-    </select>
+    <div class="field">
+      <label for="instrument">Instrument</label>
+      <select id="instrument" name="instrument" value="{{ initialState.soundfont.instrument }}">
+        {% for label, optgroup in generalMidi %}
+          <optgroup label="{{ label }}">
+            {% for option in optgroup %}
+              {% set text = option | replace(r/\d+/, "") | trim %}
+              {% set value = text | replace(" ", "_") | replace(r/[()-]/g, "") | lower %}
+              <option value="{{ value }}"{% if value == initialState.soundfont.instrument %} selected{% endif %}>{{ text }}</option>
+            {% endfor %}
+          </optgroup>
+        {% endfor %}
+      </select>
+    </div>
   </div>
 </fieldset>

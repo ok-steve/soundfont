@@ -1,13 +1,4 @@
-<div class="sm:flex">
-  <div class="flex-auto">
-    <div class="p-3 border border-solid border-gray-400">
-      {% include "components/soundfont.njk" %}
-    </div>
-  </div>
-
-  <div class="flex-auto mt-2 sm:pl-2 sm:mt-0">
-    <div class="p-3 border border-solid border-gray-400">
-      {% include "components/envelope.njk" %}
-    </div>
-  </div>
+<div class="grid">
+  {% include "components/soundfont.njk" %}
+  {% include "components/envelope.njk" %}
 </div>

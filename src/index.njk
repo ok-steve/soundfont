@@ -1,10 +1,10 @@
 ---
-layout: default.njk
+layout: default
 ---
 
 <form>
   {% for route in routes %}
-    <div id="{{ route.path }}" class="view">
+    <div id="{{ route.path }}" class="[ view ] [ stack ]">
       {% include "routes/" + route.path + ".njk" ignore missing %}
     </div>
   {% endfor %}

@@ -1,78 +1,35 @@
 {
   "name": "soundfont",
   "private": true,
-  "version": "0.5.1",
+  "version": "1.0.0",
   "description": "A soundfont player.",
-  "main": "dist/main.js",
-  "jsnext:main": "src/scripts/main.js",
-  "module": "src/scripts/main.js",
-  "directories": {
-    "lib": "dist"
-  },
-  "files": [
-    "dist"
-  ],
+  "main": "index.js",
   "scripts": {
     "clean": "rimraf dist",
-    "lint:css": "stylelint src/styles --fix",
-    "lint:js": "eslint src/scripts --fix",
-    "lint": "npm run lint:css & npm run lint:js",
-    "serve": "ELEVENTY_ENV=development npm run watch:site & NODE_ENV=development webpack-dev-server --config webpack.dev.js",
-    "build:site": "eleventy --config eleventy.config.js",
-    "build:bundle": "webpack --config webpack.prod.js",
     "prebuild": "npm run clean",
-    "watch:site": "npm run build:site -- --watch",
-    "build": "NODE_ENV=production npm run build:bundle && ELEVENTY_ENV=production npm run build:site",
-    "test": "echo \"Error: no test specified \" && exit 1",
-    "start": "npm run serve"
+    "build": "eleventy --config eleventy.config.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npm run build -- --serve --incremental --ignore-initial"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/ok-steve/soundfont.git"
   },
   "keywords": [
-    "audio",
-    "midi",
-    "pwa"
+    "eleventy"
   ],
-  "author": "Steve Cherry <steve@stevecherry.net> (https://stevecherry.net/)",
-  "license": "GPL-3.0",
+  "author": {
+    "name": "Steve Cherry",
+    "email": "steve@stevecherry.net",
+    "url": "https://stevecherry.net"
+  },
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/ok-steve/soundfont/issues"
   },
   "homepage": "https://github.com/ok-steve/soundfont#readme",
-  "dependencies": {
-    "zen-observable": "^0.8.14"
-  },
   "devDependencies": {
-    "@11ty/eleventy": "^0.9.0",
-    "@babel/core": "^7.5.5",
-    "@babel/plugin-proposal-class-properties": "^7.5.5",
-    "@babel/preset-env": "^7.5.5",
-    "@fullhuman/postcss-purgecss": "^1.2.0",
-    "babel-loader": "^8.0.6",
-    "css-loader": "^3.2.0",
-    "eslint": "^6.3.0",
-    "eslint-config-airbnb-base": "^14.0.0",
-    "eslint-plugin-compat": "^3.3.0",
-    "eslint-plugin-import": "^2.18.2",
-    "html-minifier": "^4.0.0",
-    "mini-css-extract-plugin": "^0.8.0",
-    "optimize-css-assets-webpack-plugin": "^5.0.3",
-    "postcss-import": "^12.0.1",
-    "postcss-loader": "^3.0.0",
-    "postcss-normalize": "^8.0.1",
-    "postcss-preset-env": "^6.7.0",
-    "rimraf": "^3.0.0",
-    "style-loader": "^1.0.0",
-    "stylelint": "^10.1.0",
-    "stylelint-config-standard": "^18.3.0",
-    "stylelint-no-unsupported-browser-features": "^3.0.2",
-    "tailwindcss": "^1.1.2",
-    "webpack": "^4.39.3",
-    "webpack-cli": "^3.3.7",
-    "webpack-dev-server": "^3.8.0",
-    "webpack-merge": "^4.2.2",
-    "worker-loader": "^2.0.0"
+    "@11ty/eleventy": "^2.0.0",
+    "rimraf": "^3.0.2"
   }
 }
