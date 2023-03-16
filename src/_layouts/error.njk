@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ title or site.name }} | {{ site.name }}</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        line-height: 1.2;
+        margin: 0;
+      }
+      html {
+        color: #fff;
+        background-color: #1862ab;
+        display: table;
+        font-family: monospace, monospace;
+        height: 100%;
+        text-align: left;
+        width: 100%;
+      }
+      body {
+        display: table-cell;
+        vertical-align: middle;
+        margin: 2em auto;
+      }
+      h1 {
+        color: inherit;
+        font-size: 2em;
+        font-weight: 400;
+      }
+      h1,
+      p {
+        margin: 0 auto;
+        width: 50%;
+      }
+      @media only screen and (max-width: 280px) {
+        h1,
+        p {
+          width: 95%;
+        }
+        h1 {
+          font-size: 1.5em;
+          margin-bottom: 0.3em;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>{{ title or site.name }}</h1>
+
+    {{ content | safe }}
+  </body>
+</html>
+<!-- IE needs 512+ bytes: http://blogs.msdn.com/b/ieinternals/archive/2010/08/19/http-error-pages-in-internet-explorer.aspx -->

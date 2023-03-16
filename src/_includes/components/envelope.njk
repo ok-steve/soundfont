@@ -6,7 +6,7 @@
       <div class="field">
         <label for="envelope-{{ key }}">{{ label }}</label>
         <input id="envelope-{{ key }}" type="range" name="envelope-{{ key }}" max="1" step="0.001" value="{{ initialState.envelope[key] }}">
-        <output for="envelope-{{ key }}"></output>
+        <output for="envelope-{{ key }}">{{ initialState.envelope[key] }}</output>
       </div>
     {% endfor %}
   </div>
