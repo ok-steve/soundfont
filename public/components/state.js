@@ -1,8 +1,25 @@
-import fromEvent from '../lib/Observable/fromEvent.js';
-import startWith from '../lib/Observable/startWith.js';
+import fromEvent from "../lib/Observable/fromEvent.js";
+import startWith from "../lib/Observable/startWith.js";
 
-const form = document.querySelector('form');
-const storage = 'soundfont';
+const form = document.querySelector("form");
+const storage = "soundfont";
+
+// Disable normal form submission
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+});
+
+// Sync input and output values
+document.querySelectorAll('input[type="range"][id]').forEach((input) => {
+  input.addEventListener("input", (e) => {
+    const id = e.target.id;
+    const output = document.querySelector(`output[for="${id}"]`);
+
+    if (output !== null) {
+      output.textContent = e.target.value;
+    }
+  });
+});
 
 // Load initial state
 if (localStorage.getItem(storage)) {
@@ -12,8 +29,8 @@ if (localStorage.getItem(storage)) {
   Object.keys(data).forEach((key) => {
     const el = els.namedItem(key);
 
-    if (el.type === 'checkbox') {
-      const checked = data[key] === 'on';
+    if (el.type === "checkbox") {
+      const checked = data[key] === "on";
       el.checked = checked;
     } else {
       el.value = data[key];
@@ -21,7 +38,7 @@ if (localStorage.getItem(storage)) {
   });
 }
 
-const state = startWith(fromEvent(form, 'change'), new FormData(form)).map(
+const state = startWith(fromEvent(form, "change"), new FormData(form)).map(
   () => new FormData(form)
 );
 
