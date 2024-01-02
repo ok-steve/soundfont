@@ -4,6 +4,10 @@
  * Base
  */
 
+:root {
+  --grid-min: 15em;
+}
+
 a {
   color: inherit;
 }
@@ -27,6 +31,18 @@ select {
 
 .border {
   border: 1px solid;
+}
+
+/**
+ * Field
+ */
+
+.field.cluster label {
+  flex-basis: 100%;
+}
+
+.field output {
+  flex-basis: 5ch;
 }
 
 /**
