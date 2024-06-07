@@ -5,18 +5,13 @@
   "description": "A soundfont player.",
   "main": "index.js",
   "scripts": {
-    "clean": "rimraf dist",
-    "build": "eleventy --config eleventy.config.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npm run build -- --serve --incremental --ignore-initial"
+    "start": "live-server . --watch"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ok-steve/soundfont.git"
+    "url": "git+https://github.com/ok-steve/soundfont.git"
   },
-  "keywords": [
-    "eleventy"
-  ],
   "author": {
     "name": "Steve Cherry",
     "email": "steve@stevecherry.net",
@@ -28,7 +23,6 @@
   },
   "homepage": "https://github.com/ok-steve/soundfont#readme",
   "devDependencies": {
-    "@11ty/eleventy": "^2.0.0",
-    "rimraf": "^3.0.2"
+    "live-server": "^1.2.2"
   }
 }

@@ -1,6 +1,0 @@
-<label for="octave">Octave</label>
-<select id="octave" name="octave" value="{{ initialState.octave }}">
-  {% for option in range(2, 8) %}
-    <option value="{{ option }}"{% if option == initialState.octave %} selected{% endif %}>{{ option }}</option>
-  {% endfor %}
-</select>
