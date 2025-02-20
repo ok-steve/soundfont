@@ -7,13 +7,17 @@
     <title>Soundfont</title>
     <meta name="description" content="A soundfont player." />
     <link rel="canonical" href="https://stevecherry.net/soundfont/" />
+    <link
+      rel="stylesheet"
+      href="https://stevecherry.net/normcore/normcore.css"
+    />
     <link rel="stylesheet" href="./public/style.css" />
     <script src="./public/script.js" type="module"></script>
   </head>
   <body>
     <div class="cover stack">
-      <header class="[ site-header ] [ cluster ] [ p-01 ]" role="banner">
-        <h1 class="flex-auto">Soundfont</h1>
+      <header class="[ site-header ] [ cluster ] [ p--1 ]" role="banner">
+        <h1 class="fx-auto">Soundfont</h1>
         <nav role="navigation">
           <ul class="cluster" role="list">
             <li>
@@ -25,9 +29,9 @@
           </ul>
         </nav>
       </header>
-      <main class="[ site-main ] [ flex-auto ]" role="main">
+      <main class="[ site-main ] [ fx-auto ]" role="main">
         <form>
-          <div id="settings" class="[ view ] [ stack ]">
+          <div id="settings" class="[ router ] [ stack ]">
             <div class="grid">
               <fieldset>
                 <legend>Soundfont</legend>
@@ -274,7 +278,7 @@
                     <label for="envelope-attack">Attack</label>
                     <input
                       id="envelope-attack"
-                      class="flex-auto"
+                      class="fx-auto"
                       type="range"
                       name="envelope-attack"
                       max="1"
@@ -287,7 +291,7 @@
                     <label for="envelope-decay">Decay</label>
                     <input
                       id="envelope-decay"
-                      class="flex-auto"
+                      class="fx-auto"
                       type="range"
                       name="envelope-decay"
                       max="1"
@@ -300,7 +304,7 @@
                     <label for="envelope-sustain">Sustain</label>
                     <input
                       id="envelope-sustain"
-                      class="flex-auto"
+                      class="fx-auto"
                       type="range"
                       name="envelope-sustain"
                       max="1"
@@ -313,7 +317,7 @@
                     <label for="envelope-release">Release</label>
                     <input
                       id="envelope-release"
-                      class="flex-auto"
+                      class="fx-auto"
                       type="range"
                       name="envelope-release"
                       max="1"
@@ -326,8 +330,8 @@
               </fieldset>
             </div>
           </div>
-          <div id="index" class="[ view ] [ stack ]">
-            <div class="[ stack ] [ border p-01 ]">
+          <div id="index" class="[ router ] [ stack ]">
+            <div class="[ stack ] [ border p--1 ]">
               <label for="octave">Octave</label>
               <select id="octave" name="octave" value="4">
                 <option value="2">2</option>
