@@ -3,22 +3,18 @@
 \* ---------------------------------- */
 
 :root {
-  --color-primary: #68d391;
+  --cluster-align: center;
   --cluster-space: var(--space--1);
+  --cover-space: var(--space--1);
   --grid-space: var(--space--1);
-}
-
-a {
-  color: inherit;
-}
-
-a:hover,
-a:focus {
-  color: var(--color-primary);
 }
 
 select {
   width: 100%;
+}
+
+output {
+  flex-basis: 5ch;
 }
 
 /* ---------------------------------- *\
@@ -29,21 +25,18 @@ select {
   border: 1px solid;
 }
 
+.border-b {
+  border-block-end: 1px solid;
+}
+
+.border-t {
+  border-block-start: 1px solid;
+}
+
+
 /* ---------------------------------- *\
    #BLOCKS
 \* ---------------------------------- */
-
-/**
- * Field
- */
-
-.field.cluster label {
-  flex-basis: 100%;
-}
-
-.field output {
-  flex-basis: 5ch;
-}
 
 /**
  * Piano roll
@@ -61,7 +54,7 @@ select {
 
 .piano-roll [aria-pressed="true"],
 .piano-roll-key:focus {
-  color: #68d391;
+  color: var(--color-primary);
 }
 
 .piano-roll-key--natural {
@@ -73,25 +66,7 @@ select {
 }
 
 /**
- * Site layout
- */
-
-.site-header {
-  align-items: center;
-  border-bottom: 1px solid;
-}
-
-.site-main {
-  margin-inline: 0.75em;
-}
-
-.site-footer {
-  padding: 0.75em;
-  border-top: 1px solid;
-}
-
-/**
- * Views
+ * Router
  */
 
 .router {

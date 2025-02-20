@@ -15,8 +15,8 @@
     <script src="./public/script.js" type="module"></script>
   </head>
   <body>
-    <div class="cover stack">
-      <header class="[ site-header ] [ cluster ] [ p--1 ]" role="banner">
+    <div class="cover">
+      <header class="[ cluster ] [ border-b p--1 ]" role="banner">
         <h1 class="fx-auto">Soundfont</h1>
         <nav role="navigation">
           <ul class="cluster" role="list">
@@ -29,7 +29,7 @@
           </ul>
         </nav>
       </header>
-      <main class="[ site-main ] [ fx-auto ]" role="main">
+      <main class="[ fx-auto ]" role="main">
         <form>
           <div id="settings" class="[ router ] [ stack ]">
             <div class="grid">
@@ -274,57 +274,65 @@
               <fieldset>
                 <legend>Envelope</legend>
                 <div class="stack">
-                  <div class="[ field ] [ cluster ]">
+                  <div class="field">
                     <label for="envelope-attack">Attack</label>
-                    <input
-                      id="envelope-attack"
-                      class="fx-auto"
-                      type="range"
-                      name="envelope-attack"
-                      max="1"
-                      step="0.001"
-                      value="0"
-                    />
-                    <output for="envelope-attack">0</output>
+                    <div class="cluster">
+                      <input
+                        id="envelope-attack"
+                        class="fx-auto"
+                        type="range"
+                        name="envelope-attack"
+                        max="1"
+                        step="0.001"
+                        value="0"
+                      />
+                      <output for="envelope-attack">0</output>
+                    </div>
                   </div>
-                  <div class="[ field ] [ cluster ]">
+                  <div class="field">
                     <label for="envelope-decay">Decay</label>
-                    <input
-                      id="envelope-decay"
-                      class="fx-auto"
-                      type="range"
-                      name="envelope-decay"
-                      max="1"
-                      step="0.001"
-                      value="0.2"
-                    />
-                    <output for="envelope-decay">0.2</output>
+                    <div class="cluster">
+                      <input
+                        id="envelope-decay"
+                        class="fx-auto"
+                        type="range"
+                        name="envelope-decay"
+                        max="1"
+                        step="0.001"
+                        value="0.2"
+                      />
+                      <output for="envelope-decay">0.2</output>
+                    </div>
                   </div>
-                  <div class="[ field ] [ cluster ]">
+                  <div class="field">
                     <label for="envelope-sustain">Sustain</label>
-                    <input
-                      id="envelope-sustain"
-                      class="fx-auto"
-                      type="range"
-                      name="envelope-sustain"
-                      max="1"
-                      step="0.001"
-                      value="0.8"
-                    />
-                    <output for="envelope-sustain">0.8</output>
+                    <div class="cluster">
+                      <input
+                        id="envelope-sustain"
+                        class="fx-auto"
+                        type="range"
+                        name="envelope-sustain"
+                        max="1"
+                        step="0.001"
+                        value="0.8"
+                      />
+                      <output for="envelope-sustain">0.8</output>
+                    </div>
                   </div>
-                  <div class="[ field ] [ cluster ]">
+                  <div class="field">
                     <label for="envelope-release">Release</label>
-                    <input
-                      id="envelope-release"
-                      class="fx-auto"
-                      type="range"
-                      name="envelope-release"
-                      max="1"
-                      step="0.001"
-                      value="0.8"
-                    />
-                    <output for="envelope-release">0.8</output>
+                    <div class="cluster">
+                      <input
+                        id="envelope-release"
+                        class="fx-auto"
+                        type="range"
+                        name="envelope-release"
+                        max="1"
+                        step="0.001"
+                        value="0.8"
+                      />
+                      <output for="envelope-release">0.8</output>
+                    </div>
                   </div>
                 </div>
               </fieldset>
@@ -620,7 +628,7 @@
           </div>
         </form>
       </main>
-      <footer class="[ site-footer ] [ stack ]" role="contentinfo">
+      <footer class="[ stack ] [ border-t p--1 ]" role="contentinfo">
         <p>A soundfont player.</p>
         <p>
           Yet another
