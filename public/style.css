@@ -18,6 +18,28 @@ output {
 }
 
 /* ---------------------------------- *\
+   #COMPOSITION
+\* ---------------------------------- */
+
+/**
+ * View
+ */
+
+.view:target {
+  animation: fadeIn 0.3s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* ---------------------------------- *\
    #UTILITIES
 \* ---------------------------------- */
 
@@ -63,35 +85,4 @@ output {
 
 .piano-roll-key--accidental {
   color: black;
-}
-
-/**
- * Router
- */
-
-.router {
-  display: none;
-}
-
-.router:target {
-  display: block;
-  animation: fadeIn 0.3s;
-}
-
-.router:last-child {
-  display: block;
-}
-
-.router:target ~ * {
-  display: none;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
 }
