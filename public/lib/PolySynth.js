@@ -5,16 +5,27 @@ class PolySynth {
     this.cache = new Map();
   }
 
-  triggerAttack(notes, time = this.context.currentTime, velocity, buffer, ...args) {
+  triggerAttack(
+    notes,
+    time = this.context.currentTime,
+    velocity,
+    buffer,
+    ...args
+  ) {
     const freqs = Array.isArray(notes) ? notes : [notes];
 
     freqs.forEach((note) => {
       if (!this.cache.has(note)) {
-        const voice = new this.Voice(this.context, ...args).connect(this.output);
+        const voice = new this.Voice(this.context, ...args).connect(
+          this.output
+        );
 
         this.cache.set(note, voice);
-        voice.triggerAttack(buffer, time, velocity / 127);
       }
+
+      const voice = this.cache.get(note);
+
+      voice.triggerAttack(buffer, time, velocity / 127);
     });
 
     return this;
@@ -28,15 +39,18 @@ class PolySynth {
         const voice = this.cache.get(note);
 
         voice.triggerRelease(time);
-
-        this.cache.delete(note);
       }
     });
 
     return this;
   }
 
-  triggerAttackRelease(notes, duration, time = this.context.currenTime, velocity = 1) {
+  triggerAttackRelease(
+    notes,
+    duration,
+    time = this.context.currenTime,
+    velocity = 1
+  ) {
     this.triggerAttack(notes, time, velocity);
     this.triggerRelease(notes, time + duration);
     return this;
