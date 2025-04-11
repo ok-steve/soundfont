@@ -1,27 +1,30 @@
 let context = null;
 
+const eventTypes = ["mousedown", "touchstart", "pointerstart"];
+
 function createResumeAudioContext(el, type) {
   function resumeAudioContext() {
     if (context === null) {
       return;
     }
 
-    el.removeEventListener(type, resumeAudioContext);
-
-    if (context.state !== 'suspended') {
+    if (context.state !== "suspended") {
       return;
     }
 
+    eventTypes.forEach((eventType) =>
+      el.removeEventListener(eventType, resumeAudioContext)
+    );
+
     context.resume().then(() => {
-      console.log('Audio context resumed');
+      console.log("Audio context resumed");
     });
   }
 
   el.addEventListener(type, resumeAudioContext, false);
 }
 
-createResumeAudioContext(window, 'mousedown');
-createResumeAudioContext(window, 'touchstart');
+eventTypes.forEach((eventType) => createResumeAudioContext(window, eventType));
 
 export default function () {
   if (context === null) {
