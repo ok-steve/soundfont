@@ -4,9 +4,6 @@
 
 :root {
   --cluster-align: center;
-  --cluster-space: var(--space--1);
-  --cover-space: var(--space--1);
-  --grid-space: var(--space--1);
 }
 
 select {
