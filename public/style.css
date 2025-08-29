@@ -2,16 +2,18 @@
    #BASE
 \* ---------------------------------- */
 
-:root {
-  --cluster-align: center;
+html,
+body {
+  height: 100%;
 }
 
-select {
-  width: 100%;
+body {
+  display: flex;
+  flex-direction: column;
 }
 
-output {
-  flex-basis: 5ch;
+main {
+  flex: 1;
 }
 
 /* ---------------------------------- *\
@@ -21,9 +23,21 @@ output {
 /**
  * View
  */
+.view {
+  display: none;
+}
 
 .view:target {
+  display: block;
   animation: fadeIn 0.3s;
+}
+
+.view:last-child {
+  display: block;
+}
+
+.view:target~* {
+  display: none;
 }
 
 @keyframes fadeIn {
@@ -35,23 +49,6 @@ output {
     opacity: 1;
   }
 }
-
-/* ---------------------------------- *\
-   #UTILITIES
-\* ---------------------------------- */
-
-.border {
-  border: 1px solid;
-}
-
-.border-b {
-  border-block-end: 1px solid;
-}
-
-.border-t {
-  border-block-start: 1px solid;
-}
-
 
 /* ---------------------------------- *\
    #BLOCKS

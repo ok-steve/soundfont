@@ -9,348 +9,312 @@
     <link rel="canonical" href="https://stevecherry.net/soundfont/" />
     <link
       rel="stylesheet"
-      href="https://stevecherry.net/normcore/css/normcore.css"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
     />
     <link rel="stylesheet" href="./public/style.css" />
-    <script
-      src="https://cdn.jsdelivr.net/npm/@ungap/custom-elements@1.3.0/es.js"
-      defer
-    ></script>
-    <script
-      src="https://stevecherry.net/normcore/js/normcore.js"
-      defer
-    ></script>
     <script src="./public/script.js" type="module"></script>
   </head>
-  <body class="cover">
-    <header class="[ cluster ] [ border-b p--1 ]" role="banner">
-      <h1 class="fx-auto">Soundfont</h1>
-      <nav role="navigation">
-        <ul class="cluster" role="list">
-          <li>
-            <a href="#index">Home</a>
-          </li>
-          <li>
-            <a href="#settings">Settings</a>
-          </li>
-        </ul>
-      </nav>
+  <body class="container-fluid">
+    <header role="banner">
+      <h1>Soundfont</h1>
     </header>
-    <main class="[ cover-start ] [ mx--1 ]" role="main">
+    <nav role="navigation">
+      <ul role="list">
+        <li>
+          <a href="#index">Home</a>
+        </li>
+        <li>
+          <a href="#settings">Settings</a>
+        </li>
+      </ul>
+    </nav>
+    <main role="main">
       <form>
-        <div id="settings" class="stack view">
+        <div id="settings" class="view">
           <div class="grid">
             <fieldset>
               <legend>Soundfont</legend>
-              <div class="stack">
-                <div class="field">
-                  <label for="soundfont">Soundfont</label>
-                  <select id="soundfont" name="soundfont" value="FluidR3_GM">
-                    <option value="FluidR3_GM" selected="">FluidR3_GM</option>
-                    <option value="MusyngKite">MusyngKite</option>
-                    <option value="FatBoy">FatBoy</option>
-                  </select>
-                </div>
-                <div class="field">
-                  <label for="instrument">Instrument</label>
-                  <select
-                    id="instrument"
-                    name="instrument"
-                    value="acoustic_grand_piano"
-                  >
-                    <optgroup label="Piano">
-                      <option value="acoustic_grand_piano" selected="">
-                        Acoustic Grand Piano
-                      </option>
-                      <option value="bright_acoustic_piano">
-                        Bright Acoustic Piano
-                      </option>
-                      <option value="electric_grand_piano">
-                        Electric Grand Piano
-                      </option>
-                      <option value="honkytonk_piano">
-                        Honky-tonk Piano
-                      </option>
-                      <option value="electric_piano_1">
-                        Electric Piano 1
-                      </option>
-                      <option value="electric_piano_2">
-                        Electric Piano 2
-                      </option>
-                      <option value="harpsichord">Harpsichord</option>
-                      <option value="clavinet">Clavinet</option>
-                    </optgroup>
-                    <optgroup label="Chromatic Percussion">
-                      <option value="celesta">Celesta</option>
-                      <option value="glockenspiel">Glockenspiel</option>
-                      <option value="music_box">Music Box</option>
-                      <option value="vibraphone">Vibraphone</option>
-                      <option value="marimba">Marimba</option>
-                      <option value="xylophone">Xylophone</option>
-                      <option value="tubular_bells">Tubular Bells</option>
-                      <option value="dulcimer">Dulcimer</option>
-                    </optgroup>
-                    <optgroup label="Organ">
-                      <option value="drawbar_organ">Drawbar Organ</option>
-                      <option value="percussive_organ">
-                        Percussive Organ
-                      </option>
-                      <option value="rock_organ">Rock Organ</option>
-                      <option value="church_organ">Church Organ</option>
-                      <option value="reed_organ">Reed Organ</option>
-                      <option value="accordion">Accordion</option>
-                      <option value="harmonica">Harmonica</option>
-                      <option value="tango_accordion">Tango Accordion</option>
-                    </optgroup>
-                    <optgroup label="Guitar">
-                      <option value="acoustic_guitar_nylon">
-                        Acoustic Guitar (nylon)
-                      </option>
-                      <option value="acoustic_guitar_steel">
-                        Acoustic Guitar (steel)
-                      </option>
-                      <option value="electric_guitar_jazz">
-                        Electric Guitar (jazz)
-                      </option>
-                      <option value="electric_guitar_clean">
-                        Electric Guitar (clean)
-                      </option>
-                      <option value="electric_guitar_muted">
-                        Electric Guitar (muted)
-                      </option>
-                      <option value="overdriven_guitar">
-                        Overdriven Guitar
-                      </option>
-                      <option value="distortion_guitar">
-                        Distortion Guitar
-                      </option>
-                      <option value="guitar_harmonics">
-                        Guitar Harmonics
-                      </option>
-                    </optgroup>
-                    <optgroup label="Bass">
-                      <option value="acoustic_bass">Acoustic Bass</option>
-                      <option value="electric_bass_finger">
-                        Electric Bass (finger)
-                      </option>
-                      <option value="electric_bass_pick">
-                        Electric Bass (pick)
-                      </option>
-                      <option value="fretless_bass">Fretless Bass</option>
-                      <option value="slap_bass_1">Slap Bass 1</option>
-                      <option value="slap_bass_2">Slap Bass 2</option>
-                      <option value="synth_bass_1">Synth Bass 1</option>
-                      <option value="synth_bass_2">Synth Bass 2</option>
-                    </optgroup>
-                    <optgroup label="Strings">
-                      <option value="violin">Violin</option>
-                      <option value="viola">Viola</option>
-                      <option value="cello">Cello</option>
-                      <option value="contrabass">Contrabass</option>
-                      <option value="tremolo_strings">Tremolo Strings</option>
-                      <option value="pizzicato_strings">
-                        Pizzicato Strings
-                      </option>
-                      <option value="orchestral_harp">Orchestral Harp</option>
-                      <option value="timpani">Timpani</option>
-                    </optgroup>
-                    <optgroup label="Ensemble">
-                      <option value="string_ensemble_1">
-                        String Ensemble 1
-                      </option>
-                      <option value="string_ensemble_2">
-                        String Ensemble 2
-                      </option>
-                      <option value="synth_strings_1">Synth Strings 1</option>
-                      <option value="synth_strings_2">Synth Strings 2</option>
-                      <option value="choir_aahs">Choir Aahs</option>
-                      <option value="voice_oohs">Voice Oohs</option>
-                      <option value="synth_choir">Synth Choir</option>
-                      <option value="orchestra_hit">Orchestra Hit</option>
-                    </optgroup>
-                    <optgroup label="Brass">
-                      <option value="trumpet">Trumpet</option>
-                      <option value="trombone">Trombone</option>
-                      <option value="tuba">Tuba</option>
-                      <option value="muted_trumpet">Muted Trumpet</option>
-                      <option value="french_horn">French Horn</option>
-                      <option value="brass_section">Brass Section</option>
-                      <option value="synth_brass_1">Synth Brass 1</option>
-                      <option value="synth_brass_2">Synth Brass 2</option>
-                    </optgroup>
-                    <optgroup label="Reed">
-                      <option value="soprano_sax">Soprano Sax</option>
-                      <option value="alto_sax">Alto Sax</option>
-                      <option value="tenor_sax">Tenor Sax</option>
-                      <option value="baritone_sax">Baritone Sax</option>
-                      <option value="oboe">Oboe</option>
-                      <option value="english_horn">English Horn</option>
-                      <option value="bassoon">Bassoon</option>
-                      <option value="clarinet">Clarinet</option>
-                    </optgroup>
-                    <optgroup label="Pipe">
-                      <option value="piccolo">Piccolo</option>
-                      <option value="flute">Flute</option>
-                      <option value="recorder">Recorder</option>
-                      <option value="pan_flute">Pan Flute</option>
-                      <option value="blown_bottle">Blown Bottle</option>
-                      <option value="shakuhachi">Shakuhachi</option>
-                      <option value="whistle">Whistle</option>
-                      <option value="ocarina">Ocarina</option>
-                    </optgroup>
-                    <optgroup label="Synth Lead">
-                      <option value="lead_1_square">Lead 1 (square)</option>
-                      <option value="lead_2_sawtooth">
-                        Lead 2 (sawtooth)
-                      </option>
-                      <option value="lead_3_calliope">
-                        Lead 3 (calliope)
-                      </option>
-                      <option value="lead_4_chiff">Lead 4 (chiff)</option>
-                      <option value="lead_5_charang">Lead 5 (charang)</option>
-                      <option value="lead_6_voice">Lead 6 (voice)</option>
-                      <option value="lead_7_fifths">Lead 7 (fifths)</option>
-                      <option value="lead_8_bass_+_lead">
-                        Lead 8 (bass + lead)
-                      </option>
-                    </optgroup>
-                    <optgroup label="Synth Pad">
-                      <option value="pad_1_new_age">Pad 1 (new age)</option>
-                      <option value="pad_2_warm">Pad 2 (warm)</option>
-                      <option value="pad_3_polysynth">
-                        Pad 3 (polysynth)
-                      </option>
-                      <option value="pad_4_choir">Pad 4 (choir)</option>
-                      <option value="pad_5_bowed">Pad 5 (bowed)</option>
-                      <option value="pad_6_metallic">Pad 6 (metallic)</option>
-                      <option value="pad_7_halo">Pad 7 (halo)</option>
-                      <option value="pad_8_sweep">Pad 8 (sweep)</option>
-                    </optgroup>
-                    <optgroup label="Synth Effects">
-                      <option value="fx_1_rain">FX 1 (rain)</option>
-                      <option value="fx_2_soundtrack">
-                        FX 2 (soundtrack)
-                      </option>
-                      <option value="fx_3_crystal">FX 3 (crystal)</option>
-                      <option value="fx_4_atmosphere">
-                        FX 4 (atmosphere)
-                      </option>
-                      <option value="fx_5_brightness">
-                        FX 5 (brightness)
-                      </option>
-                      <option value="fx_6_goblins">FX 6 (goblins)</option>
-                      <option value="fx_7_echoes">FX 7 (echoes)</option>
-                      <option value="fx_8_scifi">FX 8 (sci-fi)</option>
-                    </optgroup>
-                    <optgroup label="Ethnic">
-                      <option value="sitar">Sitar</option>
-                      <option value="banjo">Banjo</option>
-                      <option value="shamisen">Shamisen</option>
-                      <option value="koto">Koto</option>
-                      <option value="kalimba">Kalimba</option>
-                      <option value="bagpipe">Bagpipe</option>
-                      <option value="fiddle">Fiddle</option>
-                      <option value="shanai">Shanai</option>
-                    </optgroup>
-                    <optgroup label="Percussive">
-                      <option value="tinkle_bell">Tinkle Bell</option>
-                      <option value="agogo">Agogo</option>
-                      <option value="steel_drums">Steel Drums</option>
-                      <option value="woodblock">Woodblock</option>
-                      <option value="taiko_drum">Taiko Drum</option>
-                      <option value="melodic_tom">Melodic Tom</option>
-                      <option value="synth_drum">Synth Drum</option>
-                    </optgroup>
-                    <optgroup label="Sound effects">
-                      <option value="reverse_cymbal">Reverse Cymbal</option>
-                      <option value="guitar_fret_noise">
-                        Guitar Fret Noise
-                      </option>
-                      <option value="breath_noise">Breath Noise</option>
-                      <option value="seashore">Seashore</option>
-                      <option value="bird_tweet">Bird Tweet</option>
-                      <option value="telephone_ring">Telephone Ring</option>
-                      <option value="helicopter">Helicopter</option>
-                      <option value="applause">Applause</option>
-                      <option value="gunshot">Gunshot</option>
-                    </optgroup>
-                  </select>
-                </div>
-              </div>
+              <label for="soundfont">Soundfont</label>
+              <select id="soundfont" name="soundfont" value="FluidR3_GM">
+                <option value="FluidR3_GM" selected="">FluidR3_GM</option>
+                <option value="MusyngKite">MusyngKite</option>
+                <option value="FatBoy">FatBoy</option>
+              </select>
+              <label for="instrument">Instrument</label>
+              <select
+                id="instrument"
+                name="instrument"
+                value="acoustic_grand_piano"
+              >
+                <optgroup label="Piano">
+                  <option value="acoustic_grand_piano" selected="">
+                    Acoustic Grand Piano
+                  </option>
+                  <option value="bright_acoustic_piano">
+                    Bright Acoustic Piano
+                  </option>
+                  <option value="electric_grand_piano">
+                    Electric Grand Piano
+                  </option>
+                  <option value="honkytonk_piano">
+                    Honky-tonk Piano
+                  </option>
+                  <option value="electric_piano_1">
+                    Electric Piano 1
+                  </option>
+                  <option value="electric_piano_2">
+                    Electric Piano 2
+                  </option>
+                  <option value="harpsichord">Harpsichord</option>
+                  <option value="clavinet">Clavinet</option>
+                </optgroup>
+                <optgroup label="Chromatic Percussion">
+                  <option value="celesta">Celesta</option>
+                  <option value="glockenspiel">Glockenspiel</option>
+                  <option value="music_box">Music Box</option>
+                  <option value="vibraphone">Vibraphone</option>
+                  <option value="marimba">Marimba</option>
+                  <option value="xylophone">Xylophone</option>
+                  <option value="tubular_bells">Tubular Bells</option>
+                  <option value="dulcimer">Dulcimer</option>
+                </optgroup>
+                <optgroup label="Organ">
+                  <option value="drawbar_organ">Drawbar Organ</option>
+                  <option value="percussive_organ">
+                    Percussive Organ
+                  </option>
+                  <option value="rock_organ">Rock Organ</option>
+                  <option value="church_organ">Church Organ</option>
+                  <option value="reed_organ">Reed Organ</option>
+                  <option value="accordion">Accordion</option>
+                  <option value="harmonica">Harmonica</option>
+                  <option value="tango_accordion">Tango Accordion</option>
+                </optgroup>
+                <optgroup label="Guitar">
+                  <option value="acoustic_guitar_nylon">
+                    Acoustic Guitar (nylon)
+                  </option>
+                  <option value="acoustic_guitar_steel">
+                    Acoustic Guitar (steel)
+                  </option>
+                  <option value="electric_guitar_jazz">
+                    Electric Guitar (jazz)
+                  </option>
+                  <option value="electric_guitar_clean">
+                    Electric Guitar (clean)
+                  </option>
+                  <option value="electric_guitar_muted">
+                    Electric Guitar (muted)
+                  </option>
+                  <option value="overdriven_guitar">
+                    Overdriven Guitar
+                  </option>
+                  <option value="distortion_guitar">
+                    Distortion Guitar
+                  </option>
+                  <option value="guitar_harmonics">
+                    Guitar Harmonics
+                  </option>
+                </optgroup>
+                <optgroup label="Bass">
+                  <option value="acoustic_bass">Acoustic Bass</option>
+                  <option value="electric_bass_finger">
+                    Electric Bass (finger)
+                  </option>
+                  <option value="electric_bass_pick">
+                    Electric Bass (pick)
+                  </option>
+                  <option value="fretless_bass">Fretless Bass</option>
+                  <option value="slap_bass_1">Slap Bass 1</option>
+                  <option value="slap_bass_2">Slap Bass 2</option>
+                  <option value="synth_bass_1">Synth Bass 1</option>
+                  <option value="synth_bass_2">Synth Bass 2</option>
+                </optgroup>
+                <optgroup label="Strings">
+                  <option value="violin">Violin</option>
+                  <option value="viola">Viola</option>
+                  <option value="cello">Cello</option>
+                  <option value="contrabass">Contrabass</option>
+                  <option value="tremolo_strings">Tremolo Strings</option>
+                  <option value="pizzicato_strings">
+                    Pizzicato Strings
+                  </option>
+                  <option value="orchestral_harp">Orchestral Harp</option>
+                  <option value="timpani">Timpani</option>
+                </optgroup>
+                <optgroup label="Ensemble">
+                  <option value="string_ensemble_1">
+                    String Ensemble 1
+                  </option>
+                  <option value="string_ensemble_2">
+                    String Ensemble 2
+                  </option>
+                  <option value="synth_strings_1">Synth Strings 1</option>
+                  <option value="synth_strings_2">Synth Strings 2</option>
+                  <option value="choir_aahs">Choir Aahs</option>
+                  <option value="voice_oohs">Voice Oohs</option>
+                  <option value="synth_choir">Synth Choir</option>
+                  <option value="orchestra_hit">Orchestra Hit</option>
+                </optgroup>
+                <optgroup label="Brass">
+                  <option value="trumpet">Trumpet</option>
+                  <option value="trombone">Trombone</option>
+                  <option value="tuba">Tuba</option>
+                  <option value="muted_trumpet">Muted Trumpet</option>
+                  <option value="french_horn">French Horn</option>
+                  <option value="brass_section">Brass Section</option>
+                  <option value="synth_brass_1">Synth Brass 1</option>
+                  <option value="synth_brass_2">Synth Brass 2</option>
+                </optgroup>
+                <optgroup label="Reed">
+                  <option value="soprano_sax">Soprano Sax</option>
+                  <option value="alto_sax">Alto Sax</option>
+                  <option value="tenor_sax">Tenor Sax</option>
+                  <option value="baritone_sax">Baritone Sax</option>
+                  <option value="oboe">Oboe</option>
+                  <option value="english_horn">English Horn</option>
+                  <option value="bassoon">Bassoon</option>
+                  <option value="clarinet">Clarinet</option>
+                </optgroup>
+                <optgroup label="Pipe">
+                  <option value="piccolo">Piccolo</option>
+                  <option value="flute">Flute</option>
+                  <option value="recorder">Recorder</option>
+                  <option value="pan_flute">Pan Flute</option>
+                  <option value="blown_bottle">Blown Bottle</option>
+                  <option value="shakuhachi">Shakuhachi</option>
+                  <option value="whistle">Whistle</option>
+                  <option value="ocarina">Ocarina</option>
+                </optgroup>
+                <optgroup label="Synth Lead">
+                  <option value="lead_1_square">Lead 1 (square)</option>
+                  <option value="lead_2_sawtooth">
+                    Lead 2 (sawtooth)
+                  </option>
+                  <option value="lead_3_calliope">
+                    Lead 3 (calliope)
+                  </option>
+                  <option value="lead_4_chiff">Lead 4 (chiff)</option>
+                  <option value="lead_5_charang">Lead 5 (charang)</option>
+                  <option value="lead_6_voice">Lead 6 (voice)</option>
+                  <option value="lead_7_fifths">Lead 7 (fifths)</option>
+                  <option value="lead_8_bass_+_lead">
+                    Lead 8 (bass + lead)
+                  </option>
+                </optgroup>
+                <optgroup label="Synth Pad">
+                  <option value="pad_1_new_age">Pad 1 (new age)</option>
+                  <option value="pad_2_warm">Pad 2 (warm)</option>
+                  <option value="pad_3_polysynth">
+                    Pad 3 (polysynth)
+                  </option>
+                  <option value="pad_4_choir">Pad 4 (choir)</option>
+                  <option value="pad_5_bowed">Pad 5 (bowed)</option>
+                  <option value="pad_6_metallic">Pad 6 (metallic)</option>
+                  <option value="pad_7_halo">Pad 7 (halo)</option>
+                  <option value="pad_8_sweep">Pad 8 (sweep)</option>
+                </optgroup>
+                <optgroup label="Synth Effects">
+                  <option value="fx_1_rain">FX 1 (rain)</option>
+                  <option value="fx_2_soundtrack">
+                    FX 2 (soundtrack)
+                  </option>
+                  <option value="fx_3_crystal">FX 3 (crystal)</option>
+                  <option value="fx_4_atmosphere">
+                    FX 4 (atmosphere)
+                  </option>
+                  <option value="fx_5_brightness">
+                    FX 5 (brightness)
+                  </option>
+                  <option value="fx_6_goblins">FX 6 (goblins)</option>
+                  <option value="fx_7_echoes">FX 7 (echoes)</option>
+                  <option value="fx_8_scifi">FX 8 (sci-fi)</option>
+                </optgroup>
+                <optgroup label="Ethnic">
+                  <option value="sitar">Sitar</option>
+                  <option value="banjo">Banjo</option>
+                  <option value="shamisen">Shamisen</option>
+                  <option value="koto">Koto</option>
+                  <option value="kalimba">Kalimba</option>
+                  <option value="bagpipe">Bagpipe</option>
+                  <option value="fiddle">Fiddle</option>
+                  <option value="shanai">Shanai</option>
+                </optgroup>
+                <optgroup label="Percussive">
+                  <option value="tinkle_bell">Tinkle Bell</option>
+                  <option value="agogo">Agogo</option>
+                  <option value="steel_drums">Steel Drums</option>
+                  <option value="woodblock">Woodblock</option>
+                  <option value="taiko_drum">Taiko Drum</option>
+                  <option value="melodic_tom">Melodic Tom</option>
+                  <option value="synth_drum">Synth Drum</option>
+                </optgroup>
+                <optgroup label="Sound effects">
+                  <option value="reverse_cymbal">Reverse Cymbal</option>
+                  <option value="guitar_fret_noise">
+                    Guitar Fret Noise
+                  </option>
+                  <option value="breath_noise">Breath Noise</option>
+                  <option value="seashore">Seashore</option>
+                  <option value="bird_tweet">Bird Tweet</option>
+                  <option value="telephone_ring">Telephone Ring</option>
+                  <option value="helicopter">Helicopter</option>
+                  <option value="applause">Applause</option>
+                  <option value="gunshot">Gunshot</option>
+                </optgroup>
+              </select>
             </fieldset>
             <fieldset>
               <legend>Envelope</legend>
-              <div class="stack">
-                <div class="field">
-                  <label for="envelope-attack">Attack</label>
-                  <div class="cluster">
-                    <input
-                      id="envelope-attack"
-                      class="fx-auto"
-                      type="range"
-                      name="envelope-attack"
-                      max="1"
-                      step="0.001"
-                      value="0"
-                    />
-                    <output is="output-sync" for="envelope-attack">0</output>
-                  </div>
-                </div>
-                <div class="field">
-                  <label for="envelope-decay">Decay</label>
-                  <div class="cluster">
-                    <input
-                      id="envelope-decay"
-                      class="fx-auto"
-                      type="range"
-                      name="envelope-decay"
-                      max="1"
-                      step="0.001"
-                      value="0.2"
-                    />
-                    <output is="output-sync" for="envelope-decay">0.2</output>
-                  </div>
-                </div>
-                <div class="field">
-                  <label for="envelope-sustain">Sustain</label>
-                  <div class="cluster">
-                    <input
-                      id="envelope-sustain"
-                      class="fx-auto"
-                      type="range"
-                      name="envelope-sustain"
-                      max="1"
-                      step="0.001"
-                      value="0.8"
-                    />
-                    <output is="output-sync" for="envelope-sustain"
-                      >0.8</output
-                    >
-                  </div>
-                </div>
-                <div class="field">
-                  <label for="envelope-release">Release</label>
-                  <div class="cluster">
-                    <input
-                      id="envelope-release"
-                      class="fx-auto"
-                      type="range"
-                      name="envelope-release"
-                      max="1"
-                      step="0.001"
-                      value="0.8"
-                    />
-                    <output is="output-sync" for="envelope-release"
-                      >0.8</output
-                    >
-                  </div>
-                </div>
-              </div>
+              <label for="envelope-attack">Attack</label>
+              <output for="envelope-attack">0</output>
+              <input
+                id="envelope-attack"
+                type="range"
+                name="envelope-attack"
+                max="1"
+                step="0.001"
+                value="0"
+              />
+              <label for="envelope-decay">Decay</label>
+              <output for="envelope-decay">0.2</output>
+              <input
+                id="envelope-decay"
+                type="range"
+                name="envelope-decay"
+                max="1"
+                step="0.001"
+                value="0.2"
+              />
+              <label for="envelope-sustain">Sustain</label>
+              <output for="envelope-sustain"
+                >0.8</output
+              >
+              <input
+                id="envelope-sustain"
+                type="range"
+                name="envelope-sustain"
+                max="1"
+                step="0.001"
+                value="0.8"
+              />
+              <label for="envelope-release">Release</label>
+              <output for="envelope-release"
+                >0.8</output
+              >
+              <input
+                id="envelope-release"
+                type="range"
+                name="envelope-release"
+                max="1"
+                step="0.001"
+                value="0.8"
+              />
             </fieldset>
           </div>
         </div>
-        <div id="index" class="stack view">
-          <div class="[ stack ] [ border p--1 ]">
+        <div id="index" class="view">
+          <fieldset>
             <label for="octave">Octave</label>
             <select id="octave" name="octave" value="4">
               <option value="2">2</option>
@@ -360,7 +324,7 @@
               <option value="6">6</option>
               <option value="7">7</option>
             </select>
-          </div>
+          </fieldset>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 616 162"
@@ -639,7 +603,7 @@
         </div>
       </form>
     </main>
-    <footer class="[ stack ] [ border-t p--1 ]" role="contentinfo">
+    <footer role="contentinfo">
       <p>A soundfont player.</p>
       <p>
         Yet another
